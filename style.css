@@ -163,7 +163,7 @@ footer i {
 }
 
 .w-lg {
-  width: 70%;
+  width: 90%;
 }
 
 .slider {
@@ -190,7 +190,7 @@ footer i {
 
 .bg-grid::after {
   background: url(assets/grid.png) repeat;
-  opacity: 0.4;
+  opacity: 0.2;
   content:'';
   height: 100%;
   width: 100%;
@@ -198,6 +198,10 @@ footer i {
   top:0;
   left:0;
   z-index: 12;
+}
+
+.bages{
+  opacity:0.4;
 }
 
 
