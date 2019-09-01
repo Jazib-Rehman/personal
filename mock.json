@@ -1,0 +1,432 @@
+{
+  "meals": [
+    {
+      "name": "Sandwich Station",
+      "meals": [
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Shawarma Arabia",
+          "tags":"normal, spicy"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Shawarma Halabia",
+          "tags":"normal, spicy"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Shawarma Sajia",
+          "tags":"normal, spicy"
+        }
+      ]
+    },
+    {
+      "name": "Gathering Station",
+      "meals": [
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal4",
+          "name": "Station 3 Meals"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal4",
+          "name": "Station 6 Meals"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal4",
+          "name": "Station 10 Meals"
+        }
+      ]
+    },
+    {
+      "name": "Chicken Meal Station",
+      "meals": [
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Chicken Classicia Meal"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Chicken Francia Meal"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Chicken Maxicia Meal"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Chicken Mini Meal"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Chicken Turkia Meal"
+        }
+      ]
+    },
+    {
+      "name": "Lamb Station",
+      "meals": [
+        {
+          "name": "Lamb Classicia Meal",
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal"
+        },
+        {
+          "name": "Lamb Francia Meal",
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal"
+        },
+        {
+          "name": "Lamb Maxicia Meal",
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal"
+        },
+        {
+          "name": "Lamb Mini Meal",
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal"
+        },
+        {
+          "name": "Lamb Turkia Meal",
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal"
+        }
+      ]
+    },
+    {
+      "name": "Falafal Station",
+      "meals": [
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Falafel Arabia",
+          "tags":"( Homos - Tahina )"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Falafel Halabia",
+          "tags":"( Homos - Tahina )"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Falafel Platters",
+          "tags":"( Homos - Tahina )"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Falafel Sajia",
+          "tags":"( Homos - Tahina )"
+        }
+      ]
+    },
+    {
+      "name": "Platters & Appetizers",
+      "meals": [
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Chicken Station Plate"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Homos & Chicken"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Homos & Lamb"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Homos"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Lamb Station Plate"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Mezza Halabia"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Mezza Shamia"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Motabal"
+        }
+      ]
+    },
+    {
+      "name": "Salad Station",
+      "meals": [
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Arabic Salad"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Caesar Salad"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Greek Salad"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Halumi Salad"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Rocca Salad"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Arabic Salad"
+        },
+        {
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal",
+          "name": "Tabouleh"
+        }
+      ]
+    },
+    {
+      "name": "Fries Station",
+      "meals": [
+        {
+          "name": "Fries Shawarma",
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal"
+        },
+        {
+          "name": "Fries with Cheese",
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal"
+        },
+        {
+          "name": "Fries Normal",
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal"
+        },
+        {
+          "name": "Shawarma Shake",
+          "image": "",
+          "desc": "Amaizing Meal",
+          "price": "4 Cal"
+        }
+      ]
+    },
+    {
+      "name": "Manaqeesh & Fatayar",
+      "meals": [
+        {
+          "image": "",
+          "price": "",
+          "desc": "Amaizing Meal",
+          "name": "Fatayar"
+        },
+        {
+          "image": "",
+          "price": "",
+          "desc": "Amaizing Meal",
+          "name": "Chicken Manaqeesh"
+        },
+        {
+          "image": "",
+          "price": "",
+          "desc": "Amaizing Meal",
+          "name": "Lamb Cheese Manaqeesh"
+        },
+        {
+          "image": "",
+          "price": "",
+          "desc": "Amaizing Meal",
+          "name": "Manaqish"
+        },
+        {
+          "image": "",
+          "price": "",
+          "desc": "Amaizing Meal",
+          "name": "Zaatar Cheese Manaqeesh"
+        },
+        {
+          "image": "",
+          "price": "",
+          "desc": "Amaizing Meal",
+          "name": "Zaatar Olives Manaqeesh"
+        },
+        {
+          "image": "",
+          "price": "",
+          "desc": "Amaizing Meal",
+          "name": "Zattar Manaqeesh"
+        }
+      ]
+    },
+    {
+      "name": "Sweets Station",
+      "meals": [
+        {
+          "name": "Creep Station",
+          "image": "",
+          "desc": "",
+          "price": ""
+        },
+        {
+          "name": "Icecream Cone",
+          "image": "",
+          "desc": "",
+          "price": ""
+        },
+        {
+          "name": "Icecream Plan",
+          "image": "",
+          "desc": "",
+          "price": ""
+        },
+        {
+          "name": "Pancake Station",
+          "image": "",
+          "desc": "",
+          "price": ""
+        },
+        {
+          "name": "Strawberry Station",
+          "image": "",
+          "desc": "",
+          "price": ""
+        },
+        {
+          "name": "Waffle Station",
+          "image": "",
+          "desc": "",
+          "price": ""
+        }
+      ]
+    },
+    {
+      "name": "Sauces Station",
+      "meals": [
+        {
+          "image": "",
+          "price": "2",
+          "desc": "Amaizing Meal",
+          "name": "Classicia Sauces"
+        },
+        {
+          "image": "",
+          "price": "2",
+          "desc": "Amaizing Meal",
+          "name": "Fransia Sauces"
+        },
+        {
+          "image": "",
+          "price": "2",
+          "desc": "Amaizing Meal",
+          "name": "Garlic Sauces"
+        },
+        {
+          "image": "",
+          "price": "2",
+          "desc": "Amaizing Meal",
+          "name": "Hot Sauces"
+        },
+        {
+          "image": "",
+          "price": "2",
+          "desc": "Amaizing Meal",
+          "name": "Maxicia Sauces"
+        },
+        {
+          "image": "",
+          "price": "2",
+          "desc": "Amaizing Meal",
+          "name": "Mayo Master Sauces"
+        },
+        {
+          "image": "",
+          "price": "2",
+          "desc": "Amaizing Meal",
+          "name": "Pamngornate Sauces"
+        },
+        {
+          "image": "",
+          "price": "2",
+          "desc": "Amaizing Meal",
+          "name": "Turkish Sauces"
+        }
+      ]
+    }
+  ],
+  "contactUs": {
+    "address": "Shamekha ADNOC Petrol Station – Abu Dhabi - UAE",
+    "phone": "(00971) 2 5838346",
+    "email": "info@shawarmastation.ae",
+    "website": "www.shawarmastation.ae"
+  }
+}

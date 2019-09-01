@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css?family=Barriecito|Lalezar&display=swap");
+@font-face {
+  font-family: "font";
+  src: url("./assets/fonts/Blackout-Midnight.ttf");
+}
+
+.flex {
+  display: flex;
+}
+
+:root {
+  --prim: #fc5c42;
+  --sec: #fd8b35;
+}
+
+.font-prim {
+  font-family: "font";
+  letter-spacing: 3px;
+}
+
+.font-sec {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* RESET CLASSES */
+
+button:active,
+button:focus,
+button {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* UTILITY CLASSES */
+.bg-prim {
+  background: var(--prim);
+}
+
+.bg-sec {
+  background: var(--sec);
+}
+
+.text-prim {
+  color: var(--prim);
+}
+
+.text-sec {
+  color: var(--sec);
+}
+
+.border-prim {
+  border-color: var(--prim);
+}
+
+.border-sec {
+  border-color: var(--sec);
+}
+
+.bg-trans {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.bg-dark {
+  background: rgb(22, 22, 22);
+}
+.text-dark {
+  color: rgb(37, 37, 37);
+}
+
+.b-dash {
+  border: orange dashed 1px;
+}
+
+.flex-2 {
+  flex: 2;
+}
+.flex-3 {
+  flex: 3;
+}
+.flex-4 {
+  flex: 4;
+}
+
+.menu span {
+  padding: 0px 16px;
+}
+
+.btn {
+  border: 1px var(--sec) solid;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.9rem;
+  transition: all 1s;
+}
+
+.btn:hover{
+  background: var(--prim);
+  color: white;
+}
+
+.btn:active,
+.btn:focus {
+  border: 1px var(--sec) solid;
+  background: var(--sec);
+  color: white;
+}
+
+.bg-mash::after {
+  background: url(assets/mash.jpeg) repeat;
+  background-size: 10rem;
+  content: "";
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+footer .links {
+  font-weight: lighter;
+}
+
+footer .links p {
+  margin-top: 0.7rem;
+}
+
+footer .loc p {
+  margin-top: 0.5rem;
+}
+footer i {
+  padding-right: 0.5rem;
+}
+
+.tans-all {
+  transition: all 0.2s ease-in;
+}
+
+@media screen and (min-width: 992px) {
+  .title:after,
+  .title::before {
+    content: "";
+    display: inline-block;
+    border-top: 1px solid var(--prim);
+    width: 20%;
+    margin: 10px 20px;
+  }
+}
+
+.h-screen-half {
+  height: 50vh;
+  max-height: 50vh;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.w-lg {
+  width: 70%;
+}
+
+.slider {
+  display: flex;
+  align-content: flex-start;
+}
+
+.slider .item {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.horizontal {
+  flex-flow: column wrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.bg-grid{
+  position: relative;
+  background: white;
+}
+
+.bg-grid::after {
+  background: url(assets/grid.png) repeat;
+  opacity: 0.4;
+  content:'';
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index: 12;
+}
+
+
+.r-1{
+  transform: rotate(2deg);
+}
+
+.r-2{
+  transform: rotate(-4deg);
+}

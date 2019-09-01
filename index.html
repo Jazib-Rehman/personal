@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Shawarma | Home</title>
+  <script src="jquery.js"></script>
+  <script src="vue.js"></script>
+  <link href="fontawesome/css/all.min.css" rel="stylesheet">
+  <link href="tailwind.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  </link>
+</head>
+
+<body class="animated fadeIn">
+
+  <div class="fixed top-0 z-0 h-screen w-screen fit-contain">
+    <img src="assets/banner.jpg" alt="banner" class="h-screen w-screen fit-contain mt-32">
+  </div>
+
+  <!-- Header -->
+  <header class="bg-prim font-prim text-white text-sm flex fixed w-full px-4 py-8 cursor-pointer items-center z-50">
+    <div class="flex-1">
+      <span class="px-2 border-r">عربي</span>
+      <span class="px-2">JOIN OUR FAMILY</span>
+    </div>
+    <div class="flex-1 flex justify-center">
+      <a href="index.html">
+        <img src="assets/logo-3.png" alt="logo" class=" h-10">
+      </a>
+    </div>
+    <div class="menu flex-1 flex justify-end">
+      <a href="/index.html">HOME</a>
+      <a href="/menu.html" class="px-6">OUR FOOD</a>
+      <a href="/aboutus.html">ABOUT US</a>
+    </div>
+  </header>
+
+
+  <main id="app" class="relative z-30">
+
+
+    <!-- banner -->
+    <section class="banner h-screen overflow-hidden relative z-30">
+      <img src="assets/banner.jpg" alt="pizza" class="w-screen">
+    </section>
+
+    <!-- OUR FOOD -->
+    <div class="bg-white bg-grid w-full">
+      <!-- WATER MARK BADGES -->
+      <div class="absolute top-0 left-0 w-screen overflow-hidden z-10">
+        <div class="flex w-full px-24">
+          <div class="r-1">
+            <img src="assets/b10.png" class="w-24 mt-8 inline-block" alt="badge">
+            <img src="assets/b4.png" class="w-32 mt-8 inline-block" alt="badge">
+            <img src="assets/b13.png" class="w-32 mt-8 inline-block" alt="badge">
+          </div>
+          <div class="flex-grow">.</div>
+          <div class="r-2">
+            <img src="assets/b6.png" class="w-32 mt-8 inline-block" alt="badge">
+            <img src="assets/b12.png" class="w-64 mt-8 inline-block" alt="badge">
+          </div>
+        </div>
+      </div>
+
+      <section class="relative text-center py-12 px-12 z-50">
+        <h1 class="flex items-center justify-center font-prim text-dark">
+          <span class="text-lg px-4">OUR</span>
+          <span class="text-3xl border-l-2 border-black px-4"> FOOD </span>
+        </h1>
+        <p class="mt-4 text-gray-500 font-light text-sm">Here you will find our full menu</p>
+        <div class="mt-4">
+          <a class="btn" href="menu.html">OUR FULL MENU</a>
+          <button class="btn">DOWNLOAD PDF</button>
+        </div>
+        <div class="slider horizontal mt-4 z-50" style="height: 300px; max-height:300px">
+          <div class="item object-contain flex flex-col" v-for="(meal,i) in meals" :key="i">
+            <div class="bg-prim font-prim p-1 text-white"> {{meal.name}} </div>
+            <img :src="meal.meals[0].image" alt="Shawarma" class="h-64 object-cover">
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Channels -->
+    <section class="bg-prim text-center py-12 text-white">
+      <h1 class="flex items-center justify-center font-prim">
+        <span class="text-lg px-4">OUR</span>
+        <span class="text-3xl border-l-2 border-white px-4"> STATIONS </span>
+      </h1>
+      <div class="mt-12">
+        <div class="flex justify-center px-64" v-for="(meal,i) in meals.slice(0,3)">
+          <div class="text-white h-md w-md">
+            <img :src="meal.meals[0].image" alt="dummy" class="w-full h-full object-contain ">
+          </div>
+          <div class="text-white h-md w-md ">
+            <img :src="meal.meals[1].image" alt="dummy" class="w-full h-full object-contain ">
+          </div>
+          <div class="text-white h-md w-md ">
+            <img :src="meal.meals[2].image" alt="dummy" class="w-full h-full object-contain ">
+          </div>
+        </div>
+        <!-- <div class="flex justify-center">
+          <div class="text-white h-md w-md ">
+            <img src="assets/dummy.jpg" alt="dummy" class="w-full h-full object-contain ">
+          </div>
+          <div class="text-white h-md w-md ">
+            <img src="assets/dummy.jpg" alt="dummy" class="w-full h-full object-contain ">
+          </div>
+          <div class="text-white h-md w-md ">
+            <img src="assets/dummy.jpg" alt="dummy" class="w-full h-full object-contain ">
+          </div>
+        </div> -->
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const json = $.getJSON('mock.json').then((mock) => {
+      const meals = mock.meals.map((item) => {
+        let meals = item.meals.map((meal) => {
+          console.log()
+          return {
+            ...meal,
+            image: `assets/menu/${item.name}/${meal.name}.jpg`,
+            isSpicy: meal.tags && meal.tags.toLowerCase().includes('spicy'),
+            isNormal: meal.tags && meal.tags.toLowerCase().includes('normal'),
+            isHomos: meal.tags && meal.tags.toLowerCase().includes('homos'),
+            isTahina: meal.tags && meal.tags.toLowerCase().includes('tahina')
+          }
+        });
+        return {
+          ...item,
+          meals,
+        }
+      });
+      var app = new Vue({
+        el: '#app',
+        data: {
+          meals,
+          contact: mock.contactUs,
+        },
+      });
+
+    })
+
+  </script>
+
+  <footer class="flex p-12 bg-white text-gray-700 relative z-30">
+    <div class="loc flex-2   font-hairline text-sm p-4">
+      <img src="assets/logo-2.png" alt="logo" class="w-64 mb-4">
+      <p>As Sulimaniyah, Olaya Road, Riyadh 12211, Saudi Arabia</p>
+      <p>
+        <i class="fas fa-phone"></i> (011) 462-8841
+      </p>
+      <p>
+        <i class="fas fa-envelope"></i> info@mail.com
+      </p>
+      <p>
+        <i class="fas fa-map-marker-alt"></i> location
+      </p>
+    </div>
+    <div class="flex-1 links text-sm p-4">
+      <h1 class="font-hairline text-gray-900 text-lg mb-2">Quick Links</h1>
+      <p>Home</p>
+      <p>About us</p>
+      <p>Contact</p>
+      <p>Carear</p>
+    </div>
+    <div class="flex-1 links text-sm p-4">
+      <h1 class="font-hairline text-gray-900 text-lg mb-2">Follow Us</h1>
+      <p> <i class="fab fa-twitter"></i> Twitter</p>
+      <p> <i class="fab fa-instagram"></i> Instagram</p>
+      <p><i class="fab fa-facebook"></i> Facebook</p>
+      <p> <i class="fab fa-youtube"></i>Youtube</p>
+    </div>
+    <div class="flex-1 links text-sm p-4">
+      <h1 class="font-hairline text-gray-900 text-lg mb-2">Download Our App</h1>
+      <p>ANDROIND</p>
+      <p>IPHONE</p>
+    </div>
+  </footer>
+
+
+</body>
+
+</html>
