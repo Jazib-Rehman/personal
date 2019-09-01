@@ -105,18 +105,6 @@ button {
   color: white;
 }
 
-.bg-mash::after {
-  background: url(assets/mash.jpeg) repeat;
-  background-size: 10rem;
-  content: "";
-  opacity: 0.2;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-}
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -211,4 +199,9 @@ footer i {
 
 .r-2{
   transform: rotate(-4deg);
+}
+
+
+.top-100{
+  top:150px;
 }

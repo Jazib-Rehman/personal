@@ -18,14 +18,13 @@
 <body>
 
   <!-- background -->
-  <div class="fixed top-0 z-0 h-screen w-screen">
-    <img src="assets/bg.png" alt="banner" class="w-screen h-screen fit-cover">
-  </div>
+
 
   <main id="app" class="relative z-30">
 
     <!-- Header -->
-    <header class="bg-prim font-prim text-white text-sm flex fixed w-full px-4 py-8 cursor-pointer items-center" style="z-index: 1000">
+    <header class="bg-prim font-prim text-white text-sm flex fixed w-full px-4 py-8 cursor-pointer items-center"
+      style="z-index: 1000">
       <div class="flex-1">
         <span class="px-2 border-r">عربي</span>
         <span class="px-2">JOIN OUR FAMILY</span>
@@ -43,31 +42,39 @@
     </header>
 
     <!-- banner -->
-    <section class="banner h-screen-half overflow-hidden">
+    <section class="banner h-screen-half overflow-hidden relative z-30">
       <img src="assets/banner.jpg" alt="pizza" class="w-screen">
     </section>
 
 
-    <div class="bg-white bg-grid w-full">
+    <div class="bg-grid w-full">
 
       <!-- WATER MARK BADGES -->
-      <div class="absolute top-0 left-0 w-screen overflow-hidden bages">
-        <div class="flex w-full p-4">
+      <!-- <div class="fixed top-0 left-0 w-screen overflow-hidden bages px-16">
+        <div class="flex w-full p-4 justify-between">
           <div>
-            <img v-for="(item, i) in badges" :src="item" class="w-64 mt-8" alt="badge">
+            <img v-for="(item, i) in badges" :src="item" class=" w-40 mt-8" alt="badge">
           </div>
-          <div class="flex-grow">.</div>
+          <div class="">
+            <img v-for="(item, i) in rev" :src="item" class="w-40 mt-8" alt="badge">
+          </div>
           <div >
-            <img v-for="(item, i) in rev" :src="item" class="w-64 mt-8" alt="badge">
+            <img v-for="(item, i) in rev" :src="item" class="w-40 mt-8" alt="badge">
           </div>
         </div>
-        <div class="flex w-full p-24">
-          <div>
-            <img v-for="(item, i) in badges" :src="item" class="w-64 mt-12" alt="badge">
+      </div> -->
+
+      <!-- WATER MARK BADGES -->
+      <div class="fixed top-100 left-0 w-screen overflow-hidden z-10 bages">
+        <div class="flex w-full px-24">
+          <div class="r-1">
+            <img src="assets/b10.png" class="w-48 mt-8 inline-block" alt="badge">
+            <img src="assets/b4.png" class="w-48 mt-8 inline-block" alt="badge">
           </div>
           <div class="flex-grow">.</div>
-          <div >
-            <img v-for="(item, i) in rev" :src="item" class="w-64 mt-8" alt="badge">
+          <div class="r-2">
+            <img src="assets/b12.png" class="w-64 mt-8 inline-block" alt="badge">
+            <img src="assets/b6.png" class="w-48 mt-8 inline-block" alt="badge">
           </div>
         </div>
       </div>
@@ -82,7 +89,8 @@
 
         <!-- Navigation -->
         <div class="mt-12 flex flex-wrap w-full font-sec justify-center cursor-pointer">
-          <a class="inline-block btn text-prim mx-1 my-1 w-48 bg-white " v-for="(menu, i) in meals" :key="i" :href="'#'+i">{{menu.name}}</a>
+          <a class="inline-block btn text-prim mx-1 my-1 w-48 bg-white " v-for="(menu, i) in meals" :key="i"
+            :href="'#'+i">{{menu.name}}</a>
         </div>
         <section class="menu mt-12 m-auto" v-for="(menu, i) in meals" :key="i" :id="i">
           <h2 class="font-prim text-prim font-prim relative rounded justify-between title text-3xl">
@@ -105,7 +113,12 @@
         </section>
       </section>
     </div>
-    <footer class="flex p-12 border text-gray-700 bg-white mt-64 relative z-30">
+
+    <div class="h-64 w-screen overflow-hidden relative z-50">
+      <img src="assets/bg.png" alt="banner" class="w-screen h-screen fit-cover">
+    </div>
+
+    <footer class="flex p-12 border text-gray-700 bg-white relative z-30">
       <div class="loc flex-2 font-hairline text-sm p-4">
         <img src="assets/logo-2.png" alt="logo" class="w-64 mb-4">
         <p>

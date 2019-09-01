@@ -16,10 +16,6 @@
 
 <body class="animated fadeIn">
 
-  <div class="fixed top-0 z-0 h-screen w-screen fit-contain">
-    <img src="assets/banner.jpg" alt="banner" class="h-screen w-screen fit-contain mt-32">
-  </div>
-
   <!-- Header -->
   <header class="bg-prim font-prim text-white text-sm flex fixed w-full px-4 py-8 cursor-pointer items-center z-50">
     <div class="flex-1">
@@ -43,24 +39,23 @@
 
 
     <!-- banner -->
-    <section class="banner h-screen overflow-hidden relative z-30">
+    <section class="overflow-hidden relative z-30">
       <img src="assets/banner.jpg" alt="pizza" class="w-screen">
     </section>
 
     <!-- OUR FOOD -->
     <div class="bg-white bg-grid w-full">
       <!-- WATER MARK BADGES -->
-      <div class="absolute top-0 left-0 w-screen overflow-hidden z-10">
+      <div class="fixed top-100 left-0 w-screen overflow-hidden z-10 bages">
         <div class="flex w-full px-24">
           <div class="r-1">
-            <img src="assets/b10.png" class="w-24 mt-8 inline-block" alt="badge">
-            <img src="assets/b4.png" class="w-32 mt-8 inline-block" alt="badge">
-            <img src="assets/b13.png" class="w-32 mt-8 inline-block" alt="badge">
+            <img src="assets/b10.png" class="w-48 mt-8 inline-block" alt="badge">
+            <img src="assets/b4.png" class="w-48 mt-8 inline-block" alt="badge">
           </div>
           <div class="flex-grow">.</div>
           <div class="r-2">
-            <img src="assets/b6.png" class="w-32 mt-8 inline-block" alt="badge">
             <img src="assets/b12.png" class="w-64 mt-8 inline-block" alt="badge">
+            <img src="assets/b6.png" class="w-48 mt-8 inline-block" alt="badge">
           </div>
         </div>
       </div>
@@ -85,7 +80,7 @@
     </div>
 
     <!-- Channels -->
-    <section class="bg-prim text-center py-12 text-white">
+    <section class="bg-prim text-center py-12 text-white relative z-30">
       <h1 class="flex items-center justify-center font-prim">
         <span class="text-lg px-4">OUR</span>
         <span class="text-3xl border-l-2 border-white px-4"> STATIONS </span>
