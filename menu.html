@@ -103,8 +103,8 @@
           </h2>
           <div class="flex flex-wrap  mt-8 w-full  m-auto w-full md:w-2/3 ">
             <div class="w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/4  p-2 " v-for="(item, j) in menu.meals" :key="j">
-              <div class="relative cursor-pointer tans-all hover:shadow-2xl bg-white">
-                <img class="m-auto w-full h-full object-cover" :src="item.image" alt="Shawarma">
+              <div class="relative cursor-pointer tans-all">
+                <img class="m-auto w-full h-full object-cover rounded-lg" :src="item.image" alt="Shawarma">
                 <h2 class="text-dark text-md p-2">{{item.name}}</h2>
                 <div class="flex justify-center pb-4">
                   <div v-if="item.isSpicy"
