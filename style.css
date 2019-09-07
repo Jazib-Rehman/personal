@@ -210,3 +210,7 @@ footer i {
   grid-template-columns: repeat(3, 1fr);
   gap: 4px;
 }
+
+.bg-dark-trans{
+  background: rgba(0, 0, 0, 0.1);
+}
