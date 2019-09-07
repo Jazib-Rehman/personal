@@ -45,7 +45,7 @@
 
 
     <!-- banner -->
-    <section class="banner h-screen-half overflow-hidden relative z-30">
+    <section class="banner sm:h-screen-half overflow-hidden relative z-30">
       <img src="assets/banner.jpg" alt="pizza" class="w-screen">
     </section>
 
@@ -101,7 +101,7 @@
           <h2 class="font-prim text-prim font-prim relative rounded justify-between title text-3xl">
             {{menu.name}}
           </h2>
-          <div class="flex flex-wrap mt-8 w-full  m-auto w-full md:w-2/3 ">
+          <div class="flex flex-wrap justify-center mt-8 w-full  m-auto w-full md:w-2/3 ">
             <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4  p-2 " v-for="(item, j) in menu.meals" :key="j">
               <div class="relative cursor-pointer tans-all hover:shadow-2xl bg-white">
                 <img class="m-auto w-full h-full object-cover" :src="item.image" alt="Shawarma">
@@ -125,39 +125,43 @@
       <img src="assets/bg.png" alt="banner" class="w-screen h-screen fit-cover">
     </div>
 
-    <footer class="flex p-12 border text-gray-700 bg-white relative z-30">
-      <div class="loc flex-2 font-hairline text-sm p-4">
-        <img src="assets/logo-2.png" alt="logo" class="w-64 mb-4">
-        <p>
-          <i class="fas fa-phone"></i> {{contact.phone}}
-        </p>
-        <p>
-          <i class="fas fa-envelope"></i> {{contact.email}}
-        </p>
-        <p>
-          <i class="fas fa-map-marker-alt"></i> {{contact.address}}
-        </p>
-      </div>
-      <div class="flex-1 links text-sm p-4">
-        <h1 class="font-hairline text-gray-900 text-lg mb-2">Quick Links</h1>
-        <p>Home</p>
-        <p>About us</p>
-        <p>Contact</p>
-        <p>Carear</p>
-      </div>
-      <div class="flex-1 links text-sm p-4">
-        <h1 class="font-hairline text-gray-900 text-lg mb-2">Follow Us</h1>
-        <p> <i class="fab fa-twitter"></i> Twitter</p>
-        <p> <i class="fab fa-instagram"></i> Instagram</p>
-        <p><i class="fab fa-facebook"></i> Facebook</p>
-        <p> <i class="fab fa-youtube"></i>Youtube</p>
-      </div>
-      <div class="flex-1 links text-sm p-4">
-        <h1 class="font-hairline text-gray-900 text-lg mb-2">Download Our App</h1>
-        <p>ANDROIND</p>
-        <p>IPHONE</p>
-      </div>
-    </footer>
+
+    <div class="">
+      <footer class="flex flex-wrap p-12 border text-gray-700 bg-white relative z-30">
+        <div class="loc w-full text-center sm:text-left md:w-2/6 font-hairline text-sm p-4">
+          <img src="assets/logo-2.png" alt="logo" class="w-64 mb-4">
+          <p>
+            <i class="fas fa-phone"></i> {{contact.phone}}
+          </p>
+          <p>
+            <i class="fas fa-envelope"></i> {{contact.email}}
+          </p>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> {{contact.address}}
+          </p>
+        </div>
+        <div class="w-full text-center sm:text-left sm:w-1/3 md:w-1/6 md links text-sm p-4">
+          <h1 class="font-hairline text-gray-900 text-lg mb-2">Quick Links</h1>
+          <p>Home</p>
+          <p>About us</p>
+          <p>Contact</p>
+          <p>Carear</p>
+        </div>
+        <div class="w-full text-center sm:text-left sm:w-1/3 md:w-1/6 links text-sm p-4">
+          <h1 class="font-hairline text-gray-900 text-lg mb-2">Follow Us</h1>
+          <p> <i class="fab fa-twitter"></i> Twitter</p>
+          <p> <i class="fab fa-instagram"></i> Instagram</p>
+          <p><i class="fab fa-facebook"></i> Facebook</p>
+          <p> <i class="fab fa-youtube"></i>Youtube</p>
+        </div>
+        <div class="w-full text-center sm:text-left sm:w-1/3 md:w-1/6 links text-sm p-4">
+          <h1 class="font-hairline text-gray-900 text-lg mb-2">Download Our App</h1>
+          <p>ANDROIND</p>
+          <p>IPHONE</p>
+        </div>
+      </footer>
+    </div>
+
   </main>
 
 
