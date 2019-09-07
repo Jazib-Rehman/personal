@@ -166,43 +166,47 @@
       </footer>
     </div>
 
+
+    <script>
+      const json = $.getJSON('mock.json').then((mock) => {
+
+        const meals = mock.meals.map((item) => {
+          let meals = item.meals.map((meal) => {
+            console.log()
+            return {
+              ...meal,
+              image: `assets/menu/${item.name}/${meal.name}.jpg`,
+              isSpicy: meal.tags && meal.tags.toLowerCase().includes('spicy'),
+              isNormal: meal.tags && meal.tags.toLowerCase().includes('normal'),
+              isHomos: meal.tags && meal.tags.toLowerCase().includes('homos'),
+              isTahina: meal.tags && meal.tags.toLowerCase().includes('tahina')
+            }
+          });
+          return {
+            ...item,
+            meals,
+          }
+        });
+
+        var app = new Vue({
+          el: '#app',
+          data: {
+            meals,
+            contact: mock.contactUs,
+            badges: new Array(13).fill(0).map((item, i) => 'assets/b' + (i + 1) + '.png'),
+            rev: new Array(13).fill(0).map((item, i) => 'assets/b' + (i + 1) + '.png').reverse()
+          },
+        });
+
+      })
+
+    </script>
+
   </main>
 
 
 
-  <script>
-    const json = $.getJSON('mock.json').then((mock) => {
 
-      const meals = mock.meals.map((item) => {
-        let meals = item.meals.map((meal) => {
-          console.log()
-          return {
-            ...meal,
-            image: `assets/menu/${item.name}/${meal.name}.jpg`,
-            isSpicy: meal.tags && meal.tags.toLowerCase().includes('spicy'),
-            isNormal: meal.tags && meal.tags.toLowerCase().includes('normal'),
-            isHomos: meal.tags && meal.tags.toLowerCase().includes('homos'),
-            isTahina: meal.tags && meal.tags.toLowerCase().includes('tahina')
-          }
-        });
-        return {
-          ...item,
-          meals,
-        }
-      });
-      var app = new Vue({
-        el: '#app',
-        data: {
-          meals,
-          contact: mock.contactUs,
-          badges: new Array(13).fill(0).map((item, i) => 'assets/b' + (i + 1) + '.png'),
-          rev: new Array(13).fill(0).map((item, i) => 'assets/b' + (i + 1) + '.png').reverse()
-        },
-      });
-
-    })
-
-  </script>
 </body>
 
 </html>

@@ -94,6 +94,42 @@
         </div>
       </div>
     </section>
+
+    <div class="">
+      <footer class="flex flex-wrap p-12 border text-gray-700  relative z-30">
+        <div class="loc w-full text-center sm:text-left md:w-2/6 font-hairline text-sm p-4">
+          <img src="assets/logo-2.png" alt="logo" class="w-64 mb-4">
+          <p>
+            <i class="fas fa-phone"></i> {{contact.phone}}
+          </p>
+          <p>
+            <i class="fas fa-envelope"></i> {{contact.email}}
+          </p>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> {{contact.address}}
+          </p>
+        </div>
+        <div class="w-full text-center sm:text-left sm:w-1/3 md:w-1/6 md links text-sm p-4">
+          <h1 class="font-hairline text-gray-900 text-lg mb-2">Quick Links</h1>
+          <p>Home</p>
+          <p>About us</p>
+          <p>Contact</p>
+          <p>Carear</p>
+        </div>
+        <div class="w-full text-center sm:text-left sm:w-1/3 md:w-1/6 links text-sm p-4">
+          <h1 class="font-hairline text-gray-900 text-lg mb-2">Follow Us</h1>
+          <p> <i class="fab fa-twitter"></i> Twitter</p>
+          <p> <i class="fab fa-instagram"></i> Instagram</p>
+          <p><i class="fab fa-facebook"></i> Facebook</p>
+          <p> <i class="fab fa-youtube"></i>Youtube</p>
+        </div>
+        <div class="w-full text-center sm:text-left sm:w-1/3 md:w-1/6 links text-sm p-4">
+          <h1 class="font-hairline text-gray-900 text-lg mb-2">Download Our App</h1>
+          <p>ANDROIND</p>
+          <p>IPHONE</p>
+        </div>
+      </footer>
+    </div>
   </main>
 
   <script>
@@ -119,6 +155,8 @@
         data: {
           meals,
           contact: mock.contactUs,
+          badges: new Array(13).fill(0).map((item, i) => 'assets/b' + (i + 1) + '.png'),
+          rev: new Array(13).fill(0).map((item, i) => 'assets/b' + (i + 1) + '.png').reverse()
         },
       });
 
@@ -126,40 +164,6 @@
 
   </script>
 
-  <footer class="flex p-12 bg-white text-gray-700 relative z-30 invisible md:visible">
-    <div class="loc flex-2   font-hairline text-sm p-4">
-      <img src="assets/logo-2.png" alt="logo" class="w-64 mb-4">
-      <p>As Sulimaniyah, Olaya Road, Riyadh 12211, Saudi Arabia</p>
-      <p>
-        <i class="fas fa-phone"></i> (011) 462-8841
-      </p>
-      <p>
-        <i class="fas fa-envelope"></i> info@mail.com
-      </p>
-      <p>
-        <i class="fas fa-map-marker-alt"></i> location
-      </p>
-    </div>
-    <div class="flex-1 links text-sm p-4">
-      <h1 class="font-hairline text-gray-900 text-lg mb-2">Quick Links</h1>
-      <p>Home</p>
-      <p>About us</p>
-      <p>Contact</p>
-      <p>Carear</p>
-    </div>
-    <div class="flex-1 links text-sm p-4">
-      <h1 class="font-hairline text-gray-900 text-lg mb-2">Follow Us</h1>
-      <p> <i class="fab fa-twitter"></i> Twitter</p>
-      <p> <i class="fab fa-instagram"></i> Instagram</p>
-      <p><i class="fab fa-facebook"></i> Facebook</p>
-      <p> <i class="fab fa-youtube"></i>Youtube</p>
-    </div>
-    <div class="flex-1 links text-sm p-4">
-      <h1 class="font-hairline text-gray-900 text-lg mb-2">Download Our App</h1>
-      <p>ANDROIND</p>
-      <p>IPHONE</p>
-    </div>
-  </footer>
 
 
 </body>
