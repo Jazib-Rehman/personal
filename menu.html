@@ -92,8 +92,8 @@
 
         <!-- Navigation -->
         <div class="mt-12 flex flex-wrap w-full font-sec justify-center cursor-pointer">
-          <div v-for="(menu, i) in meals" :key="i" class="">
-            <a class="inline-block btn text-prim mx-1 my-1 w-48 bg-white " :href="'#'+i">{{menu.name}}</a>
+          <div v-for="(menu, i) in meals" :key="i" class="w-full sm:w-64 mx-1 text-lg">
+            <a class="inline-block btn text-prim mx-1 my-1 w-full sm:w-64 bg-white " :href="'#'+i">{{menu.name}}</a>
           </div>
         </div>
 
@@ -101,16 +101,20 @@
           <h2 class="font-prim text-prim font-prim relative rounded justify-between title text-3xl">
             {{menu.name}}
           </h2>
-          <div class="flex flex-wrap justify-center mt-8 w-full  m-auto w-full md:w-2/3 ">
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4  p-2 " v-for="(item, j) in menu.meals" :key="j">
+          <div class="flex flex-wrap  mt-8 w-full  m-auto w-full md:w-2/3 ">
+            <div class="w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/4  p-2 " v-for="(item, j) in menu.meals" :key="j">
               <div class="relative cursor-pointer tans-all hover:shadow-2xl bg-white">
                 <img class="m-auto w-full h-full object-cover" :src="item.image" alt="Shawarma">
-                <h2 class="text-dark text-sm p-4">{{item.name}}</h2>
+                <h2 class="text-dark text-md p-2">{{item.name}}</h2>
                 <div class="flex justify-center pb-4">
-                  <div v-if="item.isSpicy" class="inline-block px-2 rounded-full border  text-xs mr-1">Spicy</div>
-                  <div v-if="item.isNormal" class="inline-block px-2 rounded-full border text-xs">Normal</div>
-                  <div v-if="item.isHomos" class="inline-block px-2 rounded-full border text-xs">Homos</div>
-                  <div v-if="item.isTahina" class="inline-block px-2 rounded-full border text-xs">Tahina</div>
+                  <div v-if="item.isSpicy"
+                    class="inline-block px-2 rounded-full border bg-gray-600  text-white text-xs mr-1">Spicy</div>
+                  <div v-if="item.isNormal"
+                    class="inline-block px-2 rounded-full border bg-gray-600  text-white  text-xs">Normal</div>
+                  <div v-if="item.isHomos"
+                    class="inline-block px-2 rounded-full border  bg-gray-600  text-white text-xs">Homos</div>
+                  <div v-if="item.isTahina"
+                    class="inline-block px-2 rounded-full border bg-gray-600  text-white  text-xs">Tahina</div>
                 </div>
               </div>
 
@@ -127,7 +131,7 @@
 
 
     <div class="">
-      <footer class="flex flex-wrap p-12 border text-gray-700 bg-white relative z-30">
+      <footer class="flex flex-wrap p-12 border text-gray-700  relative z-30">
         <div class="loc w-full text-center sm:text-left md:w-2/6 font-hairline text-sm p-4">
           <img src="assets/logo-2.png" alt="logo" class="w-64 mb-4">
           <p>
