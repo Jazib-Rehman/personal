@@ -1,1 +1,1 @@
-null
+{"name":"shawarma-station","version":"0.1.0","private":true,"scripts":{"dev":"next dev","build":"next build","start":"next start"},"dependencies":{"next":"9.0.8","next-routes":"^1.4.2","react":"16.10.2","react-dom":"16.10.2"},"readme":"ERROR: No README data found!","_id":"shawarma-station@0.1.0"}
