@@ -50,9 +50,9 @@ class LeftNavbar extends React.Component {
 
     render() {
         return (
-            <nav className='bg-indigo-900 h-full text-indigo-100'>
+            <nav className='bg-white shadow h-full text-gray-900'>
                 <div className="text-center p-1">LOGO</div>
-                <div className="p-2">
+                <div className="">
                     {this.state.navs.map((item, i) => <NavItem item={item} key={i} />)}
                 </div>
             </nav>

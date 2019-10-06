@@ -4,6 +4,11 @@
   src: url("./assets/fonts/Blackout-Midnight.ttf");
 }
 
+body{
+  font-family:'Roboto';
+  font-weight: 300;
+}
+
 .flex {
   display: flex;
 }
@@ -213,4 +218,8 @@ footer i {
 
 .bg-dark-trans{
   background: rgba(0, 0, 0, 0.1);
+}
+
+.trans-1{
+  transition: all 0.5s ease-in-out;
 }
