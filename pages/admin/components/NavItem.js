@@ -25,7 +25,7 @@ class NavItem extends React.Component {
                                 {sub.icon}
                             </div>
                             <span className="inline-block flex-grow">{sub.name}</span>
-                            {sub.items.length ? <ChevronDown className="w-4" /> : ''}
+                            {sub.items.length ? <ChevronDown className="w-4  mr-4" /> : ''}
                         </div>
                         <div >
                             {sub.items.map((sub, j) => (
