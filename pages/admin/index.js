@@ -11,10 +11,10 @@ class Home extends React.Component {
         return (
             <AdminLayout>
                 <div className="flex w-screen h-screen">
-                    <div className="w-1/6 h-screen">
+                    <div className="w-64 h-screen">
                         <LeftNavbar />
                     </div>
-                    <div className="w-5/6">
+                    <div className="w-full">
                         <Header />
                         {this.props.children}
                     </div>

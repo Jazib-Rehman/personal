@@ -11,24 +11,24 @@ class NavItem extends React.Component {
 
     render() {
         return (
-            <ul className="text-sm cursor-pointer"  >
-                <div className="flex inline-block items-center text-xs  p-2 hover:text-blue-600 hover:pl-3 trans-1 border-l-4 border-white hover:border-indigo-600">
+            <ul className="text-sm cursor-pointer text-white"  >
+                <div className="flex inline-block items-center text-xs  p-2 trans-1">
                     <div className="pr-2 pl-4">
-                        {this.props.item.icon}
+                        {this.props.item.data.icon}
                     </div>
-                    <span className="inline-block ">{this.props.item.name}</span>
+                    <span className="inline-block ">{this.props.item.data.name}</span>
                 </div>
-                {this.props.item.items.map((sub, i) => (
+                {this.props.item.data.items.map((sub, i) => (
                     <li key={i} className="py-2">
-                        <div className="flex inline-block items-center p-1  hover:text-blue-600 hover:pl-2 border-l-4 border-white hover:border-indigo-600 trans-1">
+                        <div className="flex inline-block items-center p-1 trans-1" onClick={()=> sub.toggle()}>
                             <div className="pr-2">
-                                {sub.icon}
+                                {sub.data.icon}
                             </div>
-                            <span className="inline-block flex-grow">{sub.name}</span>
-                            {sub.items.length ? <ChevronDown className="w-4  mr-4" /> : ''}
+                            <span className="inline-block flex-grow">{sub.data.name}</span>
+                            {sub.data.items.length ? <ChevronDown className="w-4  mr-4" /> : ''}
                         </div>
-                        <div >
-                            {sub.items.map((sub, j) => (
+                        <div  className={sub.selected ? 'hidden' : ''} >
+                            {sub.data.items.map((sub, j) => (
                                 <NavItem item={sub} key={j} />
                             ))}
                         </div>

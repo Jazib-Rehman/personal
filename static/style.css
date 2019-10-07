@@ -223,3 +223,9 @@ footer i {
 .trans-1{
   transition: all 0.5s ease-in-out;
 }
+
+/* ADMIN THEME */
+
+.bg-panel {
+  background: #130f40;
+}
