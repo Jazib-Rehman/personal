@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import NavItem from './NavItem'
-import { Camera, Hash, Box, ChevronDown, Mail, MessageCircle, Home, FileMinus, Phone, Minus, Layers } from 'react-feather';
+import { Box, Home, FileMinus, Phone, Layers } from 'react-feather';
 
 
 class LeftNavbar extends React.Component {
@@ -11,7 +11,7 @@ class LeftNavbar extends React.Component {
         this.state = {
             navs: [
                 {
-                    name: 'Main',
+                    name: '',
                     items: [
                         {
                             name: 'Dashboard',
@@ -22,7 +22,7 @@ class LeftNavbar extends React.Component {
                     ]
                 },
                 {
-                    name: 'Pages',
+                    name: '',
                     items: [
                         {
                             name: 'Home',
@@ -50,7 +50,7 @@ class LeftNavbar extends React.Component {
 
     render() {
         return (
-            <nav className='bg-white shadow h-full text-gray-900'>
+            <nav className='bg-white border-r h-full text-gray-900'>
                 <div className="text-center p-1">LOGO</div>
                 <div className="">
                     {this.state.navs.map((item, i) => <NavItem item={item} key={i} />)}

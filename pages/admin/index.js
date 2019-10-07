@@ -14,7 +14,7 @@ class Home extends React.Component {
                     <div className="w-1/6 h-screen">
                         <LeftNavbar />
                     </div>
-                    <div className="w-3/6">
+                    <div className="w-5/6">
                         <Header />
                         {this.props.children}
                     </div>

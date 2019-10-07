@@ -13,7 +13,7 @@ class NavItem extends React.Component {
         return (
             <ul className="text-sm cursor-pointer"  >
                 <div className="flex inline-block items-center text-xs  p-2 hover:text-blue-600 hover:pl-3 trans-1 border-l-4 border-white hover:border-indigo-600">
-                    <div className="pr-2">
+                    <div className="pr-2 pl-4">
                         {this.props.item.icon}
                     </div>
                     <span className="inline-block ">{this.props.item.name}</span>
