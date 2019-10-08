@@ -24,8 +24,8 @@ class NavItem extends React.Component {
                     <div className="flex flex-grow items-center justify-between">
                         <span className="inline-block">{this.props.item.name}</span>
                         <div className={this.props.item.items.length ? '' : 'hidden'}>
-                            <ChevronDown  className={!this.state.isShow ? 'w-4' : 'hidden'} />
-                            <ChevronUp  className={this.state.isShow ? 'w-4' : 'hidden'} />
+                            <ChevronDown  className={!this.state.isShow ? 'w-4 trans-1' : 'hidden'} />
+                            <ChevronUp  className={this.state.isShow ? 'w-4 trans-1' : 'hidden'} />
                         </div>
                     </div>
                 </div>
