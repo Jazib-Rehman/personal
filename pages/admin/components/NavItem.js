@@ -14,7 +14,7 @@ class NavItem extends React.Component {
 
     render() {
         return (
-            <div className={" cursor-pointer text-white " + this.props.className}   >
+            <div className={"cursor-pointer text-white " + this.props.className}   >
                 <div className="flex inline-block items-center text-sm px-4 py-2 trans-1 hover:bg-indigo-600"
                     onClick={() => this.setState({isShow: !this.state.isShow})}
                 >
