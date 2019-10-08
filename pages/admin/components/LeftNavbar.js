@@ -30,59 +30,44 @@ class LeftNavbar extends React.Component {
 
     constructor(props) {
         super(props)
-        const navs = [
-            {
-                name: 'MAIN',
-                items: [
-                    {
-                        name: 'Dashboard',
-                        items: [],
-                        icon: <Box className="w-4" />,
-
-                    }
-                ]
-            },
-            {
-                name: 'PAGES',
-                items: [
-                    {
-                        name: 'Home',
-                        items: [
-                            { name: 'Banner', items: [], icon: <Layers className="w-4" /> },
-                            { name: 'Channel', items: [], icon: <Layers className="w-4" /> },
-                        ],
-                        icon: <Home className="w-4" />
-                    },
-                    {
-                        name: 'Our Foods',
-                        items: [],
-                        icon: <FileMinus className="w-4" />
-                    },
-                    {
-                        name: 'About Us',
-                        items: [],
-                        icon: <Phone className="w-4" />
-                    }
-                ]
-            }
-        ];
-
-
         this.state = {
-            navs: navs.map(item => {
-                return new Selectable({
-                    ...item,
-                    items: item.items.map((sub)=> new Selectable({
-                        ...sub,
-                        items: sub.items.map(ss => new Selectable({
-                            ...ss
-                        }))
-                    }))
-                })
-            })
-        }
+            navs: [
+                {
+                    name: 'MAIN',
+                    items: [
+                        {
+                            name: 'Dashboard',
+                            items: [],
+                            icon: <Box className="w-4" />,
 
-        console.log(this.state);
+                        }
+                    ]
+                },
+                {
+                    name: 'PAGES',
+                    items: [
+                        {
+                            name: 'Home',
+                            items: [
+                                { name: 'Banner', items: [], icon: <Layers className="w-4" /> },
+                                { name: 'Channel', items: [], icon: <Layers className="w-4" /> },
+                            ],
+                            icon: <Home className="w-4" />
+                        },
+                        {
+                            name: 'Our Foods',
+                            items: [],
+                            icon: <FileMinus className="w-4" />
+                        },
+                        {
+                            name: 'About Us',
+                            items: [],
+                            icon: <Phone className="w-4" />
+                        }
+                    ]
+                }
+            ]
+        }
     }
 
     render() {
