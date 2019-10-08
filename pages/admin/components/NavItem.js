@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { Camera, Hash, Box, ChevronDown } from 'react-feather';
+import { Camera, Hash, Box, ChevronDown,ChevronUp, ChevronRight } from 'react-feather';
 
 
 class NavItem extends React.Component {
@@ -23,7 +23,10 @@ class NavItem extends React.Component {
                     </div>
                     <div className="flex flex-grow items-center justify-between">
                         <span className="inline-block">{this.props.item.name}</span>
-                        <ChevronDown className={this.props.item.items.length ? 'w-4' : 'hidden'} />
+                        <div className={this.props.item.items.length ? '' : 'hidden'}>
+                            <ChevronDown  className={!this.state.isShow ? 'w-4' : 'hidden'} />
+                            <ChevronUp  className={this.state.isShow ? 'w-4' : 'hidden'} />
+                        </div>
                     </div>
                 </div>
                 {this.props.item.items.map((sub, i) => (
