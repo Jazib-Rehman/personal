@@ -7,7 +7,7 @@ class Card extends React.Component {
     }
     render() {
         return (
-            <div  {...this.props} className={"bg-white shadow p-2 rounded " + this.props.className}>
+            <div  {...this.props} className={"bg-white shadow p-6 rounded " + this.props.className}>
                 {this.props.children}
             </div>
         )

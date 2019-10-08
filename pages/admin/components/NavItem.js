@@ -11,30 +11,20 @@ class NavItem extends React.Component {
 
     render() {
         return (
-            <ul className="text-sm cursor-pointer text-white"  >
-                <div className="flex inline-block items-center text-xs  p-2 trans-1">
-                    <div className="pr-2 pl-4">
+            <div className={" cursor-pointer text-white " + this.props.className}   >
+                <div className="flex inline-block items-center text-sm px-4 py-2 trans-1 hover:bg-indigo-600">
+                    <div className="pr-2">
                         {this.props.item.data.icon}
                     </div>
-                    <span className="inline-block ">{this.props.item.data.name}</span>
+                    <div className="flex flex-grow items-center justify-between">
+                        <span className="inline-block">{this.props.item.data.name}</span>
+                        <ChevronDown className={this.props.item.data.items.length ? 'w-4' : 'hidden'}  />
+                    </div>
                 </div>
                 {this.props.item.data.items.map((sub, i) => (
-                    <li key={i} className="py-2">
-                        <div className="flex inline-block items-center p-1 trans-1" onClick={()=> sub.toggle()}>
-                            <div className="pr-2">
-                                {sub.data.icon}
-                            </div>
-                            <span className="inline-block flex-grow">{sub.data.name}</span>
-                            {sub.data.items.length ? <ChevronDown className="w-4  mr-4" /> : ''}
-                        </div>
-                        <div  className={sub.selected ? 'hidden' : ''} >
-                            {sub.data.items.map((sub, j) => (
-                                <NavItem item={sub} key={j} />
-                            ))}
-                        </div>
-                    </li>
+                    <NavItem item={sub} key={i} className="" />
                 ))}
-            </ul>
+            </div>
         )
     }
 

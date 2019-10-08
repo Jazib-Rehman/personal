@@ -16,7 +16,7 @@ class AdminLayout extends React.Component {
                     <link rel='stylesheet' href='/static/style.css' />
                     <link href="/static/tailwind.css" rel="stylesheet" />
                     <script src="https://unpkg.com/feather-icons"></script>
-                    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"></link>
+                    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,700&display=swap" rel="stylesheet" />
                 </Head>
                 <div>
                     {this.props.children}

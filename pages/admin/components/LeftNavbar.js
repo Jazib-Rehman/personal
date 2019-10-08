@@ -87,8 +87,8 @@ class LeftNavbar extends React.Component {
 
     render() {
         return (
-            <nav className='bg-panel border-r h-full text-gray-900'>
-                <div className="p-4 border-b border-gray-700 text-white flex justify-between">
+            <nav className='bg-indigo-700 border-r h-full'>
+                <div className="p-4 bg-indigo-800  text-white flex justify-between">
                     <p>Dashboard</p>
                     <Menu />
                 </div>
