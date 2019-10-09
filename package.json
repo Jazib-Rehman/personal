@@ -10,10 +10,13 @@
   "dependencies": {
     "express": "^4.17.1",
     "feather-icons": "^4.24.1",
+    "mariadb": "^2.1.1",
+    "mysql": "^2.17.1",
     "next": "9.0.8",
     "next-routes": "^1.4.2",
     "react": "16.10.2",
     "react-dom": "16.10.2",
-    "react-feather": "^2.0.3"
+    "react-feather": "^2.0.3",
+    "sequelize": "^5.19.5"
   }
 }
