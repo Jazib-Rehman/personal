@@ -6,8 +6,6 @@ import Card from '../../components/kit/card'
 
 class Home extends React.Component {
 
-
-
     render() {
         return (
             <AdminLayout>

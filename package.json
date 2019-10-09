@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "nodemon server/app.js",
     "build": "next build",
-    "start": "next start"
+    "start": "cross-env NODE_ENV=production node app.js"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "feather-icons": "^4.24.1",
     "next": "9.0.8",
     "next-routes": "^1.4.2",
