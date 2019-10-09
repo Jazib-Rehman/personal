@@ -28,7 +28,6 @@ body{
 }
 
 /* RESET CLASSES */
-
 button:active,
 button:focus,
 button {
@@ -36,6 +35,7 @@ button {
   border: none;
   box-shadow: none;
 }
+
 
 /* UTILITY CLASSES */
 .bg-prim {
@@ -223,30 +223,3 @@ footer i {
 .trans-1{
   transition: all 0.5s ease-in-out;
 }
-
-/* ADMIN THEME */
-
-.bg-panel {
-  background: #130f40;
-}
-
-table{
-  width: 100%;
-  text-align: left;
-  font-size: 14px;
-}
-
-table tr{
-  border-bottom: 1px solid rgb(222, 222, 222);
-}
-
-table th{
-  color: gray;
-  text-transform:uppercase;
-  font-weight: bolder;
-}
-
-table th,td {
-  padding: 8px;
-}
-

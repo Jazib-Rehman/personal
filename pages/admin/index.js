@@ -49,7 +49,13 @@ class Home extends React.Component {
                                     </table>
                                 </Card>
                             </div>
-                            <div className="w-1/3 p-2 h-64"><Card className="w-full h-full"> Card 2 </Card></div>
+                            <div className="w-1/3 p-2 h-64">
+                                <Card className="w-full h-full flex justify-between">
+                                    <button>PLAY</button>
+                                    <input type="text" />
+                                    <select> <option>SOME</option> </select>
+                                </Card>
+                            </div>
                             <div className="w-1/3 p-2 h-64"><Card className="w-full h-full"> Card 2 </Card></div>
 
                         </div>
