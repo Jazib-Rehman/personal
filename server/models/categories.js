@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize')
 
-const db = require('./../config/database')
+const db = require('../config/database')
 
-const Products = db.define('products', {
+const Categories = db.define('categories', {
     name: {
         type: Sequelize.STRING,
         field: 'name'
@@ -15,7 +15,5 @@ const Products = db.define('products', {
     freezeTableName: true
 })
 
-module.exports = Products;
-
-
+module.exports = Categories;
 

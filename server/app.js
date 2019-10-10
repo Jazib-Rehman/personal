@@ -3,7 +3,7 @@ var bodyParser = require('body-parser')
 const next = require('next')
 const db = require('./config/database')
 
-const { Products } = require('./models')
+const { Meals } = require('./models')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = true //process.env.NODE_ENV !== 'production'
@@ -23,18 +23,17 @@ db.authenticate()
 
 app.prepare().then(() => {
 
-
   server.get('/admin', (req, res) => {
-    Products.findAll()
+    Meals.findAll()
       .then((list) => {
         console.log("DATA:", list.map((item) => item.name))
         app.render(req, res, '/admin', { list: list })
       })
   })
 
-  server.post('/admin/products/add', (req, res) => {
+  server.post('/admin/meals/add', (req, res) => {
     const data = req.body;
-    Products.create(data).then(() => res.send('Product added successfully'))
+    Meals.create(data).then(() => res.send('Product added successfully'))
     return;
   })
 

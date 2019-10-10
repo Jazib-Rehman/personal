@@ -26,6 +26,8 @@ class Foods extends React.Component {
 
     constructor(props) {
         super(props);
+
+        console.log(meals)
         this.state = {
             meals
         }
@@ -50,7 +52,7 @@ class Foods extends React.Component {
                 </div>
 
                 {this.state.meals.map((category, i) => (
-                    <Category category={category} />
+                    <Category category={category} key={i} />
                 ))}
             </section>
         )

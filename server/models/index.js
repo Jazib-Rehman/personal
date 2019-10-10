@@ -1,5 +1,7 @@
-const Products = require('./product')
+const Categories = require('./categories')
+const Meals = require('./meals')
 
 module.exports = {
-    Products
+    Meals,
+    Categories
 }
