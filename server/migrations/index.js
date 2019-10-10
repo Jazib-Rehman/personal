@@ -30,16 +30,16 @@ const categ = mock.meals.map((item) => {
 //     categoryId: { type: Sequelize.INTEGER }
 // }, { freezeTableName: true }).sync({ force: true });
 
-categ.forEach((cat, i) => {
-    // Categories.create({
-    //     name
-    // }).then(() => console.log('row added'))
-    cat.meals.forEach(({ name, image, tags }) => {
-        Meals.create({
-            name,
-            image,
-            tags:tags.toString(),
-            categoryId: i
-        }).then(() => console.log('row added')).catch((err)=> console.log(err))
-    })
-});
+// categ.forEach((cat, i) => {
+//     // Categories.create({
+//     //     name
+//     // }).then(() => console.log('row added'))
+//     cat.meals.forEach(({ name, image, tags }) => {
+//         Meals.create({
+//             name,
+//             image,
+//             tags:tags.toString(),
+//             categoryId: i
+//         }).then(() => console.log('row added')).catch((err)=> console.log(err))
+//     })
+// });

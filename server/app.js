@@ -26,7 +26,6 @@ app.prepare().then(() => {
   server.get('/admin', (req, res) => {
     Meals.findAll()
       .then((list) => {
-        console.log("DATA:", list.map((item) => item.name))
         app.render(req, res, '/admin', { list: list })
       })
   })

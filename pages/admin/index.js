@@ -3,11 +3,11 @@ import AdminLayout from './AdminLayout'
 import LeftNavbar from './components/LeftNavBar'
 import Header from './components/Header'
 import Meal from './../../components/meal'
+import Card from '../../components/kit/card'
 
 class Home extends React.Component {
 
     static getInitialProps(data) {
-        console.log(data)
         return { list: data.query.list }
     }
 
@@ -15,13 +15,15 @@ class Home extends React.Component {
         return (
             <AdminLayout>
                 <div className="flex w-screen h-screen">
-                    <div className="w-64 h-screen">
+                    <div className="w-64 h-screen fixed">
                         <LeftNavbar />
+                    </div>
+                    <div className="w-64 h-screen p-24">
                     </div>
                     <div className="w-full">
                         <Header />
                         <div className="flex flex-wrap p-4">
-                           
+                            {this.props.list.map((meal, i) => <Meal meal={meal} key={i} />)}
                         </div>
 
                     </div>
