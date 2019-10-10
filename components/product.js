@@ -6,14 +6,6 @@ class Product extends React.Component {
 
     constructor(props) {
         super(props)
-
-        this.state = {
-            get label() {
-                if (this.props.item.isSpicy) return "Spicy"
-                else if (this.props.item.isNormal) return "Normal"
-            }
-        }
-
     }
 
     render() {

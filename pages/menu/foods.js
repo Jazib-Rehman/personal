@@ -2,6 +2,7 @@
 import React from 'react'
 import mock from './../mock.json'
 import Product from '../../components/product.js';
+import Category from '../../components/category.js';
 
 const meals = mock.meals.map((item) => {
     let meals = item.meals.map((meal) => {
@@ -49,19 +50,8 @@ class Foods extends React.Component {
                     ))}
                 </div>
 
-                {this.state.meals.map((menu, i) => (
-                    <section className="menu mt-12 m-auto" key={i} id={i}>
-                        <h2 className="font-prim text-prim font-prim relative rounded justify-between title text-3xl">
-                            {menu.name}
-                        </h2>
-                        <div className="flex flex-wrap  mt-8 w-full  m-auto w-full md:w-2/3 ">
-                            {
-                                menu.meals.map((item, j) => (
-                                    <Product item={item} key={j} />
-                                ))
-                            }
-                        </div>
-                    </section>
+                {this.state.meals.map((category, i) => (
+                    <Category category={category} />
                 ))}
             </section>
         )
