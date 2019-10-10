@@ -18,9 +18,9 @@ app.prepare().then(() => {
 
   server.get('/admin', (req, res) => {
     Products.findAll()
-      .then((list) => console.log(list))
+      .then((list) => app.render(req, res, '/admin', list))
     
-    return app.render(req, res, '/admin', req.query)
+    // return app.render(req, res, '/admin', req.query)
   })
 
   server.all('*', (req, res) => {
