@@ -2,7 +2,6 @@ var Sequelize = require('sequelize')
 
 var sequelize = new Sequelize('shawarma', 'root', 'welcome', {
     host: 'localhost',
-    // dialect: 'mysql' | 'mariadb' | 'sqlite' | 'postgres' | 'mssql',
     host: '127.0.0.1',
     dialect: 'mariadb',
     pool: {
