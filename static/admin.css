@@ -45,7 +45,7 @@ button:focus,input:focus,select:focus{
 
 
 .zoom-in{
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .zoom-in:hover{
   transform: scale(1.05);

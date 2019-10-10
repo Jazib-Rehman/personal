@@ -18,11 +18,11 @@ class Home extends React.Component {
                     <div className="w-64 h-screen fixed">
                         <LeftNavbar />
                     </div>
-                    <div className="w-64 h-screen p-24">
+                    <div className="w-64 h-screen p-32">
                     </div>
                     <div className="w-full">
                         <Header />
-                        <div className="flex flex-wrap p-4">
+                        <div className="flex flex-wrap p-4 mt-16">
                             {this.props.list.map((meal, i) => <Meal meal={meal} key={i} />)}
                         </div>
 
