@@ -1,4 +1,5 @@
 const express = require('express')
+var bodyParser = require('body-parser')
 const next = require('next')
 const db = require('./config/database')
 
@@ -9,18 +10,32 @@ const dev = true //process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+const server = express()
+// parse application/x-www-form-urlencoded
+server.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+server.use(bodyParser.json())
+
 db.authenticate()
-  .then(() =>console.log('Database Connected..'))
+  .then(() => console.log('Database Connected..'))
   .catch(err => console.log(err))
 
 app.prepare().then(() => {
-  const server = express()
+
 
   server.get('/admin', (req, res) => {
     Products.findAll()
-      .then((list) => app.render(req, res, '/admin', list))
-    
-    // return app.render(req, res, '/admin', req.query)
+      .then((list) => {
+        console.log("DATA:", list.map((item) => item.name))
+        app.render(req, res, '/admin', { list: list })
+      })
+  })
+
+  server.post('/admin/products/add', (req, res) => {
+    const data = req.body;
+    Products.create(data).then(() => res.send('Product added successfully'))
+    return;
   })
 
   server.all('*', (req, res) => {

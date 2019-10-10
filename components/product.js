@@ -1,21 +1,22 @@
 import React from 'react'
+import Card from './kit/card'
 
 
 class Product extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
-        
+
     }
 
     render() {
         return (
-            <div>
+            <Card>
                 <div className="item object-contain flex flex-col">
-                    <div className="bg-prim font-prim p-1 text-white"> {this.props.name} </div>
-                    <img src={this.props.src} alt="Shawarma" className="h-48 object-cover" />
+                    <img src={this.props.item.src ? this.props.item.src : 'https://dummyimage.com/100X100/000/fff'} alt="Shawarma" className="h-48 object-cover" />
+                    <div className="bg-prim font-prim p-1 text-black"> {this.props.item.name} </div>
                 </div>
-            </div>
+            </Card>
         )
     }
 
