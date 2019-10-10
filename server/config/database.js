@@ -1,11 +1,8 @@
 var Sequelize = require('sequelize')
 
-const Products = require('./products.migration')
-const Categories = require('./categories.migration')
 
 
-
-var sequelize = new Sequelize('shawarma', 'root', '', {
+module.exports = new Sequelize('shawarma', 'root', '', {
     host: 'localhost',
     host: '127.0.0.1',
     dialect: 'mariadb',
@@ -21,5 +18,5 @@ var sequelize = new Sequelize('shawarma', 'root', '', {
 });
 
 
-Products.up(sequelize, Sequelize)
-Categories.up(sequelize, Sequelize)
+// Products.up(sequelize, Sequelize)
+// Categories.up(sequelize, Sequelize)
