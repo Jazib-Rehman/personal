@@ -2,8 +2,7 @@ import React from 'react'
 import AdminLayout from './AdminLayout'
 import LeftNavbar from './components/LeftNavBar'
 import Header from './components/Header'
-import Card from '../../components/kit/card'
-import Product from '../../components/product'
+import Meal from './../../components/meal'
 
 class Home extends React.Component {
 
@@ -26,7 +25,7 @@ class Home extends React.Component {
                                 this.props.list.map((item, i) => {
                                     return (
                                         <div key={i} className="p-2">
-                                            <Product item={item} />
+                                            <Meal item={item} />
                                         </div>
 
                                     )
