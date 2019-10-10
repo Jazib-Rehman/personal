@@ -1,5 +1,5 @@
 import React from 'react'
-import Product from './product'
+import Meal from './meal'
 
 class Category extends React.Component {
 
@@ -16,7 +16,7 @@ class Category extends React.Component {
                 <div className="flex flex-wrap  mt-8 w-full  m-auto w-full md:w-2/3 ">
                     {
                         this.props.category.meals.map((item, j) => (
-                            <Product item={item} key={j} />
+                            <Meal item={item} key={j} />
                         ))
                     }
                 </div>

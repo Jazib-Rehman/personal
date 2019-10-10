@@ -2,7 +2,7 @@ import React from 'react'
 import Card from './kit/card'
 
 
-class Product extends React.Component {
+class Meal extends React.Component {
 
     constructor(props) {
         super(props)
@@ -29,4 +29,4 @@ class Product extends React.Component {
 }
 
 
-export default Product
+export default Meal
