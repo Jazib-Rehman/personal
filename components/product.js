@@ -7,16 +7,30 @@ class Product extends React.Component {
     constructor(props) {
         super(props)
 
+        this.state = {
+            get label() {
+                if (this.props.item.isSpicy) return "Spicy"
+                else if (this.props.item.isNormal) return "Normal"
+            }
+        }
+
     }
 
     render() {
         return (
-            <Card>
-                <div className="item object-contain flex flex-col">
-                    <img src={this.props.item.src ? this.props.item.src : 'https://dummyimage.com/100X100/000/fff'} alt="Shawarma" className="h-48 object-cover" />
-                    <div className="bg-prim font-prim p-1 text-black"> {this.props.item.name} </div>
+            <div className="w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/4  p-2 ">
+                <div className="relative cursor-pointer tans-all">
+                    <img className="m-auto w-full h-full object-cover rounded-lg" src={this.props.item.image} alt="Shawarma" />
+                    <h2 className="text-dark text-md p-2">{this.props.item.name}</h2>
+                    <div className="flex justify-center pb-4">
+                        {
+                            this.props.item.tags.map((tag,i) => (
+                                <div key={i} className="inline-block px-2 rounded-full border bg-gray-600  text-white text-xs mr-1">{tag}</div>
+                            ))
+                        }
+                    </div>
                 </div>
-            </Card>
+            </div>
         )
     }
 
