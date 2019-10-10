@@ -16,9 +16,9 @@ var sequelize = new Sequelize('shawarma', 'root', 'welcome', {
 });
 
 const Products = {
-
+    db: {},
     up() {
-        sequelize.define('products', {
+        this.db = sequelize.define('products', {
             name: {
                 type: Sequelize.STRING,
                 field: 'name'
