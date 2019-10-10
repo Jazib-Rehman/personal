@@ -6,6 +6,10 @@ import Card from '../../components/kit/card'
 
 class Home extends React.Component {
 
+    static getInitialProps (data) {
+        console.log(data)
+        return { list: data.query.list }
+      }
     render() {
         return (
             <AdminLayout>
