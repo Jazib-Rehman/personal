@@ -21,16 +21,7 @@ class Home extends React.Component {
                     <div className="w-full">
                         <Header />
                         <div className="flex flex-wrap p-4">
-                            {
-                                this.props.list.map((item, i) => {
-                                    return (
-                                        <div key={i} className="p-2">
-                                            <Meal item={item} />
-                                        </div>
-
-                                    )
-                                })
-                            }
+                           
                         </div>
 
                     </div>

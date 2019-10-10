@@ -6,14 +6,50 @@ import Channels from './home/channels'
 import Footer from '../components/footer'
 import ImageBlock from '../components/imageblock'
 
-const Home = () => (
-  <Layout >
-    <Banner />
-    <OurFood />
-    <Channels />
-    <ImageBlock />
-    <Footer />
-  </Layout>
-)
+import mock from './mock.json'
+
+
+const meals = mock.meals.map((item) => {
+  let meals = item.meals.map((meal) => {
+    return {
+      ...meal,
+      image: `/static/assets/menu/${item.name}/${meal.name}.jpg`,
+      isSpicy: meal.tags && meal.tags.toLowerCase().includes('spicy'),
+      isNormal: meal.tags && meal.tags.toLowerCase().includes('normal'),
+      isHomos: meal.tags && meal.tags.toLowerCase().includes('homos'),
+      isTahina: meal.tags && meal.tags.toLowerCase().includes('tahina'),
+      tags: meal.tags ? meal.tags.split(',') : []
+    }
+  });
+  return {
+    ...item,
+    meals,
+  }
+});
+
+class Home extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      meals
+    }
+  }
+
+
+  render() {
+    return (
+      <Layout >
+        <Banner />
+        <OurFood meals={this.state.meals} />
+        <Channels />
+        <ImageBlock />
+        <Footer />
+      </Layout>
+    )
+  }
+
+}
+
 
 export default Home

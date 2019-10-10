@@ -1,34 +1,13 @@
 
 
 import React from 'react'
-import Product from '../../components/product'
-import mock from './../mock.json'
+import Meal from '../../components/meal'
 
-const meals = mock.meals.map((item) => {
-    let meals = item.meals.map((meal) => {
-        return {
-            ...meal,
-            image: `/static/assets/menu/${item.name}/${meal.name}.jpg`,
-            isSpicy: meal.tags && meal.tags.toLowerCase().includes('spicy'),
-            isNormal: meal.tags && meal.tags.toLowerCase().includes('normal'),
-            isHomos: meal.tags && meal.tags.toLowerCase().includes('homos'),
-            isTahina: meal.tags && meal.tags.toLowerCase().includes('tahina')
-        }
-    });
-    return {
-        ...item,
-        meals,
-    }
-});
 
 class OurFood extends React.Component {
 
-
     constructor(props) {
         super(props);
-        this.state = {
-            meals
-        }
     }
 
     render() {
@@ -60,7 +39,9 @@ class OurFood extends React.Component {
                     </div>
                     <div className="w-full md:px-24">
                         <div className="slider horizontal mt-4 z-40 m-auto h-64 items-center">
-                            {this.state.meals.map((item, i) => <Product src={item.meals[0].image} key={i} name={item.name} />)}
+                            {this.props.meals[0].meals.map((meal, i) => (
+                                <Meal meal={meal} key={i} />
+                            ))}
                         </div>
                     </div>
                 </section>
