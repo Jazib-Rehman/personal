@@ -41,8 +41,21 @@ class Findus extends React.Component {
     render() {
         return (
             <section class="relative text-center py-24 z-40">
-                <div className="px-32 py-20 bg-dark-trans">
-                    <div className="rounded-lg bg-white py-10">
+                 <div className="fixed top-100 left-0 w-screen overflow-hidden z-10 bages">
+                    <div className="flex w-full px-24">
+                        <div className="r-1">
+                            <img src="/static/assets/b10.png" className="w-48 mt-8 inline-block" alt="badge" />
+                            <img src="/static/assets/b4.png" className="w-48 mt-8 inline-block" alt="badge" />
+                        </div>
+                        <div className="flex-grow">.</div>
+                        <div className="r-2">
+                            <img src="/static/assets/b12.png" className="w-64 mt-8 inline-block" alt="badge" />
+                            <img src="/static/assets/b6.png" className="w-48 mt-8 inline-block" alt="badge" />
+                        </div>
+                    </div>
+                </div>
+                <div className="relative px-32 py-20 bg-dark-trans z-40">
+                    <div className="rounded-lg bg-white-trans py-10">
                         <div className="">
                             <p className="text-xl">Contact us via this form</p>
                         </div>
@@ -73,23 +86,23 @@ class Findus extends React.Component {
                                     <div className="flex">
                                         <div className="mx-1 w-full">
                                             <p>First name</p>
-                                            <input type="text" className="p-2 bg-white w-full rounded-lg border border-red-300 outline-none" placeholder="First Name" />
+                                            <input type="text" className="p-2 bg-white w-full rounded border border-red-300 outline-none" placeholder="First Name" />
                                         </div>
                                         <div className="mx-1 w-full">
                                             <p>Last name</p>
-                                            <input type="text" className="p-2 bg-white w-full rounded-lg border border-red-300 outline-none" placeholder="Last Name" />
+                                            <input type="text" className="p-2 bg-white w-full rounded border border-red-300 outline-none" placeholder="Last Name" />
                                         </div>
                                     </div>
                                     <div className="mx-1 mt-4">
                                         <p>E-mail</p>
-                                        <input type="text" className="p-2 bg-white w-full rounded-lg border border-red-300 outline-none" placeholder="example@example.com" />
+                                        <input type="text" className="p-2 bg-white w-full rounded border border-red-300 outline-none" placeholder="example@example.com" />
                                     </div>
                                     <div className="mx-1 mt-4">
                                         <p>Message Contant</p>
-                                        <textarea type="text" className="p-2 bg-white w-full rounded-lg border border-red-300 outline-none" placeholder="Your message!"></textarea>
+                                        <textarea type="text" className="p-2 bg-white w-full rounded border border-red-300 outline-none" placeholder="Your message!"></textarea>
                                     </div>
                                     <div className="mx-1 mt-4 text-right">
-                                        <button className="btn rounded-lg text-prim bg-white outline-none">SEND</button>
+                                        <button className="btn rounded text-prim bg-prim text-white font-bold outline-none">SEND</button>
                                     </div>
                                 </div>
                             </div>
@@ -98,17 +111,17 @@ class Findus extends React.Component {
                                 <div className="border-t border-gray-600"></div>
                                 <p className="mt-4 text-lg">Contact with us via socialmedia platforms</p>
                                 <div className="mt-4 flex justify-center">
-                                    <div className="rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
-                                        <Twitter color='#ffffff' size="24" />
+                                    <div className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
+                                        <Twitter size="18" />
                                     </div>
-                                    <div className="rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
-                                        <Facebook color='#ffffff' size="24" />
+                                    <div className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
+                                        <Facebook size="18" />
                                     </div>
-                                    <div className="rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
-                                        <Instagram color='#ffffff' size="24" />
+                                    <div className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
+                                        <Instagram size="18" />
                                     </div>
-                                    <div className="rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
-                                        <Youtube color='#ffffff' size="24" />
+                                    <div className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
+                                        <Youtube size="18" />
                                     </div>
                                 </div>
                             </div>

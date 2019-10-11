@@ -17,10 +17,10 @@ class Header extends React.Component {
         </div>
         <div className="menu flex-1 flex justify-end">
           <a href="/">HOME</a>
-          <a href="/menu" className="px-6">OUR FOOD</a>
-          <a href="/find" className="px-6">FIND US</a>
-          <a href="/contact" className="px-6">CONTACT US</a>
-          {/* <a href="/aboutus.">ABOUT US</a> */}
+          <a href="/menu" className="px-4">OUR FOOD</a>
+          <a href="/find-us" className="px-4">FIND US</a>
+          <a href="/about-us" className="px-4">ABOUT US</a>
+          <a href="/contact-us" className="px-4">CONTACT US</a>
         </div>
       </header>
     )
