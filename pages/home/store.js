@@ -37,8 +37,8 @@ class Store extends React.Component {
                     <span className="text-lg px-4">STORE</span>
                     <span className="text-3xl border-black border-l-2 px-4"> LOCATOR </span>
                 </h1>
-                <div className="text-gray-600 mt-12">
-                    <p>Find our stores across the kingdom</p>
+                <div className="mt-12">
+                    <p className="mt-4 text-gray-500 font-light text-sm">Find our stores across the kingdom</p>
                 </div>
                 <div className="mt-4">
                     <button className="btn">ALL BRANCHES</button>
