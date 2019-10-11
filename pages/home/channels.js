@@ -45,17 +45,17 @@ class Channels extends React.Component {
                     <p className="mt-4 text-gray-500 font-light text-sm">You can also find us on social media platforms</p>
                 </div>
                 <div className="mt-4 flex justify-center">
-                    <div className="rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
-                        <Twitter color='#ffffff' size="24" />
+                    <div className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
+                        <Twitter size="18" />
                     </div>
-                    <div className="rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
-                        <Facebook color='#ffffff' size="24" />
+                    <div className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
+                        <Facebook size="18" />
                     </div>
-                    <div className="rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
-                        <Instagram color='#ffffff' size="24" />
+                    <div className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
+                        <Instagram size="18" />
                     </div>
-                    <div className="rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
-                        <Youtube color='#ffffff' size="24" />
+                    <div className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
+                        <Youtube size="18" />
                     </div>
                 </div>
                 <div className="flex flex-wrap md:w-1/2 p-4 md:p-0 m-auto mt-10">{
