@@ -18,6 +18,7 @@ class Header extends React.Component {
         <div className="menu flex-1 flex justify-end">
           <a href="/">HOME</a>
           <a href="/menu" className="px-6">OUR FOOD</a>
+          <a href="/find" className="px-6">FIND US</a>
           {/* <a href="/aboutus.">ABOUT US</a> */}
         </div>
       </header>

@@ -5,7 +5,7 @@ class Meal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            tags: this.props.meal.tags ? this.props.meal.tags.split(',') : []
+            // tags: this.props.meal.tags ? this.props.meal.tags.split(',') : []
         }
     }
 
@@ -16,11 +16,11 @@ class Meal extends React.Component {
                     <img className="m-auto w-full h-full object-cover rounded-lg zoom-in" src={this.props.meal.image} alt="Shawarma" />
                     <h2 className="text-dark text-md p-2">{this.props.meal.name}</h2>
                     <div className="flex justify-center pb-4">
-                        {
+                        {/* {
                             this.state.tags.map((tag, i) => (
                                 <div key={i} className="inline-block px-2 rounded-full border bg-gray-600  text-white text-xs mr-1">{tag}</div>
                             ))
-                        }
+                        } */}
                     </div>
                 </div>
             </div>

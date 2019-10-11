@@ -2,7 +2,7 @@ var Sequelize = require('sequelize')
 
 
 
-module.exports = new Sequelize('shawarma', 'root', 'welcome', {
+module.exports = new Sequelize('shawarma', 'root', '', {
     host: 'localhost',
     host: '127.0.0.1',
     dialect: 'mariadb',
