@@ -3,6 +3,7 @@ import Layout from './layout'
 import Banner from '../components/banner'
 import OurFood from './home/ourfood'
 import Channels from './home/channels'
+import Store from './home/store'
 import Footer from '../components/footer'
 import ImageBlock from '../components/imageblock'
 
@@ -43,6 +44,7 @@ class Home extends React.Component {
         <Banner />
         <OurFood meals={this.state.meals} />
         <Channels />
+        <Store />
         <ImageBlock />
         <Footer />
       </Layout>

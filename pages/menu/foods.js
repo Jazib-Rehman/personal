@@ -3,7 +3,7 @@ import React from 'react'
 import mock from './../mock.json'
 import Category from '../../components/category.js';
 
-const meals = mock.meals.map((item) => {
+const categories = mock.meals.map((item) => {
     let meals = item.meals.map((meal) => {
         return {
             ...meal,
@@ -27,9 +27,9 @@ class Foods extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log(meals)
+        console.log(categories)
         this.state = {
-            meals
+            categories
         }
     }
 
@@ -44,14 +44,14 @@ class Foods extends React.Component {
 
 
                 <div className="mt-12 flex flex-wrap w-full font-sec justify-center cursor-pointer">
-                    {this.state.meals.map((menu, i) => (
+                    {this.state.categories.map((menu, i) => (
                         <div key={i} class="w-full sm:w-64 mx-1 text-lg">
                             <a class="inline-block btn text-prim mx-1 my-1 w-full sm:w-64 bg-white" href={'#' + i} >{menu.name}</a>
                         </div>
                     ))}
                 </div>
 
-                {this.state.meals.map((category, i) => (
+                {this.state.categories.map((category, i) => (
                     <Category category={category} key={i} />
                 ))}
             </section>

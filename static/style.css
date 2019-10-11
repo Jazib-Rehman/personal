@@ -232,3 +232,6 @@ footer i {
   transform: scale(1.1);
 }
 
+.h-80 {
+  height: 335px;
+}
