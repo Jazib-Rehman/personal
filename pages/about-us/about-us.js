@@ -42,6 +42,7 @@ class AboutUs extends React.Component {
         return (
             <section class="relative text-center py-24 z-40">
                  <p class="text-3xl">About Us!</p>
+                 
             </section>
             
         )
