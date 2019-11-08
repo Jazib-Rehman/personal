@@ -30,7 +30,7 @@ class NavItem extends React.Component {
                     </div>
                 </div>
                 {this.props.item.items.map((sub, i) => (
-                    this.state.isShow ?  <NavItem item={sub} key={i} className="" /> : ''
+                    this.state.isShow ?  <NavItem item={sub} key={i}  /> : ''
                 ))}
             </div>
         )

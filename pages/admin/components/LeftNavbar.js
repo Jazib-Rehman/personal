@@ -3,29 +3,6 @@ import Head from 'next/head'
 import NavItem from './NavItem'
 import { Box, Home, FileMinus, Phone, Layers, Menu } from 'react-feather';
 
-
-class Selectable {
-
-    constructor(data = null, selected = false) {
-        this.data = data;
-        this.selected = selected
-    }
-
-    toggle() {
-        this.selected = !this.selected
-        console.log('toggle')
-    }
-
-    select() {
-        this.selected = true
-    }
-
-    deSelect() {
-        this.selected = false
-    }
-
-}
-
 class LeftNavbar extends React.Component {
 
     constructor(props) {
@@ -49,7 +26,9 @@ class LeftNavbar extends React.Component {
                         {
                             name: 'Home',
                             items: [
-                                { name: 'Banner', items: [], icon: <Layers className="w-4" /> },
+                                {
+                                    name: 'Banner', items: [], icon: <Layers className="w-4" />
+                                },
                                 { name: 'Channel', items: [], icon: <Layers className="w-4" /> },
                             ],
                             icon: <Home className="w-4" />
@@ -66,18 +45,18 @@ class LeftNavbar extends React.Component {
                         }
                     ]
                 }
-            ]
+            ],
         }
     }
 
     render() {
         return (
-            <nav className='bg-indigo-700 border-r h-full'>
+            <nav className='bg-indigo-700 border-r h-full' >
                 <div className="p-4 bg-indigo-800  text-white flex justify-between">
                     <p>Dashboard</p>
-                    <Menu />
+                    <Menu onClick={() => { this.setState({ isShow: !this.state.isShow }) }} />
                 </div>
-                <div>
+                <div >
                     {this.state.navs.map((item, i) => <NavItem item={item} key={i} />)}
                 </div>
             </nav>
