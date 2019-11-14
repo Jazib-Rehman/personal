@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon server/app.js",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production node server/app.js",
+    "start": "cross-env NODE_ENV=production node app.js",
     "migrate": "node server/migrations"
   },
   "dependencies": {
