@@ -10,8 +10,7 @@ const Products = {
             }
         }, {
             freezeTableName: true
-        }).sync({ force: true }).then(() => {
-        })
+        }).sync({ force: true }).then(() => console.log('Products table added!'))
     }
 
 }

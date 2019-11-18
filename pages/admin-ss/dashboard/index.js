@@ -27,7 +27,7 @@ class Home extends React.Component {
                         <div className="pt-24 px-10 pb-10">
                             <div className="bg-white rounded shadow shadow-md py-4 px-8">
                                 <div className="text-center py-2 my-2 border-b">
-                                    <p className="text-2xl font-semibold text-gray-600">Dashboard</p>
+                                    <p className="text-2xl font-semibold text-gray-700">Dashboard</p>
                                 </div>
                                 <div className="flex flex-wrap pb-2 border-b">
                                     <div className="w-2/4">
