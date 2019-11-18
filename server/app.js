@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
-const next = require('next')
 
 const app = express();
 
@@ -19,8 +18,6 @@ connection.connect(err => {
 		return err;
 	}
 });
-
-
 
 app.use(cors());
 
