@@ -1,0 +1,243 @@
+
+
+@import url("https://fonts.googleapis.com/css?family=Barriecito|Lalezar&display=swap");
+@font-face {
+  font-family: "font";
+  src: url("./assets/fonts/Blackout-Midnight.ttf");
+}
+
+body{
+  font-family: 'Overpass', sans-serif;
+  font-weight: 300;
+}
+
+.flex {
+  display: flex;
+}
+
+:root {
+  --prim: #fc5c42;
+  --sec: #fd8b35;
+}
+
+.font-prim {
+  font-family: "font";
+  letter-spacing: 3px;
+}
+
+.font-sec {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* RESET CLASSES */
+button:active,
+button:focus,
+button {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+
+/* UTILITY CLASSES */
+.bg-prim {
+  background: var(--prim);
+}
+
+.bg-sec {
+  background: var(--sec);
+}
+
+.text-prim {
+  color: var(--prim);
+}
+
+.text-sec {
+  color: var(--sec);
+}
+
+.border-prim {
+  border-color: var(--prim);
+}
+
+.border-sec {
+  border-color: var(--sec);
+}
+
+.bg-trans {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.bg-dark {
+  background: rgb(22, 22, 22);
+}
+.text-dark {
+  color: rgb(37, 37, 37);
+}
+
+.b-dash {
+  border: orange dashed 1px;
+}
+
+.flex-2 {
+  flex: 2;
+}
+.flex-3 {
+  flex: 3;
+}
+.flex-4 {
+  flex: 4;
+}
+
+.menu span {
+  padding: 0px 16px;
+}
+
+.btn {
+  border: 1px var(--sec) solid;
+  padding: 0.5rem 1.5rem;
+  transition: all 1s;
+}
+
+.btn:hover{
+  background: var(--prim);
+  color: white;
+}
+
+.btn:active,
+.btn:focus {
+  border: 1px var(--sec) solid;
+  background: var(--sec);
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+footer .links {
+  font-weight: lighter;
+}
+
+footer .links p {
+  margin-top: 0.7rem;
+}
+
+footer .loc p {
+  margin-top: 0.5rem;
+}
+footer i {
+  padding-right: 0.5rem;
+}
+
+.tans-all {
+  transition: all 0.2s ease-in;
+}
+
+@media screen and (min-width: 992px) {
+  .title:after,
+  .title::before {
+    content: "";
+    display: inline-block;
+    border-top: 1px solid var(--prim);
+    width: 20%;
+    margin: 10px 20px;
+  }
+}
+
+.h-screen-half {
+  height: 50vh;
+  max-height: 50vh;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.w-lg {
+  width: 90%;
+}
+
+.slider {
+  display: flex;
+  align-content: flex-start;
+}
+
+.slider .item {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.horizontal {
+  flex-flow: column wrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.bg-grid{
+  position: relative;
+  background: white;
+}
+
+.bg-grid::after {
+  background: url(assets/grid.png) repeat;
+  opacity: 0.2;
+  content:'';
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index: 12;
+}
+
+.bages{
+  opacity:0.4;
+}
+
+
+.r-1{
+  transform: rotate(2deg);
+}
+
+.r-2{
+  transform: rotate(-4deg);
+}
+
+
+.top-100{
+  top:150px;
+}
+
+.grid-3{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.bg-dark-trans{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.trans-1{
+  transition: all 0.5s ease-in-out;
+}
+
+
+.zoom-in{
+  transition: all 1s ease-in-out;
+}
+.zoom-in:hover{
+  transform: scale(1.1);
+}
+
+.h-80 {
+  height: 335px;
+}
+
+.bg-white-trans {
+  background: rgba(255, 255, 255, 0.95);
+}
