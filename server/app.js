@@ -50,8 +50,8 @@ app.get('/products/add', (req, res) => {
 	});
 });
 
-app.listen(3000, () => {
-	console.log('Server Listening on port: 3000')
+app.listen(3001, () => {
+	console.log('Server Listening on port: 3001')
 });
 
 
@@ -62,7 +62,7 @@ app.listen(3000, () => {
 
 // const { Meals } = require('./models')
 
-// const port = parseInt(process.env.PORT, 10) || 3000
+// const port = parseInt(process.env.PORT, 10) || 3001
 // const dev = true //process.env.NODE_ENV !== 'production'
 // const app = next({ dev })
 // const handle = app.getRequestHandler()
