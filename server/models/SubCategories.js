@@ -2,24 +2,18 @@ const Sequelize = require('sequelize')
 
 const db = require('../config/database')
 
-const Meals = db.define('meals', {
+const SubCategories = db.define('sub_categories', {
     name: {
         type: Sequelize.STRING,
+        field: 'name'
     },
-    image: {
+    cat_id: {
         type: Sequelize.STRING,
-    },
-    categoryId: {
-        type: Sequelize.INTEGER,
-    },
-    tags: {
-        type: Sequelize.STRING,
+        field: 'cat_id'
     },
 }, {
     freezeTableName: true
 })
 
-module.exports = Meals;
-
-
+module.exports = SubCategories;
 

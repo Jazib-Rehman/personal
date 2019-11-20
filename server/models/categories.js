@@ -7,10 +7,6 @@ const Categories = db.define('categories', {
         type: Sequelize.STRING,
         field: 'name'
     },
-    categoryId: {
-        type: Sequelize.INTEGER,
-        field: 'categoryId'
-    },
 }, {
     freezeTableName: true
 })

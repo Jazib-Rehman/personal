@@ -1,8 +1,14 @@
 const Sequelize = require('sequelize');
 const db = require('../config/database');
 
-const Product = db.define('product', {
+const Product = db.define('products', {
     name: {
+        type: Sequelize.STRING
+    },
+    cat_id: {
+        type: Sequelize.STRING
+    },
+    subcat_id: {
         type: Sequelize.STRING
     },
     description: {
@@ -14,17 +20,10 @@ const Product = db.define('product', {
     price: {
         type: Sequelize.STRING
     },
-    // image: {
-    //     type: Sequelize.STRING
-    // }
+    image: {
+        type: Sequelize.STRING
+    }
 });
 
+
 module.exports = Product;
-
-// const Categories = require('./categories')
-// const Meals = require('./meals')
-
-// module.exports = {
-//     Meals,
-//     Categories
-// }
