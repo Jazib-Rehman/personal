@@ -1,4 +1,4 @@
-import { AppService } from './../../services/app.service'
+import AppService from './../../services/app.service'
 
 import React from 'react'
 import mock from './../mock.json'
@@ -40,18 +40,11 @@ class Channels extends React.Component {
 
     componentDidMount() {
         AppService.getProduct()
-            .then(response => this.setState({ products: response.data }))
+            .then(response => {
+                this.setState({ products: response })
+            })
             .catch(err => console.error(err));
     }
-
-    // getProduct = _ => {
-    //     fetch('http://localhost:3001/products')
-    //         .then(response => response.json())
-    //         .then(response => this.setState({ products: response.data }))
-    //         .catch(err => console.error(err))
-    // }
-
-    renderProduct = ({ id, name }) => <div key={id}>{name}</div>
 
     render() {
         const { products } = this.state;
@@ -87,8 +80,10 @@ class Channels extends React.Component {
                 }
                 </div>
 
-                <div className="App">
-                    {products.map(this.renderProduct)}
+                <div>
+                    {this.state.products.map((item, i) => {
+                        return <div key={i}>{item.name} </div>
+                    })}
                 </div>
             </section>
 
