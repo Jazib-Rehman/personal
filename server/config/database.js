@@ -4,7 +4,7 @@ var Sequelize = require('sequelize')
 
 module.exports = new Sequelize('shawarma', 'root', '', {
     host: 'localhost',
-    host: '127.0.0.1',
+    // host: '127.0.0.1',
     dialect: 'mariadb',
     pool: {
         max: 5,

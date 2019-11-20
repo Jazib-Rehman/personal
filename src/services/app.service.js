@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
+import { HttpService } from './http.service'
 
-const baseURL = 'http://localhost:3001/';
-
-export class HttpService {
-    baseURL = 'http://localhost:3001/';
-}
-
-
-export class AppService extends HttpService {
-
-    static getProduct() {
-        return fetch(baseURL + 'products')
-            .then(response => response.json());
+class AppService extends HttpService {
+    getProduct() {
+        return this.get('products')
+    }
+    addProduct(data) {
+        return this.post('add', data)
     }
 }
+export default new AppService()
