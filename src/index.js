@@ -9,6 +9,8 @@ import ContactUs from './pages/contact-us';
 import FindUs from './pages/find-us';
 import Menu from './pages/menu';
 import Dashboard from './pages/admin/dashboard';
+import AppProduct from './pages/admin/add-product';
+import Categories from './pages/admin/categories';
 import "./static/style.css";
 import "./static/tailwind.css";
 // import App from './App';
@@ -22,7 +24,9 @@ const routing = (
             <Route path="/contact-us" component={ContactUs} />
             <Route path="/find-us" component={FindUs} />
             <Route path="/menu" component={Menu} />
-            <Route path="/admin" component={Dashboard} />
+            <Route exact path="/admin" component={Dashboard} />
+            <Route path="/admin/add-product" component={AppProduct} />
+            <Route path="/admin/categories" component={Categories} />
         </div>
     </Router>
 )

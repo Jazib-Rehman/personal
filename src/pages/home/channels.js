@@ -38,13 +38,13 @@ class Channels extends React.Component {
         }
     }
 
-    componentDidMount() {
-        AppService.getProduct()
-            .then(response => {
-                this.setState({ products: response })
-            })
-            .catch(err => console.error(err));
-    }
+    // componentDidMount() {
+    //     AppService.get('products')
+    //         .then(response => {
+    //             this.setState({ products: response })
+    //         })
+    //         .catch(err => console.error(err));
+    // }
 
     render() {
         const { products } = this.state;

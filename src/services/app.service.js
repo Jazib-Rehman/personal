@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { HttpService } from './http.service'
 
 class AppService extends HttpService {
-    getProduct() {
-        return this.get('products')
+    getMethode(url) {
+        return this.get(url)
     }
-    addProduct(data) {
-        return this.post('add', data)
+    postMethode(url, data) {
+        return this.post(url, data)
     }
 }
 export default new AppService()

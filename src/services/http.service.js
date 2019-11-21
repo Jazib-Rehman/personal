@@ -1,12 +1,16 @@
 export class HttpService {
     baseURL = 'http://localhost:3001/';
     get(url) {
+        debugger;
         return fetch(this.baseURL + url).then((resp) => resp.json())
     }
     post(url, data) {
         return fetch(this.baseURL + url, {
             method: 'POST',
-            body: data
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
         }).then(resp => resp.json())
     }
 }
