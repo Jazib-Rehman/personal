@@ -18,16 +18,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(bodyParser.json())
 
 app.post('/add-product', urlencodedParser, (req, res) => {
-	const data = {
-		name: req.body.name,
-		cat_id: req.body.cat_id,
-		subcat_id: req.body.subcat_id,
-		description: req.body.description,
-		nutrition: req.body.nutrition,
-		price: req.body.price,
-		image: req.body.image,
-	}
-	Product.create(data)
+	Product.create(req.body)
 		.then(product => res.send(product))
 		.catch(err => console.log(err));
 });
@@ -40,10 +31,7 @@ app.get('/product', (req, res) =>
 		.catch(err => console.log(err)));
 
 app.post('/add-category', urlencodedParser, (req, res) => {
-	const data = {
-		name: req.body.name
-	}
-	Categories.create(data)
+	Categories.create(req.body)
 		.then(product => res.send(product))
 		.catch(err => console.log(err));
 });
@@ -56,11 +44,7 @@ app.get('/category', (req, res) =>
 		.catch(err => console.log(err)));
 
 app.post('/add-sub-category', urlencodedParser, (req, res) => {
-	const data = {
-		name: req.body.name,
-		cat_id: req.body.cat_id
-	}
-	SubCategories.create(data)
+	SubCategories.create(req.body)
 		.then(product => res.send(product))
 		.catch(err => console.log(err));
 });
