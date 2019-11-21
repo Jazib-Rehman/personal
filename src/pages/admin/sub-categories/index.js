@@ -92,7 +92,6 @@ class SubCategories extends Component {
                                         </div>
                                         <div className="w-3/12 p-1">
                                             <div className="form-group">
-
                                                 <p className="text-xs font-semibold">Category</p>
                                                 <select value={this.state.cat_id} onChange={this.onChange.bind(this)} className="w-full p-2-5 border bg-white outline-none font-thin">
                                                     <option value="select">Select an Option</option>
