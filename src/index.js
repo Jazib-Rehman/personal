@@ -11,6 +11,7 @@ import Menu from './pages/menu';
 import Dashboard from './pages/admin/dashboard';
 import AppProduct from './pages/admin/add-product';
 import Categories from './pages/admin/categories';
+import SubCategories from './pages/admin/sub-categories';
 import "./static/style.css";
 import "./static/tailwind.css";
 // import App from './App';
@@ -27,6 +28,7 @@ const routing = (
             <Route exact path="/admin" component={Dashboard} />
             <Route path="/admin/add-product" component={AppProduct} />
             <Route path="/admin/categories" component={Categories} />
+            <Route path="/admin/sub-categories" component={SubCategories} />
         </div>
     </Router>
 )
