@@ -6,6 +6,7 @@ const path = require('path');
 const db = require('./config/database')
 const Categories = require('./models/Categories')
 const Product = require('./models/Product')
+const SubCategories = require('./models/SubCategories')
 
 
 const Sequelize = require('sequelize');
@@ -40,6 +41,23 @@ app.post('/add-category', urlencodedParser, (req, res) => {
 
 app.get('/category', (req, res) =>
 	Categories.findAll()
+		.then(products => {
+			res.send(products);
+		})
+		.catch(err => console.log(err)));
+
+app.post('/add-sub-category', urlencodedParser, (req, res) => {
+	const data = {
+		name: req.body.name,
+		cat_id: req.body.cat_id
+	}
+	SubCategories.create(data)
+		.then(product => res.send(product))
+		.catch(err => console.log(err));
+});
+
+app.get('/sub-category', (req, res) =>
+	SubCategories.findAll()
 		.then(products => {
 			res.send(products);
 		})

@@ -241,3 +241,8 @@ footer i {
 .bg-white-trans {
   background: rgba(255, 255, 255, 0.95);
 }
+
+
+.p-2-5 {
+  padding: 11px;
+}
