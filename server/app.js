@@ -5,17 +5,73 @@ const db = require('./config/database')
 const Categories = require('./models/Categories')
 const Product = require('./models/Product')
 const SubCategories = require('./models/SubCategories')
-
+const http = require("http");
+const path = require("path");
+const fs = require("fs");
+const multer = require("multer");
 
 db.authenticate()
 	.then(() => console.log('Database connected...'))
 	.catch(err => console.log('Error: ' + err))
 
+
 const app = express();
 app.use(cors());
+express.static(path.join(__dirname, "./../public"))
+
+const upload = multer({
+	dest: "/uploads/images"
+	// you might also want to set some limits: https://github.com/expressjs/multer#limits
+});
+
+const handleError = (err, res) => {
+	res
+		.status(500)
+		.contentType("text/plain")
+		.end("Oops! Something went wrong!");
+};
+
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(bodyParser.json())
+
+app.post(
+	"/upload",
+	upload.single("file"),
+	(req, res) => {
+		let newDate = new Date()
+		let date = newDate.getDate();
+		let month = newDate.getMonth() + 1;
+		let year = newDate.getFullYear();
+		let hours = newDate.getHours();
+		let minutes = newDate.getMinutes();
+		let seconds = newDate.getSeconds();
+
+		let time = date + "" + month + "" + year + "" + hours + "" + minutes + "" + seconds;
+		const tempPath = req.file.path;
+		const targetPath = path.join(__dirname, "./../public/uploads/images/" + time + ".jpg");
+
+		if (path.extname(req.file.originalname).toLowerCase() === ".jpg") {
+			fs.rename(tempPath, targetPath, err => {
+				if (err) return handleError(err, res);
+
+				res
+					.status(200)
+					.contentType("text/plain")
+					.end("File uploaded!" + targetPath);
+			});
+		} else {
+			fs.unlink(tempPath, err => {
+				if (err) return handleError(err, res);
+
+				res
+					.status(403)
+					.contentType("text/plain")
+					.end("Only .jpg files are allowed!");
+			});
+		}
+	}
+);
 
 app.post('/add-product', urlencodedParser, (req, res) => {
 	Product.create(req.body)
