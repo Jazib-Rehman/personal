@@ -19,10 +19,10 @@ class AppProduct extends React.Component {
             description: '',
             nutrition: '',
             price: '',
-            image: '',
             sub_categories: [],
             categories: [],
-            catMethod: "Category"
+            catMethod: "Category",
+            selectedFile: null
         }
     }
 
@@ -69,7 +69,7 @@ class AppProduct extends React.Component {
     }
 
     handleClick() {
-        const img = this.state.image
+        const imgURL = "uploads/" + this.state.selectedFile.name
         AppService.postMethode('add-product', {
             name: this.state.name,
             cat_id: this.state.cat_id,
@@ -77,7 +77,7 @@ class AppProduct extends React.Component {
             description: this.state.description,
             nutrition: this.state.nutrition,
             price: this.state.price,
-            image: img,
+            image: imgURL,
         })
             .then(response => {
                 alert('Product added');
@@ -115,6 +115,12 @@ class AppProduct extends React.Component {
                 </select>
             </div>
         );
+    }
+
+    selectedFile = event => {
+        this.setState({
+            selectedFile: event.target.files[0]
+        })
     }
 
 
@@ -189,13 +195,18 @@ class AppProduct extends React.Component {
                                         {this.Dropdown(this.state.catMethod)}
                                     </div>
                                     <div className="w-full p-1 border-t border-b">
-                                        <input type="file" name="image" onChange={this.handleChange.bind(this, 'image')} />
+                                        <input type="file" name="image" onChange={this.selectedFile} />
                                     </div>
 
                                 </div>
                                 <div className="w-full flex justify-end p-1 mt-4">
                                     <button onClick={() => { this.handleClick(this.state) }} className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center"><PlusCircle className="h-5 -mt-1" />Add</button>
                                 </div>
+
+                                <form method="post" enctype="multipart/form-data" action="http://localhost:3001/upload">
+                                    <input type="file" name="file" />
+                                    <input type="submit" value="Submit" />
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,6 @@
 export class HttpService {
     baseURL = 'http://localhost:3001/';
     get(url) {
-        debugger;
         return fetch(this.baseURL + url).then((resp) => resp.json())
     }
     post(url, data) {
