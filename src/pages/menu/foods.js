@@ -1,7 +1,7 @@
 
 import React from 'react'
 import mock from './../mock.json'
-import Category from '../../components/category.js';
+import Category from '../../components/category.js'
 
 const categories = mock.meals.map((item) => {
     let meals = item.meals.map((meal) => {

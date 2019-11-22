@@ -6,21 +6,31 @@ import Meal from './../../../components/meal'
 import Card from '../../../components/kit/card'
 import { Layers, PlusCircle, Eye, RefreshCw, Inbox, FileText, MapPin, Coffee, Info } from 'react-feather';
 import AppService from './../../../services/app.service'
+import RadioButton from "./RadioButton";
+
 class AppProduct extends React.Component {
 
     constructor() {
         super();
         this.state = {
             name: '',
-            cat_id: '',
-            subcat_id: '',
+            cat_id: 'none',
+            subcat_id: 'none',
             description: '',
             nutrition: '',
             price: '',
             image: '',
             sub_categories: [],
-            categories: []
+            categories: [],
+            catMethod: "Category"
         }
+    }
+
+    radioChangeHandler = (event) => {
+
+        this.setState({
+            catMethod: event.target.value
+        });
     }
 
     onChange(property, event) {
@@ -59,6 +69,7 @@ class AppProduct extends React.Component {
     }
 
     handleClick() {
+        const img = this.state.image
         AppService.postMethode('add-product', {
             name: this.state.name,
             cat_id: this.state.cat_id,
@@ -66,16 +77,45 @@ class AppProduct extends React.Component {
             description: this.state.description,
             nutrition: this.state.nutrition,
             price: this.state.price,
-            image: 'this is image',
+            image: img,
         })
             .then(response => {
-                alert('Category added');
+                alert('Product added');
                 window.location.reload();
             })
             .catch(err => console.error(err));
     }
 
-
+    Dropdown(cat) {
+        if (cat == "Category") {
+            return (
+                <div className="form-group">
+                    <p className="text-xs font-semibold">Category</p>
+                    <select value={this.state.cat_id} onChange={this.onChange.bind(this, 'cat_id')} className="w-full p-2-5 border bg-white outline-none font-thin">
+                        <option value="none">Select a Category</option>
+                        {this.state.categories.map((item, i) => {
+                            return (
+                                <option value={item.id} key={i}>{item.name}</option>
+                            )
+                        })}
+                    </select>
+                </div>
+            )
+        }
+        return (
+            <div className="form-group">
+                <p className="text-xs font-semibold">Sub Category</p>
+                <select value={this.state.subcat_id} onChange={this.onChange.bind(this, 'subcat_id')} className="w-full p-2-5 border bg-white outline-none font-thin">
+                    <option value="none">Select a Sub Category</option>
+                    {this.state.sub_categories.map((item, i) => {
+                        return (
+                            <option value={item.id} key={i}>{item.name}</option>
+                        )
+                    })}
+                </select>
+            </div>
+        );
+    }
 
 
     render() {
@@ -123,35 +163,38 @@ class AppProduct extends React.Component {
                                             placeholder: 'Price!'
                                         })}
                                     </div>
-                                    <div className="w-1/2 p-1">
-                                        <div className="form-group">
-                                            <p className="text-xs font-semibold">Category</p>
-                                            <select value={this.state.cat_id} onChange={this.onChange.bind(this, 'cat_id')} className="w-full p-2-5 border bg-white outline-none font-thin">
-                                                <option value="select">Select an Option</option>
-                                                {this.state.categories.map((item, i) => {
-                                                    return (
-                                                        <option value={item.id} key={i}>{item.name}</option>
-                                                    )
-                                                })}
-                                            </select>
+                                    <div className="w-1/2 p-1 border-t border-b">
+                                        <div className="radio-btn-container" style={{ display: "flex" }}>
+                                            <div className="p-3 mt-3">
+                                                <RadioButton
+                                                    changed={this.radioChangeHandler}
+                                                    id="1"
+                                                    isSelected={this.state.catMethod === "Category"}
+                                                    label="Category"
+                                                    value="Category"
+                                                />
+                                            </div>
+                                            <div className="p-3 mt-3">
+                                                <RadioButton
+                                                    changed={this.radioChangeHandler}
+                                                    id="2"
+                                                    isSelected={this.state.catMethod === "Sub Category"}
+                                                    label="Sub Category"
+                                                    value="Sub Category"
+                                                />
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="w-1/2 p-1">
-                                        <div className="form-group">
-                                            <p className="text-xs font-semibold">Sub Category</p>
-                                            <select value={this.state.subcat_id} onChange={this.onChange.bind(this, 'subcat_id')} className="w-full p-2-5 border bg-white outline-none font-thin">
-                                                <option value="select">Select an Option</option>
-                                                {this.state.sub_categories.map((item, i) => {
-                                                    return (
-                                                        <option value={item.id} key={i}>{item.name}</option>
-                                                    )
-                                                })}
-                                            </select>
-                                        </div>
+                                    <div className="w-1/2 p-1 border-t border-b">
+                                        {this.Dropdown(this.state.catMethod)}
                                     </div>
+                                    <div className="w-full p-1 border-t border-b">
+                                        <input type="file" name="image" onChange={this.handleChange.bind(this, 'image')} />
+                                    </div>
+
                                 </div>
                                 <div className="w-full flex justify-end p-1 mt-4">
-                                    <button onClick={() => { this.handleClick(this.state) }} className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center">Add</button>
+                                    <button onClick={() => { this.handleClick(this.state) }} className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center"><PlusCircle className="h-5 -mt-1" />Add</button>
                                 </div>
                             </div>
                         </div>
