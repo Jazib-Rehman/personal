@@ -14,8 +14,8 @@ class AppProduct extends React.Component {
         super();
         this.state = {
             name: '',
-            cat_id: 'none',
-            subcat_id: 'none',
+            cat_id: '',
+            subcat_id: '',
             description: '',
             nutrition: '',
             price: '',
@@ -37,6 +37,21 @@ class AppProduct extends React.Component {
         const state = this.state;
         state[property] = event.target.value;
         this.setState({ state: state });
+    }
+
+
+    onSelectChange = event => {
+        if (event.target.name === "cat_id") {
+            this.setState({
+                cat_id: event.target.value,
+                subcat_id: ''
+            })
+        } else if (event.target.name === "subcat_id") {
+            this.setState({
+                cat_id: '',
+                subcat_id: event.target.value
+            })
+        }
     }
 
 
@@ -70,7 +85,7 @@ class AppProduct extends React.Component {
 
     handleClick() {
         const imgURL = "uploads/" + this.state.selectedFile.name
-        AppService.postMethode('add-product', {
+        AppService.postMethode('upload', {
             name: this.state.name,
             cat_id: this.state.cat_id,
             subcat_id: this.state.subcat_id,
@@ -91,7 +106,7 @@ class AppProduct extends React.Component {
             return (
                 <div className="form-group">
                     <p className="text-xs font-semibold">Category</p>
-                    <select value={this.state.cat_id} onChange={this.onChange.bind(this, 'cat_id')} className="w-full p-2-5 border bg-white outline-none font-thin">
+                    <select value={this.state.cat_id} name="cat_id" onChange={this.onSelectChange} className="w-full p-2-5 border bg-white outline-none font-thin">
                         <option value="none">Select a Category</option>
                         {this.state.categories.map((item, i) => {
                             return (
@@ -105,7 +120,7 @@ class AppProduct extends React.Component {
         return (
             <div className="form-group">
                 <p className="text-xs font-semibold">Sub Category</p>
-                <select value={this.state.subcat_id} onChange={this.onChange.bind(this, 'subcat_id')} className="w-full p-2-5 border bg-white outline-none font-thin">
+                <select value={this.state.subcat_id} name="subcat_id" onChange={this.onSelectChange} className="w-full p-2-5 border bg-white outline-none font-thin">
                     <option value="none">Select a Sub Category</option>
                     {this.state.sub_categories.map((item, i) => {
                         return (
@@ -140,71 +155,76 @@ class AppProduct extends React.Component {
                                 <div className="text-center py-2 my-2 border-b">
                                     <p className="text-2xl font-semibold text-gray-700">Add Product</p>
                                 </div>
-                                <div className="flex flex-wrap">
-                                    <div className="w-1/2 p-1">
-                                        {this.LabelInput({
-                                            label: 'Name:',
-                                            name: 'name',
-                                            property: 'name',
-                                            placeholder: 'Name!'
-                                        })}
-                                    </div>
-                                    <div className="w-1/2 p-1">
-                                        {this.LabelInput({
-                                            label: 'Nutrition Information:',
-                                            name: 'nutrition',
-                                            property: 'nutrition',
-                                            placeholder: 'Nutrition Info!'
-                                        })}
-                                    </div>
-                                    <div className="w-1/2 p-1">
-                                        <p className="text-xs font-semibold">Description:</p>
-                                        <textarea name="description" onChange={this.handleChange.bind(this, 'description')} className="w-full p-2 border bg-white rounded rounded-sm" placeholder="Description!"></textarea>
-                                    </div>
-                                    <div className="w-1/2 p-1">
-                                        {this.LabelInput({
-                                            label: 'Price:',
-                                            name: 'price',
-                                            property: 'price',
-                                            placeholder: 'Price!'
-                                        })}
-                                    </div>
-                                    <div className="w-1/2 p-1 border-t border-b">
-                                        <div className="radio-btn-container" style={{ display: "flex" }}>
-                                            <div className="p-3 mt-3">
-                                                <RadioButton
-                                                    changed={this.radioChangeHandler}
-                                                    id="1"
-                                                    isSelected={this.state.catMethod === "Category"}
-                                                    label="Category"
-                                                    value="Category"
-                                                />
-                                            </div>
-                                            <div className="p-3 mt-3">
-                                                <RadioButton
-                                                    changed={this.radioChangeHandler}
-                                                    id="2"
-                                                    isSelected={this.state.catMethod === "Sub Category"}
-                                                    label="Sub Category"
-                                                    value="Sub Category"
-                                                />
+                                <form method="post" enctype="multipart/form-data" action="http://localhost:3001/upload">
+
+                                    <div className="flex flex-wrap">
+                                        <div className="w-1/2 p-1">
+                                            {this.LabelInput({
+                                                label: 'Name:',
+                                                name: 'name',
+                                                property: 'name',
+                                                placeholder: 'Name!'
+                                            })}
+                                        </div>
+                                        <div className="w-1/2 p-1">
+                                            {this.LabelInput({
+                                                label: 'Nutrition Information:',
+                                                name: 'nutrition',
+                                                property: 'nutrition',
+                                                placeholder: 'Nutrition Info!'
+                                            })}
+                                        </div>
+                                        <div className="w-1/2 p-1">
+                                            <p className="text-xs font-semibold">Description:</p>
+                                            <textarea name="description" onChange={this.handleChange.bind(this, 'description')} className="w-full p-2 border bg-white rounded rounded-sm" placeholder="Description!"></textarea>
+                                        </div>
+                                        <div className="w-1/2 p-1">
+                                            {this.LabelInput({
+                                                label: 'Price:',
+                                                name: 'price',
+                                                property: 'price',
+                                                placeholder: 'Price!'
+                                            })}
+                                        </div>
+                                        <div className="w-1/2 p-1 border-t border-b">
+                                            <div className="radio-btn-container" style={{ display: "flex" }}>
+                                                <div className="p-3 mt-3">
+                                                    <RadioButton
+                                                        changed={this.radioChangeHandler}
+                                                        id="1"
+                                                        isSelected={this.state.catMethod === "Category"}
+                                                        label="Category"
+                                                        value="Category"
+                                                    />
+                                                </div>
+                                                <div className="p-3 mt-3">
+                                                    <RadioButton
+                                                        changed={this.radioChangeHandler}
+                                                        id="2"
+                                                        isSelected={this.state.catMethod === "Sub Category"}
+                                                        label="Sub Category"
+                                                        value="Sub Category"
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="w-1/2 p-1 border-t border-b">
-                                        {this.Dropdown(this.state.catMethod)}
-                                    </div>
-                                    <div className="w-full p-1 border-t border-b">
-                                        <input type="file" name="image" onChange={this.selectedFile} />
-                                    </div>
+                                        <div className="w-1/2 p-1 border-t border-b">
+                                            {this.Dropdown(this.state.catMethod)}
+                                            {/* <input type="text" name="cat_id" hidden value={this.state.cat_id} />
+                                            <input type="text" name="subcat_id" hidden value={this.state.subcat_id} /> */}
+                                        </div>
+                                        <div className="w-full p-1 border-t border-b">
+                                            <input type="file" name="file" onChange={this.selectedFile} />
+                                        </div>
 
-                                </div>
-                                <div className="w-full flex justify-end p-1 mt-4">
-                                    <button onClick={() => { this.handleClick(this.state) }} className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center"><PlusCircle className="h-5 -mt-1" />Add</button>
-                                </div>
-
+                                    </div>
+                                    <div className="w-full flex justify-end p-1 mt-4">
+                                        {/* <button onClick={() => { this.handleClick(this.state) }} className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center"><PlusCircle className="h-5 -mt-1" />Add</button> */}
+                                        <input type="submit" value="Submit" />
+                                    </div>
+                                </form>
                                 <form method="post" enctype="multipart/form-data" action="http://localhost:3001/upload">
-                                    <input type="file" name="file" />
+                                    <input type="file" name="image" />
                                     <input type="submit" value="Submit" />
                                 </form>
                             </div>
