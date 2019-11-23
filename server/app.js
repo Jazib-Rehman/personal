@@ -54,11 +54,21 @@ app.post(
 		if (path.extname(req.file.originalname).toLowerCase() === ".jpg") {
 			fs.rename(tempPath, targetPath, err => {
 				if (err) return handleError(err, res);
+				console.log(req.body.cat_id, req.body.subcat_id);
+				Product.create({
+					name: req.body.name,
+					cat_id: req.body.cat_id,
+					subcat_id: req.body.subcat_id,
+					description: req.body.description,
+					nutrition: req.body.nutrition,
+					price: req.body.price,
+					image: "uploads/images/" + time,
+				})
+					.then(product => res.send(product))
+					.catch(err => console.log(err));
 
 				res
-					.status(200)
-					.contentType("text/plain")
-					.end("File uploaded!" + targetPath);
+					.redirect('http://localhost:3000/admin/add-product')
 			});
 		} else {
 			fs.unlink(tempPath, err => {
