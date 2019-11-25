@@ -14,7 +14,7 @@ class OurFood extends React.Component {
     }
 
     componentDidMount() {
-        AppService.get('categories')
+        AppService.get('categories-with-products')
             .then(response => {
                 this.setState({ categories: response })
             })
@@ -22,7 +22,6 @@ class OurFood extends React.Component {
     }
 
     render() {
-        const { products } = this.state;
         return (
             <div className="bg-white bg-grid w-full">
                 <div className="fixed top-100 left-0 w-screen overflow-hidden z-10 bages">
@@ -51,12 +50,8 @@ class OurFood extends React.Component {
                     </div>
                     <div className="w-full md:px-24">
                         <div className="slider horizontal mt-4 z-40 m-auto h-64 items-center">
-                            {/* {this.props.meals[0].meals.map((meal, i) => (
-                                <Meal meal={meal} key={i} />
-                            ))} */}
                             {this.state.categories.map((item, i) => {
                                 return <Meal meal={item} key={i} />
-                                // <div key={i}>{item.name} </div>
                             })}
                         </div>
                     </div>

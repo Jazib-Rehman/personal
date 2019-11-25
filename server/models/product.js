@@ -6,10 +6,14 @@ const Product = db.define('products', {
         type: Sequelize.STRING
     },
     cat_id: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        references: 'Categories',
+        referencesKey: 'id'
     },
     subcat_id: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        references: 'SubCategories',
+        referencesKey: 'id'
     },
     description: {
         type: Sequelize.STRING

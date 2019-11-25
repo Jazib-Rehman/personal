@@ -11,7 +11,8 @@ class Categories extends Component {
         super();
         this.state = {
             name: '',
-            categories: []
+            categories: [],
+            selectedFile: null
         }
     }
 
@@ -36,8 +37,12 @@ class Categories extends Component {
         )
     }
 
-    handleClick(data) {
-        AppService.postMethode('add-category', { name: data })
+    handleClick() {
+        const imgURL = "uploads/" + this.state.selectedFile.name
+        AppService.postMethode('add-category', {
+            name: this.state.name,
+            image: imgURL,
+        })
             .then(response => {
                 alert('Category added');
                 // this.setState({ categories: response });
@@ -46,6 +51,11 @@ class Categories extends Component {
             .catch(err => console.error(err));
     }
 
+    selectedFile = event => {
+        this.setState({
+            selectedFile: event.target.files[0]
+        })
+    }
 
     render() {
         return (
@@ -63,20 +73,27 @@ class Categories extends Component {
                                 <div className="text-center py-2 my-2 border-b">
                                     <p className="text-2xl font-semibold text-gray-700">Category</p>
                                 </div>
-                                <div className="flex border-b pb-2">
-                                    <div className="w-full flex flex-wrap">
-                                        <div className="w-11/12 p-1">
-                                            {this.LabelInput({
-                                                label: 'Name:',
-                                                name: 'name',
-                                                placeholder: 'Name!'
-                                            })}
+                                <form method="post" enctype="multipart/form-data" action="http://localhost:3001/add-category">
+                                    <div className="flex border-b pb-2">
+                                        <div className="w-7/12 flex flex-wrap">
+                                            <div className="w-full p-1">
+                                                {this.LabelInput({
+                                                    label: 'Name:',
+                                                    name: 'name',
+                                                    placeholder: 'Name!'
+                                                })}
+                                            </div>
+                                        </div>
+                                        <div className="w-4/12 flex flex-wrap">
+                                            <div className="w-full p-1">
+                                                <input className="mt-6" type="file" name="image" onChange={this.selectedFile} />
+                                            </div>
+                                        </div>
+                                        <div className="w-1/12 p-1 mt-4">
+                                            <input type="submit" value="Add" className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center" />
                                         </div>
                                     </div>
-                                    <div className="w-1/12 p-1 mt-4">
-                                        <button onClick={() => { this.handleClick(this.state.name) }} className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center">Add</button>
-                                    </div>
-                                </div>
+                                </form>
                                 <div>
                                     {this.state.categories.map((item, i) => {
                                         return (
