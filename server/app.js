@@ -21,7 +21,6 @@ express.static(path.join(__dirname, "./../public"))
 
 const upload = multer({
 	dest: "/uploads/images"
-	// you might also want to set some limits: https://github.com/expressjs/multer#limits
 });
 
 const handleError = (err, res) => {
@@ -93,6 +92,20 @@ app.get('/product', (req, res) =>
 	Product.findAll()
 		.then(products => {
 			res.send(products);
+		})
+		.catch(err => console.log(err)));
+
+app.get('/categories', (req, res) =>
+	Categories.findAll()
+		.then(categories => {
+			res.send(categories);
+		})
+		.catch(err => console.log(err)));
+
+app.get('/sub-categories', (req, res) =>
+	SubCategories.findAll()
+		.then(subcategories => {
+			res.send(subcategories);
 		})
 		.catch(err => console.log(err)));
 

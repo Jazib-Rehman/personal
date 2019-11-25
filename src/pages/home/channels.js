@@ -1,5 +1,3 @@
-import AppService from './../../services/app.service'
-
 import React from 'react'
 import mock from './../mock.json'
 import { Facebook } from 'react-feather'
@@ -38,16 +36,7 @@ class Channels extends React.Component {
         }
     }
 
-    // componentDidMount() {
-    //     AppService.get('products')
-    //         .then(response => {
-    //             this.setState({ products: response })
-    //         })
-    //         .catch(err => console.error(err));
-    // }
-
     render() {
-        const { products } = this.state;
         return (
             <section className="bg-dark-trans text-center py-12 text-black relative z-30">
                 <h1 className="flex items-center justify-center font-prim">
