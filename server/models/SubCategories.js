@@ -11,6 +11,10 @@ const SubCategories = db.define('sub_categories', {
         type: Sequelize.STRING,
         field: 'cat_id'
     },
+    image: {
+        type: Sequelize.STRING,
+        field: 'image'
+    }
 }, {
     freezeTableName: true
 })

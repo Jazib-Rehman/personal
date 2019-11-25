@@ -28,8 +28,9 @@ class Category extends React.Component {
                 </h2>
                 <div className="flex flex-wrap  mt-8 w-full  m-auto w-full md:w-2/3 ">
                     {
-                        this.state.products.map((meal, j) => (
-                            <Meal meal={meal} key={j} />
+                        this.state.products.map((item, j) => (
+                            console.log(item),
+                            <Meal meal={item} key={j} />
                         ))
                     }
                 </div>

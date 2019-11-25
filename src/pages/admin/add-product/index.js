@@ -210,8 +210,6 @@ class AppProduct extends React.Component {
                                         </div>
                                         <div className="w-1/2 p-1 border-t border-b">
                                             {this.Dropdown(this.state.catMethod)}
-                                            {/* <input type="text" name="cat_id" hidden value={this.state.cat_id} />
-                                            <input type="text" name="subcat_id" hidden value={this.state.subcat_id} /> */}
                                         </div>
                                         <div className="w-full p-1 border-t border-b">
                                             <input type="file" name="file" onChange={this.selectedFile} />
@@ -219,13 +217,8 @@ class AppProduct extends React.Component {
 
                                     </div>
                                     <div className="w-full flex justify-end p-1 mt-4">
-                                        {/* <button onClick={() => { this.handleClick(this.state) }} className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center"><PlusCircle className="h-5 -mt-1" />Add</button> */}
                                         <input type="submit" value="Submit" />
                                     </div>
-                                </form>
-                                <form method="post" enctype="multipart/form-data" action="http://localhost:3001/upload">
-                                    <input type="file" name="image" />
-                                    <input type="submit" value="Submit" />
                                 </form>
                             </div>
                         </div>
