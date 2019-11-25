@@ -1,4 +1,4 @@
-
+import AppService from './../../services/app.service'
 
 import React from 'react'
 import Meal from '../../components/meal'
@@ -8,9 +8,21 @@ class OurFood extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            categories: []
+        }
+    }
+
+    componentDidMount() {
+        AppService.get('categories')
+            .then(response => {
+                this.setState({ categories: response })
+            })
+            .catch(err => console.error(err));
     }
 
     render() {
+        const { products } = this.state;
         return (
             <div className="bg-white bg-grid w-full">
                 <div className="fixed top-100 left-0 w-screen overflow-hidden z-10 bages">
@@ -39,9 +51,13 @@ class OurFood extends React.Component {
                     </div>
                     <div className="w-full md:px-24">
                         <div className="slider horizontal mt-4 z-40 m-auto h-64 items-center">
-                            {this.props.meals[0].meals.map((meal, i) => (
+                            {/* {this.props.meals[0].meals.map((meal, i) => (
                                 <Meal meal={meal} key={i} />
-                            ))}
+                            ))} */}
+                            {this.state.categories.map((item, i) => {
+                                return <Meal meal={item} key={i} />
+                                // <div key={i}>{item.name} </div>
+                            })}
                         </div>
                     </div>
                 </section>
