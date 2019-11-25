@@ -14,7 +14,7 @@ class OurFood extends React.Component {
     }
 
     componentDidMount() {
-        AppService.get('categories')
+        AppService.get('categories-with-products')
             .then(response => {
                 this.setState({ categories: response })
             })
