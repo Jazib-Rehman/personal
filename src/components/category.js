@@ -1,3 +1,5 @@
+import AppService from './../services/app.service'
+
 import React from 'react'
 import Meal from './meal'
 
@@ -5,6 +7,17 @@ class Category extends React.Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            products: []
+        }
+    }
+
+    componentDidMount() {
+        AppService.get('products')
+            .then(response => {
+                this.setState({ products: response })
+            })
+            .catch(err => console.error(err));
     }
 
     render() {
@@ -15,7 +28,7 @@ class Category extends React.Component {
                 </h2>
                 <div className="flex flex-wrap  mt-8 w-full  m-auto w-full md:w-2/3 ">
                     {
-                        this.props.category.meals.map((meal, j) => (
+                        this.state.products.map((meal, j) => (
                             <Meal meal={meal} key={j} />
                         ))
                     }

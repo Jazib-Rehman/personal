@@ -88,7 +88,7 @@ app.post('/add-product', urlencodedParser, (req, res) => {
 		.catch(err => console.log(err));
 });
 
-app.get('/product', (req, res) =>
+app.get('/products', (req, res) =>
 	Product.findAll()
 		.then(products => {
 			res.send(products);

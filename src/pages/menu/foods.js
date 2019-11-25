@@ -1,3 +1,4 @@
+import AppService from './../../services/app.service'
 
 import React from 'react'
 import mock from './../mock.json'
@@ -26,12 +27,19 @@ class Foods extends React.Component {
 
     constructor(props) {
         super(props);
-
-        console.log(categories)
         this.state = {
-            categories
+            categories: []
         }
     }
+
+    componentDidMount() {
+        AppService.get('categories')
+            .then(response => {
+                this.setState({ categories: response })
+            })
+            .catch(err => console.error(err));
+    }
+
 
     render() {
         return (

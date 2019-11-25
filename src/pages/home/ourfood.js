@@ -22,7 +22,6 @@ class OurFood extends React.Component {
     }
 
     render() {
-        const { products } = this.state;
         return (
             <div className="bg-white bg-grid w-full">
                 <div className="fixed top-100 left-0 w-screen overflow-hidden z-10 bages">
