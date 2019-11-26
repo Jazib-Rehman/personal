@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import { Route, HashRouter as Router } from 'react-router-dom'
+import { Route, BrowserRouter as Router } from 'react-router-dom'
 import Home from './pages/home';
 import AboutUs from './pages/about-us';
 import ContactUs from './pages/contact-us';
@@ -17,7 +17,7 @@ import "./static/tailwind.css";
 // import App from './App';
 
 const routing = (
-    <Router>
+    <Router basename="/build">
         <div>
             <Route exact path="/" component={Home} />
             <Route path="/home" component={Home} />
