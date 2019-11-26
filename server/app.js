@@ -49,9 +49,9 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(bodyParser.json())
 
 //Models/tables
-Categories = require('./models/Categories'), (sequelize, { modelName: 'Categories' });
-Product = require('./models/Product'), (sequelize, { modelName: 'Product' });
-SubCategories = require('./models/SubCategories'), (sequelize, { modelName: 'SubCategories' });
+Categories = require('./models/categories'), (sequelize, { modelName: 'Categories' });
+Product = require('./models/product'), (sequelize, { modelName: 'Product' });
+SubCategories = require('./models/subcategories'), (sequelize, { modelName: 'SubCategories' });
 
 //Relations
 Categories.hasMany(Product, {
