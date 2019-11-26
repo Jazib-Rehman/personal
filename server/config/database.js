@@ -12,9 +12,11 @@ module.exports = new Sequelize('shawarma', 'root', '', {
         idle: 10000
     },
     dialectOptions: {
-        useUTC: false //for reading from database
+        collate: 'utf8mb4_general_ci',
+        useUTC: false,
+        timezone: 'Etc/GMT0'
     },
-    timezone: 'Etc/GMT0' //for writing to database
+    timezone: 'Etc/GMT0'
 });
 
 
