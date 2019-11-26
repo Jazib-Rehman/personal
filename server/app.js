@@ -118,6 +118,17 @@ app.post('/add-product', urlencodedParser, (req, res) => {
 		.catch(err => console.log(err));
 });
 
+app.post('/delete-product', (req, res) => {
+	console.log(req.body)
+	Product.destroy({
+		where: {
+			id: req.body.id
+		}
+	})
+		.then(product => res.send(product))
+		.catch(err => console.log(err));
+});
+
 app.get('/products', (req, res) =>
 	Product.findAll()
 		.then(products => {
