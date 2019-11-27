@@ -62,7 +62,7 @@ Product.belongsTo(Categories);
 
 app.post(
 	"/upload",
-	upload.single("file"),
+	upload.single("image"),
 	(req, res) => {
 		let newDate = new Date()
 		let date = newDate.getDate();
@@ -143,14 +143,6 @@ app.get('/categories-with-products', (req, res) => {
 	});
 })
 
-
-app.get('/sub-categories', (req, res) =>
-	SubCategories.findAll()
-		.then(subcategories => {
-			res.send(subcategories);
-		})
-		.catch(err => console.log(err)));
-
 app.post(
 	'/add-category',
 	upload.single('image'),
@@ -167,7 +159,7 @@ app.post(
 
 		const imgURL = "uploads/categories/" + time + ".jpg";
 		const tempPath = req.file.path;
-		const targetPath = path.join(__dirname, "./../public/uploads/categories/" + time + ".jpg");
+		const targetPath = path.join(__dirname, "./../build/uploads/categories/" + time + ".jpg");
 		fs.rename(tempPath, targetPath, err => {
 			if (err) return handleError(err, res);
 			Categories.create({
@@ -177,8 +169,7 @@ app.post(
 				.then(product => res.send(product))
 				.catch(err => console.log(err));
 
-			res
-				.status(200)
+			res.redirect('http://localhost:3000/admin/categories');
 		});
 	}
 );
@@ -189,21 +180,6 @@ app.get('/category', (req, res) =>
 			res.send(products);
 		})
 		.catch(err => console.log(err)));
-
-app.post('/add-sub-category', urlencodedParser, (req, res) => {
-	SubCategories.create(req.body)
-		.then(product => res.send(product))
-		.catch(err => console.log(err));
-});
-
-app.get('/sub-category', (req, res) =>
-	SubCategories.findAll()
-		.then(products => {
-			res.send(products);
-		})
-		.catch(err => console.log(err)));
-
-
 
 app.listen(3001, () => {
 	console.log('Server Listening on port: 3001')

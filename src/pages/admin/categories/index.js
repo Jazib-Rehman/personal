@@ -88,7 +88,6 @@ class Categories extends Component {
                                     </div>
                                     <div className="w-4/12 flex flex-wrap">
                                         <div className="w-full p-1">
-                                            {/* <input type="file" onChange={this.handleFileUpload} /> */}
                                             <input className="mt-6" type="file" name="image" onChange={this.selectedFile} />
                                         </div>
                                     </div>

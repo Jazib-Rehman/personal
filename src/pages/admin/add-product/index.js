@@ -19,7 +19,6 @@ class AppProduct extends React.Component {
             description: '',
             nutrition: '',
             price: '',
-            sub_categories: [],
             categories: [],
             catMethod: "Category",
             selectedFile: null
@@ -56,11 +55,6 @@ class AppProduct extends React.Component {
 
 
     componentDidMount() {
-        AppService.getMethode('sub-category')
-            .then(response => {
-                this.setState({ sub_categories: response })
-            })
-            .catch(err => console.error(err));
         AppService.getMethode('category')
             .then(response => {
                 this.setState({ categories: response })
@@ -83,8 +77,38 @@ class AppProduct extends React.Component {
         )
     }
 
-    handleClick() {
+    Dropdown(cat) {
+        // if (cat == "Category") {
+        return (
+            <div className="form-group">
+                <p className="text-xs font-semibold">Category</p>
+                <select value={this.state.cat_id} name="cat_id" onChange={this.onSelectChange} className="w-full p-2-5 border bg-white outline-none font-thin">
+                    <option value="none">Select a Category</option>
+                    {this.state.categories.map((item, i) => {
+                        return (
+                            <option value={item.id} key={i}>{item.name}</option>
+                        )
+                    })}
+                </select>
+            </div>
+        )
+        // }
+        // return (
+        // <div className="form-group">
+        //     <p className="text-xs font-semibold">Sub Category</p>
+        //     <select value={this.state.subcat_id} name="subcat_id" onChange={this.onSelectChange} className="w-full p-2-5 border bg-white outline-none font-thin">
+        //         <option value="none">Select a Sub Category</option>
+        //         {this.state.sub_categories.map((item, i) => {
+        //             return (
+        //                 <option value={item.id} key={i}>{item.name}</option>
+        //             )
+        //         })}
+        //     </select>
+        // </div>
+        // );
+    }
 
+    handleClick = () => {
         const data = new FormData()
         data.append('image', this.state.selectedFile)
         data.append('name', this.state.name)
@@ -100,52 +124,6 @@ class AppProduct extends React.Component {
                 window.location.reload();
             })
             .catch(err => console.error(err));
-        // const imgURL = "uploads/" + this.state.selectedFile.name
-        // AppService.postMethode('upload', {
-        //     name: this.state.name,
-        //     cat_id: this.state.cat_id,
-        //     subcat_id: this.state.subcat_id,
-        //     description: this.state.description,
-        //     nutrition: this.state.nutrition,
-        //     price: this.state.price,
-        //     image: imgURL,
-        // })
-        //     .then(response => {
-        //         alert('Product added');
-        //         window.location.reload();
-        //     })
-        //     .catch(err => console.error(err));
-    }
-
-    Dropdown(cat) {
-        if (cat == "Category") {
-            return (
-                <div className="form-group">
-                    <p className="text-xs font-semibold">Category</p>
-                    <select value={this.state.cat_id} name="cat_id" onChange={this.onSelectChange} className="w-full p-2-5 border bg-white outline-none font-thin">
-                        <option value="none">Select a Category</option>
-                        {this.state.categories.map((item, i) => {
-                            return (
-                                <option value={item.id} key={i}>{item.name}</option>
-                            )
-                        })}
-                    </select>
-                </div>
-            )
-        }
-        return (
-            <div className="form-group">
-                <p className="text-xs font-semibold">Sub Category</p>
-                <select value={this.state.subcat_id} name="subcat_id" onChange={this.onSelectChange} className="w-full p-2-5 border bg-white outline-none font-thin">
-                    <option value="none">Select a Sub Category</option>
-                    {this.state.sub_categories.map((item, i) => {
-                        return (
-                            <option value={item.id} key={i}>{item.name}</option>
-                        )
-                    })}
-                </select>
-            </div>
-        );
     }
 
     selectedFile = event => {
@@ -173,71 +151,72 @@ class AppProduct extends React.Component {
                                 <div className="text-center py-2 my-2 border-b">
                                     <p className="text-2xl font-semibold text-gray-700">Add Product</p>
                                 </div>
-                                <form method="post" enctype="multipart/form-data" action="http://localhost:3001/upload">
+                                {/* <form method="post" enctype="multipart/form-data" action="http://localhost:3001/upload"> */}
 
-                                    <div className="flex flex-wrap">
-                                        <div className="w-1/2 p-1">
-                                            {this.LabelInput({
-                                                label: 'Name:',
-                                                name: 'name',
-                                                property: 'name',
-                                                placeholder: 'Name!'
-                                            })}
-                                        </div>
-                                        <div className="w-1/2 p-1">
-                                            {this.LabelInput({
-                                                label: 'Nutrition Information:',
-                                                name: 'nutrition',
-                                                property: 'nutrition',
-                                                placeholder: 'Nutrition Info!'
-                                            })}
-                                        </div>
-                                        <div className="w-1/2 p-1">
-                                            <p className="text-xs font-semibold">Description:</p>
-                                            <textarea name="description" onChange={this.handleChange.bind(this, 'description')} className="w-full p-2 border bg-white rounded rounded-sm" placeholder="Description!"></textarea>
-                                        </div>
-                                        <div className="w-1/2 p-1">
-                                            {this.LabelInput({
-                                                label: 'Price:',
-                                                name: 'price',
-                                                property: 'price',
-                                                placeholder: 'Price!'
-                                            })}
-                                        </div>
-                                        <div className="w-1/2 p-1 border-t border-b">
-                                            <div className="radio-btn-container" style={{ display: "flex" }}>
-                                                <div className="p-3 mt-3">
-                                                    <RadioButton
-                                                        changed={this.radioChangeHandler}
-                                                        id="1"
-                                                        isSelected={this.state.catMethod === "Category"}
-                                                        label="Category"
-                                                        value="Category"
-                                                    />
-                                                </div>
-                                                <div className="p-3 mt-3">
-                                                    <RadioButton
-                                                        changed={this.radioChangeHandler}
-                                                        id="2"
-                                                        isSelected={this.state.catMethod === "Sub Category"}
-                                                        label="Sub Category"
-                                                        value="Sub Category"
-                                                    />
-                                                </div>
+                                <div className="flex flex-wrap">
+                                    <div className="w-1/2 p-1">
+                                        {this.LabelInput({
+                                            label: 'Name:',
+                                            name: 'name',
+                                            property: 'name',
+                                            placeholder: 'Name!'
+                                        })}
+                                    </div>
+                                    <div className="w-1/2 p-1">
+                                        {this.LabelInput({
+                                            label: 'Nutrition Information:',
+                                            name: 'nutrition',
+                                            property: 'nutrition',
+                                            placeholder: 'Nutrition Info!'
+                                        })}
+                                    </div>
+                                    <div className="w-1/2 p-1">
+                                        <p className="text-xs font-semibold">Description:</p>
+                                        <textarea name="description" onChange={this.handleChange.bind(this, 'description')} className="w-full p-2 border bg-white rounded rounded-sm" placeholder="Description!"></textarea>
+                                    </div>
+                                    <div className="w-1/2 p-1">
+                                        {this.LabelInput({
+                                            label: 'Price:',
+                                            name: 'price',
+                                            property: 'price',
+                                            placeholder: 'Price!'
+                                        })}
+                                    </div>
+                                    <div className="w-1/2 p-1 border-t border-b">
+                                        {/* <div className="radio-btn-container" style={{ display: "flex" }}>
+                                            <div className="p-3 mt-3">
+                                                <RadioButton
+                                                    changed={this.radioChangeHandler}
+                                                    id="1"
+                                                    isSelected={this.state.catMethod === "Category"}
+                                                    label="Category"
+                                                    value="Category"
+                                                />
                                             </div>
-                                        </div>
-                                        <div className="w-1/2 p-1 border-t border-b">
-                                            {this.Dropdown(this.state.catMethod)}
-                                        </div>
-                                        <div className="w-full p-1 border-t border-b">
-                                            <input type="file" name="file" onChange={this.selectedFile} />
-                                        </div>
+                                            <div className="p-3 mt-3">
+                                                <RadioButton
+                                                    changed={this.radioChangeHandler}
+                                                    id="2"
+                                                    isSelected={this.state.catMethod === "Sub Category"}
+                                                    label="Sub Category"
+                                                    value="Sub Category"
+                                                />
+                                            </div>
+                                        </div> */}
+                                    </div>
+                                    <div className="w-1/2 p-1 border-t border-b">
+                                        {this.Dropdown(this.state.catMethod)}
+                                    </div>
+                                    <div className="w-full p-1 border-t border-b">
+                                        <input type="file" name="image" onChange={this.selectedFile} />
+                                    </div>
 
-                                    </div>
-                                    <div className="w-full flex justify-end p-1 mt-4">
-                                        <input type="submit" value="Submit" />
-                                    </div>
-                                </form>
+                                </div>
+                                <div className="w-full flex justify-end p-1 mt-4">
+                                    <input type="button" onClick={this.handleClick} value="Add" className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center" />
+                                    {/* <input type="submit" value="Submit" /> */}
+                                </div>
+                                {/* </form> */}
                             </div>
                         </div>
                     </div>
