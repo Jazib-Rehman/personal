@@ -8,5 +8,8 @@ class AppService extends HttpService {
     postMethode(url, data) {
         return this.post(url, data)
     }
+    axiosPost(url, data) {
+        return this.axPost(url, data)
+    }
 }
 export default new AppService()
