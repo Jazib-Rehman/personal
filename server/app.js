@@ -50,7 +50,7 @@ app.use(bodyParser.json())
 //Models/tables
 Categories = require('./models/categories'), (sequelize, { modelName: 'Categories' });
 Product = require('./models/product'), (sequelize, { modelName: 'Product' });
-SubCategories = require('./models/subcategories'), (sequelize, { modelName: 'SubCategories' });
+// SubCategories = require('./models/subcategories'), (sequelize, { modelName: 'SubCategories' });
 
 //Relations
 Categories.hasMany(Product, {
