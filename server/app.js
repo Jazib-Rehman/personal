@@ -111,12 +111,6 @@ app.post(
 	}
 );
 
-// app.post('/add-product', urlencodedParser, (req, res) => {
-// 	Product.create(req.body)
-// 		.then(product => res.send(product))
-// 		.catch(err => console.log(err));
-// });
-
 app.post('/delete-product', (req, res) => {
 	console.log(req.body)
 	Product.destroy({
@@ -199,7 +193,7 @@ app.post(
 				.catch(err => console.log(err));
 
 			res
-				.json(req.body)
+				.status(200)
 		});
 	}
 );
