@@ -1,5 +1,4 @@
 
-
 const bodyParser = require('body-parser')
 const express = require('express');
 const cors = require('cors');
@@ -175,7 +174,7 @@ app.get('/sub-categories', (req, res) =>
 
 app.post(
 	'/add-category',
-	upload.single("image"),
+	upload.single('image'),
 	(req, res) => {
 		let newDate = new Date()
 		let date = newDate.getDate();
@@ -186,35 +185,22 @@ app.post(
 		let seconds = newDate.getSeconds();
 
 		let time = date + "" + month + "" + year + "" + hours + "" + minutes + "" + seconds;
+
+		const imgURL = "uploads/categories/" + time + ".jpg";
 		const tempPath = req.file.path;
 		const targetPath = path.join(__dirname, "./../public/uploads/categories/" + time + ".jpg");
+		fs.rename(tempPath, targetPath, err => {
+			if (err) return handleError(err, res);
+			Categories.create({
+				name: req.body.name,
+				image: imgURL
+			})
+				.then(product => res.send(product))
+				.catch(err => console.log(err));
 
-		if (
-			path.extname(req.file.originalname).toLowerCase() === ".jpg" ||
-			path.extname(req.file.originalname).toLowerCase() === ".png"
-		) {
-			fs.rename(tempPath, targetPath, err => {
-				if (err) return handleError(err, res);
-				Categories.create({
-					name: req.body.name,
-					image: "uploads/categories/" + time + path.extname(req.file.originalname).toLowerCase()
-				})
-					.then(product => res.send(product))
-					.catch(err => console.log(err));
-
-				res
-					.redirect('http://localhost:3000/admin/categories')
-			});
-		} else {
-			fs.unlink(tempPath, err => {
-				if (err) return handleError(err, res);
-
-				res
-					.status(403)
-					.contentType("text/plain")
-					.end("Only .jpg files are allowed!");
-			});
-		}
+			res
+				.json(req.body)
+		});
 	}
 );
 
