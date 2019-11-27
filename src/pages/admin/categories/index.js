@@ -4,7 +4,6 @@ import LeftNavbar from './../components/LeftNavbar'
 import Header from './../components/Header'
 import AppService from './../../../services/app.service'
 import { Trash2 } from 'react-feather'
-import axios from 'axios';
 
 class Categories extends Component {
 
@@ -43,10 +42,9 @@ class Categories extends Component {
         data.append('image', this.state.selectedFile)
         data.append('name', this.state.name)
 
-        axios.post("http://localhost:3001/add-category", data, {
+        AppService.axiosPost("add-category", data, {
         })
             .then(response => {
-                alert('Category added');
                 window.location.reload();
             })
             .catch(err => console.error(err));

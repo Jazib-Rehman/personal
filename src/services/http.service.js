@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export class HttpService {
     baseURL = 'http://localhost:3001/';
     get(url) {
@@ -11,5 +13,13 @@ export class HttpService {
             },
             body: JSON.stringify(data)
         }).then(resp => resp.json())
+    }
+    axPost(url, data) {
+        return axios.post(this.baseURL + url, data, {
+        })
+            .then(response => {
+                alert('Category added');
+            })
+            .catch(err => console.error(err));
     }
 }
