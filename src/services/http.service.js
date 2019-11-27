@@ -18,7 +18,7 @@ export class HttpService {
         return axios.post(this.baseURL + url, data, {
         })
             .then(response => {
-                alert('Category added');
+                alert('Successfully added');
             })
             .catch(err => console.error(err));
     }

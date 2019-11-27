@@ -73,41 +73,26 @@ app.post(
 		let seconds = newDate.getSeconds();
 
 		let time = date + "" + month + "" + year + "" + hours + "" + minutes + "" + seconds;
+
+		const imgURL = "uploads/images/" + time + ".jpg";
 		const tempPath = req.file.path;
 		const targetPath = path.join(__dirname, "./../public/uploads/images/" + time + ".jpg");
+		fs.rename(tempPath, targetPath, err => {
+			if (err) return handleError(err, res);
+			Product.create({
+				name: req.body.name,
+				cat_id: req.body.cat_id,
+				subcat_id: req.body.subcat_id,
+				description: req.body.description,
+				nutrition: req.body.nutrition,
+				price: req.body.price,
+				image: imgURL
+			})
+				.then(product => res.send(product))
+				.catch(err => console.log(err));
 
-		if (
-			path.extname(req.file.originalname).toLowerCase() === ".jpg" ||
-			path.extname(req.file.originalname).toLowerCase() === ".png"
-		) {
-			fs.rename(tempPath, targetPath, err => {
-				if (err) return handleError(err, res);
-				console.log(req.body.cat_id, req.body.subcat_id);
-				Product.create({
-					name: req.body.name,
-					cat_id: req.body.cat_id,
-					subcat_id: req.body.subcat_id,
-					description: req.body.description,
-					nutrition: req.body.nutrition,
-					price: req.body.price,
-					image: "uploads/images/" + time + path.extname(req.file.originalname).toLowerCase(),
-				})
-					.then(product => res.send(product))
-					.catch(err => console.log(err));
-
-				res
-					.redirect('http://localhost:3000/admin/add-product')
-			});
-		} else {
-			fs.unlink(tempPath, err => {
-				if (err) return handleError(err, res);
-
-				res
-					.status(403)
-					.contentType("text/plain")
-					.end("Only .jpg files are allowed!");
-			});
-		}
+			res.redirect('http://localhost:3000/admin/add-product');
+		});
 	}
 );
 

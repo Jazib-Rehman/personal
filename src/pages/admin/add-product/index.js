@@ -84,21 +84,37 @@ class AppProduct extends React.Component {
     }
 
     handleClick() {
-        const imgURL = "uploads/" + this.state.selectedFile.name
-        AppService.postMethode('upload', {
-            name: this.state.name,
-            cat_id: this.state.cat_id,
-            subcat_id: this.state.subcat_id,
-            description: this.state.description,
-            nutrition: this.state.nutrition,
-            price: this.state.price,
-            image: imgURL,
+
+        const data = new FormData()
+        data.append('image', this.state.selectedFile)
+        data.append('name', this.state.name)
+        data.append('cat_id', this.state.cat_id)
+        data.append('subcat_id', this.state.subcat_id)
+        data.append('description', this.state.description)
+        data.append('nutrition', this.state.nutrition)
+        data.append('price', this.state.price)
+
+        AppService.axiosPost("upload", data, {
         })
             .then(response => {
-                alert('Product added');
                 window.location.reload();
             })
             .catch(err => console.error(err));
+        // const imgURL = "uploads/" + this.state.selectedFile.name
+        // AppService.postMethode('upload', {
+        //     name: this.state.name,
+        //     cat_id: this.state.cat_id,
+        //     subcat_id: this.state.subcat_id,
+        //     description: this.state.description,
+        //     nutrition: this.state.nutrition,
+        //     price: this.state.price,
+        //     image: imgURL,
+        // })
+        //     .then(response => {
+        //         alert('Product added');
+        //         window.location.reload();
+        //     })
+        //     .catch(err => console.error(err));
     }
 
     Dropdown(cat) {
@@ -134,8 +150,10 @@ class AppProduct extends React.Component {
 
     selectedFile = event => {
         this.setState({
-            selectedFile: event.target.files[0]
+            selectedFile: event.target.files[0],
+            loaded: 0
         })
+        console.log(event.target.files[0])
     }
 
 
