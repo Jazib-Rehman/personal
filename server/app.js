@@ -36,6 +36,9 @@ const upload = multer({
 	dest: "/uploads/images"
 });
 
+const folder = "./../public";
+const redirect = 'http://localhost:3000';
+
 const handleError = (err, res) => {
 	res
 		.status(500)
@@ -78,7 +81,7 @@ app.post(
 
 		const imgURL = "uploads/images/" + time + ".jpg";
 		const tempPath = req.file.path;
-		const targetPath = path.join(__dirname, "./../public/uploads/images/" + time + ".jpg");
+		const targetPath = path.join(__dirname, folder + "/uploads/images/" + time + ".jpg");
 		fs.rename(tempPath, targetPath, err => {
 			if (err) return handleError(err, res);
 			Product.create({
@@ -93,7 +96,7 @@ app.post(
 				.then(product => res.send(product))
 				.catch(err => console.log(err));
 
-			res.redirect('http://localhost:3000/admin/add-product');
+			res.redirect(redirect + "/admin/add-product");
 		});
 	}
 );
@@ -161,7 +164,7 @@ app.post(
 
 		const imgURL = "uploads/categories/" + time + ".jpg";
 		const tempPath = req.file.path;
-		const targetPath = path.join(__dirname, "./../build/uploads/categories/" + time + ".jpg");
+		const targetPath = path.join(__dirname, folder + "/uploads/categories/" + time + ".jpg");
 		fs.rename(tempPath, targetPath, err => {
 			if (err) return handleError(err, res);
 			Categories.create({
@@ -171,7 +174,7 @@ app.post(
 				.then(product => res.send(product))
 				.catch(err => console.log(err));
 
-			res.redirect('http://localhost:3000/admin/categories');
+			res.redirect(redirect + "/admin/categories");
 		});
 	}
 );
@@ -192,7 +195,7 @@ app.post(
 
 		const imgURL = "uploads/locators/" + time + ".jpg";
 		const tempPath = req.file.path;
-		const targetPath = path.join(__dirname, "./../public/uploads/locators/" + time + ".jpg");
+		const targetPath = path.join(__dirname, folder + "/uploads/locators/" + time + ".jpg");
 		fs.rename(tempPath, targetPath, err => {
 			if (err) return handleError(err, res);
 			Locators.create({
@@ -202,7 +205,7 @@ app.post(
 				.then(product => res.send(product))
 				.catch(err => console.log(err));
 
-			res.redirect('http://localhost:3000/admin/locator');
+			res.redirect(redirect + "/admin/locator");
 		});
 	}
 );
@@ -223,7 +226,7 @@ app.post(
 
 		const imgURL = "uploads/channels/" + time + ".jpg";
 		const tempPath = req.file.path;
-		const targetPath = path.join(__dirname, "./../public/uploads/channels/" + time + ".jpg");
+		const targetPath = path.join(__dirname, folder + "/uploads/channels/" + time + ".jpg");
 		fs.rename(tempPath, targetPath, err => {
 			if (err) return handleError(err, res);
 			Channels.create({
@@ -234,7 +237,7 @@ app.post(
 				.then(product => res.send(product))
 				.catch(err => console.log(err));
 
-			res.redirect('http://localhost:3000/admin/channels');
+			res.redirect(redirect + "/admin/channels");
 		});
 	}
 );
