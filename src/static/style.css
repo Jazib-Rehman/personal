@@ -65,7 +65,11 @@ button {
 }
 
 .bg-trans {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.bg-trans:hover, .hover {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .bg-dark {
@@ -241,7 +245,6 @@ footer i {
 .bg-white-trans {
   background: rgba(255, 255, 255, 0.95);
 }
-
 
 .p-2-5 {
   padding: 11px;
