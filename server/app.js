@@ -51,6 +51,7 @@ app.use(bodyParser.json())
 Categories = require('./models/categories'), (sequelize, { modelName: 'Categories' });
 Product = require('./models/product'), (sequelize, { modelName: 'Product' });
 Locators = require('./models/locators'), (sequelize, { modelName: 'Locators' });
+Channels = require('./models/channels'), (sequelize, { modelName: 'Channels' });
 // SubCategories = require('./models/subcategories'), (sequelize, { modelName: 'SubCategories' });
 
 //Relations
@@ -206,6 +207,38 @@ app.post(
 	}
 );
 
+app.post(
+	'/add-channel',
+	upload.single('image'),
+	(req, res) => {
+		let newDate = new Date()
+		let date = newDate.getDate();
+		let month = newDate.getMonth() + 1;
+		let year = newDate.getFullYear();
+		let hours = newDate.getHours();
+		let minutes = newDate.getMinutes();
+		let seconds = newDate.getSeconds();
+
+		let time = date + "" + month + "" + year + "" + hours + "" + minutes + "" + seconds;
+
+		const imgURL = "uploads/channels/" + time + ".jpg";
+		const tempPath = req.file.path;
+		const targetPath = path.join(__dirname, "./../public/uploads/channels/" + time + ".jpg");
+		fs.rename(tempPath, targetPath, err => {
+			if (err) return handleError(err, res);
+			Channels.create({
+				name: req.body.name,
+				link: req.body.link,
+				image: imgURL
+			})
+				.then(product => res.send(product))
+				.catch(err => console.log(err));
+
+			res.redirect('http://localhost:3000/admin/channels');
+		});
+	}
+);
+
 app.get('/category', (req, res) =>
 	Categories.findAll()
 		.then(products => {
@@ -215,6 +248,13 @@ app.get('/category', (req, res) =>
 
 app.get('/locators', (req, res) =>
 	Locators.findAll()
+		.then(products => {
+			res.send(products);
+		})
+		.catch(err => console.log(err)));
+
+app.get('/channels', (req, res) =>
+	Channels.findAll()
 		.then(products => {
 			res.send(products);
 		})
