@@ -4,36 +4,24 @@ import { Facebook } from 'react-feather'
 import { Twitter } from 'react-feather'
 import { Instagram } from 'react-feather'
 import { Youtube } from 'react-feather'
-
-const meals = mock.meals.map((item) => {
-    let meals = item.meals.map((meal) => {
-        return {
-            ...meal,
-            image: `/static/assets/menu/${item.name}/${meal.name}.jpg`,
-            isSpicy: meal.tags && meal.tags.toLowerCase().includes('spicy'),
-            isNormal: meal.tags && meal.tags.toLowerCase().includes('normal'),
-            isHomos: meal.tags && meal.tags.toLowerCase().includes('homos'),
-            isTahina: meal.tags && meal.tags.toLowerCase().includes('tahina')
-        }
-    });
-    return {
-        ...item,
-        meals,
-    }
-});
+import InstagramEmbed from 'react-instagram-embed';
+import AppService from './../../services/app.service'
 
 class Channels extends React.Component {
-
-    state = {
-        products: []
-    }
 
     constructor(props) {
         super(props);
         this.state = {
-            meals: meals[5].meals.slice(0, 6),
-            products: []
+            categories: []
         }
+    }
+
+    componentDidMount() {
+        AppService.get('channels')
+            .then(response => {
+                this.setState({ categories: response })
+            })
+            .catch(err => console.error(err));
     }
 
     render() {
@@ -61,19 +49,31 @@ class Channels extends React.Component {
                     </div>
                 </div>
                 <div className="flex flex-wrap md:w-1/2 p-4 md:p-0 m-auto mt-10">{
-                    this.state.meals.map((item, i) =>
-                        <div className="w-1/2 md:w-1/3 p-2" key={i}>
+                    this.state.categories.map((item, i) =>
+                        <a href={item.link} target="_blank" className="w-1/2 md:w-1/3 p-2" key={i}>
                             <img src={item.image} alt="dummy" className="w-full h-full fit-cover rounded-lg" />
-                        </div>
+                        </a>
                     )
                 }
                 </div>
 
-                <div>
+                {/* <div>
                     {this.state.products.map((item, i) => {
                         return <div key={i}>{item.name} </div>
                     })}
-                </div>
+                </div> */}
+                {/* <InstagramEmbed
+                    url='https://www.instagram.com/p/B42LLUzFaPb/'
+                    maxWidth={320}
+                    hideCaption={true}
+                    containerTagName='div'
+                    protocol=''
+                    injectScript
+                    onLoading={() => { }}
+                    onSuccess={() => { }}
+                    onAfterRender={() => { }}
+                    onFailure={() => { }}
+                /> */}
             </section>
 
         )
