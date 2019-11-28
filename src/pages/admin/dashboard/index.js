@@ -139,7 +139,7 @@ class Dashboard extends React.Component {
                                                 <Layers className="h-4 text-white" />
                                             </div>
                                         </a>
-                                        <a href="#" className="hover relative overflow-hidden rounded rounded-lg  w-64 h-64 flex mx-1 justify-center items-center">
+                                        <a href="admin/locator" className="hover relative overflow-hidden rounded rounded-lg  w-64 h-64 flex mx-1 justify-center items-center">
                                             <img src="/uploads/siteHeaders/locator.png" className="z-10 h-full object-cover absolute" />
                                             <div className="w-full h-full absolute z-20 bg-trans"></div>
                                             <div className="absolute z-30 flex justify-center items-center">

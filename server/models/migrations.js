@@ -1,13 +1,17 @@
-const Product = require('./Product');
-const Categories = require('./Categories');
-const SubCategories = require('./SubCategories');
+const Product = require('./product');
+const Categories = require('./categories');
+const SubCategories = require('./subCategories');
+const Locators = require('./locators');
 
-Product.sync({ force: true }).then(() => {
-    console.log('pproducts table created!')
-})
 Categories.sync({ force: true }).then(() => {
     console.log('categoriies table created!')
 })
 SubCategories.sync({ force: true }).then(() => {
+    console.log('sub-categories table created!')
+})
+Product.sync({ force: true }).then(() => {
+    console.log('products table created!')
+})
+Locators.sync({ force: true }).then(() => {
     console.log('sub-categories table created!')
 })
