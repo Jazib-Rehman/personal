@@ -4,7 +4,6 @@ import { Facebook } from 'react-feather'
 import { Twitter } from 'react-feather'
 import { Instagram } from 'react-feather'
 import { Youtube } from 'react-feather'
-import InstagramEmbed from 'react-instagram-embed';
 import AppService from './../../services/app.service'
 
 class Channels extends React.Component {
@@ -62,18 +61,6 @@ class Channels extends React.Component {
                         return <div key={i}>{item.name} </div>
                     })}
                 </div> */}
-                {/* <InstagramEmbed
-                    url='https://www.instagram.com/p/B42LLUzFaPb/'
-                    maxWidth={320}
-                    hideCaption={true}
-                    containerTagName='div'
-                    protocol=''
-                    injectScript
-                    onLoading={() => { }}
-                    onSuccess={() => { }}
-                    onAfterRender={() => { }}
-                    onFailure={() => { }}
-                /> */}
             </section>
 
         )
