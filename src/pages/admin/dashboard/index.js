@@ -4,7 +4,7 @@ import LeftNavbar from './../components/LeftNavbar'
 import Header from './../components/Header'
 import Meal from './../../../components/meal'
 import Card from '../../../components/kit/card'
-import { Layers, PlusCircle, Eye, RefreshCw, Inbox, FileText, MapPin, Coffee, Info } from 'react-feather';
+import { Layers, PlusCircle, Eye, RefreshCw, Inbox, FileText, MapPin, Coffee, Info, PlusSquare } from 'react-feather';
 
 class Dashboard extends React.Component {
 
@@ -36,14 +36,22 @@ class Dashboard extends React.Component {
                                         </div>
                                         <div className="p-2">
                                             <div className="flex flex-wrap justify-center items-center">
-                                                <div className="border rounded w-40 h-40 flex mx-1 hover:bg-gray-100 justify-center items-center">
-                                                    <p className="text-lg font-thin px-1">Add Product</p>
-                                                    <PlusCircle className="h-4" />
-                                                </div>
-                                                <div className="border rounded w-40 h-40 flex mx-1 hover:bg-gray-100 justify-center items-center">
-                                                    <p className="text-lg font-thin px-1">View Products</p>
-                                                    <Eye className="h-4" />
-                                                </div>
+                                                <a href="add-product" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
+                                                    <img src="/uploads/siteHeaders/bg.jpg" className="z-10 w-full h-full absolute" />
+                                                    <div className="w-full h-full absolute z-20 bg-trans"></div>
+                                                    <div className="absolute z-30 flex justify-center items-center">
+                                                        <p className="text-lg font-thin px-1 text-white">Add Product</p>
+                                                        <PlusCircle className="h-4 text-white" />
+                                                    </div>
+                                                </a>
+                                                <a href="#" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
+                                                    <img src="/uploads/siteHeaders/bg2.jpg" className="z-10 w-full h-full absolute" />
+                                                    <div className="w-full h-full absolute z-20 bg-trans"></div>
+                                                    <div className="absolute z-30 flex justify-center items-center">
+                                                        <p className="text-lg font-thin px-1 text-white">View Product</p>
+                                                        <Eye className="h-4 text-white" />
+                                                    </div>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -53,10 +61,14 @@ class Dashboard extends React.Component {
                                         </div>
                                         <div className="p-2">
                                             <div className="flex flex-wrap justify-center items-center">
-                                                <div className="border rounded w-40 h-40 flex mx-1 hover:bg-gray-100 justify-center items-center">
-                                                    <p className="text-lg font-thin px-1">Add Category</p>
-                                                    <PlusCircle className="h-4" />
-                                                </div>
+                                                <a href="categories" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
+                                                    <img src="/uploads/siteHeaders/bg3.jpg" className="z-10 w-full h-full absolute" />
+                                                    <div className="w-full h-full absolute z-20 bg-trans"></div>
+                                                    <div className="absolute z-30 flex justify-center items-center">
+                                                        <p className="text-lg font-thin px-1 text-white">Add Category</p>
+                                                        <PlusCircle className="h-4 text-white" />
+                                                    </div>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -66,10 +78,14 @@ class Dashboard extends React.Component {
                                         </div>
                                         <div className="p-2">
                                             <div className="flex flex-wrap justify-center items-center">
-                                                <div className="border rounded w-40 h-40 flex mx-1 hover:bg-gray-100 justify-center items-center">
-                                                    <p className="text-lg font-thin px-1">Update Basics</p>
-                                                    <RefreshCw className="h-4" />
-                                                </div>
+                                                <a href="#" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
+                                                    <img src="/uploads/siteHeaders/bg4.jpg" className="z-10 w-full h-full absolute" />
+                                                    <div className="w-full h-full absolute z-20 bg-trans"></div>
+                                                    <div className="absolute z-30 flex justify-center items-center">
+                                                        <p className="text-lg font-thin px-1 text-white">Update Basics</p>
+                                                        <RefreshCw className="h-4 text-white" />
+                                                    </div>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -81,14 +97,22 @@ class Dashboard extends React.Component {
                                         </div>
                                         <div className="p-2">
                                             <div className="flex flex-wrap justify-center items-center">
-                                                <div className="border rounded w-40 h-40 flex mx-1 hover:bg-gray-100 justify-center items-center">
-                                                    <p className="text-lg font-thin px-1">Inbox</p>
-                                                    <Inbox className="h-4" />
-                                                </div>
-                                                <div className="border rounded w-40 h-40 flex mx-1 hover:bg-gray-100 justify-center items-center">
-                                                    <p className="text-lg font-thin px-1">Feedbacks</p>
-                                                    <FileText className="h-4" />
-                                                </div>
+                                                <a href="#" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
+                                                    <img src="/uploads/siteHeaders/bg5.jpg" className="z-10 w-full h-full absolute" />
+                                                    <div className="w-full h-full absolute z-20 bg-trans"></div>
+                                                    <div className="absolute z-30 flex justify-center items-center">
+                                                        <p className="text-lg font-thin px-1 text-white">Inbox</p>
+                                                        <Inbox className="h-4 text-white" />
+                                                    </div>
+                                                </a>
+                                                <a href="#" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
+                                                    <img src="/uploads/siteHeaders/bg6.jpg" className="z-10 w-full h-full absolute" />
+                                                    <div className="w-full h-full absolute z-20 bg-trans"></div>
+                                                    <div className="absolute z-30 flex justify-center items-center">
+                                                        <p className="text-lg font-thin px-1 text-white">Feedbacks</p>
+                                                        <FileText className="h-4 text-white" />
+                                                    </div>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -99,32 +123,50 @@ class Dashboard extends React.Component {
                                 <div className="py-4 border-b">
                                     <p className="text-md font-normal my-5">Home</p>
                                     <div className="flex flex-wrap">
-                                        <div className="border rounded w-64 h-64 flex mx-1 hover:bg-gray-100 justify-center items-center">
-                                            <p className="text-lg font-thin px-1">Banner</p>
-                                            <Layers className="w-4" />
-                                        </div>
-                                        <div className="border rounded w-64 h-64 flex mx-1 hover:bg-gray-100 justify-center items-center">
-                                            <p className="text-lg font-thin px-1">Channel</p>
-                                            <Layers className="w-4" />
-                                        </div>
-                                        <div className="border rounded w-64 h-64 flex mx-1 hover:bg-gray-100 justify-center items-center">
-                                            <p className="text-lg font-thin px-1">Store Locator</p>
-                                            <MapPin className="w-4" />
-                                        </div>
+                                        <a href="#" className="hover relative overflow-hidden rounded rounded-lg  w-64 h-64 flex mx-1 justify-center items-center">
+                                            <img src="/uploads/siteHeaders/banner.jpg" className="z-10 h-full object-cover absolute" />
+                                            <div className="w-full h-full absolute z-20 bg-trans"></div>
+                                            <div className="absolute z-30 flex justify-center items-center">
+                                                <p className="text-lg font-thin px-1 text-white">Banner</p>
+                                                <Layers className="h-4 text-white" />
+                                            </div>
+                                        </a>
+                                        <a href="#" className="hover relative overflow-hidden rounded rounded-lg  w-64 h-64 flex mx-1 justify-center items-center">
+                                            <img src="/uploads/siteHeaders/channel.png" className="z-10 h-full object-cover absolute" />
+                                            <div className="w-full h-full absolute z-20 bg-trans"></div>
+                                            <div className="absolute z-30 flex justify-center items-center">
+                                                <p className="text-lg font-thin px-1 text-white">Channel</p>
+                                                <Layers className="h-4 text-white" />
+                                            </div>
+                                        </a>
+                                        <a href="#" className="hover relative overflow-hidden rounded rounded-lg  w-64 h-64 flex mx-1 justify-center items-center">
+                                            <img src="/uploads/siteHeaders/locator.png" className="z-10 h-full object-cover absolute" />
+                                            <div className="w-full h-full absolute z-20 bg-trans"></div>
+                                            <div className="absolute z-30 flex justify-center items-center">
+                                                <p className="text-lg font-thin px-1 text-white">Store Locator</p>
+                                                <MapPin className="h-4 text-white" />
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                                 <div className="py-4 flex flex-wrap">
                                     <div className="flex flex-wrap">
-                                        <div className="border rounded w-64 h-64 flex mx-1 hover:bg-gray-100 justify-center items-center">
-                                            <p className="text-lg font-thin px-1">Our Food</p>
-                                            <Coffee className="w-4" />
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-wrap">
-                                        <div className="border rounded w-64 h-64 flex mx-1 hover:bg-gray-100 justify-center items-center">
-                                            <p className="text-lg font-thin px-1">About Us</p>
-                                            <Info className="w-4" />
-                                        </div>
+                                        <a href="#" className="hover relative overflow-hidden rounded rounded-lg  w-64 h-64 flex mx-1 justify-center items-center">
+                                            <img src="/uploads/siteHeaders/food.jpg" className="z-10 h-full object-cover absolute" />
+                                            <div className="w-full h-full absolute z-20 bg-trans"></div>
+                                            <div className="absolute z-30 flex justify-center items-center">
+                                                <p className="text-lg font-thin px-1 text-white">Our Food</p>
+                                                <Coffee className="h-4 text-white" />
+                                            </div>
+                                        </a>
+                                        <a href="#" className="hover relative overflow-hidden rounded rounded-lg  w-64 h-64 flex mx-1 justify-center items-center">
+                                            <img src="/uploads/siteHeaders/about.png" className="z-10 h-full object-cover absolute" />
+                                            <div className="w-full h-full absolute z-20 bg-trans"></div>
+                                            <div className="absolute z-30 flex justify-center items-center">
+                                                <p className="text-lg font-thin px-1 text-white">About Us</p>
+                                                <Info className="h-4 text-white" />
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
