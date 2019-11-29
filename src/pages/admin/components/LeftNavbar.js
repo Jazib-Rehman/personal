@@ -21,27 +21,56 @@ class LeftNavbar extends React.Component {
                     ]
                 },
                 {
+                    name: 'Items',
+                    items: [
+                        {
+                            name: 'Products',
+                            items: [],
+                            icon: <Layers className="w-4" />,
+
+                        },
+                        {
+                            name: 'Categories',
+                            items: [],
+                            icon: <Layers className="w-4" />,
+
+                        },
+                        {
+                            name: 'Contact',
+                            items: [],
+                            icon: <Layers className="w-4" />,
+
+                        },
+                    ]
+                },
+                {
                     name: 'PAGES',
                     items: [
                         {
                             name: 'Home',
                             items: [
+                                // {
+                                //     name: 'Banner', items: [], icon: <Layers className="w-4" />, link: 'banner'
+                                // },
                                 {
-                                    name: 'Banner', items: [], icon: <Layers className="w-4" />
+                                    name: 'Channel', items: [], icon: <Layers className="w-4" />, link: 'channels'
                                 },
-                                { name: 'Channel', items: [], icon: <Layers className="w-4" /> },
+                                {
+                                    name: 'Store Locator', items: [], icon: <Layers className="w-4" />, link: 'locator'
+                                },
                             ],
                             icon: <Home className="w-4" />
                         },
-                        {
-                            name: 'Our Foods',
-                            items: [],
-                            icon: <FileMinus className="w-4" />
-                        },
+                        // {
+                        //     name: 'Our Foods',
+                        //     items: [],
+                        //     icon: <FileMinus className="w-4" />
+                        // },
                         {
                             name: 'About Us',
                             items: [],
-                            icon: <Phone className="w-4" />
+                            icon: <Phone className="w-4" />,
+                            link: 'about-us'
                         }
                     ]
                 }

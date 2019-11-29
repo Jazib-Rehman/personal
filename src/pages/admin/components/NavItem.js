@@ -21,13 +21,13 @@ class NavItem extends React.Component {
                     <div className="pr-2">
                         {this.props.item.icon}
                     </div>
-                    <div className="flex flex-grow items-center justify-between">
+                    <a href={this.props.item.link} className="px-2 flex flex-grow items-center justify-between">
                         <span className="inline-block">{this.props.item.name}</span>
                         <div className={this.props.item.items.length ? '' : 'hidden'}>
                             <ChevronDown className={!this.state.isShow ? 'w-4 trans-1' : 'hidden'} />
                             <ChevronUp className={this.state.isShow ? 'w-4 trans-1' : 'hidden'} />
                         </div>
-                    </div>
+                    </a>
                 </div>
                 {this.props.item.items.map((sub, i) => (
                     this.state.isShow ? <NavItem item={sub} key={i} /> : ''

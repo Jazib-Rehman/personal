@@ -36,7 +36,7 @@ class Dashboard extends React.Component {
                                         </div>
                                         <div className="p-2">
                                             <div className="flex flex-wrap justify-center items-center">
-                                                <a href="add-product" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
+                                                <a href="admin/add-product" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
                                                     <img src="/uploads/siteHeaders/bg.jpg" className="z-10 w-full h-full absolute" />
                                                     <div className="w-full h-full absolute z-20 bg-trans"></div>
                                                     <div className="absolute z-30 flex justify-center items-center">
@@ -123,14 +123,14 @@ class Dashboard extends React.Component {
                                 <div className="py-4 border-b">
                                     <p className="text-md font-normal my-5">Home</p>
                                     <div className="w-full flex flex-wrap justify-center">
-                                        <a href="#" className="hover relative overflow-hidden rounded rounded-lg  w-56 h-56 flex mx-1 justify-center items-center">
+                                        {/* <a href="#" className="hover relative overflow-hidden rounded rounded-lg  w-56 h-56 flex mx-1 justify-center items-center">
                                             <img src="/uploads/siteHeaders/banner.jpg" className="z-10 h-full object-cover absolute" />
                                             <div className="w-full h-full absolute z-20 bg-trans"></div>
                                             <div className="absolute z-30 flex justify-center items-center">
                                                 <p className="text-lg font-thin px-1 text-white">Banner</p>
                                                 <Layers className="h-4 text-white" />
                                             </div>
-                                        </a>
+                                        </a> */}
                                         <a href="admin/channels" className="hover relative overflow-hidden rounded rounded-lg  w-56 h-56 flex mx-1 justify-center items-center">
                                             <img src="/uploads/siteHeaders/channel.png" className="z-10 h-full object-cover absolute" />
                                             <div className="w-full h-full absolute z-20 bg-trans"></div>
@@ -147,18 +147,6 @@ class Dashboard extends React.Component {
                                                 <MapPin className="h-4 text-white" />
                                             </div>
                                         </a>
-                                    </div>
-                                </div>
-                                <div className="py-4 flex flex-wrap">
-                                    <div className="w-full flex flex-wrap justify-center">
-                                        {/* <a href="#" className="hover relative overflow-hidden rounded rounded-lg  w-64 h-64 flex mx-1 justify-center items-center">
-                                            <img src="/uploads/siteHeaders/food.jpg" className="z-10 h-full object-cover absolute" />
-                                            <div className="w-full h-full absolute z-20 bg-trans"></div>
-                                            <div className="absolute z-30 flex justify-center items-center">
-                                                <p className="text-lg font-thin px-1 text-white">Our Food</p>
-                                                <Coffee className="h-4 text-white" />
-                                            </div>
-                                        </a> */}
                                         <a href="#" className="hover relative overflow-hidden rounded rounded-lg  w-56 h-56 flex mx-1 justify-center items-center">
                                             <img src="/uploads/siteHeaders/about.png" className="z-10 h-full object-cover absolute" />
                                             <div className="w-full h-full absolute z-20 bg-trans"></div>
@@ -169,6 +157,11 @@ class Dashboard extends React.Component {
                                         </a>
                                     </div>
                                 </div>
+                                {/* <div className="py-4 flex flex-wrap">
+                                    <div className="w-full flex flex-wrap justify-center">
+                                        
+                                    </div>
+                                </div> */}
                             </div>
                         </div>
 
