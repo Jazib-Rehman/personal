@@ -10,7 +10,8 @@ class Products extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            categories: []
+            categories: [],
+            img: ''
         }
     }
 
@@ -66,7 +67,8 @@ class Products extends React.Component {
                                                         {
                                                             item.products.map((meal, i) => {
                                                                 return <div href="admin/add-product" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
-                                                                    <img src="/uploads/siteHeaders/bg.jpg" className="z-10 w-full h-full absolute" />
+                                                                    {this.state.img = "./../" + meal.image}
+                                                                    <img src={this.state.img} className="z-10 w-full h-full absolute" />
                                                                     <div className="w-full h-full absolute z-20 bg-trans"></div>
                                                                     <p className="absolute z-30 text-lg font-thin px-1 text-white">{meal.name}</p>
                                                                     <Edit onClick={this.onEyeClick.bind(this, meal.id)} className="cursor-pointer absolute z-30 h-4 text-white top-0 left-0 mt-1" />
