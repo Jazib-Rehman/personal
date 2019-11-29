@@ -79,9 +79,9 @@ app.post(
 
 		let time = date + "" + month + "" + year + "" + hours + "" + minutes + "" + seconds;
 
-		const imgURL = "uploads/images/" + time + ".jpg";
+		const imgURL = "uploads/images/" + time + path.extname(req.file.originalname);
 		const tempPath = req.file.path;
-		const targetPath = path.join(__dirname, folder + "/uploads/images/" + time + ".jpg");
+		const targetPath = path.join(__dirname, folder + "/uploads/images/" + time + path.extname(req.file.originalname));
 		fs.rename(tempPath, targetPath, err => {
 			if (err) return handleError(err, res);
 			Product.create({
@@ -102,22 +102,39 @@ app.post(
 );
 
 app.post('/delete-product', (req, res) => {
-	console.log(req.body)
+	console.log(folder + "/" + req.body.image)
 	Product.destroy({
 		where: {
 			id: req.body.id
 		}
 	})
-		.then(product => res.send(product))
+		.then(product => {
+			const path = "./public/" + req.body.image
+			fs.stat(path, function (err, stats) {
+				console.log(stats);//here we got all information of file in stats variable
+				if (err) {
+					return console.error(err);
+				}
+
+				fs.unlink(path, function (err) {
+					if (err) return console.log(err);
+					console.log('file deleted successfully');
+				});
+			});
+			res.status(200)
+		})
 		.catch(err => console.log(err));
+	res.redirect(redirect + "/admin/products");
 });
 
-app.get('/products', (req, res) =>
-	Product.findAll()
+app.get('/product', (req, res) => {
+	Product.findAll({ where: { id: req.query.id } })
 		.then(products => {
 			res.send(products);
 		})
-		.catch(err => console.log(err)));
+		.catch(err => console.log(err))
+}
+);
 
 app.get('/categories-with-products', (req, res) => {
 
