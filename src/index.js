@@ -14,6 +14,8 @@ import Categories from './pages/admin/categories';
 import SubCategories from './pages/admin/sub-categories';
 import Locator from './pages/admin/locator';
 import Channels from './pages/admin/channels';
+import Products from './pages/admin/products';
+import Edit from './pages/admin/edit';
 import "./static/style.css";
 import "./static/tailwind.css";
 // import App from './App';
@@ -33,6 +35,8 @@ const routing = (
             <Route path="/admin/sub-categories" component={SubCategories} />
             <Route path="/admin/locator" component={Locator} />
             <Route path="/admin/channels" component={Channels} />
+            <Route path="/admin/products" component={Products} />
+            <Route path="/admin/edit" component={Edit} />
         </div>
     </Router>
 )

@@ -73,7 +73,7 @@ class Locator extends Component {
                         <div className="pt-24 px-10 pb-10">
                             <div className="bg-white rounded shadow shadow-md py-4 px-8">
                                 <div className="text-center py-2 my-2 border-b">
-                                    <p className="text-2xl font-semibold text-gray-700">Category</p>
+                                    <p className="text-2xl font-semibold text-gray-700">Store Locator</p>
                                 </div>
                                 {/* <form method="post" enctype="multipart/form-data" action="http://localhost:3001/add-category"> */}
                                 <div className="flex border-b pb-2">
