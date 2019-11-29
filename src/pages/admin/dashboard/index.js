@@ -44,7 +44,7 @@ class Dashboard extends React.Component {
                                                         <PlusCircle className="h-4 text-white" />
                                                     </div>
                                                 </a>
-                                                <a href="#" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
+                                                <a href="admin/products" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
                                                     <img src="/uploads/siteHeaders/bg2.jpg" className="z-10 w-full h-full absolute" />
                                                     <div className="w-full h-full absolute z-20 bg-trans"></div>
                                                     <div className="absolute z-30 flex justify-center items-center">
