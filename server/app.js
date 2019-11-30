@@ -55,6 +55,7 @@ Categories = require('./models/categories'), (sequelize, { modelName: 'Categorie
 Product = require('./models/product'), (sequelize, { modelName: 'Product' });
 Locators = require('./models/locators'), (sequelize, { modelName: 'Locators' });
 Channels = require('./models/channels'), (sequelize, { modelName: 'Channels' });
+ProductOnly = require('./models/productonly'), (sequelize, { modelName: 'ProductOnly' });
 // SubCategories = require('./models/subcategories'), (sequelize, { modelName: 'SubCategories' });
 
 //Relations
@@ -101,6 +102,46 @@ app.post(
 	}
 );
 
+app.post(
+	"/update-product",
+	upload.single("image"),
+	(req, res) => {
+		// console.log(req.body)
+		let newDate = new Date()
+		let date = newDate.getDate();
+		let month = newDate.getMonth() + 1;
+		let year = newDate.getFullYear();
+		let hours = newDate.getHours();
+		let minutes = newDate.getMinutes();
+		let seconds = newDate.getSeconds();
+
+		let time = date + "" + month + "" + year + "" + hours + "" + minutes + "" + seconds;
+
+		const imgURL = "uploads/images/" + time + path.extname(req.file.originalname);
+		const tempPath = req.file.path;
+		const targetPath = path.join(__dirname, folder + "/uploads/images/" + time + path.extname(req.file.originalname));
+		fs.rename(tempPath, targetPath, err => {
+			if (err) return handleError(err, res);
+			ProductOnly.update(
+				{
+					name: req.body.name,
+					cat_id: req.body.cat_id,
+					subcat_id: req.body.subcat_id,
+					description: req.body.description,
+					nutrition: req.body.nutrition,
+					price: req.body.price,
+					image: imgURL
+				},
+				{ where: { id: req.body.id } }
+			)
+				.then(product => res.send(product))
+				.catch(err => console.log(err));
+
+			// res.redirect(redirect + "/admin/edit?id=" + req.body.id);
+		});
+	}
+);
+
 app.post('/delete-product', (req, res) => {
 	console.log(folder + "/" + req.body.image)
 	Product.destroy({
@@ -128,9 +169,17 @@ app.post('/delete-product', (req, res) => {
 });
 
 app.get('/product', (req, res) => {
-	Product.findAll({ where: { id: req.query.id } })
-		.then(products => {
-			res.send(products);
+	Categories.findAll()
+		.then(categories => {
+			ProductOnly.findAll({ where: { id: req.query.id } })
+				.then(products => {
+					const data = {
+						categories,
+						product: products[0]
+					}
+					res.send(data);
+				})
+				.catch(err => console.log(err))
 		})
 		.catch(err => console.log(err))
 }

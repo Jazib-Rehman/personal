@@ -1,19 +1,15 @@
 const Sequelize = require('sequelize');
 const db = require('../config/database');
 
-const Product = db.define('products', {
+const ProductOnly = db.define('products', {
     name: {
         type: Sequelize.STRING
     },
     cat_id: {
-        type: Sequelize.INTEGER,
-        references: 'Categories',
-        referencesKey: 'id'
+        type: Sequelize.INTEGER
     },
     subcat_id: {
-        type: Sequelize.INTEGER,
-        // references: 'SubCategories',
-        // referencesKey: 'id'
+        type: Sequelize.INTEGER
     },
     description: {
         type: Sequelize.STRING
@@ -30,4 +26,4 @@ const Product = db.define('products', {
 });
 
 
-module.exports = Product;
+module.exports = ProductOnly;

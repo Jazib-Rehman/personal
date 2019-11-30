@@ -11,5 +11,8 @@ class AppService extends HttpService {
     axiosPost(url, data) {
         return this.axPost(url, data)
     }
+    getProductById(id) {
+        return this.get('product?id=' + id)
+    }
 }
 export default new AppService()

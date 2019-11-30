@@ -4,20 +4,25 @@ import LeftNavbar from './../components/LeftNavbar'
 import Header from './../components/Header'
 import { Info } from 'react-feather';
 import AppService from './../../../services/app.service'
+import queryString from 'query-string'
+import appService from './../../../services/app.service';
 
 class Edit extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            name: '',
-            cat_id: '',
-            subcat_id: '',
-            description: '',
-            nutrition: '',
-            price: '',
             categories: [],
-            product: [],
+            product: {
+                name: '',
+                cat_id: '',
+                subcat_id: '',
+                description: '',
+                nutrition: '',
+                price: '',
+                image: '',
+            },
+            proIds: [],
             catMethod: "Category",
             selectedFile: null
         }
@@ -53,29 +58,42 @@ class Edit extends React.Component {
 
 
     componentDidMount() {
-        AppService.getMethode('category')
+        const id = queryString.parse(this.props.location.search).id
+        AppService.getProductById(id)
             .then(response => {
-                this.setState({ categories: response })
+                const { product, categories } = response
+                // debugger;
+                this.setState({
+                    product,
+                    // name: product.name,
+                    // nutrition: product.nutrition,
+                    categories
+                })
+                console.log(response[0])
             })
             .catch(err => console.error(err));
-        AppService.getMethode('product?id=' + 42)
-            .then(response => {
-                this.setState({ product: response })
+        const pros = this.state.categories.map(item => {
+            return item.products
+        })
+        pros.map((item, i) => {
+            return item.map(product => {
+                this.state.proIds.push({ id: product.id })
             })
-            .catch(err => console.error(err));
+        })
+        console.log(queryString.parse(this.props.location.search).id);
     }
 
-    handleChange = (property, event) => {
-        const state = this.state;
-        state[property] = event.target.value;
-        this.setState({ state: state });
+    handleChange = (property, value) => {
+        const { product } = this.state;
+        product[property] = value;
+        this.setState({ product });
     }
 
     LabelInput(props) {
         return (
             <div>
                 <p className="text-xs font-semibold">{props.label}</p>
-                <input type="text" name={props.name} onChange={this.handleChange.bind(this, props.property)} className="w-full p-2 border bg-white" placeholder={props.placeholder} />
+                <input type="text" name={props.name} value={this.state.product[props.property]} onChange={({ target }) => this.handleChange(props.property, target.value)} className="w-full p-2 border bg-white" placeholder={props.placeholder} />
             </div>
         )
     }
@@ -86,7 +104,7 @@ class Edit extends React.Component {
             <div className="form-group">
                 <p className="text-xs font-semibold">Category</p>
                 <select value={this.state.cat_id} name="cat_id" onChange={this.onSelectChange} className="w-full p-2-5 border bg-white outline-none font-thin">
-                    <option value="none">Select a Category</option>
+                    {/* <option value={this.state.product.cat_id}>Select a Category</option> */}
                     {this.state.categories.map((item, i) => {
                         return (
                             <option value={item.id} key={i}>{item.name}</option>
@@ -99,15 +117,17 @@ class Edit extends React.Component {
 
     handleClick = () => {
         const data = new FormData()
+        const { id, name, description, cat_id, subcat_id, nutrition, price } = this.state.product;
+        data.append('id', id)
         data.append('image', this.state.selectedFile)
-        data.append('name', this.state.name)
-        data.append('cat_id', this.state.cat_id)
-        data.append('subcat_id', this.state.subcat_id)
-        data.append('description', this.state.description)
-        data.append('nutrition', this.state.nutrition)
-        data.append('price', this.state.price)
+        data.append('name', name)
+        data.append('cat_id', cat_id)
+        data.append('subcat_id', subcat_id)
+        data.append('description', description)
+        data.append('nutrition', nutrition)
+        data.append('price', price)
 
-        AppService.axiosPost("upload", data, {
+        AppService.axiosPost("update-product", data, {
         })
             .then(response => {
                 window.location.reload();
@@ -123,6 +143,59 @@ class Edit extends React.Component {
         console.log(event.target.files[0])
     }
 
+    formUI() {
+        const { name, nutrition, cat_id, description, price, image } = this.state.product
+
+        return (
+            <div>
+                <div className="flex flex-wrap">
+                    <div className="w-1/2 p-1">
+                        {this.LabelInput({
+                            label: 'Name:',
+                            name: 'name',
+                            property: 'name',
+                            value: name,
+                            placeholder: 'Name!'
+                        })}
+                    </div>
+                    <div className="w-1/2 p-1">
+                        {this.LabelInput({
+                            label: 'Nutrition Information:',
+                            name: 'nutrition',
+                            property: 'nutrition',
+                            value: nutrition,
+                            placeholder: 'Nutrition Info!'
+                        })}
+                    </div>
+                    <div className="w-1/2 p-1">
+                        <p className="text-xs font-semibold">Description:</p>
+                        <textarea name="description" value={description} onChange={({ target }) => this.handleChange('description', target.value)} className="w-full p-2 border bg-white rounded rounded-sm" placeholder="Description!"></textarea>
+                    </div>
+                    <div className="w-1/2 p-1">
+                        {this.LabelInput({
+                            label: 'Price:',
+                            name: 'price',
+                            property: 'price',
+                            value: price,
+                            placeholder: 'Price!'
+                        })}
+                    </div>
+                    <div className="w-1/2 p-1 border-t border-b">
+                    </div>
+                    <div className="w-1/2 p-1 border-t border-b">
+                        {this.Dropdown(this.state.catMethod)}
+                    </div>
+                    <div className="w-full p-1 border-t border-b">
+                        <input type="file" name="image" onChange={this.selectedFile} />
+                    </div>
+
+                </div>
+                <div className="w-full flex justify-end p-1 mt-4">
+                    <input type="button" onClick={this.handleClick} value="Update" className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center" />
+                </div>
+            </div>
+        )
+    }
 
     render() {
         return (
@@ -140,54 +213,8 @@ class Edit extends React.Component {
                                 <div className="text-center py-2 my-2 border-b">
                                     <p className="text-2xl font-semibold text-gray-700">Edit Product</p>
                                 </div>
-                                {
-                                    this.state.product.map((item, i) => {
-                                        return <div>
-                                            <div className="flex flex-wrap">
-                                                <div className="w-1/2 p-1">
-                                                    {this.LabelInput({
-                                                        label: 'Name:',
-                                                        name: 'name',
-                                                        property: 'name',
-                                                        placeholder: 'Name!'
-                                                    })}
-                                                </div>
-                                                <div className="w-1/2 p-1">
-                                                    {this.LabelInput({
-                                                        label: 'Nutrition Information:',
-                                                        name: 'nutrition',
-                                                        property: 'nutrition',
-                                                        placeholder: 'Nutrition Info!'
-                                                    })}
-                                                </div>
-                                                <div className="w-1/2 p-1">
-                                                    <p className="text-xs font-semibold">Description:</p>
-                                                    <textarea name="description" onChange={this.handleChange.bind(this, 'description')} className="w-full p-2 border bg-white rounded rounded-sm" placeholder="Description!"></textarea>
-                                                </div>
-                                                <div className="w-1/2 p-1">
-                                                    {this.LabelInput({
-                                                        label: 'Price:',
-                                                        name: 'price',
-                                                        property: 'price',
-                                                        placeholder: 'Price!'
-                                                    })}
-                                                </div>
-                                                <div className="w-1/2 p-1 border-t border-b">
-                                                </div>
-                                                <div className="w-1/2 p-1 border-t border-b">
-                                                    {this.Dropdown(this.state.catMethod)}
-                                                </div>
-                                                <div className="w-full p-1 border-t border-b">
-                                                    <input type="file" name="image" onChange={this.selectedFile} />
-                                                </div>
 
-                                            </div>
-                                            <div className="w-full flex justify-end p-1 mt-4">
-                                                <input type="button" onClick={this.handleClick} value="Add" className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center" />
-                                            </div>
-                                        </div>
-                                    })
-                                }
+                                {this.formUI()}
                             </div>
                         </div>
                     </div>
