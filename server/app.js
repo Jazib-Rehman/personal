@@ -97,7 +97,7 @@ app.post(
 				.then(product => res.send(product))
 				.catch(err => console.log(err));
 
-			res.redirect(redirect + "/admin/add-product");
+			// res.redirect(redirect + "/admin/add-product");
 		});
 	}
 );
@@ -134,7 +134,21 @@ app.post(
 				},
 				{ where: { id: req.body.id } }
 			)
-				.then(product => res.send(product))
+				.then(product => {
+					const path = "./public/" + req.body.img
+					fs.stat(path, function (err, stats) {
+						console.log(stats);//here we got all information of file in stats variable
+						if (err) {
+							return console.error(err);
+						}
+
+						fs.unlink(path, function (err) {
+							if (err) return console.log(err);
+							console.log('file deleted successfully');
+						});
+					});
+					res.send(product)
+				})
 				.catch(err => console.log(err));
 
 			// res.redirect(redirect + "/admin/edit?id=" + req.body.id);
@@ -165,7 +179,7 @@ app.post('/delete-product', (req, res) => {
 			res.status(200)
 		})
 		.catch(err => console.log(err));
-	res.redirect(redirect + "/admin/products");
+	// res.redirect(redirect + "/admin/products");
 });
 
 app.get('/product', (req, res) => {
@@ -240,7 +254,7 @@ app.post(
 				.then(product => res.send(product))
 				.catch(err => console.log(err));
 
-			res.redirect(redirect + "/admin/categories");
+			// res.redirect(redirect + "/admin/categories");
 		});
 	}
 );
@@ -271,7 +285,7 @@ app.post(
 				.then(product => res.send(product))
 				.catch(err => console.log(err));
 
-			res.redirect(redirect + "/admin/locator");
+			// res.redirect(redirect + "/admin/locator");
 		});
 	}
 );
@@ -303,7 +317,7 @@ app.post(
 				.then(product => res.send(product))
 				.catch(err => console.log(err));
 
-			res.redirect(redirect + "/admin/channels");
+			// res.redirect(redirect + "/admin/channels");
 		});
 	}
 );

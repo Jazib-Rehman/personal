@@ -24,12 +24,10 @@ class Products extends React.Component {
     }
 
     onEyeClick = id => {
-        alert("id is " + id)
         window.location.replace("/admin/edit?id=" + id)
     }
 
     onTrashClick = product => {
-
         AppService.axiosPost("delete-product", product, {
         })
             .then(response => {

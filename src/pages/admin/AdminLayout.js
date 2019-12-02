@@ -3,9 +3,6 @@ import React from 'react'
 
 class AdminLayout extends React.Component {
 
-    constructor(props) {
-        super(props)
-    }
 
     render() {
         return (

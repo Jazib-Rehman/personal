@@ -1,26 +1,7 @@
 import AppService from './../../services/app.service'
 
 import React from 'react'
-import mock from './../mock.json'
 import Category from '../../components/category.js'
-
-const categories = mock.meals.map((item) => {
-    let meals = item.meals.map((meal) => {
-        return {
-            ...meal,
-            image: `/static/assets/menu/${item.name}/${meal.name}.jpg`,
-            isSpicy: meal.tags && meal.tags.toLowerCase().includes('spicy'),
-            isNormal: meal.tags && meal.tags.toLowerCase().includes('normal'),
-            isHomos: meal.tags && meal.tags.toLowerCase().includes('homos'),
-            isTahina: meal.tags && meal.tags.toLowerCase().includes('tahina'),
-            tags: meal.tags ? meal.tags.split(',') : []
-        }
-    });
-    return {
-        ...item,
-        meals,
-    }
-});
 
 class Foods extends React.Component {
 
