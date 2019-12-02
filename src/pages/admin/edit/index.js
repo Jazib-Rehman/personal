@@ -117,7 +117,7 @@ class Edit extends React.Component {
 
     handleClick = () => {
         const data = new FormData()
-        const { id, name, description, cat_id, subcat_id, nutrition, price } = this.state.product;
+        const { id, name, description, cat_id, subcat_id, nutrition, price, image } = this.state.product;
         data.append('id', id)
         data.append('image', this.state.selectedFile)
         data.append('name', name)
@@ -126,6 +126,7 @@ class Edit extends React.Component {
         data.append('description', description)
         data.append('nutrition', nutrition)
         data.append('price', price)
+        data.append('img', image)
 
         AppService.axiosPost("update-product", data, {
         })

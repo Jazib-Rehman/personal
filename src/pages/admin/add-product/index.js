@@ -2,11 +2,7 @@ import React from 'react'
 import AdminLayout from './../AdminLayout'
 import LeftNavbar from './../components/LeftNavbar'
 import Header from './../components/Header'
-import Meal from './../../../components/meal'
-import Card from '../../../components/kit/card'
-import { Layers, PlusCircle, Eye, RefreshCw, Inbox, FileText, MapPin, Coffee, Info } from 'react-feather';
 import AppService from './../../../services/app.service'
-import RadioButton from "./RadioButton";
 
 class AppProduct extends React.Component {
 

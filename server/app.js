@@ -56,6 +56,7 @@ Product = require('./models/product'), (sequelize, { modelName: 'Product' });
 Locators = require('./models/locators'), (sequelize, { modelName: 'Locators' });
 Channels = require('./models/channels'), (sequelize, { modelName: 'Channels' });
 ProductOnly = require('./models/productonly'), (sequelize, { modelName: 'ProductOnly' });
+Banner = require('./models/banner'), (sequelize, { modelName: 'Banner' });
 // SubCategories = require('./models/subcategories'), (sequelize, { modelName: 'SubCategories' });
 
 //Relations
@@ -97,7 +98,7 @@ app.post(
 				.then(product => res.send(product))
 				.catch(err => console.log(err));
 
-			res.redirect(redirect + "/admin/add-product");
+			// res.redirect(redirect + "/admin/add-product");
 		});
 	}
 );
@@ -134,7 +135,21 @@ app.post(
 				},
 				{ where: { id: req.body.id } }
 			)
-				.then(product => res.send(product))
+				.then(product => {
+					const path = "./public/" + req.body.img
+					fs.stat(path, function (err, stats) {
+						console.log(stats);//here we got all information of file in stats variable
+						if (err) {
+							return console.error(err);
+						}
+
+						fs.unlink(path, function (err) {
+							if (err) return console.log(err);
+							console.log('file deleted successfully');
+						});
+					});
+					res.send(product)
+				})
 				.catch(err => console.log(err));
 
 			// res.redirect(redirect + "/admin/edit?id=" + req.body.id);
@@ -165,7 +180,7 @@ app.post('/delete-product', (req, res) => {
 			res.status(200)
 		})
 		.catch(err => console.log(err));
-	res.redirect(redirect + "/admin/products");
+	// res.redirect(redirect + "/admin/products");
 });
 
 app.get('/product', (req, res) => {
@@ -240,7 +255,38 @@ app.post(
 				.then(product => res.send(product))
 				.catch(err => console.log(err));
 
-			res.redirect(redirect + "/admin/categories");
+			// res.redirect(redirect + "/admin/categories");
+		});
+	}
+);
+
+app.post(
+	'/add-banner',
+	upload.single('image'),
+	(req, res) => {
+		let newDate = new Date()
+		let date = newDate.getDate();
+		let month = newDate.getMonth() + 1;
+		let year = newDate.getFullYear();
+		let hours = newDate.getHours();
+		let minutes = newDate.getMinutes();
+		let seconds = newDate.getSeconds();
+
+		let time = date + "" + month + "" + year + "" + hours + "" + minutes + "" + seconds;
+
+		const imgURL = "uploads/site-headers/" + time + ".jpg";
+		const tempPath = req.file.path;
+		const targetPath = path.join(__dirname, folder + "/uploads/site-headers/" + time + ".jpg");
+		fs.rename(tempPath, targetPath, err => {
+			if (err) return handleError(err, res);
+			Banner.create({
+				name: req.body.name,
+				image: imgURL
+			})
+				.then(product => res.send(product))
+				.catch(err => console.log(err));
+
+			// res.redirect(redirect + "/admin/categories");
 		});
 	}
 );
@@ -271,7 +317,7 @@ app.post(
 				.then(product => res.send(product))
 				.catch(err => console.log(err));
 
-			res.redirect(redirect + "/admin/locator");
+			// res.redirect(redirect + "/admin/locator");
 		});
 	}
 );
@@ -303,10 +349,17 @@ app.post(
 				.then(product => res.send(product))
 				.catch(err => console.log(err));
 
-			res.redirect(redirect + "/admin/channels");
+			// res.redirect(redirect + "/admin/channels");
 		});
 	}
 );
+
+app.get('/banner', (req, res) =>
+	Banner.findAll()
+		.then(products => {
+			res.send(products);
+		})
+		.catch(err => console.log(err)));
 
 app.get('/category', (req, res) =>
 	Categories.findAll()

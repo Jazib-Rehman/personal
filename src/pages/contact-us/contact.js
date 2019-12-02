@@ -1,12 +1,7 @@
 
 import React from 'react'
 import mock from './../mock.json'
-import { Facebook } from 'react-feather'
-import { Twitter } from 'react-feather'
-import { Instagram } from 'react-feather'
-import { Youtube } from 'react-feather'
-import { MapPin } from 'react-feather'
-import { CreditCard } from 'react-feather'
+import { MapPin, Youtube, Instagram, Twitter, Facebook, CreditCard } from 'react-feather'
 
 const categories = mock.meals.map((item) => {
     let meals = item.meals.map((meal) => {

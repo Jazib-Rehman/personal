@@ -4,7 +4,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <header className="bg-prim font-prim text-white text-sm flex fixed w-full px-4 py-8 cursor-pointer items-center z-50 invisible md:visible">
+      <header className="bg-prim font-prim text-white text-sm flex fixed w-full px-4 py-8 cursor-pointer items-center z-50">
         <div className="flex-1">
           <span className="px-2 border-r">عربي</span>
           <span className="px-2">JOIN OUR FAMILY</span>
