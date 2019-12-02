@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import * as serviceWorker from './serviceWorker';
 import { Route, BrowserRouter as Router } from 'react-router-dom'
 import Home from './pages/home';
@@ -16,9 +17,9 @@ import Locator from './pages/admin/locator';
 import Channels from './pages/admin/channels';
 import Products from './pages/admin/products';
 import Edit from './pages/admin/edit';
+import Banner from './pages/admin/banner';
 import "./static/style.css";
 import "./static/tailwind.css";
-// import App from './App';
 
 const routing = (
     <Router basename="/build">
@@ -37,6 +38,7 @@ const routing = (
             <Route path="/admin/channels" component={Channels} />
             <Route path="/admin/products" component={Products} />
             <Route path="/admin/edit" component={Edit} />
+            <Route path="/admin/banner" component={Banner} />
         </div>
     </Router>
 )
