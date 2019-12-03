@@ -103,7 +103,7 @@ class Edit extends React.Component {
         return (
             <div className="form-group">
                 <p className="text-xs font-semibold">Category</p>
-                <select value={this.state.cat_id} name="cat_id" onChange={this.onSelectChange} className="w-full p-2-5 border bg-white outline-none font-thin">
+                <select value={this.state.product.cat_id} name="cat_id" onChange={({ target }) => this.handleChange("cat_id", target.value)} className="w-full p-2-5 border bg-white outline-none font-thin">
                     {/* <option value={this.state.product.cat_id}>Select a Category</option> */}
                     {this.state.categories.map((item, i) => {
                         return (
