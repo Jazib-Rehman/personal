@@ -180,7 +180,59 @@ app.post('/delete-product', (req, res) => {
 			res.status(200)
 		})
 		.catch(err => console.log(err));
-	// res.redirect(redirect + "/admin/products");
+	res.redirect(redirect + "/admin/products");
+});
+
+app.post('/delete-category', (req, res) => {
+	console.log(folder + "/" + req.body.image)
+	Categories.destroy({
+		where: {
+			id: req.body.id
+		}
+	})
+		.then(product => {
+			const path = "./public/" + req.body.image
+			fs.stat(path, function (err, stats) {
+				console.log(stats);//here we got all information of file in stats variable
+				if (err) {
+					return console.error(err);
+				}
+
+				fs.unlink(path, function (err) {
+					if (err) return console.log(err);
+					console.log('file deleted successfully');
+				});
+			});
+			res.status(200)
+		})
+		.catch(err => console.log(err));
+	res.redirect(redirect + "/admin/categories");
+});
+
+app.post('/delete-banner', (req, res) => {
+	console.log(folder + "/" + req.body.image)
+	Banner.destroy({
+		where: {
+			id: req.body.id
+		}
+	})
+		.then(product => {
+			const path = "./public/" + req.body.image
+			fs.stat(path, function (err, stats) {
+				console.log(stats);//here we got all information of file in stats variable
+				if (err) {
+					return console.error(err);
+				}
+
+				fs.unlink(path, function (err) {
+					if (err) return console.log(err);
+					console.log('file deleted successfully');
+				});
+			});
+			res.status(200)
+		})
+		.catch(err => console.log(err));
+	res.redirect(redirect + "/admin/banner");
 });
 
 app.get('/product', (req, res) => {
