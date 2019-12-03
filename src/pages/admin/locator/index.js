@@ -11,6 +11,7 @@ class Locator extends Component {
         super();
         this.state = {
             name: '',
+            message: false,
             locators: [],
             selectedFile: null
         }
@@ -38,16 +39,26 @@ class Locator extends Component {
     }
 
     handleClick = () => {
-        const data = new FormData()
-        data.append('image', this.state.selectedFile)
-        data.append('name', this.state.name)
-
-        AppService.axiosPost("add-locator", data, {
-        })
-            .then(response => {
-                window.location.reload();
+        if (
+            this.state.name === '' ||
+            this.state.selectedFile === null
+        ) {
+            this.setState({
+                message: true
             })
-            .catch(err => console.error(err));
+        } else {
+
+            const data = new FormData()
+            data.append('image', this.state.selectedFile)
+            data.append('name', this.state.name)
+
+            AppService.axiosPost("add-locator", data, {
+            })
+                .then(response => {
+                    window.location.reload();
+                })
+                .catch(err => console.error(err));
+        }
     }
 
     selectedFile = event => {
@@ -58,6 +69,15 @@ class Locator extends Component {
         console.log(event.target.files[0])
     }
 
+    error() {
+        if (this.state.message === true) {
+            return (
+                <div className="bg-red-500 py-2 px-4 text-white">
+                    Either Name or Image is missing!
+                </div>
+            )
+        }
+    }
 
     render() {
         return (
@@ -75,7 +95,7 @@ class Locator extends Component {
                                 <div className="text-center py-2 my-2 border-b">
                                     <p className="text-2xl font-semibold text-gray-700">Store Locator</p>
                                 </div>
-                                {/* <form method="post" enctype="multipart/form-data" action="http://localhost:3001/add-category"> */}
+                                {this.error()}
                                 <div className="flex border-b pb-2">
                                     <div className="w-7/12 flex flex-wrap">
                                         <div className="w-full p-1">
@@ -95,7 +115,6 @@ class Locator extends Component {
                                         <input type="button" onClick={this.handleClick} value="Add" className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center" />
                                     </div>
                                 </div>
-                                {/* </form> */}
                                 <div className="flex flex-wrap">
                                     {this.state.locators.map((item, i) => {
                                         return (
