@@ -21,6 +21,16 @@ class OurFood extends React.Component {
             .catch(err => console.error(err));
     }
 
+    categories() {
+        if (this.state.categories !== []) {
+            return this.state.categories.map((item, i) => {
+                return <Meal meal={item} key={i} />
+            })
+        } else {
+            return <p className="text-2xl font-thin">Nothing Found!</p>
+        }
+    }
+
     render() {
         return (
             <div className="bg-white bg-grid w-full">
@@ -50,9 +60,7 @@ class OurFood extends React.Component {
                     </div>
                     <div className="w-full md:px-24">
                         <div className="slider horizontal mt-4 z-40 m-auto h-64 items-center">
-                            {this.state.categories.map((item, i) => {
-                                return <Meal meal={item} key={i} />
-                            })}
+                            {this.categories()}
                         </div>
                     </div>
                 </section>

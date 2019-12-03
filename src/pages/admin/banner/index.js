@@ -11,6 +11,7 @@ class Banner extends Component {
         super();
         this.state = {
             name: '',
+            message: false,
             banner: [],
             selectedFile: null
         }
@@ -38,16 +39,26 @@ class Banner extends Component {
     }
 
     handleClick = () => {
-        const data = new FormData()
-        data.append('image', this.state.selectedFile)
-        data.append('name', this.state.name)
-
-        AppService.axiosPost("add-banner", data, {
-        })
-            .then(response => {
-                window.location.reload();
+        if (
+            this.state.name === '' ||
+            this.state.selectedFile === null
+        ) {
+            this.setState({
+                message: true
             })
-            .catch(err => console.error(err));
+        } else {
+
+            const data = new FormData()
+            data.append('image', this.state.selectedFile)
+            data.append('name', this.state.name)
+
+            AppService.axiosPost("add-banner", data, {
+            })
+                .then(response => {
+                    window.location.reload();
+                })
+                .catch(err => console.error(err));
+        }
     }
 
     selectedFile = event => {
@@ -67,6 +78,16 @@ class Banner extends Component {
             .catch(err => console.error(err));
     }
 
+    error() {
+        if (this.state.message === true) {
+            return (
+                <div className="bg-red-500 py-2 px-4 text-white">
+                    Either Name or Image is missing!
+                </div>
+            )
+        }
+    }
+
 
     render() {
         return (
@@ -84,7 +105,7 @@ class Banner extends Component {
                                 <div className="text-center py-2 my-2 border-b">
                                     <p className="text-2xl font-semibold text-gray-700">Banners</p>
                                 </div>
-                                {/* <form method="post" enctype="multipart/form-data" action="http://localhost:3001/add-category"> */}
+                                {this.error()}
                                 <div className="flex border-b pb-2">
                                     <div className="w-7/12 flex flex-wrap">
                                         <div className="w-full p-1">
@@ -104,17 +125,19 @@ class Banner extends Component {
                                         <input type="button" onClick={this.handleClick} value="Add" className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center" />
                                     </div>
                                 </div>
-                                {/* </form> */}
                                 <div>
                                     {this.state.banner.map((item, i) => {
                                         return (
                                             <div key={i}>
-                                                <div className="w-full p-2 flex border-b">
-                                                    <div className="w-11/12">
-                                                        {item.name}
+                                                <div className="w-full p-2 flex border-b relative">
+                                                    <img src={"./../" + item.image} className="adminBanner w-full object-cover" />
+                                                    <div className="absolute bottom-0 flex justify-center w-full mb-20">
+                                                        <div className="bg-trans p-2 text-white rounded">
+                                                            <p className="text-xl font-thin">{item.name}</p>
+                                                        </div>
                                                     </div>
-                                                    <div className="w-1/12 text-right">
-                                                        <button className="px-3 outline-none"><Trash2 onClick={this.onTrashClick.bind(this, item)} size="14" /></button>
+                                                    <div className="absolute bottom-0 flex justify-center w-full mb-12">
+                                                        <button className="outline-none bg-trans p-2 text-white rounded" onClick={this.onTrashClick.bind(this, item)}><Trash2 size="14" /></button>
                                                     </div>
                                                 </div>
                                             </div>

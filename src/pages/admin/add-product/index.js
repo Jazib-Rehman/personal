@@ -16,6 +16,7 @@ class AppProduct extends React.Component {
             nutrition: '',
             price: '',
             categories: [],
+            message: false,
             catMethod: "Category",
             selectedFile: null
         }
@@ -79,7 +80,7 @@ class AppProduct extends React.Component {
             <div className="form-group">
                 <p className="text-xs font-semibold">Category</p>
                 <select value={this.state.cat_id} name="cat_id" onChange={this.onSelectChange} className="w-full p-2-5 border bg-white outline-none font-thin">
-                    <option value="none">Select a Category</option>
+                    {/* <option value="none">Select a Category</option> */}
                     {this.state.categories.map((item, i) => {
                         return (
                             <option value={item.id} key={i}>{item.name}</option>
@@ -105,21 +106,35 @@ class AppProduct extends React.Component {
     }
 
     handleClick = () => {
-        const data = new FormData()
-        data.append('image', this.state.selectedFile)
-        data.append('name', this.state.name)
-        data.append('cat_id', this.state.cat_id)
-        data.append('subcat_id', this.state.subcat_id)
-        data.append('description', this.state.description)
-        data.append('nutrition', this.state.nutrition)
-        data.append('price', this.state.price)
-
-        AppService.axiosPost("upload", data, {
-        })
-            .then(response => {
-                window.location.reload();
+        if (
+            this.state.name === '' ||
+            this.state.selectedFile === null ||
+            this.state.cat_id === '' ||
+            this.state.description === '' ||
+            this.state.nutrition === '' ||
+            this.state.price === ''
+        ) {
+            this.setState({
+                message: true
             })
-            .catch(err => console.error(err));
+        } else {
+
+            const data = new FormData()
+            data.append('image', this.state.selectedFile)
+            data.append('name', this.state.name)
+            data.append('cat_id', this.state.cat_id)
+            data.append('subcat_id', this.state.subcat_id)
+            data.append('description', this.state.description)
+            data.append('nutrition', this.state.nutrition)
+            data.append('price', this.state.price)
+
+            AppService.axiosPost("upload", data, {
+            })
+                .then(response => {
+                    window.location.reload();
+                })
+                .catch(err => console.error(err));
+        }
     }
 
     selectedFile = event => {
@@ -130,6 +145,15 @@ class AppProduct extends React.Component {
         console.log(event.target.files[0])
     }
 
+    error() {
+        if (this.state.message === true) {
+            return (
+                <div className="bg-red-500 py-2 px-4 text-white">
+                    Kindly check all fields! (All fields should be filled!)
+                </div>
+            )
+        }
+    }
 
     render() {
         return (
@@ -147,8 +171,7 @@ class AppProduct extends React.Component {
                                 <div className="text-center py-2 my-2 border-b">
                                     <p className="text-2xl font-semibold text-gray-700">Add Product</p>
                                 </div>
-                                {/* <form method="post" enctype="multipart/form-data" action="http://localhost:3001/upload"> */}
-
+                                {this.error()}
                                 <div className="flex flex-wrap">
                                     <div className="w-1/2 p-1">
                                         {this.LabelInput({
@@ -210,9 +233,7 @@ class AppProduct extends React.Component {
                                 </div>
                                 <div className="w-full flex justify-end p-1 mt-4">
                                     <input type="button" onClick={this.handleClick} value="Add" className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center" />
-                                    {/* <input type="submit" value="Submit" /> */}
                                 </div>
-                                {/* </form> */}
                             </div>
                         </div>
                     </div>

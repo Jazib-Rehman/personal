@@ -23,6 +23,7 @@ class Edit extends React.Component {
                 image: '',
             },
             proIds: [],
+            message: false,
             catMethod: "Category",
             selectedFile: null
         }
@@ -103,7 +104,7 @@ class Edit extends React.Component {
         return (
             <div className="form-group">
                 <p className="text-xs font-semibold">Category</p>
-                <select value={this.state.cat_id} name="cat_id" onChange={this.onSelectChange} className="w-full p-2-5 border bg-white outline-none font-thin">
+                <select value={this.state.product.cat_id} name="cat_id" onChange={({ target }) => this.handleChange("cat_id", target.value)} className="w-full p-2-5 border bg-white outline-none font-thin">
                     {/* <option value={this.state.product.cat_id}>Select a Category</option> */}
                     {this.state.categories.map((item, i) => {
                         return (
@@ -116,24 +117,38 @@ class Edit extends React.Component {
     }
 
     handleClick = () => {
-        const data = new FormData()
-        const { id, name, description, cat_id, subcat_id, nutrition, price, image } = this.state.product;
-        data.append('id', id)
-        data.append('image', this.state.selectedFile)
-        data.append('name', name)
-        data.append('cat_id', cat_id)
-        data.append('subcat_id', subcat_id)
-        data.append('description', description)
-        data.append('nutrition', nutrition)
-        data.append('price', price)
-        data.append('img', image)
-
-        AppService.axiosPost("update-product", data, {
-        })
-            .then(response => {
-                window.location.reload();
+        if (
+            this.state.name === '' ||
+            this.state.selectedFile === null ||
+            this.state.cat_id === '' ||
+            this.state.description === '' ||
+            this.state.nutrition === '' ||
+            this.state.price === ''
+        ) {
+            this.setState({
+                message: true
             })
-            .catch(err => console.error(err));
+        } else {
+
+            const data = new FormData()
+            const { id, name, description, cat_id, subcat_id, nutrition, price, image } = this.state.product;
+            data.append('id', id)
+            data.append('image', this.state.selectedFile)
+            data.append('name', name)
+            data.append('cat_id', cat_id)
+            data.append('subcat_id', subcat_id)
+            data.append('description', description)
+            data.append('nutrition', nutrition)
+            data.append('price', price)
+            data.append('img', image)
+
+            AppService.axiosPost("update-product", data, {
+            })
+                .then(response => {
+                    window.location.reload();
+                })
+                .catch(err => console.error(err));
+        }
     }
 
     selectedFile = event => {
@@ -198,6 +213,16 @@ class Edit extends React.Component {
         )
     }
 
+    error() {
+        if (this.state.message === true) {
+            return (
+                <div className="bg-red-500 py-2 px-4 text-white">
+                    Kindly check all fields! (All fields should be filled!)
+                </div>
+            )
+        }
+    }
+
     render() {
         return (
             <AdminLayout>
@@ -214,7 +239,7 @@ class Edit extends React.Component {
                                 <div className="text-center py-2 my-2 border-b">
                                     <p className="text-2xl font-semibold text-gray-700">Edit Product</p>
                                 </div>
-
+                                {this.error()}
                                 {this.formUI()}
                             </div>
                         </div>
