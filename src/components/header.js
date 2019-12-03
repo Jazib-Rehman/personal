@@ -15,11 +15,11 @@ class Header extends React.Component {
           </a>
         </div>
         <div className="menu flex-1 flex justify-end">
-          <a href="/">HOME</a>
-          <a href="/menu" className="px-4">OUR FOOD</a>
-          <a href="/find-us" className="px-4">FIND US</a>
-          <a href="/about-us" className="px-4">ABOUT US</a>
-          <a href="/contact-us" className="px-4">CONTACT US</a>
+          <a href="/" className="hover:text-white hover:no-underline">HOME</a>
+          <a href="/menu" className="px-4 hover:text-white hover:no-underline">OUR FOOD</a>
+          <a href="/find-us" className="px-4 hover:text-white hover:no-underline">FIND US</a>
+          <a href="/about-us" className="px-4 hover:text-white hover:no-underline">ABOUT US</a>
+          <a href="/contact-us" className="px-4 hover:text-white hover:no-underline">CONTACT US</a>
         </div>
       </header>
     )

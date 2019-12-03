@@ -1,6 +1,6 @@
 import React from 'react'
 import NavItem from './NavItem'
-import { Home, Phone, Menu, PlusCircle, Eye, ShoppingCart, Grid, Info, Map, MapPin, Codesandbox, } from 'react-feather';
+import { Home, Phone, Menu, PlusCircle, Eye, ShoppingCart, Grid, Info, Map, MapPin, Codesandbox, Layers, } from 'react-feather';
 
 class LeftNavbar extends React.Component {
 
@@ -14,7 +14,7 @@ class LeftNavbar extends React.Component {
                     items: [
                         {
                             name: 'Dashboard',
-                            style: 'flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-4',
+                            style: 'hover:text-black hover:no-underline flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-4',
                             items: [],
                             link: '/admin',
                             icon: <Codesandbox className="w-4" />,
@@ -34,7 +34,7 @@ class LeftNavbar extends React.Component {
                                 {
                                     name: 'Add',
                                     items: [],
-                                    style: 'flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-6',
+                                    style: 'hover:text-black hover:no-underline flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-6',
                                     link: '/admin/add-product',
                                     icon: <PlusCircle className="w-4" />,
 
@@ -42,7 +42,7 @@ class LeftNavbar extends React.Component {
                                 {
                                     name: 'View',
                                     items: [],
-                                    style: 'flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-6',
+                                    style: 'hover:text-black hover:no-underline flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-6',
                                     link: '/admin/products',
                                     icon: <Eye className="w-4" />,
 
@@ -53,7 +53,7 @@ class LeftNavbar extends React.Component {
                         {
                             name: 'Categories',
                             items: [],
-                            style: 'flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-4',
+                            style: 'hover:text-black hover:no-underline flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-4',
                             link: '/admin/categories',
                             icon: <Grid className="w-4" />,
 
@@ -61,7 +61,7 @@ class LeftNavbar extends React.Component {
                         {
                             name: 'Contact',
                             items: [],
-                            style: 'flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-4',
+                            style: 'hover:text-black hover:no-underline flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-4',
                             icon: <Phone className="w-4" />,
 
                         },
@@ -76,16 +76,23 @@ class LeftNavbar extends React.Component {
                             style: 'flex inline-block items-center text-xs font-bold py-2 trans-1 hover:bg-indigo-600 pl-4',
                             items: [
                                 {
+                                    name: 'Banners',
+                                    items: [],
+                                    style: 'hover:text-black hover:no-underline flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-6',
+                                    icon: <Layers className="w-4" />,
+                                    link: '/admin/banner'
+                                },
+                                {
                                     name: 'Channel',
                                     items: [],
-                                    style: 'flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-6',
+                                    style: 'hover:text-black hover:no-underline flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-6',
                                     icon: <Map className="w-4" />,
                                     link: '/admin/channels'
                                 },
                                 {
                                     name: 'Store Locator',
                                     items: [],
-                                    style: 'flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-6',
+                                    style: 'hover:text-black hover:no-underline flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-6',
                                     icon: <MapPin className="w-4" />,
                                     link: '/admin/locator'
                                 },
@@ -95,9 +102,9 @@ class LeftNavbar extends React.Component {
                         {
                             name: 'About Us',
                             items: [],
-                            style: 'flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-4',
+                            style: 'hover:text-black hover:no-underline flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-4',
                             icon: <Info className="w-4" />,
-                            link: '/admin/about-us'
+                            // link: '/admin/about-us'
                         }
                     ]
                 }

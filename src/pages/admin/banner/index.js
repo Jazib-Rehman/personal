@@ -58,6 +58,15 @@ class Banner extends Component {
         console.log(event.target.files[0])
     }
 
+    onTrashClick = product => {
+        AppService.axiosPost("delete-banner", product, {
+        })
+            .then(response => {
+                window.location.reload();
+            })
+            .catch(err => console.error(err));
+    }
+
 
     render() {
         return (
@@ -105,7 +114,7 @@ class Banner extends Component {
                                                         {item.name}
                                                     </div>
                                                     <div className="w-1/12 text-right">
-                                                        <button className="px-3 outline-none"><Trash2 size="14" /></button>
+                                                        <button className="px-3 outline-none"><Trash2 onClick={this.onTrashClick.bind(this, item)} size="14" /></button>
                                                     </div>
                                                 </div>
                                             </div>
