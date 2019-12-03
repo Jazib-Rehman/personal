@@ -18,7 +18,7 @@ export class HttpService {
         return axios.post(this.baseURL + url, data, {
         })
             .then(response => {
-                alert('Successfully added');
+                response.status(200)
             })
             .catch(err => console.error(err));
     }

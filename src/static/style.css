@@ -253,3 +253,11 @@ footer i {
 .banner {
   height: 600px;
 }
+
+.adminBanner {
+  height: 400px;
+}
+
+/* .trans {
+  background: rgba(0, 0, 0, 0.1);
+} */

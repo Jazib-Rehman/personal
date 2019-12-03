@@ -109,12 +109,15 @@ class Banner extends Component {
                                     {this.state.banner.map((item, i) => {
                                         return (
                                             <div key={i}>
-                                                <div className="w-full p-2 flex border-b">
-                                                    <div className="w-11/12">
-                                                        {item.name}
+                                                <div className="w-full p-2 flex border-b relative">
+                                                    <img src={"./../" + item.image} className="adminBanner w-full object-cover" />
+                                                    <div className="absolute bottom-0 flex justify-center w-full mb-20">
+                                                        <div className="bg-trans p-2 text-white rounded">
+                                                            <p className="text-xl font-thin">{item.name}</p>
+                                                        </div>
                                                     </div>
-                                                    <div className="w-1/12 text-right">
-                                                        <button className="px-3 outline-none"><Trash2 onClick={this.onTrashClick.bind(this, item)} size="14" /></button>
+                                                    <div className="absolute bottom-0 flex justify-center w-full mb-12">
+                                                        <button className="outline-none bg-trans p-2 text-white rounded" onClick={this.onTrashClick.bind(this, item)}><Trash2 size="14" /></button>
                                                     </div>
                                                 </div>
                                             </div>

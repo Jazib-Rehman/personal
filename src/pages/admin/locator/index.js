@@ -96,19 +96,27 @@ class Locator extends Component {
                                     </div>
                                 </div>
                                 {/* </form> */}
-                                <div>
+                                <div className="flex flex-wrap">
                                     {this.state.locators.map((item, i) => {
                                         return (
-                                            <div key={i}>
-                                                <div className="w-full p-2 flex border-b">
-                                                    <div className="w-11/12">
-                                                        {item.name}
-                                                    </div>
-                                                    <div className="w-1/12 text-right">
-                                                        <button className="px-3 outline-none"><Trash2 size="14" /></button>
+                                            <div key={i} className="w-1/4">
+                                                <div className="p-2 mt-6">
+                                                    <div className="relative">
+                                                        <div className="bg-prim py-1 text-white text-center">
+                                                            <p className="text-2xl font-light">{item.name}</p>
+                                                        </div>
+                                                        <img src={"./../" + item.image} alt="dummy" className="w-full h-full fit-cover" />
+                                                        <div className="absolute bottom-0 w-full flex justify-center">
+                                                            <button className="p-2 text-white rounded mb-5 outline-none bg-trans"><Trash2 size="14" /></button>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                {/* <div className="w-full p-2 flex border-b">
+                                                    <div className="w-11/12">
+                                                        {item.name}
+                                                    </div> */}
                                             </div>
+                                            // </div>
                                         )
                                     })}
                                 </div>

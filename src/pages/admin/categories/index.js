@@ -105,7 +105,28 @@ class Categories extends Component {
                                     </div>
                                 </div>
                                 {/* </form> */}
-                                <div>
+                                <div className="flex flex-wrap py-2 w-full border-b">
+                                    {this.state.categories.map((item, i) => {
+                                        return (
+                                            <div key={i} className="w-1/5">
+                                                <div className="p-2">
+                                                    <div className="relative rounded overflow-hidden">
+                                                        <img src={"./../" + item.image} />
+                                                        <div className="mb-3 absolute bottom-0 w-full h-full flex items-center justify-center">
+                                                            <div className="bg-trans rounded text-white p-1">
+                                                                {item.name}
+                                                            </div>
+                                                        </div>
+                                                        <div className="-mb-6 absolute bottom-0 w-full h-full flex items-center justify-center">
+                                                            <button className="bg-trans rounded text-white p-2 outline-none" onClick={this.onTrashClick.bind(this, item)}><Trash2 size="14" /></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                                {/* <div>
                                     {this.state.categories.map((item, i) => {
                                         return (
                                             <div key={i}>
@@ -120,7 +141,7 @@ class Categories extends Component {
                                             </div>
                                         )
                                     })}
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
