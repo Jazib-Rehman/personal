@@ -80,7 +80,7 @@ class AppProduct extends React.Component {
             <div className="form-group">
                 <p className="text-xs font-semibold">Category</p>
                 <select value={this.state.cat_id} name="cat_id" onChange={this.onSelectChange} className="w-full p-2-5 border bg-white outline-none font-thin">
-                    <option value="none">Select a Category</option>
+                    {/* <option value="none">Select a Category</option> */}
                     {this.state.categories.map((item, i) => {
                         return (
                             <option value={item.id} key={i}>{item.name}</option>
@@ -106,7 +106,6 @@ class AppProduct extends React.Component {
     }
 
     handleClick = () => {
-
         if (
             this.state.name === '' ||
             this.state.selectedFile === null ||
