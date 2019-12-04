@@ -4,6 +4,7 @@ import LeftNavbar from './../components/LeftNavbar'
 import Header from './../components/Header'
 import AppService from './../../../services/app.service'
 import { Trash2 } from 'react-feather'
+import queryString from 'query-string'
 
 class Locator extends Component {
 
@@ -55,7 +56,8 @@ class Locator extends Component {
             AppService.axiosPost("add-locator", data, {
             })
                 .then(response => {
-                    window.location.reload();
+                    // window.location.reload();
+                    window.location.href = window.location.pathname + "?successMessage=true"
                 })
                 .catch(err => console.error(err));
         }
@@ -73,7 +75,8 @@ class Locator extends Component {
         AppService.axiosPost("delete-locator", product, {
         })
             .then(response => {
-                window.location.reload();
+                // window.location.reload();
+                window.location.href = window.location.pathname + "?deleteMessage=true"
             })
             .catch(err => console.error(err));
     }
@@ -83,6 +86,28 @@ class Locator extends Component {
             return (
                 <div className="bg-red-500 py-2 px-4 text-white">
                     Either Name or Image is missing!
+                </div>
+            )
+        }
+    }
+
+    success() {
+        const successMessage = queryString.parse(this.props.location.search).successMessage;
+        if (successMessage === "true") {
+            return (
+                <div className="bg-green-500 py-2 px-4 text-white">
+                    Category successfully added!
+                </div>
+            )
+        }
+    }
+
+    delete() {
+        const deleteMessage = queryString.parse(this.props.location.search).deleteMessage;
+        if (deleteMessage === "true") {
+            return (
+                <div className="bg-red-500 py-2 px-4 text-white">
+                    Category successfully deleted!
                 </div>
             )
         }
@@ -105,6 +130,8 @@ class Locator extends Component {
                                     <p className="text-2xl font-semibold text-gray-700">Store Locator</p>
                                 </div>
                                 {this.error()}
+                                {this.success()}
+                                {this.delete()}
                                 <div className="flex border-b pb-2">
                                     <div className="w-7/12 flex flex-wrap">
                                         <div className="w-full p-1">

@@ -4,6 +4,7 @@ import LeftNavbar from './../components/LeftNavbar'
 import Header from './../components/Header'
 import { Eye, Trash, Trash2, Edit } from 'react-feather'
 import AppService from './../../../services/app.service'
+import queryString from 'query-string'
 
 class Products extends React.Component {
 
@@ -31,7 +32,8 @@ class Products extends React.Component {
         AppService.axiosPost("delete-product", product, {
         })
             .then(response => {
-                window.location.reload();
+                window.location.href = window.location.pathname + "?successMessage=true"
+                // window.location.reload();
             })
             .catch(err => console.error(err));
     }
@@ -66,6 +68,17 @@ class Products extends React.Component {
         }
     }
 
+    success() {
+        const successMessage = queryString.parse(this.props.location.search).successMessage;
+        if (successMessage === "true") {
+            return (
+                <div className="bg-red-500 py-2 px-4 text-white">
+                    Product is successfully deleted!
+                </div>
+            )
+        }
+    }
+
     render() {
         return (
             <AdminLayout>
@@ -83,6 +96,7 @@ class Products extends React.Component {
                                 <div className="text-center py-2 my-2 border-b">
                                     <p className="text-2xl font-semibold text-gray-700">Products</p>
                                 </div>
+                                {this.success()}
                                 <div className="flex flex-wrap pb-2">
                                     <div className="w-full">
                                         {this.products()}

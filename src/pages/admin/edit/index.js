@@ -70,7 +70,6 @@ class Edit extends React.Component {
                     // nutrition: product.nutrition,
                     categories
                 })
-                console.log(response[0])
             })
             .catch(err => console.error(err));
         const pros = this.state.categories.map(item => {
@@ -81,7 +80,6 @@ class Edit extends React.Component {
                 this.state.proIds.push({ id: product.id })
             })
         })
-        console.log(queryString.parse(this.props.location.search).id);
     }
 
     handleChange = (property, value) => {
@@ -145,7 +143,8 @@ class Edit extends React.Component {
             AppService.axiosPost("update-product", data, {
             })
                 .then(response => {
-                    window.location.reload();
+                    window.location.href = window.location.pathname + "?id=" + id + "&successMessage=true"
+                    // window.location.reload();
                 })
                 .catch(err => console.error(err));
         }
@@ -156,7 +155,6 @@ class Edit extends React.Component {
             selectedFile: event.target.files[0],
             loaded: 0
         })
-        console.log(event.target.files[0])
     }
 
     formUI() {
@@ -223,6 +221,18 @@ class Edit extends React.Component {
         }
     }
 
+    success() {
+        const successMessage = queryString.parse(this.props.location.search).successMessage;
+        console.log(successMessage)
+        if (successMessage === "true") {
+            return (
+                <div className="bg-green-500 py-2 px-4 text-white">
+                    Product is successfully updated!
+                </div>
+            )
+        }
+    }
+
     render() {
         return (
             <AdminLayout>
@@ -240,6 +250,7 @@ class Edit extends React.Component {
                                     <p className="text-2xl font-semibold text-gray-700">Edit Product</p>
                                 </div>
                                 {this.error()}
+                                {this.success()}
                                 {this.formUI()}
                             </div>
                         </div>
