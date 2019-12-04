@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 
 const db = require('../config/database')
 
-const PDF = db.define('pdf', {
+const PDF = db.define('pdfs', {
     name: {
         type: Sequelize.STRING
     },
