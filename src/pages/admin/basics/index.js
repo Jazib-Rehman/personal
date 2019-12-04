@@ -33,7 +33,6 @@ class Basics extends Component {
     componentDidMount() {
         AppService.getMethode('basics')
             .then(response => {
-                console.log(response)
                 if (response.length === 0) {
                     this.setState({ isEmpty: true })
                 } else {
@@ -43,7 +42,6 @@ class Basics extends Component {
                 }
             })
             .catch(err => console.error(err));
-        console.log(this.state.basics)
     }
 
     handleChange = (property, value) => {
