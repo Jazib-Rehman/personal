@@ -18,6 +18,7 @@ import Channels from './pages/admin/channels';
 import Products from './pages/admin/products';
 import Edit from './pages/admin/edit';
 import Banner from './pages/admin/banner';
+import Basics from './pages/admin/basics';
 import "./static/style.css";
 import "./static/tailwind.css";
 
@@ -39,6 +40,7 @@ const routing = (
             <Route path="/admin/products" component={Products} />
             <Route path="/admin/edit" component={Edit} />
             <Route path="/admin/banner" component={Banner} />
+            <Route path="/admin/basics" component={Basics} />
         </div>
     </Router>
 )

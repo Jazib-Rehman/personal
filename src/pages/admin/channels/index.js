@@ -74,6 +74,15 @@ class Channels extends Component {
         console.log(event.target.files[0])
     }
 
+    onTrashClick = product => {
+        AppService.axiosPost("delete-channel", product, {
+        })
+            .then(response => {
+                window.location.reload();
+            })
+            .catch(err => console.error(err));
+    }
+
     error() {
         if (this.state.message === true) {
             return (
@@ -144,7 +153,7 @@ class Channels extends Component {
                                                             </div>
                                                         </div>
                                                         <div className="-mb-6 absolute bottom-0 w-full h-full flex items-center justify-center">
-                                                            <button className="bg-trans rounded text-white p-2 outline-none"><Trash2 size="14" /></button>
+                                                            <button className="bg-trans rounded text-white p-2 outline-none" onClick={this.onTrashClick.bind(this, item)}><Trash2 size="14" /></button>
                                                         </div>
                                                     </div>
                                                 </div>

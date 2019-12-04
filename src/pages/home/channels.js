@@ -11,7 +11,8 @@ class Channels extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            categories: []
+            categories: [],
+            basics: []
         }
     }
 
@@ -19,6 +20,13 @@ class Channels extends React.Component {
         AppService.get('channels')
             .then(response => {
                 this.setState({ categories: response })
+            })
+            .catch(err => console.error(err));
+        AppService.get('basics')
+            .then(response => {
+                this.setState({
+                    basics: response
+                })
             })
             .catch(err => console.error(err));
     }
@@ -33,19 +41,25 @@ class Channels extends React.Component {
                 <div className="mt-12">
                     <p className="mt-4 text-gray-500 font-light text-sm">You can also find us on social media platforms</p>
                 </div>
-                <div className="mt-4 flex justify-center">
-                    <div className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
-                        <Twitter size="18" />
-                    </div>
-                    <div className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
-                        <Facebook size="18" />
-                    </div>
-                    <div className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
-                        <Instagram size="18" />
-                    </div>
-                    <div className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
-                        <Youtube size="18" />
-                    </div>
+                <div className="mt-4">
+                    {
+                        this.state.basics.map((item, i) => {
+                            return <div key={i} className="flex justify-center">
+                                <a href={item.twitter} target="_blank" className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
+                                    <Twitter size="18" />
+                                </a>
+                                <a href={item.facebook} target="_blank" className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
+                                    <Facebook size="18" />
+                                </a>
+                                <a href={item.instagram} target="_blank" className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
+                                    <Instagram size="18" />
+                                </a>
+                                <a href={item.youtube} target="_blank" className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
+                                    <Youtube size="18" />
+                                </a>
+                            </div>
+                        })
+                    }
                 </div>
                 <div className="flex flex-wrap md:w-1/2 p-4 md:p-0 m-auto mt-10">{
                     this.state.categories.map((item, i) =>

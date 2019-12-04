@@ -69,6 +69,15 @@ class Locator extends Component {
         console.log(event.target.files[0])
     }
 
+    onTrashClick = product => {
+        AppService.axiosPost("delete-locator", product, {
+        })
+            .then(response => {
+                window.location.reload();
+            })
+            .catch(err => console.error(err));
+    }
+
     error() {
         if (this.state.message === true) {
             return (
@@ -126,7 +135,7 @@ class Locator extends Component {
                                                         </div>
                                                         <img src={"./../" + item.image} alt="dummy" className="w-full h-full fit-cover" />
                                                         <div className="absolute bottom-0 w-full flex justify-center">
-                                                            <button className="p-2 text-white rounded mb-5 outline-none bg-trans"><Trash2 size="14" /></button>
+                                                            <button className="p-2 text-white rounded mb-5 outline-none bg-trans" onClick={this.onTrashClick.bind(this, item)}><Trash2 size="14" /></button>
                                                         </div>
                                                     </div>
                                                 </div>

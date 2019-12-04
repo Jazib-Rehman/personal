@@ -4,6 +4,7 @@ const SubCategories = require('./subCategories');
 const Locators = require('./locators');
 const Channels = require('./channels');
 const Banner = require('./banner');
+const Basics = require('./basics');
 
 Categories.sync({ force: true }).then(() => {
     console.log('categoriies table created!')
@@ -22,4 +23,7 @@ Channels.sync({ force: true }).then(() => {
 })
 Banner.sync({ force: true }).then(() => {
     console.log('banner table created!')
+})
+Basics.sync({ force: true }).then(() => {
+    console.log('basics table created!')
 })
