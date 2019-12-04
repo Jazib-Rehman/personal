@@ -41,14 +41,14 @@ class Header extends React.Component {
 
 	render() {
 		return (
-			<header className="bg-prim font-prim text-white text-sm flex fixed w-full px-4 py-8 cursor-pointer items-center z-50">
+			<header className="bg-prim font-prim text-white text-sm flex fixed w-full py-8 cursor-pointer items-center z-50">
 				{/* <select value={this.state.lang} onChange={this.onLangChange}>
           <option value="en">EN</option>
           <option value="ar">AR</option>
         </select>
         <Translate content="title" component="h1" /> */}
 
-				<div className="flex-1">
+				<div className="flex-1 px-2">
 					<span className="px-2 border-r">عربي</span>
 					{/* <Translate content="copy.p1" component="p" /> */}
 					{
@@ -67,11 +67,11 @@ class Header extends React.Component {
 					}
 				</div>
 				<div className="menu flex-1 flex justify-end">
-					<a href="/" className="hover:text-white hover:no-underline">HOME</a>
-					<a href="/menu" className="px-4 hover:text-white hover:no-underline">OUR FOOD</a>
-					<a href="/find-us" className="px-4 hover:text-white hover:no-underline">FIND US</a>
-					<a href="/about-us" className="px-4 hover:text-white hover:no-underline">ABOUT US</a>
-					<a href="/contact-us" className="px-4 hover:text-white hover:no-underline">CONTACT US</a>
+					<a href="/" className="text-xs px-1 hover:text-white hover:no-underline">HOME</a>
+					<a href="/menu" className="text-xs px-1 hover:text-white hover:no-underline">OUR FOOD</a>
+					<a href="/find-us" className="text-xs px-1 hover:text-white hover:no-underline">FIND US</a>
+					<a href="/about-us" className="text-xs px-1 hover:text-white hover:no-underline">ABOUT US</a>
+					<a href="/contact-us" className="text-xs px-1 hover:text-white hover:no-underline">CONTACT US</a>
 				</div>
 			</header>
 		)
