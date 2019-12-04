@@ -34,7 +34,7 @@ class Store extends React.Component {
                     <p className="mt-4 text-gray-500 font-light text-sm">Find our stores across the kingdom</p>
                 </div>
                 <div className="mt-4">
-                    <button className="btn">ALL BRANCHES</button>
+                    {/* <button className="btn">ALL BRANCHES</button> */}
                 </div>
                 <div className="flex flex-wrap md:w-11/12 p-4 md:p-0 m-auto">{
                     this.state.locators.map((item, i) =>

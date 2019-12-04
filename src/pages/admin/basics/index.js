@@ -4,22 +4,27 @@ import LeftNavbar from './../components/LeftNavbar'
 import Header from './../components/Header'
 import AppService from './../../../services/app.service'
 import { Trash2, PlusSquare, RefreshCcw } from 'react-feather'
+import queryString from 'query-string'
 
 class Basics extends Component {
 
     constructor() {
         super();
         this.state = {
-            site_header: '',
-            categories: '',
-            channels: '',
-            locator: '',
-            twitter: '',
-            facebook: '',
-            instagram: '',
-            youtube: '',
             message: false,
-            basics: [],
+            basics: {
+                site_header: '',
+                id: '',
+                logo: '',
+                categories: '',
+                channels: '',
+                locator: '',
+                twitter: '',
+                facebook: '',
+                instagram: '',
+                youtube: '',
+
+            },
             isEmpty: false,
             selectedFile: null
         }
@@ -28,29 +33,30 @@ class Basics extends Component {
     componentDidMount() {
         AppService.getMethode('basics')
             .then(response => {
-                console.log(response.length)
+                console.log(response)
                 if (response.length === 0) {
                     this.setState({ isEmpty: true })
                 } else {
                     this.setState({
-                        basics: response
+                        basics: response[0]
                     })
                 }
             })
             .catch(err => console.error(err));
+        console.log(this.state.basics)
     }
 
-    handleChange = (property, event) => {
-        const state = this.state;
-        state[property] = event.target.value;
-        this.setState({ state: state });
+    handleChange = (property, value) => {
+        const { basics } = this.state;
+        basics[property] = value;
+        this.setState({ basics });
     }
 
     LabelInput(props) {
         return (
             <div>
                 <p className="text-xs font-semibold">{props.label}</p>
-                <input type="text" name={props.name} onChange={this.handleChange.bind(this, props.name)} className="w-full p-2 border bg-white" placeholder={props.placeholder} />
+                <input type="text" name={props.name} value={this.state.basics[props.name]} onChange={({ target }) => this.handleChange(props.name, target.value)} className="w-full p-2 border bg-white" placeholder={props.placeholder} />
             </div>
         )
     }
@@ -86,7 +92,49 @@ class Basics extends Component {
             AppService.axiosPost("add-basics", data, {
             })
                 .then(response => {
-                    window.location.reload();
+                    // window.location.reload();
+                    window.location.href = window.location.pathname + "?successMessage=true"
+                })
+                .catch(err => console.error(err));
+        }
+    }
+
+    handleUpdate = () => {
+        if (
+            this.state.site_header === '' ||
+            this.state.categories === '' ||
+            this.state.channels === '' ||
+            this.state.locator === '' ||
+            this.state.twitter === '' ||
+            this.state.facebook === '' ||
+            this.state.instagram === '' ||
+            this.state.youtube === '' ||
+            this.state.selectedFile === null
+        ) {
+            this.setState({
+                message: true
+            })
+        } else {
+
+            const data = new FormData()
+            const { id, site_header, categories, logo, channels, locator, twitter, facebook, instagram, youtube } = this.state.basics;
+            data.append('id', id)
+            data.append('image', this.state.selectedFile)
+            data.append('logo', logo)
+            data.append('site_header', site_header)
+            data.append('categories', categories)
+            data.append('channels', channels)
+            data.append('locator', locator)
+            data.append('twitter', twitter)
+            data.append('facebook', facebook)
+            data.append('instagram', instagram)
+            data.append('youtube', youtube)
+
+            AppService.axiosPost("update-basics", data, {
+            })
+                .then(response => {
+                    // window.location.reload();
+                    window.location.href = window.location.pathname + "?updateMessage=true"
                 })
                 .catch(err => console.error(err));
         }
@@ -125,14 +173,39 @@ class Basics extends Component {
                 Add <PlusSquare size="16" className="ml-1" />
             </button>
         } else {
-            return <button onClick={this.handleClick} className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center">
+            return <button onClick={this.handleUpdate} className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center">
                 Update <RefreshCcw size="16" className="ml-1" />
             </button>
         }
     }
 
+    success() {
+        const successMessage = queryString.parse(this.props.location.search).successMessage;
+        if (successMessage === "true") {
+            return (
+                <div className="bg-green-500 py-2 px-4 text-white">
+                    Basics successfully added!
+                </div>
+            )
+        }
+    }
+
+    update() {
+        const updateMessage = queryString.parse(this.props.location.search).updateMessage;
+        if (updateMessage === "true") {
+            return (
+                <div className="bg-green-500 py-2 px-4 text-white">
+                    Basics successfully updated!
+                </div>
+            )
+        }
+    }
+
 
     render() {
+
+        const { site_header, categories, channels, locator, twitter, facebook, instagram, youtube } = this.state.basics
+
         return (
             <AdminLayout>
                 <div className="flex w-full h-full">
@@ -149,12 +222,18 @@ class Basics extends Component {
                                     <p className="text-2xl font-semibold text-gray-700">Basics</p>
                                 </div>
                                 {this.error()}
+                                {this.success()}
+                                {this.update()}
+                                {/* {
+                                    this.state.basics.map((item, i) => {
+                                        return  */}
                                 <div className="flex flex-wrap border-b pb-2">
                                     <div className="w-1/2">
                                         <div className="w-full p-1">
                                             {this.LabelInput({
                                                 label: 'Site Header:',
                                                 name: 'site_header',
+                                                value: site_header,
                                                 placeholder: 'Site Header!'
                                             })}
                                         </div>
@@ -168,6 +247,7 @@ class Basics extends Component {
                                             {this.LabelInput({
                                                 label: 'Categories (Section Title):',
                                                 name: 'categories',
+                                                value: categories,
                                                 placeholder: 'Categories (Section Title)!'
                                             })}
                                         </div>
@@ -177,6 +257,7 @@ class Basics extends Component {
                                             {this.LabelInput({
                                                 label: 'Channels (Section Title):',
                                                 name: 'channels',
+                                                value: channels,
                                                 placeholder: 'Channels (Section Title)!'
                                             })}
                                         </div>
@@ -186,6 +267,7 @@ class Basics extends Component {
                                             {this.LabelInput({
                                                 label: 'Locator (Section Title):',
                                                 name: 'locator',
+                                                value: locator,
                                                 placeholder: 'Locator (Section Title)!'
                                             })}
                                         </div>
@@ -195,6 +277,7 @@ class Basics extends Component {
                                             {this.LabelInput({
                                                 label: 'Twitter (link):',
                                                 name: 'twitter',
+                                                value: twitter,
                                                 placeholder: 'Twitter (link)!'
                                             })}
                                         </div>
@@ -204,6 +287,7 @@ class Basics extends Component {
                                             {this.LabelInput({
                                                 label: 'Facebook (link):',
                                                 name: 'facebook',
+                                                value: facebook,
                                                 placeholder: 'Facebook (link)!'
                                             })}
                                         </div>
@@ -213,6 +297,7 @@ class Basics extends Component {
                                             {this.LabelInput({
                                                 label: 'Instagram (link):',
                                                 name: 'instagram',
+                                                value: instagram,
                                                 placeholder: 'Instagram (link)!'
                                             })}
                                         </div>
@@ -222,6 +307,7 @@ class Basics extends Component {
                                             {this.LabelInput({
                                                 label: 'Youtube (link):',
                                                 name: 'youtube',
+                                                value: youtube,
                                                 placeholder: 'Youtube (link)!'
                                             })}
                                         </div>
@@ -230,6 +316,8 @@ class Basics extends Component {
                                         {this.button()}
                                     </div>
                                 </div>
+                                {/* })
+                            } */}
                             </div>
                         </div>
                     </div>

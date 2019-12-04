@@ -197,6 +197,63 @@ app.post(
 	}
 );
 
+app.post(
+	"/update-basics",
+	upload.single("image"),
+	(req, res) => {
+		// console.log(req.body)
+		let newDate = new Date()
+		let date = newDate.getDate();
+		let month = newDate.getMonth() + 1;
+		let year = newDate.getFullYear();
+		let hours = newDate.getHours();
+		let minutes = newDate.getMinutes();
+		let seconds = newDate.getSeconds();
+
+		let time = date + "" + month + "" + year + "" + hours + "" + minutes + "" + seconds;
+
+		const imgURL = "uploads/site-headers/" + time + path.extname(req.file.originalname);
+		const tempPath = req.file.path;
+		const targetPath = path.join(__dirname, folder + "/uploads/site-headers/" + time + path.extname(req.file.originalname));
+		fs.rename(tempPath, targetPath, err => {
+			if (err) return handleError(err, res);
+			console.log(req.body)
+			Basics.update(
+				{
+					site_header: req.body.site_header,
+					categories: req.body.categories,
+					channels: req.body.channels,
+					locator: req.body.locator,
+					twitter: req.body.twitter,
+					facebook: req.body.facebook,
+					instagram: req.body.instagram,
+					youtube: req.body.youtube,
+					logo: imgURL
+				},
+				{ where: { id: req.body.id } }
+			)
+				.then(product => {
+					const path = delFolder + req.body.logo
+					fs.stat(path, function (err, stats) {
+						console.log(stats);//here we got all information of file in stats variable
+						if (err) {
+							return console.error(err);
+						}
+
+						fs.unlink(path, function (err) {
+							if (err) return console.log(err);
+							console.log('file deleted successfully');
+						});
+					});
+					res.send(product)
+				})
+				.catch(err => console.log(err));
+
+			// res.redirect(redirect + "/admin/edit?id=" + req.body.id);
+		});
+	}
+);
+
 app.post('/delete-product', (req, res) => {
 	Product.destroy({
 		where: {
