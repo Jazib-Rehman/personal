@@ -55,8 +55,8 @@ class OurFood extends React.Component {
                     <p className="mt-4 text-gray-500 font-light text-sm">Here you will find our full menu</p>
 
                     <div className="mt-4">
-                        <a className="btn" href="menu.html">OUR FULL MENU</a>
-                        <button className="btn">DOWNLOAD PDF</button>
+                        <a className="btn" href="/menu">OUR FULL MENU</a>
+                        <a className="btn" href="#">DOWNLOAD PDF</a>
                     </div>
                     <div className="w-full md:px-24">
                         <div className="slider horizontal mt-4 z-40 m-auto h-64 items-center">
