@@ -2,6 +2,7 @@ import AppService from './../../services/app.service'
 
 import React from 'react'
 import Category from '../../components/category.js'
+import Meal from '../../components/meal'
 
 class Foods extends React.Component {
 
@@ -9,7 +10,8 @@ class Foods extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            categories: []
+            categories: [],
+            unsigned: []
         }
     }
 
@@ -17,6 +19,11 @@ class Foods extends React.Component {
         AppService.get('categories-with-products')
             .then(response => {
                 this.setState({ categories: response })
+            })
+            .catch(err => console.error(err));
+        AppService.get('unsign-products')
+            .then(response => {
+                this.setState({ unsigned: response })
             })
             .catch(err => console.error(err));
     }
@@ -39,7 +46,13 @@ class Foods extends React.Component {
                         </div>
                     ))}
                 </div>
-
+                <div className="flex flex-wrap  mt-8 w-full  m-auto w-full md:w-2/3 ">
+                    {
+                        this.state.unsigned.map((item, j) => (
+                            <Meal meal={item} key={j} />
+                        ))
+                    }
+                </div>
                 {this.state.categories.map((category, i) => (
                     <Category category={category} key={i} />
                 ))}
