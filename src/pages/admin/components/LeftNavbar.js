@@ -66,13 +66,13 @@ class LeftNavbar extends React.Component {
                             icon: <Layout className="w-4" />,
 
                         },
-                        {
-                            name: 'Contact',
-                            items: [],
-                            style: 'hover:text-black hover:no-underline flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-4',
-                            icon: <Phone className="w-4" />,
-
-                        },
+                        // {
+                        //     name: 'Contact',
+                        //     items: [],
+                        //     style: 'hover:text-black hover:no-underline flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-4',
+                        //     icon: <Phone className="w-4" />,
+                        //     link: '/admin/contact',
+                        // },
                     ]
                 },
                 {
@@ -107,13 +107,13 @@ class LeftNavbar extends React.Component {
                             ],
                             icon: <Home className="w-4" />
                         },
-                        {
-                            name: 'About Us',
-                            items: [],
-                            style: 'hover:text-black hover:no-underline flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-4',
-                            icon: <Info className="w-4" />,
-                            // link: '/admin/about-us'
-                        }
+                        // {
+                        //     name: 'About Us',
+                        //     items: [],
+                        //     style: 'hover:text-black hover:no-underline flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-4',
+                        //     icon: <Info className="w-4" />,
+                        //     link: '/admin/about-us'
+                        // }
                     ]
                 }
             ],

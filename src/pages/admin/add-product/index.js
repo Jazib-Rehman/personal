@@ -3,6 +3,7 @@ import AdminLayout from './../AdminLayout'
 import LeftNavbar from './../components/LeftNavbar'
 import Header from './../components/Header'
 import AppService from './../../../services/app.service'
+import queryString from 'query-string'
 
 class AppProduct extends React.Component {
 
@@ -17,6 +18,7 @@ class AppProduct extends React.Component {
             price: '',
             categories: [],
             message: false,
+            successMessage: false,
             catMethod: "Category",
             selectedFile: null
         }
@@ -131,7 +133,8 @@ class AppProduct extends React.Component {
             AppService.axiosPost("upload", data, {
             })
                 .then(response => {
-                    window.location.reload();
+                    // return <Redirect to='/admin/add-product' />
+                    window.location.href = window.location.pathname + "?successMessage=true"
                 })
                 .catch(err => console.error(err));
         }
@@ -155,6 +158,17 @@ class AppProduct extends React.Component {
         }
     }
 
+    success() {
+        const successMessage = queryString.parse(this.props.location.search).successMessage;
+        if (successMessage === "true") {
+            return (
+                <div className="bg-green-500 py-2 px-4 text-white">
+                    Product Successfully added!
+                </div>
+            )
+        }
+    }
+
     render() {
         return (
             <AdminLayout>
@@ -172,6 +186,7 @@ class AppProduct extends React.Component {
                                     <p className="text-2xl font-semibold text-gray-700">Add Product</p>
                                 </div>
                                 {this.error()}
+                                {this.success()}
                                 <div className="flex flex-wrap">
                                     <div className="w-1/2 p-1">
                                         {this.LabelInput({

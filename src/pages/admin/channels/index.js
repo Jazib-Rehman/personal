@@ -4,6 +4,7 @@ import LeftNavbar from './../components/LeftNavbar'
 import Header from './../components/Header'
 import AppService from './../../../services/app.service'
 import { Trash2 } from 'react-feather'
+import queryString from 'query-string'
 
 class Channels extends Component {
 
@@ -60,7 +61,8 @@ class Channels extends Component {
             AppService.axiosPost("add-channel", data, {
             })
                 .then(response => {
-                    window.location.reload();
+                    // window.location.reload();
+                    window.location.href = window.location.pathname + "?successMessage=true"
                 })
                 .catch(err => console.error(err));
         }
@@ -78,7 +80,8 @@ class Channels extends Component {
         AppService.axiosPost("delete-channel", product, {
         })
             .then(response => {
-                window.location.reload();
+                // window.location.reload();
+                window.location.href = window.location.pathname + "?deleteMessage=true"
             })
             .catch(err => console.error(err));
     }
@@ -88,6 +91,28 @@ class Channels extends Component {
             return (
                 <div className="bg-red-500 py-2 px-4 text-white">
                     Either Name, Instagram link or Image is missing!
+                </div>
+            )
+        }
+    }
+
+    success() {
+        const successMessage = queryString.parse(this.props.location.search).successMessage;
+        if (successMessage === "true") {
+            return (
+                <div className="bg-green-500 py-2 px-4 text-white">
+                    Channel successfully added!
+                </div>
+            )
+        }
+    }
+
+    delete() {
+        const deleteMessage = queryString.parse(this.props.location.search).deleteMessage;
+        if (deleteMessage === "true") {
+            return (
+                <div className="bg-red-500 py-2 px-4 text-white">
+                    Channel successfully deleted!
                 </div>
             )
         }
@@ -110,6 +135,8 @@ class Channels extends Component {
                                     <p className="text-2xl font-semibold text-gray-700">Channels</p>
                                 </div>
                                 {this.error()}
+                                {this.success()}
+                                {this.delete()}
                                 <div className="flex border-b pb-2">
                                     <div className="w-3/12 flex flex-wrap">
                                         <div className="w-full p-1">
