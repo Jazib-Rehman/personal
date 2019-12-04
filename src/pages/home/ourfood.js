@@ -9,7 +9,8 @@ class OurFood extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            categories: []
+            categories: [],
+            pdf: []
         }
     }
 
@@ -17,6 +18,11 @@ class OurFood extends React.Component {
         AppService.get('category')
             .then(response => {
                 this.setState({ categories: response })
+            })
+            .catch(err => console.error(err));
+        AppService.get('pdf')
+            .then(response => {
+                this.setState({ pdf: response })
             })
             .catch(err => console.error(err));
     }
@@ -56,7 +62,9 @@ class OurFood extends React.Component {
 
                     <div className="mt-4">
                         <a className="btn" href="/menu">OUR FULL MENU</a>
-                        <a className="btn" href="#">DOWNLOAD PDF</a>
+                        {this.state.pdf.map((item, i) => {
+                            return <a className="btn" href={item.image}>DOWNLOAD PDF</a>
+                        })}
                     </div>
                     <div className="w-full md:px-24">
                         <div className="slider horizontal mt-4 z-40 m-auto h-64 items-center">

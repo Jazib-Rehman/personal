@@ -59,6 +59,7 @@ Channels = require('./models/channels'), (sequelize, { modelName: 'Channels' });
 ProductOnly = require('./models/productonly'), (sequelize, { modelName: 'ProductOnly' });
 Banner = require('./models/banner'), (sequelize, { modelName: 'Banner' });
 Basics = require('./models/basics'), (sequelize, { modelName: 'Basics' });
+PDF = require('./models/pdf'), (sequelize, { modelName: 'PDF' });
 // SubCategories = require('./models/subcategories'), (sequelize, { modelName: 'SubCategories' });
 
 //Relations
@@ -171,6 +172,55 @@ app.post(
 					description: req.body.description,
 					nutrition: req.body.nutrition,
 					price: req.body.price,
+					image: imgURL
+				},
+				{ where: { id: req.body.id } }
+			)
+				.then(product => {
+					const path = delFolder + req.body.img
+					fs.stat(path, function (err, stats) {
+						console.log(stats);//here we got all information of file in stats variable
+						if (err) {
+							return console.error(err);
+						}
+
+						fs.unlink(path, function (err) {
+							if (err) return console.log(err);
+							console.log('file deleted successfully');
+						});
+					});
+					res.send(product)
+				})
+				.catch(err => console.log(err));
+
+			// res.redirect(redirect + "/admin/edit?id=" + req.body.id);
+		});
+	}
+);
+
+app.post(
+	"/update-pdf",
+	upload.single("image"),
+	(req, res) => {
+		// console.log(req.body)
+		let newDate = new Date()
+		let date = newDate.getDate();
+		let month = newDate.getMonth() + 1;
+		let year = newDate.getFullYear();
+		let hours = newDate.getHours();
+		let minutes = newDate.getMinutes();
+		let seconds = newDate.getSeconds();
+
+		let time = date + "" + month + "" + year + "" + hours + "" + minutes + "" + seconds;
+
+		const imgURL = "uploads/pdf/" + time + path.extname(req.file.originalname);
+		const tempPath = req.file.path;
+		const targetPath = path.join(__dirname, folder + "/uploads/pdf/" + time + path.extname(req.file.originalname));
+		fs.rename(tempPath, targetPath, err => {
+			if (err) return handleError(err, res);
+			PDF.update(
+				{
+					name: req.body.name,
 					image: imgURL
 				},
 				{ where: { id: req.body.id } }
@@ -458,6 +508,37 @@ app.post(
 );
 
 app.post(
+	'/add-pdf',
+	upload.single('image'),
+	(req, res) => {
+		let newDate = new Date()
+		let date = newDate.getDate();
+		let month = newDate.getMonth() + 1;
+		let year = newDate.getFullYear();
+		let hours = newDate.getHours();
+		let minutes = newDate.getMinutes();
+		let seconds = newDate.getSeconds();
+
+		let time = date + "" + month + "" + year + "" + hours + "" + minutes + "" + seconds;
+
+		const imgURL = "uploads/pdf/" + time + path.extname(req.file.originalname);
+		const tempPath = req.file.path;
+		const targetPath = path.join(__dirname, folder + "/uploads/pdf/" + time + path.extname(req.file.originalname));
+		fs.rename(tempPath, targetPath, err => {
+			if (err) return handleError(err, res);
+			PDF.create({
+				name: req.body.name,
+				image: imgURL
+			})
+				.then(product => res.send(product))
+				.catch(err => console.log(err));
+
+			// res.redirect(redirect + "/admin/categories");
+		});
+	}
+);
+
+app.post(
 	'/add-banner',
 	upload.single('image'),
 	(req, res) => {
@@ -553,6 +634,13 @@ app.post(
 
 app.get('/banner', (req, res) =>
 	Banner.findAll()
+		.then(products => {
+			res.send(products);
+		})
+		.catch(err => console.log(err)));
+
+app.get('/pdf', (req, res) =>
+	PDF.findAll()
 		.then(products => {
 			res.send(products);
 		})

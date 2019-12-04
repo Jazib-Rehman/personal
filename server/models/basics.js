@@ -6,6 +6,9 @@ const Basics = db.define('basics', {
     logo: {
         type: Sequelize.STRING
     },
+    pdf: {
+        type: Sequelize.STRING
+    },
     site_header: {
         type: Sequelize.STRING
     },
