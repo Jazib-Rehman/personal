@@ -12,6 +12,7 @@ class Products extends React.Component {
         super(props);
         this.state = {
             categories: [],
+            unsigned: [],
             img: ''
         }
     }
@@ -22,6 +23,12 @@ class Products extends React.Component {
                 this.setState({ categories: response })
             })
             .catch(err => console.error(err));
+        AppService.get('unsign-products')
+            .then(response => {
+                this.setState({ unsigned: response })
+            })
+            .catch(err => console.error(err));
+        console.log(this.state.unsigned)
     }
 
     onEyeClick = id => {
@@ -79,6 +86,24 @@ class Products extends React.Component {
         }
     }
 
+    unsigned() {
+
+        return <div className="flex flex-wrap justify-center items-center">
+            {
+                this.state.unsigned.map((item, j) => {
+                    return <div href="admin/add-product" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
+                        {this.state.img = "./../" + item.image}
+                        <img src={this.state.img} className="z-10 w-full h-full absolute" />
+                        <div className="w-full h-full absolute z-20 bg-trans"></div>
+                        <p className="absolute z-30 text-lg font-thin px-1 text-white">{item.name}</p>
+                        <Edit onClick={this.onEyeClick.bind(this, item.id)} className="cursor-pointer absolute z-30 h-4 text-white top-0 left-0 mt-1" />
+                        <Trash2 onClick={this.onTrashClick.bind(this, item)} className="cursor-pointer absolute z-30 h-4 text-white top-0 right-0 mt-1" />
+                    </div>
+                })
+            }
+        </div>
+    }
+
     render() {
         return (
             <AdminLayout>
@@ -99,6 +124,7 @@ class Products extends React.Component {
                                 {this.success()}
                                 <div className="flex flex-wrap pb-2">
                                     <div className="w-full">
+                                        {this.unsigned()}
                                         {this.products()}
                                     </div>
                                 </div>
