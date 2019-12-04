@@ -284,6 +284,12 @@ app.post('/delete-category', (req, res) => {
 			id: req.body.id
 		}
 	})
+	ProductOnly.update(
+		{
+			cat_id: "unsign"
+		},
+		{ where: { cat_id: req.body.id } }
+	)
 		.then(product => {
 			const path = delFolder + req.body.image
 			fs.stat(path, function (err, stats) {
@@ -554,6 +560,17 @@ app.get('/banner', (req, res) =>
 
 app.get('/basics', (req, res) =>
 	Basics.findAll()
+		.then(products => {
+			res.send(products);
+		})
+		.catch(err => console.log(err)));
+
+app.get('/unsign-products', (req, res) =>
+	ProductOnly.findAll({
+		where: {
+			cat_id: 'unsign'
+		}
+	})
 		.then(products => {
 			res.send(products);
 		})
