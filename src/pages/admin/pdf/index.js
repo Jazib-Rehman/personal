@@ -136,7 +136,7 @@ class PDF extends Component {
         if (successMessage === "true") {
             return (
                 <div className="bg-green-500 py-2 px-4 text-white">
-                    Category successfully added!
+                    Menu (pdf) successfully added!
                 </div>
             )
         }
@@ -147,7 +147,7 @@ class PDF extends Component {
         if (deleteMessage === "true") {
             return (
                 <div className="bg-red-500 py-2 px-4 text-white">
-                    Category successfully deleted!
+                    Menu (pdf) successfully deleted!
                 </div>
             )
         }

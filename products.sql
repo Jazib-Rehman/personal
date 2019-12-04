@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2019 at 11:52 AM
+-- Generation Time: Nov 28, 2019 at 11:24 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -25,20 +25,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `basics`
+-- Table structure for table `products`
 --
 
-CREATE TABLE `basics` (
+CREATE TABLE `products` (
   `id` int(11) NOT NULL,
-  `logo` varchar(255) DEFAULT NULL,
-  `site_header` varchar(255) DEFAULT NULL,
-  `categories` varchar(255) DEFAULT NULL,
-  `channels` varchar(255) DEFAULT NULL,
-  `locator` varchar(255) DEFAULT NULL,
-  `twitter` varchar(255) DEFAULT NULL,
-  `facebook` varchar(255) DEFAULT NULL,
-  `instagram` varchar(255) DEFAULT NULL,
-  `youtube` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `cat_id` varchar(255) DEFAULT NULL,
+  `subcat_id` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `nutrition` varchar(255) DEFAULT NULL,
+  `price` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -48,9 +46,9 @@ CREATE TABLE `basics` (
 --
 
 --
--- Indexes for table `basics`
+-- Indexes for table `products`
 --
-ALTER TABLE `basics`
+ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -58,10 +56,10 @@ ALTER TABLE `basics`
 --
 
 --
--- AUTO_INCREMENT for table `basics`
+-- AUTO_INCREMENT for table `products`
 --
-ALTER TABLE `basics`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
