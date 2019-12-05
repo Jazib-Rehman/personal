@@ -8,6 +8,16 @@ const path = require("path");
 const fs = require("fs");
 const multer = require("multer");
 const Sequelize = require('sequelize');
+
+
+// for loading environment variables
+const dotenv = require('dotenv');
+dotenv.config();
+
+const { PORT } = process.env;
+console.log("THIS IS ENV PORT" ,PORT)
+
+
 const sequelize = new Sequelize('shawarma', 'root', '', {
 	host: 'localhost',
 	// host: '127.0.0.1',
