@@ -3,6 +3,9 @@ import AppService from './../../services/app.service'
 import React from 'react'
 import Category from '../../components/category.js'
 import Meal from '../../components/meal'
+import scrollToComponent from 'react-scroll-to-component';
+
+// without options
 
 class Foods extends React.Component {
 
@@ -26,6 +29,8 @@ class Foods extends React.Component {
                 this.setState({ unsigned: response })
             })
             .catch(err => console.error(err));
+
+        scrollToComponent(this.Blue, { offset: 0, align: 'middle', duration: 500, ease: 'inCirc' });
     }
 
 
@@ -42,7 +47,7 @@ class Foods extends React.Component {
                 <div className="mt-12 flex flex-wrap w-full font-sec justify-center cursor-pointer">
                     {this.state.categories.map((menu, i) => (
                         <div key={i} class="w-full sm:w-64 mx-1 text-lg">
-                            <a class="inline-block btn text-prim mx-1 my-1 w-full sm:w-64 bg-white" href={'#' + i} >{menu.name}</a>
+                            <a class="inline-block btn text-prim mx-1 my-1 w-full sm:w-64 bg-white" onClick={() => scrollToComponent(this.i, { offset: 0, align: 'top', duration: 1500 })} >{menu.name}</a>
                         </div>
                     ))}
                 </div>
@@ -54,7 +59,9 @@ class Foods extends React.Component {
                     }
                 </div>
                 {this.state.categories.map((category, i) => (
-                    <Category category={category} key={i} />
+                    <section className={i} ref={(section) => { i = section; }}>
+                        <Category category={category} key={i} />
+                    </section>
                 ))}
             </section>
         )
