@@ -18,8 +18,8 @@
   "main": "app.js",
   "scripts": {
     "migrate": "node models/migrations.js",
-    "serve:dev": "PORT=3001 nodemon app.js",
-    "serve:prod": "PORT=3001 HOST=localhost nodemon app.js",
+    "serve:dev": "eval $(cat .env-dev) nodemon app.js",
+    "serve:prod": "eval $(cat .env-prod) nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
