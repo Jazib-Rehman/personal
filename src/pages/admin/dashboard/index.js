@@ -97,7 +97,7 @@ class Dashboard extends React.Component {
                                         </div>
                                         <div className="p-2">
                                             <div className="flex flex-wrap justify-center items-center">
-                                                <a href="#" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
+                                                <a href="/admin/inbox" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
                                                     <img src="/uploads/siteHeaders/bg5.jpg" className="z-10 w-full h-full absolute" />
                                                     <div className="w-full h-full absolute z-20 bg-trans"></div>
                                                     <div className="absolute z-30 flex justify-center items-center">
@@ -105,14 +105,14 @@ class Dashboard extends React.Component {
                                                         <Inbox className="h-4 text-white" />
                                                     </div>
                                                 </a>
-                                                <a href="#" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
+                                                {/* <a href="#" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
                                                     <img src="/uploads/siteHeaders/bg6.jpg" className="z-10 w-full h-full absolute" />
                                                     <div className="w-full h-full absolute z-20 bg-trans"></div>
                                                     <div className="absolute z-30 flex justify-center items-center">
                                                         <p className="text-lg font-thin px-1 text-white">Feedbacks</p>
                                                         <FileText className="h-4 text-white" />
                                                     </div>
-                                                </a>
+                                                </a> */}
                                             </div>
                                         </div>
                                     </div>

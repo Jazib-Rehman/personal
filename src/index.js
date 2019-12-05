@@ -20,6 +20,7 @@ import Edit from './pages/admin/edit';
 import Banner from './pages/admin/banner';
 import Basics from './pages/admin/basics';
 import PDF from './pages/admin/pdf';
+import Inbox from './pages/admin/inbox';
 import "./static/style.css";
 import "./static/tailwind.css";
 
@@ -43,6 +44,7 @@ const routing = (
             <Route path="/admin/banner" component={Banner} />
             <Route path="/admin/basics" component={Basics} />
             <Route path="/admin/pdf" component={PDF} />
+            <Route path="/admin/inbox" component={Inbox} />
         </div>
     </Router>
 )

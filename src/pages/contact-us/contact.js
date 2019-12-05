@@ -1,35 +1,77 @@
-
 import React from 'react'
-import mock from './../mock.json'
 import { MapPin, Youtube, Instagram, Twitter, Facebook, CreditCard } from 'react-feather'
-
-const categories = mock.meals.map((item) => {
-    let meals = item.meals.map((meal) => {
-        return {
-            ...meal,
-            image: `/static/assets/menu/${item.name}/${meal.name}.jpg`,
-            isSpicy: meal.tags && meal.tags.toLowerCase().includes('spicy'),
-            isNormal: meal.tags && meal.tags.toLowerCase().includes('normal'),
-            isHomos: meal.tags && meal.tags.toLowerCase().includes('homos'),
-            isTahina: meal.tags && meal.tags.toLowerCase().includes('tahina'),
-            tags: meal.tags ? meal.tags.split(',') : []
-        }
-    });
-    return {
-        ...item,
-        meals,
-    }
-});
+import AppService from './../../services/app.service'
 
 class Contact extends React.Component {
 
 
     constructor(props) {
         super(props);
-
-        console.log(categories)
         this.state = {
-            categories
+            f_name: '',
+            l_name: '',
+            email: '',
+            message: '',
+            basics: [],
+            error: false
+        }
+    }
+
+    componentDidMount() {
+        AppService.getMethode('basics')
+            .then(response => {
+                this.setState({ basics: response })
+            })
+            .catch(err => console.error(err));
+    }
+
+    handleChange = (property, event) => {
+        const state = this.state;
+        state[property] = event.target.value;
+        this.setState({ state: state });
+        console.log(this.state)
+    }
+
+    handleClick = () => {
+        if (
+            this.state.f_name === '' ||
+            this.state.l_name === null ||
+            this.state.email === '' ||
+            this.state.message === ''
+        ) {
+            this.setState({
+                message: true
+            })
+        } else {
+
+            // const data = new FormData()
+            // data.append('f_name', this.state.f_name)
+            // data.append('l_name', this.state.l_name)
+            // data.append('email', this.state.email)
+            // data.append('message', this.state.message)
+
+            AppService.postMethode("post-feedback", {
+                f_name: this.state.f_name,
+                l_name: this.state.l_name,
+                email: this.state.email,
+                message: this.state.message,
+            }, {
+            })
+                .then(response => {
+                    // return <Redirect to='/admin/add-product' />
+                    window.location.href = window.location.pathname + "?successMessage=true"
+                })
+                .catch(err => console.error(err));
+        }
+    }
+
+    error() {
+        if (this.state.error === true) {
+            return (
+                <div className="bg-red-500 py-2 px-4 text-white">
+                    You have to enter all fields in order to contact us!
+                </div>
+            )
         }
     }
 
@@ -54,6 +96,7 @@ class Contact extends React.Component {
                         <div className="">
                             <p className="text-xl">Contact us via this form</p>
                         </div>
+                        {this.error()}
                         <div className="flex">
                             <div className="mt-4 w-1/2">
                                 <div className="text-left py-5 px-16 flex">
@@ -81,23 +124,23 @@ class Contact extends React.Component {
                                     <div className="flex">
                                         <div className="mx-1 w-full">
                                             <p>First name</p>
-                                            <input type="text" className="p-2 bg-white w-full rounded border border-red-300 outline-none" placeholder="First Name" />
+                                            <input type="text" onChange={this.handleChange.bind(this, 'f_name')} name="f_name" className="p-2 bg-white w-full rounded border border-red-300 outline-none" placeholder="First Name" />
                                         </div>
                                         <div className="mx-1 w-full">
                                             <p>Last name</p>
-                                            <input type="text" className="p-2 bg-white w-full rounded border border-red-300 outline-none" placeholder="Last Name" />
+                                            <input type="text" onChange={this.handleChange.bind(this, 'l_name')} name="l_name" className="p-2 bg-white w-full rounded border border-red-300 outline-none" placeholder="Last Name" />
                                         </div>
                                     </div>
                                     <div className="mx-1 mt-4">
                                         <p>E-mail</p>
-                                        <input type="text" className="p-2 bg-white w-full rounded border border-red-300 outline-none" placeholder="example@example.com" />
+                                        <input type="text" onChange={this.handleChange.bind(this, 'email')} name="email" className="p-2 bg-white w-full rounded border border-red-300 outline-none" placeholder="example@example.com" />
                                     </div>
                                     <div className="mx-1 mt-4">
                                         <p>Message Contant</p>
-                                        <textarea type="text" className="p-2 bg-white w-full rounded border border-red-300 outline-none" placeholder="Your message!"></textarea>
+                                        <textarea type="text" onChange={this.handleChange.bind(this, 'message')} name="message" className="p-2 bg-white w-full rounded border border-red-300 outline-none" placeholder="Your message!"></textarea>
                                     </div>
                                     <div className="mx-1 mt-4 text-right">
-                                        <button className="btn rounded text-prim bg-prim text-white font-bold outline-none">SEND</button>
+                                        <button onClick={this.handleClick} className="btn rounded text-prim bg-prim text-white font-bold outline-none">SEND</button>
                                     </div>
                                 </div>
                             </div>
@@ -105,19 +148,25 @@ class Contact extends React.Component {
                         <div className="px-16">
                             <div className="border-t border-gray-600"></div>
                             <p className="mt-4 text-lg">Contact with us via socialmedia platforms</p>
-                            <div className="mt-4 flex justify-center">
-                                <div className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
-                                    <Twitter size="18" />
-                                </div>
-                                <div className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
-                                    <Facebook size="18" />
-                                </div>
-                                <div className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
-                                    <Instagram size="18" />
-                                </div>
-                                <div className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
-                                    <Youtube size="18" />
-                                </div>
+                            <div className="mt-4">
+                                {
+                                    this.state.basics.map((item, i) => {
+                                        return <div className="flex justify-center">
+                                            <a href={item.twitter} target="_blank" className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
+                                                <Twitter size="18" />
+                                            </a>
+                                            <a href={item.facebook} target="_blank" className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
+                                                <Facebook size="18" />
+                                            </a>
+                                            <a href={item.instagram} target="_blank" className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
+                                                <Instagram size="18" />
+                                            </a>
+                                            <a href={item.youtube} target="_blank" className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1">
+                                                <Youtube size="18" />
+                                            </a>
+                                        </div>
+                                    })
+                                }
                             </div>
                         </div>
                     </div>

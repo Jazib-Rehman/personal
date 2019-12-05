@@ -60,6 +60,7 @@ ProductOnly = require('./models/productonly'), (sequelize, { modelName: 'Product
 Banner = require('./models/banner'), (sequelize, { modelName: 'Banner' });
 Basics = require('./models/basics'), (sequelize, { modelName: 'Basics' });
 PDF = require('./models/pdf'), (sequelize, { modelName: 'PDF' });
+Contacts = require('./models/contacts'), (sequelize, { modelName: 'Contacts' });
 // SubCategories = require('./models/subcategories'), (sequelize, { modelName: 'SubCategories' });
 
 //Relations
@@ -141,6 +142,20 @@ app.post(
 
 			// res.redirect(redirect + "/admin/add-product");
 		});
+	}
+);
+
+app.post(
+	"/post-feedback",
+	(req, res) => {
+		Contacts.create({
+			f_name: req.body.f_name,
+			l_name: req.body.l_name,
+			email: req.body.email,
+			message: req.body.message,
+		})
+			.then(product => res.send(product))
+			.catch(err => console.log(err));
 	}
 );
 
@@ -352,6 +367,19 @@ app.post('/delete-category', (req, res) => {
 					console.log('file deleted successfully');
 				});
 			});
+			res.status(200)
+		})
+		.catch(err => console.log(err));
+	res.redirect(redirect + "/admin/categories");
+});
+
+app.post('/delete-message', (req, res) => {
+	Contacts.destroy({
+		where: {
+			id: req.body.id
+		}
+	})
+		.then(product => {
 			res.status(200)
 		})
 		.catch(err => console.log(err));
@@ -634,6 +662,13 @@ app.post(
 
 app.get('/banner', (req, res) =>
 	Banner.findAll()
+		.then(products => {
+			res.send(products);
+		})
+		.catch(err => console.log(err)));
+
+app.get('/Inbox', (req, res) =>
+	Contacts.findAll()
 		.then(products => {
 			res.send(products);
 		})
