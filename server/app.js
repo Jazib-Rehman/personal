@@ -8,9 +8,9 @@ const path = require("path");
 const fs = require("fs");
 const multer = require("multer");
 const Sequelize = require('sequelize');
-const {NODE_ENV, PORT, HOST } = require('./config')
+const { NODE_ENV, PORT, HOST } = require('./config')
 
-console.log("HEY ENVS",NODE_ENV, PORT, HOST)
+console.log("HEY ENVS", NODE_ENV, PORT, HOST)
 
 const sequelize = new Sequelize('shawarma', 'root', '', {
 	host: 'localhost',
