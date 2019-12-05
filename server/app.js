@@ -33,11 +33,11 @@ app.use(cors());
 express.static(path.join(__dirname, "./../public"))
 
 const upload = multer({
-	dest: "/uploads/images"
+	dest: "uploads/images"
 });
 
-const folder = "./../public";
-const delFolder = "./public/";
+const folder = "./";
+const delFolder = "./";
 const redirect = 'http://localhost:3000';
 
 const handleError = (err, res) => {
@@ -87,7 +87,7 @@ app.post(
 
 		const imgURL = "uploads/images/" + time + path.extname(req.file.originalname);
 		const tempPath = req.file.path;
-		const targetPath = path.join(__dirname, folder + "/uploads/images/" + time + path.extname(req.file.originalname));
+		const targetPath = path.join(__dirname, "/uploads/images/" + time + path.extname(req.file.originalname));
 		fs.rename(tempPath, targetPath, err => {
 			if (err) return handleError(err, res);
 			Product.create({
