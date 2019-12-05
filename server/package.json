@@ -18,8 +18,8 @@
   "main": "app.js",
   "scripts": {
     "migrate": "node models/migrations.js",
-    "serve:dev": "PORT=3001 nodemon app.js",
-    "serve:prod": "PORT=3001 nodemon app.js",
+    "serve:dev": "nodemon app.js",
+    "serve:prod": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
