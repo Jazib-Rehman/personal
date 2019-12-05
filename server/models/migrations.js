@@ -6,6 +6,7 @@ const Channels = require('./channels');
 const Banner = require('./banner');
 const Basics = require('./basics');
 const PDF = require('./pdf');
+const Contacts = require('./contacts');
 
 Categories.sync({ force: true }).then(() => {
     console.log('categoriies table created!')
@@ -30,4 +31,7 @@ Basics.sync({ force: true }).then(() => {
 })
 PDF.sync({ force: true }).then(() => {
     console.log('pdf table created!')
+})
+Contacts.sync({ force: true }).then(() => {
+    console.log('contacts table created!')
 })

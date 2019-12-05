@@ -1,6 +1,6 @@
 import React from 'react'
 import NavItem from './NavItem'
-import { Home, Phone, Menu, PlusCircle, Eye, ShoppingCart, Grid, Info, Map, MapPin, Codesandbox, Layers, Layout, FileText } from 'react-feather';
+import { Home, Phone, Menu, PlusCircle, Eye, ShoppingCart, Grid, Info, Map, MapPin, Codesandbox, Layers, Layout, FileText, Inbox } from 'react-feather';
 
 class LeftNavbar extends React.Component {
 
@@ -72,6 +72,14 @@ class LeftNavbar extends React.Component {
                             style: 'hover:text-black hover:no-underline flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-4',
                             link: '/admin/pdf',
                             icon: <FileText className="w-4" />,
+
+                        },
+                        {
+                            name: 'Inbox',
+                            items: [],
+                            style: 'hover:text-black hover:no-underline flex inline-block items-center text-sm py-2 trans-1 hover:bg-indigo-600 pl-4',
+                            link: '/admin/inbox',
+                            icon: <Inbox className="w-4" />,
 
                         },
                         // {
