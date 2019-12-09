@@ -61,6 +61,7 @@ Banner = require('./models/banner'), (sequelize, { modelName: 'Banner' });
 Basics = require('./models/basics'), (sequelize, { modelName: 'Basics' });
 PDF = require('./models/pdf'), (sequelize, { modelName: 'PDF' });
 Contacts = require('./models/contacts'), (sequelize, { modelName: 'Contacts' });
+About = require('./models/about'), (sequelize, { modelName: 'About' });
 // SubCategories = require('./models/subcategories'), (sequelize, { modelName: 'SubCategories' });
 
 //Relations
@@ -318,6 +319,27 @@ app.post(
 		});
 	}
 );
+
+app.post('/add-about', (req, res) => {
+	About.create(req.body)
+		.then(product => {
+			res.send(product)
+		})
+		.catch(err => console.log(err));
+	// res.redirect(redirect + "/admin/products");
+});
+
+app.post('/update-about', (req, res) => {
+	About.update(
+		req.body,
+		{ where: { id: req.body.id } }
+	)
+		.then(product => {
+			res.send(product)
+		})
+		.catch(err => console.log(err));
+	// res.redirect(redirect + "/admin/products");
+});
 
 app.post('/delete-product', (req, res) => {
 	Product.destroy({
@@ -659,6 +681,13 @@ app.post(
 		});
 	}
 );
+
+app.get('/about', (req, res) =>
+	About.findAll()
+		.then(products => {
+			res.send(products);
+		})
+		.catch(err => console.log(err)));
 
 app.get('/banner', (req, res) =>
 	Banner.findAll()
