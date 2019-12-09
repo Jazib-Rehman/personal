@@ -30,7 +30,15 @@ class OurFood extends React.Component {
     categories() {
         if (this.state.categories !== []) {
             return this.state.categories.map((item, i) => {
-                return <Meal meal={item} key={i} />
+                return <div className="w-1/2 md:w-1/4 p-2 mt-6" key={i}>
+                    <div>
+                        <div className="bg-orange py-1 text-white">
+                            <p className="text-2xl font-light">{item.name}</p>
+                        </div>
+                        <img src={item.image} alt="dummy" className="m-auto w-full h-64 object-cover" />
+                    </div>
+                </div>
+                // <Meal meal={item} key={i} />
             })
         } else {
             return <p className="text-2xl font-thin">Nothing Found!</p>
@@ -55,19 +63,19 @@ class OurFood extends React.Component {
                 </div>
                 <section className="relative text-center py-12 z-40">
                     <h1 className="flex items-center justify-center font-prim text-dark">
-                        <span className="text-lg px-4">OUR</span>
-                        <span className="text-3xl border-l-2 border-black px-4"> FOOD </span>
+                        <span className="text-lg px-4 text-prim">OUR</span>
+                        <span className="text-3xl border-l-2 border-orange-400 px-4 text-prim"> FOOD </span>
                     </h1>
                     <p className="mt-4 text-gray-500 font-light text-sm">Here you will find our full menu</p>
 
-                    <div className="mt-4">
-                        <a className="btn" href="/menu">OUR FULL MENU</a>
+                    <div className="my-4">
+                        <a className="btn bg-orange text-white rounded-none" href="/menu">OUR FULL MENU</a>
                         {this.state.pdf.map((item, i) => {
-                            return <a className="btn" href={item.image}>DOWNLOAD PDF</a>
+                            return <a className="btn bg-white text-orange rounded-none" href={item.image}>DOWNLOAD PDF</a>
                         })}
                     </div>
                     <div className="w-full md:px-24">
-                        <div className="slider horizontal mt-4 z-40 m-auto h-64 items-center">
+                        <div className="slider horizontal mt-4 z-40 m-auto items-center">
                             {this.categories()}
                         </div>
                     </div>

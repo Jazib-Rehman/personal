@@ -65,11 +65,7 @@ button {
 }
 
 .bg-trans {
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.bg-trans:hover, .hover {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .bg-dark {
@@ -79,7 +75,7 @@ button {
   color: rgb(37, 37, 37);
 }
 
-.b-dash {
+.dash {
   border: orange dashed 1px;
 }
 
@@ -105,14 +101,14 @@ button {
 
 .btn:hover{
   background: var(--prim);
-  color: white;
+  color: #FC5C42;
 }
 
 .btn:active,
 .btn:focus {
   border: 1px var(--sec) solid;
   background: var(--sec);
-  color: white;
+  color: #FC5C42;
 }
 
 .grid {
@@ -174,7 +170,16 @@ footer i {
   margin-right: 8px;
 }
 
+.bg-orange {
+  background: #F58A3A;
+}
+
+.text-orange {
+  color: #F58A3A;
+}
+
 .horizontal {
+  height: 370px;
   flex-flow: column wrap;
   overflow-x: scroll;
   overflow-y: hidden;

@@ -35,20 +35,20 @@ class Foods extends React.Component {
         return (
             <section class="relative text-center py-12 w-lg m-auto z-40">
                 <h1 class="flex items-center justify-center font-prim text-dark">
-                    <span class="text-lg px-4">OUR</span>
-                    <span class="text-3xl border-l-2 border-black px-4"> FOOD </span>
+                    <span class="text-lg px-4 text-prim">OUR</span>
+                    <span class="text-3xl border-l-2 border-orange-400 px-4 text-prim"> FOOD </span>
                 </h1>
                 <p className="mt-4 text-gray-500 font-light text-sm">Here you will find our full menu</p>
 
 
-                <div className="mt-12 flex flex-wrap w-full font-sec justify-center cursor-pointer">
+                <div className="flex flex-wrap w-full font-sec justify-center cursor-pointer py-4">
                     {this.state.categories.map((menu, i) => (
                         <div key={i} class="w-full sm:w-64 mx-1 text-lg">
-                            <a class="inline-block btn text-prim mx-1 my-1 w-full sm:w-64 bg-white" href={'#' + menu.id} >{menu.name}</a>
+                            <a class="inline-block btn text-prim mx-1 my-1 w-full sm:w-64 bg-white rounded-none" href={'#' + menu.id} >{menu.name}</a>
                         </div>
                     ))}
                 </div>
-                <div className="flex flex-wrap  mt-8 w-full  m-auto w-full md:w-2/3 ">
+                <div className="flex flex-wrap  mt-8 w-full  m-auto w-full md:w-2/3">
                     {
                         this.state.unsigned.map((item, j) => (
                             <Meal meal={item} key={j} />
