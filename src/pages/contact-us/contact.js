@@ -1,6 +1,7 @@
 import React from 'react'
 import { MapPin, Youtube, Instagram, Twitter, Facebook, CreditCard } from 'react-feather'
 import AppService from './../../services/app.service'
+import queryString from 'query-string'
 
 class Contact extends React.Component {
 
@@ -35,21 +36,14 @@ class Contact extends React.Component {
     handleClick = () => {
         if (
             this.state.f_name === '' ||
-            this.state.l_name === null ||
+            this.state.l_name === '' ||
             this.state.email === '' ||
             this.state.message === ''
         ) {
             this.setState({
-                message: true
+                error: true
             })
         } else {
-
-            // const data = new FormData()
-            // data.append('f_name', this.state.f_name)
-            // data.append('l_name', this.state.l_name)
-            // data.append('email', this.state.email)
-            // data.append('message', this.state.message)
-
             AppService.postMethode("post-feedback", {
                 f_name: this.state.f_name,
                 l_name: this.state.l_name,
@@ -58,7 +52,6 @@ class Contact extends React.Component {
             }, {
             })
                 .then(response => {
-                    // return <Redirect to='/admin/add-product' />
                     window.location.href = window.location.pathname + "?successMessage=true"
                 })
                 .catch(err => console.error(err));
@@ -70,6 +63,17 @@ class Contact extends React.Component {
             return (
                 <div className="bg-red-500 py-2 px-4 text-white">
                     You have to enter all fields in order to contact us!
+                </div>
+            )
+        }
+    }
+
+    success() {
+        const successMessage = queryString.parse(window.location.search).successMessage;
+        if (successMessage === "true") {
+            return (
+                <div className="bg-green-500 py-2 px-4 text-white">
+                    Thank you for your feedback!
                 </div>
             )
         }
@@ -97,6 +101,7 @@ class Contact extends React.Component {
                             <p className="text-xl">Contact us via this form</p>
                         </div>
                         {this.error()}
+                        {this.success()}
                         <div className="flex">
                             <div className="mt-4 w-1/2">
                                 <div className="text-left py-5 px-16 flex">
