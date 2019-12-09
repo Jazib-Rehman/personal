@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2019 at 12:26 PM
+-- Generation Time: Dec 09, 2019 at 12:57 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -25,15 +25,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contacts`
+-- Table structure for table `basics`
 --
 
-CREATE TABLE `contacts` (
+CREATE TABLE `basics` (
   `id` int(11) NOT NULL,
-  `f_name` varchar(255) DEFAULT NULL,
-  `l_name` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `message` varchar(255) DEFAULT NULL,
+  `logo` varchar(255) DEFAULT NULL,
+  `site_header` varchar(255) DEFAULT NULL,
+  `categories` varchar(255) DEFAULT NULL,
+  `channels` varchar(255) DEFAULT NULL,
+  `locator` varchar(255) DEFAULT NULL,
+  `twitter` varchar(255) DEFAULT NULL,
+  `facebook` varchar(255) DEFAULT NULL,
+  `instagram` varchar(255) DEFAULT NULL,
+  `youtube` varchar(255) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -43,9 +48,9 @@ CREATE TABLE `contacts` (
 --
 
 --
--- Indexes for table `contacts`
+-- Indexes for table `basics`
 --
-ALTER TABLE `contacts`
+ALTER TABLE `basics`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -53,10 +58,10 @@ ALTER TABLE `contacts`
 --
 
 --
--- AUTO_INCREMENT for table `contacts`
+-- AUTO_INCREMENT for table `basics`
 --
-ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `basics`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
