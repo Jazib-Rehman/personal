@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export class HttpService {
-    baseURL = 'http://localhost:3001/';
+    baseURL = 'http://ss.wadasol.com:3001/';
     get(url) {
         return fetch(this.baseURL + url).then((resp) => resp.json())
     }
