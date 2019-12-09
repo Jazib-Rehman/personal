@@ -1,5 +1,4 @@
 import React from 'react'
-import mock from './../pages/mock.json'
 import AppService from './../services/app.service'
 
 class Footer extends React.Component {
@@ -7,8 +6,8 @@ class Footer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            contact: mock.contactUs,
-            basics: []
+            basics: [],
+            about: []
         }
     }
 
@@ -20,6 +19,18 @@ class Footer extends React.Component {
                 })
             })
             .catch(err => console.error(err));
+
+        AppService.getMethode('about')
+            .then(response => {
+                if (response.length === 0) {
+                    this.setState({ isEmpty: true })
+                } else {
+                    this.setState({
+                        about: response[0]
+                    })
+                }
+            })
+            .catch(err => console.error(err));
     }
 
     render() {
@@ -28,13 +39,13 @@ class Footer extends React.Component {
                 <div className="loc w-full text-center sm:text-left md:w-2/6 font-hairline text-sm p-4">
                     <img src="static/assets/logo-2.png" alt="logo" className="w-64 mb-4" />
                     <p>
-                        <i className="fas fa-phone"></i> {this.state.contact.phone}
+                        <i className="fas fa-phone"></i> {this.state.about.phone}
                     </p>
                     <p>
-                        <i className="fas fa-envelope"></i> {this.state.contact.email}
+                        <i className="fas fa-envelope"></i> {this.state.about.email}
                     </p>
                     <p>
-                        <i className="fas fa-map-marker-alt"></i> {this.state.contact.address}
+                        <i className="fas fa-map-marker-alt"></i> {this.state.about.address}
                     </p>
                 </div>
                 <div className="w-full text-center sm:text-left sm:w-1/3 md:w-1/6 md links text-sm p-4">

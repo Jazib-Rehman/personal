@@ -61,14 +61,14 @@ class Basics extends Component {
 
     handleClick = () => {
         if (
-            this.state.site_header === '' ||
-            this.state.categories === '' ||
-            this.state.channels === '' ||
-            this.state.locator === '' ||
-            this.state.twitter === '' ||
-            this.state.facebook === '' ||
-            this.state.instagram === '' ||
-            this.state.youtube === '' ||
+            this.state.basics.site_header === '' ||
+            this.state.basics.categories === '' ||
+            this.state.basics.channels === '' ||
+            this.state.basics.locator === '' ||
+            this.state.basics.twitter === '' ||
+            this.state.basics.facebook === '' ||
+            this.state.basics.instagram === '' ||
+            this.state.basics.youtube === '' ||
             this.state.selectedFile === null
         ) {
             this.setState({
@@ -78,14 +78,14 @@ class Basics extends Component {
 
             const data = new FormData()
             data.append('image', this.state.selectedFile)
-            data.append('site_header', this.state.site_header)
-            data.append('categories', this.state.categories)
-            data.append('channels', this.state.channels)
-            data.append('locator', this.state.locator)
-            data.append('twitter', this.state.twitter)
-            data.append('facebook', this.state.facebook)
-            data.append('instagram', this.state.instagram)
-            data.append('youtube', this.state.youtube)
+            data.append('site_header', this.state.basics.site_header)
+            data.append('categories', this.state.basics.categories)
+            data.append('channels', this.state.basics.channels)
+            data.append('locator', this.state.basics.locator)
+            data.append('twitter', this.state.basics.twitter)
+            data.append('facebook', this.state.basics.facebook)
+            data.append('instagram', this.state.basics.instagram)
+            data.append('youtube', this.state.basics.youtube)
 
             AppService.axiosPost("add-basics", data, {
             })
@@ -99,14 +99,14 @@ class Basics extends Component {
 
     handleUpdate = () => {
         if (
-            this.state.site_header === '' ||
-            this.state.categories === '' ||
-            this.state.channels === '' ||
-            this.state.locator === '' ||
-            this.state.twitter === '' ||
-            this.state.facebook === '' ||
-            this.state.instagram === '' ||
-            this.state.youtube === '' ||
+            this.state.basics.site_header === '' ||
+            this.state.basics.categories === '' ||
+            this.state.basics.channels === '' ||
+            this.state.basics.locator === '' ||
+            this.state.basics.twitter === '' ||
+            this.state.basics.facebook === '' ||
+            this.state.basics.instagram === '' ||
+            this.state.basics.youtube === '' ||
             this.state.selectedFile === null
         ) {
             this.setState({
