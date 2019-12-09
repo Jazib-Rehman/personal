@@ -1,12 +1,4 @@
-
 import React from 'react'
-import mock from './../mock.json'
-import { Facebook } from 'react-feather'
-import { Twitter } from 'react-feather'
-import { Instagram } from 'react-feather'
-import { Youtube } from 'react-feather'
-import { MapPin } from 'react-feather'
-import { CreditCard } from 'react-feather'
 import AppService from './../../services/app.service'
 
 class AboutUs extends React.Component {
