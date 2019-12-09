@@ -37,7 +37,7 @@ const upload = multer({
 });
 
 const folder = "./../public";
-const delFolder = "./public";
+const delFolder = "./public/";
 const redirect = 'http://localhost:3000';
 
 const handleError = (err, res) => {

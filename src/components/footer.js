@@ -35,7 +35,7 @@ class Footer extends React.Component {
 
     render() {
         return (
-            <footer className="flex flex-wrap p-12 border text-gray-700  relative z-30">
+            <footer className="flex flex-wrap p-12 border text-red-600 bg-black relative z-30">
                 <div className="loc w-full text-center sm:text-left md:w-2/6 font-hairline text-sm p-4">
                     <img src="static/assets/logo-2.png" alt="logo" className="w-64 mb-4" />
                     <p>
@@ -49,14 +49,14 @@ class Footer extends React.Component {
                     </p>
                 </div>
                 <div className="w-full text-center sm:text-left sm:w-1/3 md:w-1/6 md links text-sm p-4">
-                    <h1 className="font-hairline text-gray-900 text-lg mb-2">Quick Links</h1>
+                    <h1 className="font-hairline text-red-700 text-lg mb-2">Quick Links</h1>
                     <p><a href="/">Home</a></p>
                     <p><a href="/about-us">About us</a></p>
                     <p><a href="/contact-us">Contact Us</a></p>
                     {/* <p>Carear</p> */}
                 </div>
                 <div className="w-full text-center sm:text-left sm:w-1/3 md:w-1/6 links text-sm p-4">
-                    <h1 className="font-hairline text-gray-900 text-lg mb-2">Follow Us</h1>
+                    <h1 className="font-hairline text-red-700 text-lg mb-2">Follow Us</h1>
                     {
                         this.state.basics.map((item, i) => {
                             return <div>

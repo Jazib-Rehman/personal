@@ -11,9 +11,9 @@ class Meal extends React.Component {
 
     render() {
         return (
-            <div className="w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/6  p-2 ">
+            <div className="w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/6 p-2">
                 <div className="relative cursor-pointer tans-all">
-                    <img className="m-auto w-full h-full object-cover rounded-lg zoom-in" src={this.props.meal.image} alt="Shawarma" />
+                    <img className="m-auto w-32 h-32 object-cover rounded-lg zoom-in" src={this.props.meal.image} alt="Shawarma" />
                     <h2 className="text-dark text-md p-2">{this.props.meal.name}</h2>
                     <div className="flex justify-center pb-4">
                         {/* {
