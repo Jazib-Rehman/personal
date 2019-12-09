@@ -88,7 +88,7 @@ app.post(
 
 		const imgURL = "uploads/images/" + time + path.extname(req.file.originalname);
 		const tempPath = req.file.path;
-		const targetPath = path.join(__dirname, "/uploads/images/" + time + path.extname(req.file.originalname));
+		const targetPath = path.join(__dirname, folder + "/uploads/images/" + time + path.extname(req.file.originalname));
 		fs.rename(tempPath, targetPath, err => {
 			if (err) return handleError(err, res);
 			Product.create({
