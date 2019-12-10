@@ -18,8 +18,8 @@ class Meal extends React.Component {
                     <div className="flex justify-center pb-4">
                         {/* {
                             this.state.tags.map((tag, i) => ( */}
-                        <div className="inline-block px-2 rounded-full border bg-gray-600  text-white text-xs mr-1">Spicy</div>
-                        <div className="inline-block px-2 rounded-full border bg-gray-600  text-white text-xs mr-1">Sour</div>
+                        <div className="inline-block px-2 rounded-full border bg-orange-400 text-white text-xs mr-1">Spicy</div>
+                        <div className="inline-block px-2 rounded-full border bg-orange-400 text-white text-xs mr-1">Sour</div>
                         {/* ))
                         } */}
                     </div>
