@@ -98,7 +98,7 @@ class Contact extends React.Component {
                 <div className="relative px-32 py-20 bg-dark-trans z-40">
                     <div className="rounded-lg bg-white-trans py-10">
                         <div className="">
-                            <p className="text-xl">Contact us via this form</p>
+                            <p className="text-2xl font-bold uppercase text-orange-600">Get in touch with us</p>
                         </div>
                         {this.error()}
                         {this.success()}
@@ -107,7 +107,7 @@ class Contact extends React.Component {
                                 <div className="text-left py-5 px-16 flex">
                                     <div className="">
                                         <p className="text-xl">Site management Shawarmer</p>
-                                        <p>Sulaymaniyah, Olaya Road Riyadh 12211, Saudi Arabia</p>
+                                        <p className="text-sm text-gray-700">Sulaymaniyah, Olaya Road Riyadh 12211, Saudi Arabia</p>
                                     </div>
                                     <div className="text-blue-500 px-6 flex justify-center mt-4">
                                         <MapPin size="24" />
@@ -116,8 +116,8 @@ class Contact extends React.Component {
                                 <div className="text-left py-5 px-16 mt-10 flex">
                                     <div>
                                         <p className="text-xl">To contact us</p>
-                                        <p>Shawarmer Office: (011) 462-8841 , Sunday - Thursday, 8 AM - 5 PM</p>
-                                        <p className="mt-6">Uniform Number: 920008080</p>
+                                        <p className="text-sm text-gray-700">Shawarmer Office: (011) 462-8841 , Sunday - Thursday, 8 AM - 5 PM</p>
+                                        <p className="text-xs text-gray-700 mt-6">Uniform Number: 920008080</p>
                                     </div>
                                     <div className="text-red-400 px-6 flex justify-center mt-4">
                                         <CreditCard size="24" />
@@ -128,32 +128,32 @@ class Contact extends React.Component {
                                 <div className="text-left py-5 px-16">
                                     <div className="flex">
                                         <div className="mx-1 w-full">
-                                            <p>First name</p>
+                                            <p className="text-sm text-gray-700 font-semibold">First name:</p>
                                             <input type="text" onChange={this.handleChange.bind(this, 'f_name')} name="f_name" className="p-2 bg-white w-full rounded border border-red-300 outline-none" placeholder="First Name" />
                                         </div>
                                         <div className="mx-1 w-full">
-                                            <p>Last name</p>
+                                            <p className="text-sm text-gray-700 font-semibold">Last name:</p>
                                             <input type="text" onChange={this.handleChange.bind(this, 'l_name')} name="l_name" className="p-2 bg-white w-full rounded border border-red-300 outline-none" placeholder="Last Name" />
                                         </div>
                                     </div>
                                     <div className="mx-1 mt-4">
-                                        <p>E-mail</p>
+                                        <p className="text-sm text-gray-700 font-semibold">E-mail:</p>
                                         <input type="text" onChange={this.handleChange.bind(this, 'email')} name="email" className="p-2 bg-white w-full rounded border border-red-300 outline-none" placeholder="example@example.com" />
                                     </div>
                                     <div className="mx-1 mt-4">
-                                        <p>Message Contant</p>
+                                        <p className="text-sm text-gray-700 font-semibold">Message:</p>
                                         <textarea type="text" onChange={this.handleChange.bind(this, 'message')} name="message" className="p-2 bg-white w-full rounded border border-red-300 outline-none" placeholder="Your message!"></textarea>
                                     </div>
                                     <div className="mx-1 mt-4 text-right">
-                                        <button onClick={this.handleClick} className="btn rounded text-prim bg-prim text-white font-bold outline-none">SEND</button>
+                                        <button onClick={this.handleClick} className="btn rounded text-prim bg-orange-600 text-white font-bold outline-none">SEND MESSAGE</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="px-16">
-                            <div className="border-t border-gray-600"></div>
-                            <p className="mt-4 text-lg">Contact with us via socialmedia platforms</p>
-                            <div className="mt-4">
+                            <div className="border-t-2 border-orange-400"></div>
+                            <p className="mt-4 text-lg">Find us on social networks</p>
+                            <div className="mt-3">
                                 {
                                     this.state.basics.map((item, i) => {
                                         return <div className="flex justify-center">

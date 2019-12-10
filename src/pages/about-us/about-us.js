@@ -30,8 +30,8 @@ class AboutUs extends React.Component {
             <section class="relative py-24 z-40">
                 <div className="pt-10 text-center z-20">
                     <h1 className="flex items-center justify-center font-prim text-dark">
-                        <span className="text-lg px-4">OUR</span>
-                        <span className="text-3xl border-l-2 border-black px-4"> STORY </span>
+                        <span className="text-lg px-4 text-prim">OUR</span>
+                        <span className="text-3xl border-l-2 text-prim border-orange-400 border-black px-4"> STORY </span>
                     </h1>
                 </div>
                 <div className="mt-20 px-48 z-20">
