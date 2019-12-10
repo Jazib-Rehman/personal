@@ -30,7 +30,7 @@ class OurFood extends React.Component {
     categories() {
         if (this.state.categories !== []) {
             return this.state.categories.map((item, i) => {
-                return <div className="w-1/2 md:w-1/4 p-2 mt-6" key={i}>
+                return <div className="w-64 p-2 mt-6" key={i}>
                     <div>
                         <div className="bg-orange py-1 text-white">
                             <p className="text-2xl font-light">{item.name}</p>

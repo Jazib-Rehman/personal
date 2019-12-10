@@ -56,9 +56,12 @@ class Foods extends React.Component {
                     }
                 </div>
                 {
-                    this.state.categories.map((category, i) => (
-                        <Category category={category} key={category.id} />
-                    ))
+                    this.state.categories.map((category, i) => {
+                        return <div className="mt-5">
+
+                            <Category category={category} key={category.id} />
+                        </div>
+                    })
                 }
             </section>
         )
