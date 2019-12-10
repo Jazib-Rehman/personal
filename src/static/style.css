@@ -186,6 +186,21 @@ footer i {
   width: 100%;
 }
 
+.horizontal::-webkit-scrollbar {
+  width: 1em;
+  height: 0.5rem;
+}
+
+.horizontal::-webkit-scrollbar-track {
+  background: none;
+}
+
+.horizontal::-webkit-scrollbar-thumb {
+  background-color: rgba(252, 92, 66, 0.5); 
+  outline: none;
+  border-radius: 10px;
+}
+
 .bg-grid{
   position: relative;
   background: white;

@@ -28,7 +28,10 @@ class Foods extends React.Component {
             .catch(err => console.error(err));
     }
 
-
+    handleScroll(id) {
+        const element = document.getElementById(id);
+        element.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+    }
 
 
     render() {
@@ -44,7 +47,7 @@ class Foods extends React.Component {
                 <div className="flex flex-wrap w-full font-sec justify-center cursor-pointer py-4">
                     {this.state.categories.map((menu, i) => (
                         <div key={i} class="w-full sm:w-64 mx-1 text-lg">
-                            <a class="inline-block btn text-prim mx-1 my-1 w-full sm:w-64 bg-white rounded-none" href={'#' + menu.id} >{menu.name}</a>
+                            <a class="inline-block btn text-prim mx-1 my-1 w-full sm:w-64 bg-white rounded-none" onClick={this.handleScroll.bind(this, menu.id)} >{menu.name}</a>
                         </div>
                     ))}
                 </div>
@@ -57,7 +60,7 @@ class Foods extends React.Component {
                 </div>
                 {
                     this.state.categories.map((category, i) => {
-                        return <div className="mt-5">
+                        return <div id={category.id} className="mt-5">
 
                             <Category category={category} key={category.id} />
                         </div>
