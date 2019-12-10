@@ -26,7 +26,7 @@ import "./static/style.css";
 import "./static/tailwind.css";
 
 const routing = (
-    <Router basename="/build">
+    <Router>
         <div>
             <Route exact path="/" component={Home} />
             <Route path="/home" component={Home} />
