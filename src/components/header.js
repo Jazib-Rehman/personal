@@ -5,6 +5,7 @@ import counterpart from 'counterpart'
 import Translate from 'react-translate-component'
 import en from '../lang/en'
 import ar from '../lang/ar'
+import { Link } from 'react-router-dom'
 
 counterpart.registerTranslations('en', en);
 counterpart.registerTranslations('ar', ar);
@@ -67,11 +68,18 @@ class Header extends React.Component {
 					}
 				</div>
 				<div className="menu w-1/3 flex justify-end">
-					<a href="/" className="text-xs px-3 hover:text-white hover:no-underline">HOME</a>
-					<a href="/menu" className="text-xs px-3 hover:text-white hover:no-underline">OUR FOOD</a>
-					<a href="/find-us" className="text-xs px-3 hover:text-white hover:no-underline">FIND US</a>
-					{/* <a href="/about-us" className="text-xs px-3 hover:text-white hover:no-underline">ABOUT US</a> */}
-					<a href="/contact-us" className="text-xs px-3 hover:text-white hover:no-underline">CONTACT US</a>
+					<Link to="/">
+						<p className="text-xs px-3 hover:text-white hover:no-underline">HOME</p>
+					</Link>
+					<Link to="/menu">
+						<p className="text-xs px-3 hover:text-white hover:no-underline">OUR FOOD</p>
+					</Link>
+					<Link to="/find-us">
+						<p className="text-xs px-3 hover:text-white hover:no-underline">FIND US</p>
+					</Link>
+					<Link to="/contact-us">
+						<p className="text-xs px-3 hover:text-white hover:no-underline">CONTACT US</p>
+					</Link>
 				</div>
 			</header>
 		)
