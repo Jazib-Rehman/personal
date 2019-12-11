@@ -12,6 +12,8 @@ class Basics extends Component {
         super();
         this.state = {
             message: false,
+            successMessage: false,
+            updateMessage: false,
             basics: {
                 site_header: '',
                 id: '',
@@ -90,8 +92,18 @@ class Basics extends Component {
             AppService.axiosPost("add-basics", data, {
             })
                 .then(response => {
-                    // window.location.reload();
-                    window.location.href = window.location.pathname + "?successMessage=true"
+                    AppService.getMethode('basics')
+                        .then(response => {
+                            if (response.length === 0) {
+                                this.setState({ isEmpty: true })
+                            } else {
+                                this.setState({
+                                    basics: response[0],
+                                    successMessage: true
+                                })
+                            }
+                        })
+                        .catch(err => console.error(err));
                 })
                 .catch(err => console.error(err));
         }
@@ -131,8 +143,18 @@ class Basics extends Component {
             AppService.axiosPost("update-basics", data, {
             })
                 .then(response => {
-                    // window.location.reload();
-                    window.location.href = window.location.pathname + "?updateMessage=true"
+                    AppService.getMethode('basics')
+                        .then(response => {
+                            if (response.length === 0) {
+                                this.setState({ isEmpty: true })
+                            } else {
+                                this.setState({
+                                    basics: response[0],
+                                    updateMessage: true
+                                })
+                            }
+                        })
+                        .catch(err => console.error(err));
                 })
                 .catch(err => console.error(err));
         }
@@ -178,8 +200,7 @@ class Basics extends Component {
     }
 
     success() {
-        const successMessage = queryString.parse(this.props.location.search).successMessage;
-        if (successMessage === "true") {
+        if (this.state.successMessage === true) {
             return (
                 <div className="bg-green-500 py-2 px-4 text-white">
                     Basics successfully added!
@@ -189,8 +210,7 @@ class Basics extends Component {
     }
 
     update() {
-        const updateMessage = queryString.parse(this.props.location.search).updateMessage;
-        if (updateMessage === "true") {
+        if (this.state.updateMessage === true) {
             return (
                 <div className="bg-green-500 py-2 px-4 text-white">
                     Basics successfully updated!

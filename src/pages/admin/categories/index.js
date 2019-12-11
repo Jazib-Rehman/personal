@@ -13,6 +13,7 @@ class Categories extends Component {
         this.state = {
             name: '',
             message: false,
+            successMessage: false,
             categories: [],
             selectedFile: null
         }
@@ -45,7 +46,9 @@ class Categories extends Component {
             this.state.selectedFile === null
         ) {
             this.setState({
-                message: true
+                message: true,
+                successMessage: false,
+                deleteMessage: false
             })
         } else {
 
@@ -56,8 +59,16 @@ class Categories extends Component {
             AppService.axiosPost("add-category", data, {
             })
                 .then(response => {
-                    // window.location.reload();
-                    window.location.href = window.location.pathname + "?successMessage=true"
+                    AppService.getMethode('category')
+                        .then(response => {
+                            this.setState({
+                                categories: response,
+                                successMessage: true,
+                                deleteMessage: false,
+                                message: false,
+                            })
+                        })
+                        .catch(err => console.error(err));
                 })
                 .catch(err => console.error(err));
         }
@@ -75,8 +86,16 @@ class Categories extends Component {
         AppService.axiosPost("delete-category", product, {
         })
             .then(response => {
-                // window.location.reload();
-                window.location.href = window.location.pathname + "?deleteMessage=true"
+                AppService.getMethode('category')
+                    .then(response => {
+                        this.setState({
+                            categories: response,
+                            successMessage: false,
+                            deleteMessage: true,
+                            message: false,
+                        })
+                    })
+                    .catch(err => console.error(err));
             })
             .catch(err => console.error(err));
     }
@@ -92,8 +111,7 @@ class Categories extends Component {
     }
 
     success() {
-        const successMessage = queryString.parse(this.props.location.search).successMessage;
-        if (successMessage === "true") {
+        if (this.state.successMessage === true) {
             return (
                 <div className="bg-green-500 py-2 px-4 text-white">
                     Category successfully added!
@@ -103,8 +121,7 @@ class Categories extends Component {
     }
 
     delete() {
-        const deleteMessage = queryString.parse(this.props.location.search).deleteMessage;
-        if (deleteMessage === "true") {
+        if (this.state.deleteMessage === true) {
             return (
                 <div className="bg-red-500 py-2 px-4 text-white">
                     Category successfully deleted!

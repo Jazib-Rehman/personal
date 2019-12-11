@@ -71,7 +71,7 @@ class AppProduct extends React.Component {
         return (
             <div>
                 <p className="text-xs font-semibold">{props.label}</p>
-                <input type="text" name={props.name} onChange={this.handleChange.bind(this, props.property)} className="w-full p-2 border bg-white" placeholder={props.placeholder} />
+                <input type="text" value={this.state[props.name]} name={props.name} onChange={this.handleChange.bind(this, props.property)} className="w-full p-2 border bg-white" placeholder={props.placeholder} />
             </div>
         )
     }
@@ -117,7 +117,8 @@ class AppProduct extends React.Component {
             this.state.price === ''
         ) {
             this.setState({
-                message: true
+                message: true,
+                successMessage: false
             })
         } else {
 
@@ -133,8 +134,31 @@ class AppProduct extends React.Component {
             AppService.axiosPost("upload", data, {
             })
                 .then(response => {
-                    // return <Redirect to='/admin/add-product' />
-                    window.location.href = window.location.pathname + "?successMessage=true"
+                    AppService.getMethode('category')
+                        .then(response => {
+                            this.setState({
+                                categories: response,
+                                successMessage: true,
+                                message: false,
+                                name: '',
+                                cat_id: '',
+                                subcat_id: '',
+                                description: '',
+                                nutrition: '',
+                                price: '',
+                                selectedFile: null
+                            })
+                            this.state = {
+                                name: '',
+                                cat_id: '',
+                                subcat_id: '',
+                                description: '',
+                                nutrition: '',
+                                price: '',
+                                selectedFile: null
+                            }
+                        })
+                        .catch(err => console.error(err));
                 })
                 .catch(err => console.error(err));
         }
@@ -159,8 +183,7 @@ class AppProduct extends React.Component {
     }
 
     success() {
-        const successMessage = queryString.parse(this.props.location.search).successMessage;
-        if (successMessage === "true") {
+        if (this.state.successMessage === true) {
             return (
                 <div className="bg-green-500 py-2 px-4 text-white">
                     Product Successfully added!
@@ -206,7 +229,7 @@ class AppProduct extends React.Component {
                                     </div>
                                     <div className="w-1/2 p-1">
                                         <p className="text-xs font-semibold">Description:</p>
-                                        <textarea name="description" onChange={this.handleChange.bind(this, 'description')} className="w-full p-2 border bg-white rounded rounded-sm" placeholder="Description!"></textarea>
+                                        <textarea name="description" value={this.state.description} onChange={this.handleChange.bind(this, 'description')} className="w-full p-2 border bg-white rounded rounded-sm" placeholder="Description!"></textarea>
                                     </div>
                                     <div className="w-1/2 p-1">
                                         {this.LabelInput({

@@ -6,6 +6,7 @@ import { Info } from 'react-feather';
 import AppService from './../../../services/app.service'
 import queryString from 'query-string'
 import appService from './../../../services/app.service';
+import { toUnicode } from 'punycode';
 
 class Edit extends React.Component {
 
@@ -24,6 +25,7 @@ class Edit extends React.Component {
             },
             proIds: [],
             message: false,
+            successMessage: false,
             catMethod: "Category",
             selectedFile: null
         }
@@ -63,23 +65,12 @@ class Edit extends React.Component {
         AppService.getProductById(id)
             .then(response => {
                 const { product, categories } = response
-                // debugger;
                 this.setState({
                     product,
-                    // name: product.name,
-                    // nutrition: product.nutrition,
                     categories
                 })
             })
             .catch(err => console.error(err));
-        const pros = this.state.categories.map(item => {
-            return item.products
-        })
-        pros.map((item, i) => {
-            return item.map(product => {
-                this.state.proIds.push({ id: product.id })
-            })
-        })
     }
 
     handleChange = (property, value) => {
@@ -143,8 +134,18 @@ class Edit extends React.Component {
             AppService.axiosPost("update-product", data, {
             })
                 .then(response => {
-                    window.location.href = window.location.pathname + "?id=" + id + "&successMessage=true"
-                    // window.location.reload();
+                    const id = queryString.parse(this.props.location.search).id
+                    AppService.getProductById(id)
+                        .then(response => {
+                            const { product, categories } = response
+                            this.setState({
+                                product,
+                                categories,
+                                successMessage: true,
+                                message: false
+                            })
+                        })
+                        .catch(err => console.error(err));
                 })
                 .catch(err => console.error(err));
         }
@@ -222,9 +223,7 @@ class Edit extends React.Component {
     }
 
     success() {
-        const successMessage = queryString.parse(this.props.location.search).successMessage;
-        console.log(successMessage)
-        if (successMessage === "true") {
+        if (this.state.successMessage === true) {
             return (
                 <div className="bg-green-500 py-2 px-4 text-white">
                     Product is successfully updated!

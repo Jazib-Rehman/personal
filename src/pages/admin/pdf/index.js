@@ -12,6 +12,9 @@ class PDF extends Component {
         super();
         this.state = {
             message: false,
+            deleteMessage: false,
+            successMessage: false,
+            updateMessage: false,
             pdf: {
                 id: '',
                 name: '',
@@ -70,8 +73,20 @@ class PDF extends Component {
             AppService.axiosPost("add-pdf", data, {
             })
                 .then(response => {
-                    // window.location.reload();
-                    window.location.href = window.location.pathname + "?successMessage=true"
+                    AppService.getMethode('pdf')
+                        .then(response => {
+                            console.log(response[0])
+                            if (response.length === 0) {
+                                this.setState({ isEmpty: true })
+                            } else {
+                                this.setState({
+                                    pdf: response[0],
+                                    successMessage: true,
+                                    isEmpty: false
+                                })
+                            }
+                        })
+                        .catch(err => console.error(err));
                 })
                 .catch(err => console.error(err));
         }
@@ -96,8 +111,19 @@ class PDF extends Component {
             AppService.axiosPost("update-pdf", data, {
             })
                 .then(response => {
-                    // window.location.reload();
-                    window.location.href = window.location.pathname + "?successMessage=true"
+                    AppService.getMethode('pdf')
+                        .then(response => {
+                            console.log(response[0])
+                            if (response.length === 0) {
+                                this.setState({ isEmpty: true })
+                            } else {
+                                this.setState({
+                                    pdf: response[0],
+                                    updateMessage: true,
+                                })
+                            }
+                        })
+                        .catch(err => console.error(err));
                 })
                 .catch(err => console.error(err));
         }
@@ -115,8 +141,19 @@ class PDF extends Component {
         AppService.axiosPost("delete-category", product, {
         })
             .then(response => {
-                // window.location.reload();
-                window.location.href = window.location.pathname + "?deleteMessage=true"
+                AppService.getMethode('pdf')
+                    .then(response => {
+                        console.log(response[0])
+                        if (response.length === 0) {
+                            this.setState({ isEmpty: true })
+                        } else {
+                            this.setState({
+                                pdf: response[0],
+                                deleteMessage: true
+                            })
+                        }
+                    })
+                    .catch(err => console.error(err));
             })
             .catch(err => console.error(err));
     }
@@ -132,8 +169,7 @@ class PDF extends Component {
     }
 
     success() {
-        const successMessage = queryString.parse(this.props.location.search).successMessage;
-        if (successMessage === "true") {
+        if (this.state.successMessage === true) {
             return (
                 <div className="bg-green-500 py-2 px-4 text-white">
                     Menu (pdf) successfully added!
@@ -142,9 +178,18 @@ class PDF extends Component {
         }
     }
 
+    update() {
+        if (this.state.updateMessage === true) {
+            return (
+                <div className="bg-green-500 py-2 px-4 text-white">
+                    Menu (pdf) successfully updated!
+                </div>
+            )
+        }
+    }
+
     delete() {
-        const deleteMessage = queryString.parse(this.props.location.search).deleteMessage;
-        if (deleteMessage === "true") {
+        if (this.state.deleteMessage === true) {
             return (
                 <div className="bg-red-500 py-2 px-4 text-white">
                     Menu (pdf) successfully deleted!
@@ -204,6 +249,7 @@ class PDF extends Component {
                                 </div>
                                 {this.error()}
                                 {this.success()}
+                                {this.update()}
                                 {this.delete()}
                                 <div className="flex border-b pb-2">
                                     <div className="w-7/12 flex flex-wrap">

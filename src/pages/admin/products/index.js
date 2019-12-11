@@ -13,7 +13,8 @@ class Products extends React.Component {
         this.state = {
             categories: [],
             unsigned: [],
-            img: ''
+            img: '',
+            successMessage: false
         }
     }
 
@@ -28,7 +29,6 @@ class Products extends React.Component {
                 this.setState({ unsigned: response })
             })
             .catch(err => console.error(err));
-        console.log(this.state.unsigned)
     }
 
     onEyeClick = id => {
@@ -39,8 +39,19 @@ class Products extends React.Component {
         AppService.axiosPost("delete-product", product, {
         })
             .then(response => {
-                window.location.href = window.location.pathname + "?successMessage=true"
-                // window.location.reload();
+                AppService.get('categories-with-products')
+                    .then(response => {
+                        this.setState({
+                            categories: response,
+                            successMessage: true
+                        })
+                    })
+                    .catch(err => console.error(err));
+                AppService.get('unsign-products')
+                    .then(response => {
+                        this.setState({ unsigned: response })
+                    })
+                    .catch(err => console.error(err));
             })
             .catch(err => console.error(err));
     }
@@ -56,7 +67,7 @@ class Products extends React.Component {
                         <div className="flex flex-wrap justify-center items-center">
                             {
                                 item.products.map((meal, i) => {
-                                    return <div href="admin/add-product" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
+                                    return <div href="admin/add-product" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center my-2">
                                         {this.state.img = "./../" + meal.image}
                                         <img src={this.state.img} className="z-10 w-full h-full absolute" />
                                         <div className="w-full h-full absolute z-20 bg-trans"></div>
@@ -76,8 +87,7 @@ class Products extends React.Component {
     }
 
     success() {
-        const successMessage = queryString.parse(this.props.location.search).successMessage;
-        if (successMessage === "true") {
+        if (this.state.successMessage === true) {
             return (
                 <div className="bg-red-500 py-2 px-4 text-white">
                     Product is successfully deleted!
