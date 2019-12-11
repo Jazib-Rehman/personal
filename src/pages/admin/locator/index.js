@@ -13,6 +13,8 @@ class Locator extends Component {
         this.state = {
             name: '',
             message: false,
+            successMessage: false,
+            deleteMessage: false,
             locators: [],
             selectedFile: null
         }
@@ -56,8 +58,16 @@ class Locator extends Component {
             AppService.axiosPost("add-locator", data, {
             })
                 .then(response => {
-                    // window.location.reload();
-                    window.location.href = window.location.pathname + "?successMessage=true"
+                    AppService.getMethode('locators')
+                        .then(response => {
+                            this.setState({
+                                locators: response,
+                                message: false,
+                                successMessage: true,
+                                deleteMessage: false,
+                            })
+                        })
+                        .catch(err => console.error(err));
                 })
                 .catch(err => console.error(err));
         }
@@ -75,8 +85,16 @@ class Locator extends Component {
         AppService.axiosPost("delete-locator", product, {
         })
             .then(response => {
-                // window.location.reload();
-                window.location.href = window.location.pathname + "?deleteMessage=true"
+                AppService.getMethode('locators')
+                    .then(response => {
+                        this.setState({
+                            locators: response,
+                            message: false,
+                            successMessage: false,
+                            deleteMessage: true,
+                        })
+                    })
+                    .catch(err => console.error(err));
             })
             .catch(err => console.error(err));
     }
@@ -92,8 +110,7 @@ class Locator extends Component {
     }
 
     success() {
-        const successMessage = queryString.parse(this.props.location.search).successMessage;
-        if (successMessage === "true") {
+        if (this.state.successMessage === true) {
             return (
                 <div className="bg-green-500 py-2 px-4 text-white">
                     Category successfully added!
@@ -103,8 +120,7 @@ class Locator extends Component {
     }
 
     delete() {
-        const deleteMessage = queryString.parse(this.props.location.search).deleteMessage;
-        if (deleteMessage === "true") {
+        if (this.state.deleteMessage === true) {
             return (
                 <div className="bg-red-500 py-2 px-4 text-white">
                     Category successfully deleted!

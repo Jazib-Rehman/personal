@@ -35,7 +35,7 @@ class Footer extends React.Component {
 
     render() {
         return (
-            <footer className="flex flex-wrap p-12 border text-red-600 bg-black relative z-40">
+            <footer className="flex flex-wrap p-12 text-red-600 bg-black relative z-40">
                 <div className="loc w-full text-center sm:text-left md:w-2/6 font-hairline text-sm p-4">
                     <img src="static/assets/logo-2.png" alt="logo" className="w-64 mb-4" />
                     <p>

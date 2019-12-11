@@ -13,6 +13,8 @@ class Banner extends Component {
         this.state = {
             name: '',
             message: false,
+            successMessage: false,
+            deleteMessage: false,
             banner: [],
             selectedFile: null
         }
@@ -56,8 +58,14 @@ class Banner extends Component {
             AppService.axiosPost("add-banner", data, {
             })
                 .then(response => {
-                    // window.location.reload();
-                    window.location.href = window.location.pathname + "?successMessage=true"
+                    AppService.getMethode('banner')
+                        .then(response => {
+                            this.setState({
+                                banner: response,
+                                successMessage: true
+                            })
+                        })
+                        .catch(err => console.error(err));
                 })
                 .catch(err => console.error(err));
         }
@@ -75,8 +83,14 @@ class Banner extends Component {
         AppService.axiosPost("delete-banner", product, {
         })
             .then(response => {
-                // window.location.reload();
-                window.location.href = window.location.pathname + "?deleteMessage=true"
+                AppService.getMethode('banner')
+                    .then(response => {
+                        this.setState({
+                            banner: response,
+                            deleteMessage: true
+                        })
+                    })
+                    .catch(err => console.error(err));
             })
             .catch(err => console.error(err));
     }
@@ -92,8 +106,7 @@ class Banner extends Component {
     }
 
     success() {
-        const successMessage = queryString.parse(this.props.location.search).successMessage;
-        if (successMessage === "true") {
+        if (this.state.successMessage === true) {
             return (
                 <div className="bg-green-500 py-2 px-4 text-white">
                     Banner successfully added!
@@ -103,8 +116,7 @@ class Banner extends Component {
     }
 
     delete() {
-        const deleteMessage = queryString.parse(this.props.location.search).deleteMessage;
-        if (deleteMessage === "true") {
+        if (this.state.deleteMessage === true) {
             return (
                 <div className="bg-red-500 py-2 px-4 text-white">
                     Banner successfully deleted!
