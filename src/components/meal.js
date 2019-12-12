@@ -13,7 +13,7 @@ class Meal extends React.Component {
         return (
             <div className="w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/4 mt-4">
                 <div className="cursor-pointer">
-                    <img className="m-auto w-40 h-40 object-cover rounded-lg zoom-in" src={this.props.meal.image} alt="Shawarma" />
+                    <img className="m-auto meal object-cover rounded-lg zoom-in" src={this.props.meal.image} alt="Shawarma" />
                     <h2 className="text-dark text-md p-2">{this.props.meal.name}</h2>
                     <div className="flex justify-center pb-4">
                         {/* {

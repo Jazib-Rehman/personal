@@ -6,6 +6,9 @@ const Locators = db.define('locators', {
     name: {
         type: Sequelize.STRING
     },
+    map: {
+        type: Sequelize.STRING
+    },
     image: {
         type: Sequelize.STRING
     }

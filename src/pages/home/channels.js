@@ -61,20 +61,14 @@ class Channels extends React.Component {
                         })
                     }
                 </div>
-                <div className="flex flex-wrap md:w-1/2 md:p-0 m-auto px-2">{
+                <div className="flex flex-wrap md:w-1/2 md:p-0 m-auto px-2 pt-5">{
                     this.state.categories.map((item, i) =>
-                        <a href={item.link} target="_blank" className="w-1/2 mt-5 md:w-1/3 p-1" key={i}>
-                            <img src={item.image} alt="dummy" className="w-48 h-48 object-cover" />
+                        <a href={item.link} target="_blank" className="flex justify-center channels w-1/2 md:w-1/3 p-1" key={i}>
+                            <img src={item.image} alt="dummy" className="w-full h-full object-cover" />
                         </a>
                     )
                 }
                 </div>
-
-                {/* <div>
-                    {this.state.products.map((item, i) => {
-                        return <div key={i}>{item.name} </div>
-                    })}
-                </div> */}
             </section>
 
         )

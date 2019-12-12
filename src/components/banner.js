@@ -22,7 +22,7 @@ class Banner extends React.Component {
     render() {
         return (
             <div>
-                <section className="overflow-hidden relative z-20 w-full">
+                <section className="overflow-hidden relative z-20 w-full banner">
                     <Carousel>
                         {
                             this.state.banners.map((item, i) => {

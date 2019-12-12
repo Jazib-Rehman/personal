@@ -12,6 +12,7 @@ class Locator extends Component {
         super();
         this.state = {
             name: '',
+            map: '',
             message: false,
             successMessage: false,
             deleteMessage: false,
@@ -28,15 +29,17 @@ class Locator extends Component {
             .catch(err => console.error(err));
     }
 
-    handleChange = (e) => {
-        this.setState({ name: e.target.value });
+    handleChange = (property, event) => {
+        const state = this.state;
+        state[property] = event.target.value;
+        this.setState({ state: state });
     }
 
     LabelInput(props) {
         return (
             <div>
                 <p className="text-xs font-semibold">{props.label}</p>
-                <input type="text" name={props.name} onChange={this.handleChange} className="w-full p-2 border bg-white" placeholder={props.placeholder} />
+                <input type="text" name={props.name} onChange={this.handleChange.bind(this, props.property)} className="w-full p-2 border bg-white" placeholder={props.placeholder} />
             </div>
         )
     }
@@ -44,16 +47,20 @@ class Locator extends Component {
     handleClick = () => {
         if (
             this.state.name === '' ||
+            this.state.map === '' ||
             this.state.selectedFile === null
         ) {
             this.setState({
-                message: true
+                message: true,
+                successMessage: false,
+                deleteMessage: false,
             })
         } else {
 
             const data = new FormData()
             data.append('image', this.state.selectedFile)
             data.append('name', this.state.name)
+            data.append('map', this.state.map)
 
             AppService.axiosPost("add-locator", data, {
             })
@@ -149,16 +156,27 @@ class Locator extends Component {
                                 {this.success()}
                                 {this.delete()}
                                 <div className="flex border-b pb-2">
-                                    <div className="w-7/12 flex flex-wrap">
+                                    <div className="w-3/12 flex flex-wrap">
                                         <div className="w-full p-1">
                                             {this.LabelInput({
                                                 label: 'Name:',
                                                 name: 'name',
+                                                property: 'name',
                                                 placeholder: 'Name!'
                                             })}
                                         </div>
                                     </div>
-                                    <div className="w-4/12 flex flex-wrap">
+                                    <div className="w-5/12 flex flex-wrap">
+                                        <div className="w-full p-1">
+                                            {this.LabelInput({
+                                                label: 'Map (link):',
+                                                name: 'map',
+                                                property: 'map',
+                                                placeholder: 'Map link from www.embedgooglemap.net'
+                                            })}
+                                        </div>
+                                    </div>
+                                    <div className="w-3/12 flex flex-wrap">
                                         <div className="w-full p-1">
                                             <input className="mt-6" type="file" name="image" onChange={this.selectedFile} />
                                         </div>
