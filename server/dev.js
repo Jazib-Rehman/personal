@@ -640,6 +640,7 @@ app.post(
 			if (err) return handleError(err, res);
 			Locators.create({
 				name: req.body.name,
+				map: req.body.map,
 				image: imgURL
 			})
 				.then(product => res.send(product))

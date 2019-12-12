@@ -34,7 +34,7 @@ class AboutUs extends React.Component {
                         <span className="text-3xl border-l-2 text-prim border-orange-400 border-black px-4"> STORY </span>
                     </h1>
                 </div>
-                <div className="mt-20 px-48 z-20">
+                <div className="mt-20 px-sm md:px-32 lg:px-48 z-20">
                     <p className="text-gray-500 text-sm">
                         {this.state.about.title} ...
                     </p>

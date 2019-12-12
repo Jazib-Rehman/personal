@@ -270,9 +270,6 @@ footer i {
   padding: 11px;
 }
 
-.banner {
-  height: 600px;
-}
 
 .adminBanner {
   height: 400px;
@@ -286,4 +283,195 @@ footer i {
     .map {
         height: 500px;
     }
+}
+
+#gmap_canvas {
+  height: 300px;
+}
+
+.meal {
+  width: 10rem;
+  height: 10rem;
+}
+
+
+@media (min-width: 576px) { 
+  .meal {
+    width: 14rem;
+    height: 14rem;
+  } 
+}
+
+@media (min-width: 768px) { 
+  .meal {
+    width: 9rem;
+    height: 9rem;
+  }
+}
+
+@media (min-width: 992px) { 
+  .meal {
+    width: 11rem;
+    height: 11rem;
+  }
+}
+
+@media (min-width: 1200px) { 
+  .meal {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+
+@media (min-width: 1366px) { 
+  .meal {
+    width: 16rem;
+    height: 16rem;
+  }
+}
+
+.banner {
+  height: 20rem;
+}
+
+@media (min-width: 576px) { 
+  .banner {
+    height: 20rem;
+  } 
+}
+
+@media (min-width: 768px) { 
+  .banner {
+    height: 42rem;
+  }
+}
+
+@media (min-width: 992px) { 
+  .banner {
+    height: 42rem;
+  }
+}
+
+@media (min-width: 1200px) { 
+  .banner {
+    height: 42rem;
+  }
+}
+
+@media (min-width: 1366px) { 
+  .banner {
+    height: 50rem;
+  }
+}
+
+.locatorImage {
+  width: 100%;
+  height: 15rem;
+}
+
+@media (min-width: 576px) { 
+  .locatorImage {
+    width: 100%;
+    height: 22rem;
+  } 
+}
+
+@media (min-width: 768px) { 
+  .locatorImage {
+  width: 100%;
+    height: 15rem;
+  }
+}
+
+@media (min-width: 992px) { 
+  .locatorImage {
+  width: 100%;
+    height: 16rem;
+  }
+}
+
+@media (min-width: 1200px) { 
+  .locatorImage {
+  width: 100%;
+    height: 16rem;
+  }
+}
+
+@media (min-width: 1366px) { 
+  .locatorImage {
+    width: 100%;
+    height: 27rem;
+  }
+}
+
+.channels {
+    height: 12rem;
+}
+
+@media (min-width: 576px) { 
+  .channels {
+    height: 17rem;
+  } 
+}
+
+@media (min-width: 768px) { 
+  .channels {
+    height: 8rem;
+  }
+}
+
+@media (min-width: 992px) { 
+  .channels {
+    height: 11rem;
+  }
+}
+
+@media (min-width: 1200px) { 
+  .channels {
+    height: 13rem;
+  }
+}
+
+@media (min-width: 1366px) { 
+  .channels {
+    height: 20rem;
+  }
+}
+
+.locatorBtn {
+  width: 10rem;
+}
+
+.constactUsSection {
+  padding-left: 26px;
+  padding-right: 26px;
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+
+.py-half {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.px-sm {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.header {
+  min-height: 85px;
+}
+
+.navHeader {
+  min-height: 4rem;
+}
+
+.navMenu li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.z-60 {
+  z-index: 60;
 }

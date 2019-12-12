@@ -83,7 +83,7 @@ class Contact extends React.Component {
         return (
             <section class="relative text-center py-24 z-40">
                 <div className="fixed top-100 left-0 w-screen overflow-hidden z-10 bages">
-                    <div className="flex w-full px-24">
+                    <div className="flex w-full px-24 ">
                         <div className="r-1">
                             <img src="/static/assets/b10.png" className="w-48 mt-8 inline-block" alt="badge" />
                             <img src="/static/assets/b4.png" className="w-48 mt-8 inline-block" alt="badge" />
@@ -95,7 +95,7 @@ class Contact extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="relative px-32 py-20 bg-dark-trans z-40">
+                <div className="relative md:px-32 constactUsSection md:py-20 bg-dark-trans z-40">
                     <div className="rounded-lg bg-white-trans py-10">
                         <div className="">
                             <p className="text-2xl font-bold uppercase text-orange-600">Get in touch with us</p>
@@ -103,8 +103,8 @@ class Contact extends React.Component {
                         {this.error()}
                         {this.success()}
                         <div className="flex">
-                            <div className="mt-4 w-1/2">
-                                <div className="text-left py-5 px-16 flex">
+                            <div className="mt-4 w-1/2 hidden md:block">
+                                <div className="text-left hidden md:flex py-5 px-16 flex">
                                     <div className="">
                                         <p className="text-xl">Site management Shawarmer</p>
                                         <p className="text-sm text-gray-700">Sulaymaniyah, Olaya Road Riyadh 12211, Saudi Arabia</p>
@@ -113,7 +113,7 @@ class Contact extends React.Component {
                                         <MapPin size="24" />
                                     </div>
                                 </div>
-                                <div className="text-left py-5 px-16 mt-10 flex">
+                                <div className="text-left hidden md:flex py-5 px-16 mt-10 flex">
                                     <div>
                                         <p className="text-xl">To contact us</p>
                                         <p className="text-sm text-gray-700">Shawarmer Office: (011) 462-8841 , Sunday - Thursday, 8 AM - 5 PM</p>
@@ -124,7 +124,7 @@ class Contact extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="mt-4 w-1/2">
+                            <div className="mt-4 w-full md:w-1/2">
                                 <div className="text-left py-5 px-16">
                                     <div className="flex">
                                         <div className="mx-1 w-full">
