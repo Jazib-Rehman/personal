@@ -47,7 +47,9 @@ class Banner extends Component {
             this.state.selectedFile === null
         ) {
             this.setState({
-                message: true
+                message: true,
+                successMessage: false,
+                deleteMessage: false,
             })
         } else {
 
@@ -62,7 +64,9 @@ class Banner extends Component {
                         .then(response => {
                             this.setState({
                                 banner: response,
-                                successMessage: true
+                                successMessage: true,
+                                message: false,
+                                deleteMessage: false,
                             })
                         })
                         .catch(err => console.error(err));
@@ -87,7 +91,9 @@ class Banner extends Component {
                     .then(response => {
                         this.setState({
                             banner: response,
-                            deleteMessage: true
+                            deleteMessage: true,
+                            message: false,
+                            successMessage: false,
                         })
                     })
                     .catch(err => console.error(err));

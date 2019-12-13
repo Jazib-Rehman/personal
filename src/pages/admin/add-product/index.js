@@ -3,7 +3,7 @@ import AdminLayout from './../AdminLayout'
 import LeftNavbar from './../components/LeftNavbar'
 import Header from './../components/Header'
 import AppService from './../../../services/app.service'
-import queryString from 'query-string'
+import { Link } from 'react-router-dom'
 
 class AppProduct extends React.Component {
 
@@ -134,6 +134,7 @@ class AppProduct extends React.Component {
             AppService.axiosPost("upload", data, {
             })
                 .then(response => {
+                    console.log(response)
                     AppService.getMethode('category')
                         .then(response => {
                             this.setState({
@@ -159,6 +160,7 @@ class AppProduct extends React.Component {
                             }
                         })
                         .catch(err => console.error(err));
+                    window.location.replace('/admin/tags?id=' + response.id)
                 })
                 .catch(err => console.error(err));
         }
@@ -270,7 +272,9 @@ class AppProduct extends React.Component {
 
                                 </div>
                                 <div className="w-full flex justify-end p-1 mt-4">
+                                    {/* <Link to="/admin/tags"> */}
                                     <input type="button" onClick={this.handleClick} value="Add" className="rounded bg-green-300 hover:bg-green-400 p-2 flex justify-center items-center" />
+                                    {/* </Link> */}
                                 </div>
                             </div>
                         </div>

@@ -59,7 +59,7 @@ class Footer extends React.Component {
                     <h1 className="font-hairline text-red-700 text-lg mb-2">Follow Us</h1>
                     {
                         this.state.basics.map((item, i) => {
-                            return <div>
+                            return <div key={i}>
                                 <p> <i className="fab fa-twitter"></i> <a href={item.twitter} target="_blank" className="hover:text-white hover:no-underline">Twitter</a></p>
                                 <p> <i className="fab fa-instagram"></i> <a href={item.instagram} target="_blank" className="hover:text-white hover:no-underline">Instagram</a></p>
                                 <p> <i className="fab fa-facebook"></i> <a href={item.facebook} target="_blank" className="hover:text-white hover:no-underline">Facebook</a></p>

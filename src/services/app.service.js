@@ -14,5 +14,8 @@ class AppService extends HttpService {
     getProductById(id) {
         return this.get('product?id=' + id)
     }
+    getTagsById(id) {
+        return this.get('tags?id=' + id)
+    }
 }
 export default new AppService()

@@ -26,7 +26,7 @@ class Banner extends React.Component {
                     <Carousel>
                         {
                             this.state.banners.map((item, i) => {
-                                return <Carousel.Item>
+                                return <Carousel.Item key={i}>
                                     <img
                                         className="d-block banner w-full object-cover"
                                         src={item.image}

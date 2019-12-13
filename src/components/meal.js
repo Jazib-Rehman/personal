@@ -16,12 +16,11 @@ class Meal extends React.Component {
                     <img className="m-auto meal object-cover rounded-lg zoom-in" src={this.props.meal.image} alt="Shawarma" />
                     <h2 className="text-dark text-md p-2">{this.props.meal.name}</h2>
                     <div className="flex justify-center pb-4">
-                        {/* {
-                            this.state.tags.map((tag, i) => ( */}
-                        <div className="inline-block px-2 rounded-full border bg-orange-400 text-white text-xs mr-1">Spicy</div>
-                        <div className="inline-block px-2 rounded-full border bg-orange-400 text-white text-xs mr-1">Sour</div>
-                        {/* ))
-                        } */}
+                        {
+                            this.props.meal.tags.map((tag, i) => (
+                                <div className="truncate inline-block px-2 rounded-full bg-orange-400 text-white text-xs mr-1">{tag.name}</div>
+                            ))
+                        }
                     </div>
                 </div>
             </div>

@@ -18,7 +18,7 @@ export class HttpService {
         return axios.post(this.baseURL + url, data, {
         })
             .then(response => {
-                response.status(200)
+                return response.data
             })
             .catch(err => console.error(err));
     }
