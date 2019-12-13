@@ -6,7 +6,7 @@ class Layout extends React.Component {
 
     render() {
         return (
-            <main>
+            <html>
                 <head>
                     <title>Home</title>
                     <link rel='icon' href='/static/favicon.ico' />
@@ -17,7 +17,7 @@ class Layout extends React.Component {
                 <div>
                     {this.props.children}
                 </div>
-            </main>
+            </html>
         )
     }
 

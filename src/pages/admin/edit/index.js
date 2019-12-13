@@ -2,11 +2,8 @@ import React from 'react'
 import AdminLayout from './../AdminLayout'
 import LeftNavbar from './../components/LeftNavbar'
 import Header from './../components/Header'
-import { Info } from 'react-feather';
 import AppService from './../../../services/app.service'
 import queryString from 'query-string'
-import appService from './../../../services/app.service';
-import { toUnicode } from 'punycode';
 
 class Edit extends React.Component {
 

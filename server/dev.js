@@ -62,6 +62,8 @@ Basics = require('./models/basics'), (sequelize, { modelName: 'Basics' });
 PDF = require('./models/pdf'), (sequelize, { modelName: 'PDF' });
 Contacts = require('./models/contacts'), (sequelize, { modelName: 'Contacts' });
 About = require('./models/about'), (sequelize, { modelName: 'About' });
+Tags = require('./models/tags'), (sequelize, { modelName: 'Tags' });
+TagsOnly = require('./models/tagsonly'), (sequelize, { modelName: 'TagsOnly' });
 // SubCategories = require('./models/subcategories'), (sequelize, { modelName: 'SubCategories' });
 
 //Relations
@@ -71,6 +73,12 @@ Categories.hasMany(Product, {
 	}
 });
 Product.belongsTo(Categories);
+Product.hasMany(Tags, {
+	foreignKey: {
+		fieldName: 'pro_id'
+	}
+});
+Tags.belongsTo(Product);
 
 app.post(
 	"/upload",
@@ -156,6 +164,15 @@ app.post(
 			message: req.body.message,
 		})
 			.then(product => res.send(product))
+			.catch(err => console.log(err));
+	}
+);
+
+app.post(
+	"/add-tag",
+	(req, res) => {
+		Tags.create(req.body)
+			.then(tag => res.send(tag))
 			.catch(err => console.log(err));
 	}
 );
@@ -515,7 +532,21 @@ app.get('/categories-with-products', (req, res) => {
 					['image', 'image'],
 					['createdAt', 'createdAt'],
 					['updatedAt', 'updatedAt']
-				]
+				],
+				subQuery: true,
+				include: [
+					{
+						model: Tags,
+						attributes: [
+							['id', 'id'],
+							['name', 'name'],
+							['pro_id', 'pro_id'],
+							['createdAt', 'createdAt'],
+							['updatedAt', 'updatedAt']
+						]
+					}
+				],
+				group: ['products.id'],
 			}
 		],
 		group: ['categories.id']
@@ -681,6 +712,19 @@ app.post(
 			// res.redirect(redirect + "/admin/channels");
 		});
 	}
+);
+
+app.get("/tags", (req, res) => {
+	TagsOnly.findAll({
+		where: {
+			pro_id: req.query.id
+		}
+	})
+		.then(products => {
+			res.send(products);
+		})
+		.catch(err => console.log(err));
+}
 );
 
 app.get('/about', (req, res) =>

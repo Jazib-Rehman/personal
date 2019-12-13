@@ -95,14 +95,14 @@ class Header extends React.Component {
 						<span className="px-2 border-r text-xs">عربي</span>
 						{
 							this.state.basics.map((item, i) => {
-								return <span className="px-2 text-xs">{item.site_header}</span>
+								return <span className="px-2 text-xs" key={i}>{item.site_header}</span>
 							})
 						}
 					</div>
 					<div className="w-1/3 flex justify-center">
 						{
 							this.state.basics.map((item, i) => {
-								return <a href="/">
+								return <a href="/" key={i}>
 									<img src={item.logo} alt="logo" className="h-20" />
 								</a>
 							})
@@ -129,7 +129,7 @@ class Header extends React.Component {
 						<div className="flex flex-grow justify-start pl-2">
 							{
 								this.state.basics.map((item, i) => {
-									return <a href="/">
+									return <a href="/" key={i}>
 										<img src={item.logo} alt="logo" className="h-16" />
 									</a>
 								})

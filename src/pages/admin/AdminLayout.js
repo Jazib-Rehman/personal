@@ -6,7 +6,7 @@ class AdminLayout extends React.Component {
 
     render() {
         return (
-            <main className="bg-indigo-100">
+            <html>
                 <head>
                     <title>Admin</title>
                     <link rel='icon' href='/static/favicon.ico' />
@@ -15,10 +15,10 @@ class AdminLayout extends React.Component {
                     <link href="/static/tailwind.css" rel="stylesheet" />
                     <link rel='stylesheet' href='/static/admin.css' />
                 </head>
-                <div>
+                <body className="bg-indigo-100">
                     {this.props.children}
-                </div>
-            </main>
+                </body>
+            </html>
         )
     }
 

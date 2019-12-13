@@ -16,7 +16,7 @@ class NavItem extends React.Component {
         return (
             <div className={"cursor-pointer text-white " + this.props.className} >
                 <Link to={this.props.item.link}>
-                    <p className={this.props.item.style}
+                    <div className={this.props.item.style}
                         onClick={() => this.setState({ isShow: !this.state.isShow })}
                     >
                         <div className="pr-2">
@@ -29,7 +29,7 @@ class NavItem extends React.Component {
                                 <ChevronUp className={this.state.isShow ? 'w-4 trans-1' : 'hidden'} />
                             </div>
                         </div>
-                    </p>
+                    </div>
                 </Link>
                 {this.props.item.items.map((sub, i) => (
                     this.state.isShow ? <NavItem item={sub} key={i} /> : ''

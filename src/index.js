@@ -22,6 +22,7 @@ import Basics from './pages/admin/basics';
 import PDF from './pages/admin/pdf';
 import Inbox from './pages/admin/inbox';
 import About from './pages/admin/about-us';
+import Tags from './pages/admin/tags';
 import "./static/style.css";
 import "./static/tailwind.css";
 
@@ -47,6 +48,7 @@ const routing = (
             <Route path="/admin/pdf" component={PDF} />
             <Route path="/admin/inbox" component={Inbox} />
             <Route path="/admin/about-us" component={About} />
+            <Route path="/admin/tags" component={Tags} />
         </div>
     </Router>
 )
