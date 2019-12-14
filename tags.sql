@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2019 at 12:57 PM
+-- Generation Time: Dec 14, 2019 at 04:39 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -25,20 +25,13 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `basics`
+-- Table structure for table `tags`
 --
 
-CREATE TABLE `basics` (
+CREATE TABLE `tags` (
   `id` int(11) NOT NULL,
-  `logo` varchar(255) DEFAULT NULL,
-  `site_header` varchar(255) DEFAULT NULL,
-  `categories` varchar(255) DEFAULT NULL,
-  `channels` varchar(255) DEFAULT NULL,
-  `locator` varchar(255) DEFAULT NULL,
-  `twitter` varchar(255) DEFAULT NULL,
-  `facebook` varchar(255) DEFAULT NULL,
-  `instagram` varchar(255) DEFAULT NULL,
-  `youtube` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `pro_id` varchar(255) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -48,9 +41,9 @@ CREATE TABLE `basics` (
 --
 
 --
--- Indexes for table `basics`
+-- Indexes for table `tags`
 --
-ALTER TABLE `basics`
+ALTER TABLE `tags`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -58,10 +51,10 @@ ALTER TABLE `basics`
 --
 
 --
--- AUTO_INCREMENT for table `basics`
+-- AUTO_INCREMENT for table `tags`
 --
-ALTER TABLE `basics`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `tags`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

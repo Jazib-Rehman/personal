@@ -54,9 +54,10 @@ app.use(bodyParser.json())
 //Models/tables
 Categories = require('./models/categories'), (sequelize, { modelName: 'Categories' });
 Product = require('./models/product'), (sequelize, { modelName: 'Product' });
+ProductOnly = require('./models/productonly'), (sequelize, { modelName: 'ProductOnly' });
+ProductsUnsigned = require('./models/productsunsigned'), (sequelize, { modelName: 'ProductsUnsigned' });
 Locators = require('./models/locators'), (sequelize, { modelName: 'Locators' });
 Channels = require('./models/channels'), (sequelize, { modelName: 'Channels' });
-ProductOnly = require('./models/productonly'), (sequelize, { modelName: 'ProductOnly' });
 Banner = require('./models/banner'), (sequelize, { modelName: 'Banner' });
 Basics = require('./models/basics'), (sequelize, { modelName: 'Basics' });
 PDF = require('./models/pdf'), (sequelize, { modelName: 'PDF' });
@@ -79,6 +80,12 @@ Product.hasMany(Tags, {
 	}
 });
 Tags.belongsTo(Product);
+ProductsUnsigned.hasMany(Tags, {
+	foreignKey: {
+		fieldName: 'pro_id'
+	}
+});
+Tags.belongsTo(ProductsUnsigned);
 
 app.post(
 	"/upload",
@@ -380,6 +387,17 @@ app.post('/delete-product', (req, res) => {
 		})
 		.catch(err => console.log(err));
 	res.redirect(redirect + "/admin/products");
+});
+
+app.post('/delete-tag', (req, res) => {
+	TagsOnly.destroy({
+		where: {
+			id: req.body.id
+		}
+	})
+		.then(tags => res.json(tags))
+		.catch(err => console.log(err));
+	// res.redirect(redirect + "/admin/products");
 });
 
 app.post('/delete-category', (req, res) => {
@@ -724,8 +742,7 @@ app.get("/tags", (req, res) => {
 			res.send(products);
 		})
 		.catch(err => console.log(err));
-}
-);
+});
 
 app.get('/about', (req, res) =>
 	About.findAll()
@@ -763,10 +780,24 @@ app.get('/basics', (req, res) =>
 		.catch(err => console.log(err)));
 
 app.get('/unsign-products', (req, res) =>
-	ProductOnly.findAll({
+	ProductsUnsigned.findAll({
 		where: {
 			cat_id: 'unsign'
-		}
+		},
+		subQuery: true,
+		include: [
+			{
+				model: Tags,
+				attributes: [
+					['id', 'id'],
+					['name', 'name'],
+					['pro_id', 'pro_id'],
+					['createdAt', 'createdAt'],
+					['updatedAt', 'updatedAt']
+				]
+			}
+		],
+		group: ['products.id']
 	})
 		.then(products => {
 			res.send(products);

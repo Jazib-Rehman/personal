@@ -111,6 +111,16 @@ button {
   color: #FC5C42;
 }
 
+.btn-gray {
+  padding: 0.5rem 1.5rem;
+  transition: all 1s;
+}
+
+.btn-gray:active,
+.btn-gray:focus {
+  outline: none;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -474,4 +484,8 @@ footer i {
 
 .z-60 {
   z-index: 60;
+}
+
+.text-box {
+  height: 110px;
 }

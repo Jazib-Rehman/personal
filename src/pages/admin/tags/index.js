@@ -108,12 +108,33 @@ class Tags extends React.Component {
                                 tags: response,
                                 message: false,
                                 successMessage: true,
+                                tag: ''
                             })
                         })
                         .catch(err => console.error(err));
                 })
                 .catch(err => console.error(err));
         }
+    }
+
+    deleteTag(tagId) {
+        const id = queryString.parse(this.props.location.search).id
+        AppService.postMethode("delete-tag", {
+            id: tagId
+        })
+            .then(res => {
+                AppService.getTagsById(id)
+                    .then(response => {
+                        this.setState({
+                            tags: response,
+                            successMessage: false,
+                            message: false,
+                            tag: ''
+                        })
+                    })
+                    .catch(err => console.error(err));
+            })
+            .catch(err => console.error(err));
     }
 
     handleSubmit() {
@@ -180,18 +201,21 @@ class Tags extends React.Component {
                                 </div>
                                 <div className="flex flex-wrap border-b">
                                     <div className="w-1/4 flex justify-center text-center">
-                                        <div className="pb-6">
+                                        <div className="pb-1">
                                             <img src={"./../" + image} />
                                             <p className="text-sm font-bold">{name}</p>
                                             <div className="flex flex-wrap justify-center">
                                                 {
                                                     this.state.tags.map((item, i) => {
-                                                        return <div key={i} className="mt-1 flex items-center inline-block px-3 py-1 rounded-full bg-orange-400 text-white text-xs mr-1">
+                                                        return <div key={i} onClick={this.deleteTag.bind(this, item.id)} className="cursor-pointer mt-1 flex items-center inline-block px-3 py-1 rounded-full bg-orange-400 text-white text-xs mr-1">
                                                             <p className="px-1">{item.name}</p>
                                                             <Trash2 size="14" />
                                                         </div>
                                                     })
                                                 }
+                                            </div>
+                                            <div className="mt-2">
+                                                <p className="text-xs font-semibold">(Delete a tag by clicking on it!)</p>
                                             </div>
                                         </div>
                                     </div>
@@ -217,7 +241,7 @@ class Tags extends React.Component {
                                 <div className="py-4 border-b">
                                     <p className="text-xs font-semibold">Would you like to add some tags to this product?</p>
                                     <div className="flex flex-wrap">
-                                        <input type="text" name="tag" onChange={this.handleChange} className="mr-1 flex-grow p-2 border bg-white" placeholder="Enter a Tag!" />
+                                        <input type="text" name="tag" value={this.state.tag} onChange={this.handleChange} className="mr-1 flex-grow p-2 border bg-white" placeholder="Enter a Tag!" />
                                         <button onClick={this.handleClick} className="bg-gray-200 hover:bg-gray-300 rounded p-2 flex justify-center items-center">
                                             <PlusSquare />
                                         </button>
