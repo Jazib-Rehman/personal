@@ -4,6 +4,7 @@ import LeftNavbar from './../components/LeftNavbar'
 import Header from './../components/Header'
 import AppService from './../../../services/app.service'
 import queryString from 'query-string'
+import { PlusSquare, Trash2 } from 'react-feather'
 
 class Edit extends React.Component {
 
@@ -11,6 +12,7 @@ class Edit extends React.Component {
         super(props);
         this.state = {
             categories: [],
+            tags: [],
             product: {
                 name: '',
                 cat_id: '',
@@ -20,8 +22,10 @@ class Edit extends React.Component {
                 price: '',
                 image: '',
             },
+            tag: '',
             proIds: [],
             message: false,
+            tagError: false,
             successMessage: false,
             catMethod: "Category",
             selectedFile: null
@@ -68,6 +72,13 @@ class Edit extends React.Component {
                 })
             })
             .catch(err => console.error(err));
+        AppService.getTagsById(id)
+            .then(response => {
+                this.setState({
+                    tags: response
+                })
+            })
+            .catch(err => console.error(err));
     }
 
     handleChange = (property, value) => {
@@ -76,9 +87,15 @@ class Edit extends React.Component {
         this.setState({ product });
     }
 
+    handleTagChange = (e) => {
+        this.setState({
+            tag: e
+        });
+    }
+
     LabelInput(props) {
         return (
-            <div>
+            <div className="py-2">
                 <p className="text-xs font-semibold">{props.label}</p>
                 <input type="text" name={props.name} value={this.state.product[props.property]} onChange={({ target }) => this.handleChange(props.property, target.value)} className="w-full p-2 border bg-white" placeholder={props.placeholder} />
             </div>
@@ -112,7 +129,9 @@ class Edit extends React.Component {
             this.state.price === ''
         ) {
             this.setState({
-                message: true
+                message: true,
+                tagError: false,
+                successMessage: false,
             })
         } else {
 
@@ -155,6 +174,59 @@ class Edit extends React.Component {
         })
     }
 
+    handleTags = () => {
+        if (
+            this.state.tag === ''
+        ) {
+            this.setState({
+                tagError: true,
+                message: false,
+                successMessage: false
+            })
+        } else {
+            const id = queryString.parse(this.props.location.search).id
+            AppService.post("add-tag", {
+                name: this.state.tag,
+                pro_id: id
+            })
+                .then(res => {
+                    AppService.getTagsById(id)
+                        .then(response => {
+                            this.setState({
+                                tags: response,
+                                successMessage: false,
+                                message: false,
+                                tagError: false,
+                                tag: ''
+                            })
+                        })
+                        .catch(err => console.error(err));
+                })
+                .catch(err => console.error(err));
+        }
+    }
+
+    deleteTag(tagId) {
+        const id = queryString.parse(this.props.location.search).id
+        AppService.postMethode("delete-tag", {
+            id: tagId
+        })
+            .then(res => {
+                AppService.getTagsById(id)
+                    .then(response => {
+                        this.setState({
+                            tags: response,
+                            successMessage: false,
+                            message: false,
+                            tagError: false,
+                            tag: ''
+                        })
+                    })
+                    .catch(err => console.error(err));
+            })
+            .catch(err => console.error(err));
+    }
+
     formUI() {
         const { name, nutrition, cat_id, description, price, image } = this.state.product
 
@@ -169,6 +241,10 @@ class Edit extends React.Component {
                             value: name,
                             placeholder: 'Name!'
                         })}
+                        <div className="mt-2">
+                            <p className="text-xs font-semibold">Description:</p>
+                            <textarea className="w-full text-box p-2 border bg-white" name="description" value={description} onChange={({ target }) => this.handleChange('description', target.value)} placeholder="Description!"></textarea>
+                        </div>
                     </div>
                     <div className="w-1/2 p-1">
                         {this.LabelInput({
@@ -178,12 +254,6 @@ class Edit extends React.Component {
                             value: nutrition,
                             placeholder: 'Nutrition Info!'
                         })}
-                    </div>
-                    <div className="w-1/2 p-1">
-                        <p className="text-xs font-semibold">Description:</p>
-                        <textarea name="description" value={description} onChange={({ target }) => this.handleChange('description', target.value)} className="w-full p-2 border bg-white rounded rounded-sm" placeholder="Description!"></textarea>
-                    </div>
-                    <div className="w-1/2 p-1">
                         {this.LabelInput({
                             label: 'Price:',
                             name: 'price',
@@ -191,14 +261,40 @@ class Edit extends React.Component {
                             value: price,
                             placeholder: 'Price!'
                         })}
-                    </div>
-                    <div className="w-1/2 p-1 border-t border-b">
-                    </div>
-                    <div className="w-1/2 p-1 border-t border-b">
                         {this.Dropdown(this.state.catMethod)}
                     </div>
-                    <div className="w-full p-1 border-t border-b">
-                        <input type="file" name="image" onChange={this.selectedFile} />
+                    <div className="flex items-end w-full">
+                        <div className="w-1/2 px-1 py-3 border-b">
+                            <input type="file" className="" name="image" onChange={this.selectedFile} />
+                        </div>
+                        <div className="w-1/2 px-1 border-b">
+                            {
+                                this.state.tags.map((item, i) => {
+                                    return (
+                                        <div key={i} className="flex flex-wrap border-b">
+                                            <div className="text-sm flex-grow">{item.name}</div>
+                                            <button onClick={this.deleteTag.bind(this, item.id)} className="">
+                                                <Trash2 size="13" />
+                                            </button>
+                                        </div>
+                                    )
+                                })
+                            }
+                            <div className="pt-1">
+                                {this.tagError()}
+                            </div>
+                            <div className="flex flex-wrap items-end w-full">
+                                <div className="flex-grow pr-2">
+                                    <div className="py-2">
+                                        <p className="text-xs font-semibold">Add Tags:</p>
+                                        <input type="text" name="tag" value={this.state.tag} onChange={({ target }) => this.handleTagChange(target.value)} className="w-full p-2 border bg-white" placeholder="Tags!" />
+                                    </div>
+                                </div>
+                                <button onClick={this.handleTags} className="btn-gray rounded mb-2 bg-gray-300 hover:bg-gray-500 px-2">
+                                    <PlusSquare />
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -214,6 +310,16 @@ class Edit extends React.Component {
             return (
                 <div className="bg-red-500 py-2 px-4 text-white">
                     Kindly check all fields! (All fields should be filled!)
+                </div>
+            )
+        }
+    }
+
+    tagError() {
+        if (this.state.tagError === true) {
+            return (
+                <div className="bg-red-500 py-1 px-2 text-white">
+                    The field is empty!
                 </div>
             )
         }
