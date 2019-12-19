@@ -61,10 +61,10 @@ class Channels extends Component {
             data.append('name', this.state.name)
             data.append('link', this.state.link)
 
-            AppService.axiosPost("add-channel", data, {
+            AppService.axiosPost("channel/add", data, {
             })
                 .then(response => {
-                    AppService.getMethode('channels')
+                    AppService.getMethode('channels/get')
                         .then(response => {
                             this.setState({
                                 channels: response,
@@ -88,10 +88,11 @@ class Channels extends Component {
     }
 
     onTrashClick = product => {
-        AppService.axiosPost("delete-channel", product, {
-        })
+        const data = new FormData();
+        data.append('id', product.id);
+        AppService.axiosPost("channel/delete", data)
             .then(response => {
-                AppService.getMethode('channels')
+                AppService.getMethode('channels/get')
                     .then(response => {
                         this.setState({
                             channels: response,

@@ -28,7 +28,6 @@ class PDF extends Component {
     componentDidMount() {
         AppService.getMethode('pdf/get')
             .then(response => {
-                console.log(response[0])
                 if (response.length === 0) {
                     this.setState({ isEmpty: true })
                 } else {
@@ -70,12 +69,11 @@ class PDF extends Component {
             data.append('image', this.state.selectedFile)
             data.append('name', this.state.pdf.name)
 
-            AppService.axiosPost("add-pdf", data, {
+            AppService.axiosPost("pdf/add", data, {
             })
                 .then(response => {
-                    AppService.getMethode('pdf')
+                    AppService.getMethode('pdf/get')
                         .then(response => {
-                            console.log(response[0])
                             if (response.length === 0) {
                                 this.setState({ isEmpty: true })
                             } else {
@@ -108,18 +106,19 @@ class PDF extends Component {
             data.append('image', this.state.selectedFile)
             data.append('img', this.state.pdf.image)
 
-            AppService.axiosPost("update-pdf", data, {
-            })
+            AppService.axiosPost("pdf/update", data)
                 .then(response => {
-                    AppService.getMethode('pdf')
+                    AppService.getMethode('pdf/get')
                         .then(response => {
-                            console.log(response[0])
                             if (response.length === 0) {
                                 this.setState({ isEmpty: true })
                             } else {
                                 this.setState({
                                     pdf: response[0],
                                     updateMessage: true,
+                                    message: false,
+                                    deleteMessage: false,
+                                    successMessage: false,
                                 })
                             }
                         })

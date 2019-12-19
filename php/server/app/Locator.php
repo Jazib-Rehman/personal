@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Locator extends Model
 {
-    protected $fillable = ['name', 'image'];
+    protected $fillable = ['name', 'image', 'map'];
 }

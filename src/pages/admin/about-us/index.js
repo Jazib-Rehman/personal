@@ -88,10 +88,16 @@ class About extends Component {
                 message: true
             })
         } else {
-            AppService.postMethode("update-about", this.state.about, {
-            })
+            const data = new FormData();
+            data.append('id', this.state.about.id)
+            data.append('title', this.state.about.title)
+            data.append('description', this.state.about.description)
+            data.append('phone', this.state.about.phone)
+            data.append('email', this.state.about.email)
+            data.append('address', this.state.about.address)
+
+            AppService.axiosPost("about/update", data)
                 .then(response => {
-                    // window.location.reload();
                     window.location.href = window.location.pathname + "?updateMessage=true"
                 })
                 .catch(err => console.error(err));

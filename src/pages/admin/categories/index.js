@@ -59,7 +59,7 @@ class Categories extends Component {
             AppService.axiosPost("category/add", data, {
             })
                 .then(response => {
-                    AppService.getMethode('category')
+                    AppService.getMethode('categories/get')
                         .then(response => {
                             this.setState({
                                 categories: response,
@@ -83,10 +83,13 @@ class Categories extends Component {
     }
 
     onTrashClick = product => {
-        AppService.axiosPost("category/delete", product, {
-        })
+
+        const data = new FormData()
+        data.append('id', product.id)
+
+        AppService.axiosPost("category/delete", data)
             .then(response => {
-                AppService.getMethode('category')
+                AppService.getMethode('categories/get')
                     .then(response => {
                         this.setState({
                             categories: response,

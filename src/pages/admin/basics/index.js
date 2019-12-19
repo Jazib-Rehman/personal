@@ -25,7 +25,6 @@ class Basics extends Component {
                 facebook: '',
                 instagram: '',
                 youtube: '',
-
             },
             isEmpty: false,
             selectedFile: null
@@ -89,10 +88,9 @@ class Basics extends Component {
             data.append('instagram', this.state.basics.instagram)
             data.append('youtube', this.state.basics.youtube)
 
-            AppService.axiosPost("add-basics", data, {
-            })
+            AppService.axiosPost("basics/add", data)
                 .then(response => {
-                    AppService.getMethode('basics')
+                    AppService.getMethode('basics/get')
                         .then(response => {
                             if (response.length === 0) {
                                 this.setState({ isEmpty: true })
@@ -140,7 +138,7 @@ class Basics extends Component {
             data.append('instagram', instagram)
             data.append('youtube', youtube)
 
-            AppService.axiosPost("update-basics", data, {
+            AppService.axiosPost("basics/update", data, {
             })
                 .then(response => {
                     AppService.getMethode('basics/get')

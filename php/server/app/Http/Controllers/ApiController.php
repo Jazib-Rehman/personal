@@ -103,7 +103,8 @@ class ApiController extends Controller
     {
         return Locator::create([
             'name' => $request->name,
-            'image' => $request->image
+            'image' => $request->image,
+            'map' => $request->map
         ]);
     }
 

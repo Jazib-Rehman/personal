@@ -36,10 +36,13 @@ class Products extends React.Component {
     }
 
     onTrashClick = product => {
-        AppService.axiosPost("delete-product", product, {
-        })
+
+        const data = new FormData()
+        data.append('id', product.id)
+
+        AppService.axiosPost("product/delete", data)
             .then(response => {
-                AppService.get('categories-with-products')
+                AppService.get('all/get')
                     .then(response => {
                         this.setState({
                             categories: response,
@@ -47,7 +50,7 @@ class Products extends React.Component {
                         })
                     })
                     .catch(err => console.error(err));
-                AppService.get('unsign-products')
+                AppService.get('unsign-products/get')
                     .then(response => {
                         this.setState({ unsigned: response })
                     })
@@ -67,7 +70,7 @@ class Products extends React.Component {
                         <div className="flex flex-wrap justify-center items-center">
                             {
                                 item.products.map((meal, i) => {
-                                    return <div href="admin/add-product" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center my-2">
+                                    return <div key={i} href="admin/add-product" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center my-2">
                                         {this.state.img = "./../" + meal.image}
                                         <img src={this.state.img} className="z-10 w-full h-full absolute" />
                                         <div className="w-full h-full absolute z-20 bg-trans"></div>
@@ -101,7 +104,7 @@ class Products extends React.Component {
         return <div className="flex flex-wrap justify-center items-center">
             {
                 this.state.unsigned.map((item, j) => {
-                    return <div href="admin/add-product" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
+                    return <div key={j} href="admin/add-product" className="hover relative overflow-hidden rounded rounded-lg w-40 h-40 flex mx-1 justify-center items-center">
                         {this.state.img = "./../" + item.image}
                         <img src={this.state.img} className="z-10 w-full h-full absolute" />
                         <div className="w-full h-full absolute z-20 bg-trans"></div>

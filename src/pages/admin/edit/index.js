@@ -65,13 +65,9 @@ class Edit extends React.Component {
         const id = queryString.parse(this.props.location.search).id
         AppService.getMethode("products/get/" + id)
             .then(response => {
-                // const { product } = response
                 this.setState({
-                    product: response[0],
-                    // tags: response.product.tags,
-                    // categories: categories
+                    product: response[0]
                 })
-                console.log(this.state.product)
             })
             .catch(err => console.error(err));
         AppService.getMethode("categories/get")
@@ -149,16 +145,14 @@ class Edit extends React.Component {
             data.append('price', price)
             data.append('img', image)
 
-            AppService.axiosPost("update-product", data, {
+            AppService.axiosPost("product/update", data, {
             })
                 .then(response => {
                     const id = queryString.parse(this.props.location.search).id
-                    AppService.getProductById(id)
+                    AppService.getMethode("products/get/" + id)
                         .then(response => {
-                            const { product, categories } = response
                             this.setState({
-                                product,
-                                categories,
+                                product: response[0],
                                 successMessage: true,
                                 message: false
                             })
@@ -187,15 +181,17 @@ class Edit extends React.Component {
             })
         } else {
             const id = queryString.parse(this.props.location.search).id
-            AppService.post("add-tag", {
-                name: this.state.tag,
-                pro_id: id
-            })
+
+            const data = new FormData()
+            data.append('name', this.state.tag)
+            data.append('pro_id', id)
+
+            AppService.axiosPost("tag/add", data)
                 .then(res => {
-                    AppService.getTagsById(id)
+                    AppService.getMethode("products/get/" + id)
                         .then(response => {
                             this.setState({
-                                tags: response,
+                                product: response[0],
                                 successMessage: false,
                                 message: false,
                                 tagError: false,
@@ -209,15 +205,18 @@ class Edit extends React.Component {
     }
 
     deleteTag(tagId) {
+
         const id = queryString.parse(this.props.location.search).id
-        AppService.postMethode("delete-tag", {
-            id: tagId
-        })
+        const data = new FormData()
+        data.append('id', tagId)
+
+
+        AppService.axiosPost("tag/delete", data)
             .then(res => {
-                AppService.getTagsById(id)
+                AppService.getMethode("products/get/" + id)
                     .then(response => {
                         this.setState({
-                            tags: response,
+                            product: response[0],
                             successMessage: false,
                             message: false,
                             tagError: false,

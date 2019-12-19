@@ -62,10 +62,9 @@ class Locator extends Component {
             data.append('name', this.state.name)
             data.append('map', this.state.map)
 
-            AppService.axiosPost("add-locator", data, {
-            })
+            AppService.axiosPost("locator/add", data)
                 .then(response => {
-                    AppService.getMethode('locators')
+                    AppService.getMethode('locators/get')
                         .then(response => {
                             this.setState({
                                 locators: response,
@@ -89,10 +88,12 @@ class Locator extends Component {
     }
 
     onTrashClick = product => {
-        AppService.axiosPost("delete-locator", product, {
-        })
+        const data = new FormData();
+        data.append('id', product.id);
+
+        AppService.axiosPost("locator/delete", data)
             .then(response => {
-                AppService.getMethode('locators')
+                AppService.getMethode('locators/get')
                     .then(response => {
                         this.setState({
                             locators: response,

@@ -13,7 +13,6 @@ class Tags extends React.Component {
         super();
         this.state = {
             categories: [],
-            tags: [],
             product: {
                 name: '',
                 cat_id: '',
@@ -22,6 +21,7 @@ class Tags extends React.Component {
                 nutrition: '',
                 price: '',
                 image: '',
+                tags: [],
             },
             tag: '',
             message: false,
@@ -62,20 +62,17 @@ class Tags extends React.Component {
 
     componentDidMount() {
         const id = queryString.parse(this.props.location.search).id
-        AppService.getProductById(id)
+        AppService.getMethode("products/get/" + id)
             .then(response => {
-                const { product, categories } = response
                 this.setState({
-                    product,
-                    categories
+                    product: response[0]
                 })
             })
             .catch(err => console.error(err));
-        AppService.getTagsById(id)
+        AppService.getMethode("categories/get")
             .then(response => {
-                console.log(response)
                 this.setState({
-                    tags: response
+                    categories: response
                 })
             })
             .catch(err => console.error(err));
@@ -97,15 +94,17 @@ class Tags extends React.Component {
             })
         } else {
             const id = queryString.parse(this.props.location.search).id
-            AppService.post("add-tag", {
-                name: this.state.tag,
-                pro_id: id
-            })
+
+            const data = new FormData()
+            data.append('name', this.state.tag)
+            data.append('pro_id', id)
+
+            AppService.axiosPost("tag/add", data)
                 .then(res => {
-                    AppService.getTagsById(id)
+                    AppService.getMethode("products/get/" + id)
                         .then(response => {
                             this.setState({
-                                tags: response,
+                                product: response[0],
                                 message: false,
                                 successMessage: true,
                                 tag: ''
@@ -206,7 +205,7 @@ class Tags extends React.Component {
                                             <p className="text-sm font-bold">{name}</p>
                                             <div className="flex flex-wrap justify-center">
                                                 {
-                                                    this.state.tags.map((item, i) => {
+                                                    this.state.product.tags.map((item, i) => {
                                                         return <div key={i} onClick={this.deleteTag.bind(this, item.id)} className="cursor-pointer mt-1 flex items-center inline-block px-3 py-1 rounded-full bg-orange-400 text-white text-xs mr-1">
                                                             <p className="px-1">{item.name}</p>
                                                             <Trash2 size="14" />

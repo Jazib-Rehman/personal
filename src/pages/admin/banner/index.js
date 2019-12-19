@@ -57,8 +57,7 @@ class Banner extends Component {
             data.append('image', this.state.selectedFile)
             data.append('name', this.state.name)
 
-            AppService.axiosPost("add-banner", data, {
-            })
+            AppService.axiosPost("banner/add", data)
                 .then(response => {
                     AppService.getMethode('banners/get')
                         .then(response => {
@@ -84,10 +83,12 @@ class Banner extends Component {
     }
 
     onTrashClick = product => {
-        AppService.axiosPost("delete-banner", product, {
-        })
+        const data = new FormData();
+        data.append('id', product.id)
+
+        AppService.axiosPost("banner/delete", data)
             .then(response => {
-                AppService.getMethode('banner')
+                AppService.getMethode('banners/get')
                     .then(response => {
                         this.setState({
                             banner: response,
