@@ -21,7 +21,7 @@ class Banner extends Component {
     }
 
     componentDidMount() {
-        AppService.getMethode('banner')
+        AppService.getMethode('banners/get')
             .then(response => {
                 this.setState({ banner: response })
             })
@@ -60,7 +60,7 @@ class Banner extends Component {
             AppService.axiosPost("add-banner", data, {
             })
                 .then(response => {
-                    AppService.getMethode('banner')
+                    AppService.getMethode('banners/get')
                         .then(response => {
                             this.setState({
                                 banner: response,

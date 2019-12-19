@@ -12,7 +12,7 @@ class Footer extends React.Component {
     }
 
     componentDidMount() {
-        AppService.get('basics')
+        AppService.get('basics/get')
             .then(response => {
                 this.setState({
                     basics: response
@@ -20,7 +20,7 @@ class Footer extends React.Component {
             })
             .catch(err => console.error(err));
 
-        AppService.getMethode('about')
+        AppService.getMethode('about/get')
             .then(response => {
                 if (response.length === 0) {
                     this.setState({ isEmpty: true })

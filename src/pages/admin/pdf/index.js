@@ -26,7 +26,7 @@ class PDF extends Component {
     }
 
     componentDidMount() {
-        AppService.getMethode('pdf')
+        AppService.getMethode('pdf/get')
             .then(response => {
                 console.log(response[0])
                 if (response.length === 0) {

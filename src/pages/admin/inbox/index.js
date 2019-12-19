@@ -16,7 +16,7 @@ class Inbox extends Component {
     }
 
     componentDidMount() {
-        AppService.getMethode('inbox')
+        AppService.getMethode('contacts/get')
             .then(response => {
                 if (response.length === 0) {
                     this.setState({ isEmpty: true })

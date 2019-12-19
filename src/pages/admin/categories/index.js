@@ -20,7 +20,7 @@ class Categories extends Component {
     }
 
     componentDidMount() {
-        AppService.getMethode('category')
+        AppService.getMethode('categories/get')
             .then(response => {
                 this.setState({ categories: response })
             })
@@ -56,7 +56,7 @@ class Categories extends Component {
             data.append('image', this.state.selectedFile)
             data.append('name', this.state.name)
 
-            AppService.axiosPost("add-category", data, {
+            AppService.axiosPost("category/add", data, {
             })
                 .then(response => {
                     AppService.getMethode('category')
@@ -83,7 +83,7 @@ class Categories extends Component {
     }
 
     onTrashClick = product => {
-        AppService.axiosPost("delete-category", product, {
+        AppService.axiosPost("category/delete", product, {
         })
             .then(response => {
                 AppService.getMethode('category')

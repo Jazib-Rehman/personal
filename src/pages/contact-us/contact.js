@@ -19,7 +19,7 @@ class Contact extends React.Component {
     }
 
     componentDidMount() {
-        AppService.getMethode('basics')
+        AppService.getMethode('basics/get')
             .then(response => {
                 this.setState({ basics: response })
             })

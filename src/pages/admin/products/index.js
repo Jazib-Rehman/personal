@@ -19,12 +19,12 @@ class Products extends React.Component {
     }
 
     componentDidMount() {
-        AppService.get('categories-with-products')
+        AppService.get('all/get')
             .then(response => {
                 this.setState({ categories: response })
             })
             .catch(err => console.error(err));
-        AppService.get('unsign-products')
+        AppService.get('unsign-products/get')
             .then(response => {
                 this.setState({ unsigned: response })
             })

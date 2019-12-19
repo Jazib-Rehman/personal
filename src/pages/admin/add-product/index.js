@@ -54,7 +54,7 @@ class AppProduct extends React.Component {
 
 
     componentDidMount() {
-        AppService.getMethode('category')
+        AppService.getMethode('categories/get')
             .then(response => {
                 this.setState({ categories: response })
             })

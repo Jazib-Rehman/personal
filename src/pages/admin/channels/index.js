@@ -22,7 +22,7 @@ class Channels extends Component {
     }
 
     componentDidMount() {
-        AppService.getMethode('channels')
+        AppService.getMethode('channels/get')
             .then(response => {
                 this.setState({ channels: response })
             })
