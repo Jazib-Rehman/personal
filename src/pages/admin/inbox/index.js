@@ -29,7 +29,7 @@ class Inbox extends Component {
             })
             .catch(err => console.error(err));
     }
-
+ 
     onTrashClick = product => {
         const data = new FormData();
         data.append('id', product.id);
