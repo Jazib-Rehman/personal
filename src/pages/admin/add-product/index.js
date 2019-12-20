@@ -54,7 +54,7 @@ class AppProduct extends React.Component {
 
 
     componentDidMount() {
-        AppService.getMethode('category')
+        AppService.getMethode('categories/get')
             .then(response => {
                 this.setState({ categories: response })
             })
@@ -131,11 +131,11 @@ class AppProduct extends React.Component {
             data.append('nutrition', this.state.nutrition)
             data.append('price', this.state.price)
 
-            AppService.axiosPost("upload", data, {
+            AppService.axiosPost("product/add", data, {
             })
                 .then(response => {
                     console.log(response)
-                    AppService.getMethode('category')
+                    AppService.getMethode('categories/get')
                         .then(response => {
                             this.setState({
                                 categories: response,

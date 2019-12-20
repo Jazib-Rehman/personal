@@ -16,7 +16,7 @@ class Store extends React.Component {
     }
 
     componentDidMount() {
-        AppService.getMethode('locators')
+        AppService.getMethode('locators/get')
             .then(response => {
                 this.setState({ locators: response })
             })

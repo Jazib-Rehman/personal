@@ -1,9 +1,11 @@
 import axios from 'axios';
 
 export class HttpService {
-    baseURL = 'http://localhost:3001/';
+    baseURL = 'http://localhost:8000/api/';
     get(url) {
-        return fetch(this.baseURL + url).then((resp) => resp.json())
+        return fetch(this.baseURL + url)
+            .then((resp) => resp.json())
+            .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
     }
     post(url, data) {
         return fetch(this.baseURL + url, {

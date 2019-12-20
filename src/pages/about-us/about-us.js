@@ -12,7 +12,7 @@ class AboutUs extends React.Component {
     }
 
     componentDidMount() {
-        AppService.getMethode('about')
+        AppService.getMethode('about/get')
             .then(response => {
                 if (response.length === 0) {
                     this.setState({ isEmpty: true })

@@ -12,7 +12,7 @@ class Banner extends React.Component {
     }
 
     componentDidMount() {
-        AppService.getMethode('banner')
+        AppService.getMethode('banners/get')
             .then(response => {
                 this.setState({ banners: response })
             })

@@ -15,13 +15,13 @@ class Foods extends React.Component {
         }
     }
 
-    componentDidMount() {
-        AppService.get('categories-with-products')
+    componentWillMount() {
+        AppService.get('all/get')
             .then(response => {
                 this.setState({ categories: response })
             })
             .catch(err => console.error(err));
-        AppService.get('unsign-products')
+        AppService.get('unsign-products/get')
             .then(response => {
                 this.setState({ unsigned: response })
             })
@@ -33,6 +33,21 @@ class Foods extends React.Component {
         element.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
     }
 
+    get categories() {
+        if (this.state.categories) {
+            return this.state.categories
+        } else {
+            return [];
+        }
+    }
+
+    get unasigned() {
+        if (this.state.unsigned) {
+            return this.state.unsigned
+        } else {
+            return [];
+        }
+    }
 
     render() {
         return (
@@ -53,13 +68,13 @@ class Foods extends React.Component {
                 </div>
                 <div className="flex flex-wrap  mt-8 w-full  m-auto w-full md:w-2/3">
                     {
-                        this.state.unsigned.map((item, j) => (
+                        this.unasigned.map((item, j) => (
                             <Meal meal={item} key={j} />
                         ))
                     }
                 </div>
                 {
-                    this.state.categories.map((category, i) => {
+                    this.categories.map((category, i) => {
                         return <div id={category.id} key={i} className="mt-5">
 
                             <Category category={category} key={category.id} />

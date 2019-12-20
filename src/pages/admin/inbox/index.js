@@ -11,12 +11,13 @@ class Inbox extends Component {
     constructor() {
         super();
         this.state = {
-            message: []
+            message: [],
+            deleteMessage: false
         }
     }
 
     componentDidMount() {
-        AppService.getMethode('inbox')
+        AppService.getMethode('contacts/get')
             .then(response => {
                 if (response.length === 0) {
                     this.setState({ isEmpty: true })
@@ -29,47 +30,33 @@ class Inbox extends Component {
             .catch(err => console.error(err));
     }
 
-
-    handleClick = () => {
-        // console.log(this.state.pdf)
-        if (
-            this.state.name === '' ||
-            this.state.selectedFile === null
-        ) {
-            this.setState({
-                message: true
-            })
-        } else {
-
-            const data = new FormData()
-            data.append('image', this.state.selectedFile)
-            data.append('name', this.state.pdf.name)
-
-            AppService.axiosPost("add-pdf", data, {
-            })
-                .then(response => {
-                    // window.location.reload();
-                    window.location.href = window.location.pathname + "?successMessage=true"
-                })
-                .catch(err => console.error(err));
-        }
-    }
-
-
-
     onTrashClick = product => {
-        AppService.axiosPost("delete-message", product, {
-        })
+        const data = new FormData();
+        data.append('id', product.id);
+
+        AppService.axiosPost("feedback/delete", data)
             .then(response => {
-                // window.location.reload();
-                window.location.href = window.location.pathname + "?deleteMessage=true"
+                AppService.getMethode('contacts/get')
+                    .then(response => {
+                        if (response.length === 0) {
+                            this.setState({ isEmpty: true })
+                        } else {
+                            this.setState({
+                                message: response
+                            })
+                        }
+                    })
+                    .catch(err => console.error(err));
+                this.setState({
+                    deleteMessage: true
+                })
             })
             .catch(err => console.error(err));
     }
 
     delete() {
-        const deleteMessage = queryString.parse(this.props.location.search).deleteMessage;
-        if (deleteMessage === "true") {
+        // const deleteMessage = queryString.parse(this.props.location.search).deleteMessage;
+        if (this.state.deleteMessage === true) {
             return (
                 <div className="bg-red-500 py-2 px-4 text-white">
                     Message successfully deleted!

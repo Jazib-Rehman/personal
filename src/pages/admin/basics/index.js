@@ -20,12 +20,11 @@ class Basics extends Component {
                 logo: '',
                 categories: '',
                 channels: '',
-                locator: '',
+                locators: '',
                 twitter: '',
                 facebook: '',
                 instagram: '',
                 youtube: '',
-
             },
             isEmpty: false,
             selectedFile: null
@@ -33,7 +32,7 @@ class Basics extends Component {
     }
 
     componentDidMount() {
-        AppService.getMethode('basics')
+        AppService.getMethode('basics/get')
             .then(response => {
                 if (response.length === 0) {
                     this.setState({ isEmpty: true })
@@ -66,7 +65,7 @@ class Basics extends Component {
             this.state.basics.site_header === '' ||
             this.state.basics.categories === '' ||
             this.state.basics.channels === '' ||
-            this.state.basics.locator === '' ||
+            this.state.basics.locators === '' ||
             this.state.basics.twitter === '' ||
             this.state.basics.facebook === '' ||
             this.state.basics.instagram === '' ||
@@ -77,22 +76,21 @@ class Basics extends Component {
                 message: true
             })
         } else {
-
             const data = new FormData()
             data.append('image', this.state.selectedFile)
             data.append('site_header', this.state.basics.site_header)
             data.append('categories', this.state.basics.categories)
             data.append('channels', this.state.basics.channels)
-            data.append('locator', this.state.basics.locator)
+            data.append('locators', this.state.basics.locators)
             data.append('twitter', this.state.basics.twitter)
             data.append('facebook', this.state.basics.facebook)
             data.append('instagram', this.state.basics.instagram)
             data.append('youtube', this.state.basics.youtube)
 
-            AppService.axiosPost("add-basics", data, {
-            })
+            console.log(data)
+            AppService.axiosPost("basics/add", data)
                 .then(response => {
-                    AppService.getMethode('basics')
+                    AppService.getMethode('basics/get')
                         .then(response => {
                             if (response.length === 0) {
                                 this.setState({ isEmpty: true })
@@ -114,7 +112,7 @@ class Basics extends Component {
             this.state.basics.site_header === '' ||
             this.state.basics.categories === '' ||
             this.state.basics.channels === '' ||
-            this.state.basics.locator === '' ||
+            this.state.basics.locators === '' ||
             this.state.basics.twitter === '' ||
             this.state.basics.facebook === '' ||
             this.state.basics.instagram === '' ||
@@ -127,23 +125,23 @@ class Basics extends Component {
         } else {
 
             const data = new FormData()
-            const { id, site_header, categories, logo, channels, locator, twitter, facebook, instagram, youtube } = this.state.basics;
+            const { id, site_header, categories, logo, channels, locators, twitter, facebook, instagram, youtube } = this.state.basics;
             data.append('id', id)
             data.append('image', this.state.selectedFile)
             data.append('logo', logo)
             data.append('site_header', site_header)
             data.append('categories', categories)
             data.append('channels', channels)
-            data.append('locator', locator)
+            data.append('locators', locators)
             data.append('twitter', twitter)
             data.append('facebook', facebook)
             data.append('instagram', instagram)
             data.append('youtube', youtube)
 
-            AppService.axiosPost("update-basics", data, {
+            AppService.axiosPost("basics/update", data, {
             })
                 .then(response => {
-                    AppService.getMethode('basics')
+                    AppService.getMethode('basics/get')
                         .then(response => {
                             if (response.length === 0) {
                                 this.setState({ isEmpty: true })
@@ -222,7 +220,7 @@ class Basics extends Component {
 
     render() {
 
-        const { site_header, categories, channels, locator, twitter, facebook, instagram, youtube } = this.state.basics
+        const { site_header, categories, channels, locators, twitter, facebook, instagram, youtube } = this.state.basics
 
         return (
             <AdminLayout>
@@ -284,8 +282,8 @@ class Basics extends Component {
                                         <div className="w-full p-1">
                                             {this.LabelInput({
                                                 label: 'Locator (Section Title):',
-                                                name: 'locator',
-                                                value: locator,
+                                                name: 'locators',
+                                                value: locators,
                                                 placeholder: 'Locator (Section Title)!'
                                             })}
                                         </div>

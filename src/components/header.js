@@ -16,7 +16,7 @@ class Header extends React.Component {
 	}
 
 	componentDidMount() {
-		AppService.get('basics')
+		AppService.get('basics/get')
 			.then(response => {
 				this.setState({
 					basics: response

@@ -14,12 +14,13 @@ class Contact extends React.Component {
             email: '',
             message: '',
             basics: [],
-            error: false
+            error: false,
+            successMessage: false
         }
     }
 
     componentDidMount() {
-        AppService.getMethode('basics')
+        AppService.getMethode('basics/get')
             .then(response => {
                 this.setState({ basics: response })
             })
@@ -44,15 +45,15 @@ class Contact extends React.Component {
                 error: true
             })
         } else {
-            AppService.postMethode("post-feedback", {
-                f_name: this.state.f_name,
-                l_name: this.state.l_name,
-                email: this.state.email,
-                message: this.state.message,
-            }, {
-            })
+            const data = new FormData();
+            data.append('f_name', this.state.f_name)
+            data.append('l_name', this.state.l_name)
+            data.append('email', this.state.email)
+            data.append('message', this.state.message)
+            AppService.axiosPost("feedback/add", data)
                 .then(response => {
-                    window.location.href = window.location.pathname + "?successMessage=true"
+                    // window.location.href = window.location.pathname + "?successMessage=true"
+                    this.setState({ successMessage: true })
                 })
                 .catch(err => console.error(err));
         }
@@ -69,8 +70,8 @@ class Contact extends React.Component {
     }
 
     success() {
-        const successMessage = queryString.parse(window.location.search).successMessage;
-        if (successMessage === "true") {
+        // const successMessage = queryString.parse(window.location.search).successMessage;
+        if (this.state.successMessage === true) {
             return (
                 <div className="bg-green-500 py-2 px-4 text-white">
                     Thank you for your feedback!

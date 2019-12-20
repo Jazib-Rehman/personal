@@ -22,7 +22,7 @@ class Locator extends Component {
     }
 
     componentDidMount() {
-        AppService.getMethode('locators')
+        AppService.getMethode('locators/get')
             .then(response => {
                 this.setState({ locators: response })
             })
@@ -62,10 +62,9 @@ class Locator extends Component {
             data.append('name', this.state.name)
             data.append('map', this.state.map)
 
-            AppService.axiosPost("add-locator", data, {
-            })
+            AppService.axiosPost("locator/add", data)
                 .then(response => {
-                    AppService.getMethode('locators')
+                    AppService.getMethode('locators/get')
                         .then(response => {
                             this.setState({
                                 locators: response,
@@ -89,10 +88,12 @@ class Locator extends Component {
     }
 
     onTrashClick = product => {
-        AppService.axiosPost("delete-locator", product, {
-        })
+        const data = new FormData();
+        data.append('id', product.id);
+
+        AppService.axiosPost("locator/delete", data)
             .then(response => {
-                AppService.getMethode('locators')
+                AppService.getMethode('locators/get')
                     .then(response => {
                         this.setState({
                             locators: response,
@@ -194,7 +195,7 @@ class Locator extends Component {
                                                         <div className="bg-prim py-1 text-white text-center">
                                                             <p className="text-2xl font-light">{item.name}</p>
                                                         </div>
-                                                        <img src={"./../" + item.image} alt="dummy" className="m-auto w-full h-48 object-cover" />
+                                                        <img src={item.image} alt="dummy" className="m-auto w-full h-48 object-cover" />
                                                         <div className="absolute bottom-0 w-full flex justify-center">
                                                             <button className="p-2 text-white rounded mb-5 outline-none bg-trans" onClick={this.onTrashClick.bind(this, item)}><Trash2 size="14" /></button>
                                                         </div>

@@ -12,7 +12,6 @@ class Edit extends React.Component {
         super(props);
         this.state = {
             categories: [],
-            tags: [],
             product: {
                 name: '',
                 cat_id: '',
@@ -21,6 +20,7 @@ class Edit extends React.Component {
                 nutrition: '',
                 price: '',
                 image: '',
+                tags: [],
             },
             tag: '',
             proIds: [],
@@ -63,19 +63,17 @@ class Edit extends React.Component {
 
     componentDidMount() {
         const id = queryString.parse(this.props.location.search).id
-        AppService.getProductById(id)
+        AppService.getMethode("products/get/" + id)
             .then(response => {
-                const { product, categories } = response
                 this.setState({
-                    product,
-                    categories
+                    product: response[0]
                 })
             })
             .catch(err => console.error(err));
-        AppService.getTagsById(id)
+        AppService.getMethode("categories/get")
             .then(response => {
                 this.setState({
-                    tags: response
+                    categories: response
                 })
             })
             .catch(err => console.error(err));
@@ -147,16 +145,14 @@ class Edit extends React.Component {
             data.append('price', price)
             data.append('img', image)
 
-            AppService.axiosPost("update-product", data, {
+            AppService.axiosPost("product/update", data, {
             })
                 .then(response => {
                     const id = queryString.parse(this.props.location.search).id
-                    AppService.getProductById(id)
+                    AppService.getMethode("products/get/" + id)
                         .then(response => {
-                            const { product, categories } = response
                             this.setState({
-                                product,
-                                categories,
+                                product: response[0],
                                 successMessage: true,
                                 message: false
                             })
@@ -185,15 +181,17 @@ class Edit extends React.Component {
             })
         } else {
             const id = queryString.parse(this.props.location.search).id
-            AppService.post("add-tag", {
-                name: this.state.tag,
-                pro_id: id
-            })
+
+            const data = new FormData()
+            data.append('name', this.state.tag)
+            data.append('pro_id', id)
+
+            AppService.axiosPost("tag/add", data)
                 .then(res => {
-                    AppService.getTagsById(id)
+                    AppService.getMethode("products/get/" + id)
                         .then(response => {
                             this.setState({
-                                tags: response,
+                                product: response[0],
                                 successMessage: false,
                                 message: false,
                                 tagError: false,
@@ -207,15 +205,18 @@ class Edit extends React.Component {
     }
 
     deleteTag(tagId) {
+
         const id = queryString.parse(this.props.location.search).id
-        AppService.postMethode("delete-tag", {
-            id: tagId
-        })
+        const data = new FormData()
+        data.append('id', tagId)
+
+
+        AppService.axiosPost("tag/delete", data)
             .then(res => {
-                AppService.getTagsById(id)
+                AppService.getMethode("products/get/" + id)
                     .then(response => {
                         this.setState({
-                            tags: response,
+                            product: response[0],
                             successMessage: false,
                             message: false,
                             tagError: false,
@@ -269,7 +270,7 @@ class Edit extends React.Component {
                         </div>
                         <div className="w-1/2 px-1 border-b">
                             {
-                                this.state.tags.map((item, i) => {
+                                this.state.product.tags.map((item, i) => {
                                     return (
                                         <div key={i} className="flex flex-wrap border-b">
                                             <div className="text-sm flex-grow">{item.name}</div>
