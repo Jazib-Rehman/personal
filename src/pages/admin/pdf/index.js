@@ -103,8 +103,8 @@ class PDF extends Component {
             const data = new FormData()
             data.append('id', this.state.pdf.id)
             data.append('name', this.state.pdf.name)
-            data.append('image', this.state.selectedFile)
             data.append('img', this.state.pdf.image)
+            data.append('image', this.state.selectedFile)
 
             AppService.axiosPost("pdf/update", data)
                 .then(response => {

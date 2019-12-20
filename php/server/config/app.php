@@ -2,6 +2,8 @@
 
 return [
 
+    'localhost' => env('LOCALHOST', 'http://localhost:8000/'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

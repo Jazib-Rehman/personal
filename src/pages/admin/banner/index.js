@@ -85,6 +85,7 @@ class Banner extends Component {
     onTrashClick = product => {
         const data = new FormData();
         data.append('id', product.id)
+        data.append('image', product.image)
 
         AppService.axiosPost("banner/delete", data)
             .then(response => {
@@ -176,7 +177,7 @@ class Banner extends Component {
                                         return (
                                             <div key={i}>
                                                 <div className="w-full p-2 flex border-b relative">
-                                                    <img src={"./../" + item.image} className="adminBanner w-full object-cover" />
+                                                    <img src={item.image} className="adminBanner w-full object-cover" />
                                                     <div className="absolute bottom-0 flex justify-center w-full mb-20">
                                                         <div className="bg-trans p-2 text-white rounded">
                                                             <p className="text-xl font-thin">{item.name}</p>

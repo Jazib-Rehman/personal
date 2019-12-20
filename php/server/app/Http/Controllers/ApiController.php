@@ -17,24 +17,35 @@ Use App\Tags;
 
 class ApiController extends Controller
 {
-
+    
     //Add
     public function addProduct(Request $request)
     {
+        $localhost = config('app.localhost');
+        if ($request->hasFile('image')) {
+            $imageName = $localhost . 'uploads/products/' . time() . '.' . $request->image->getClientOriginalExtension();
+            $imagURL = $request->image->move(public_path('uploads/products'), $imageName);
+        }
         return Product::create([
             'name' => $request->name,
             'cat_id' => $request->cat_id,
             'description' => $request->description,
             'nutrition' => $request->nutrition,
             'price' => $request->price,
-            'image' => $request->image
+            'image' => $imageName
         ]);
     }
 
     public function addBasics(Request $request)
     {
+        $localhost = config('app.localhost');
+        if ($request->hasFile('image')) {
+            $imageName = $localhost . 'uploads/site_headers/' . time() . '.' . $request->image->getClientOriginalExtension();
+            $imagURL = $request->image->move(public_path('uploads/site_headers'), $imageName);
+        }
+
         return Basics::create([
-            'logo' => $request->logo,
+            'logo' => $imageName,
             'site_header' => $request->site_header,
             'categories' => $request->categories,
             'channels' => $request->channels,
@@ -77,43 +88,68 @@ class ApiController extends Controller
 
     public function addCategory(Request $request)
     {
+        $localhost = config('app.localhost');
+        if ($request->hasFile('image')) {
+            $imageName = $localhost . 'uploads/categories/' . time() . '.' . $request->image->getClientOriginalExtension();
+            $imagURL = $request->image->move(public_path('uploads/categories'), $imageName);
+        }
         return Category::create([
             'name' => $request->name,
-            'image' => $request->image
+            'image' => $imageName
         ]);
     }
 
     public function addPdf(Request $request)
     {
+        $localhost = config('app.localhost');
+        if ($request->hasFile('image')) {
+            $imageName = $localhost . 'uploads/site_headers/' . time() . '.' . $request->image->getClientOriginalExtension();
+            $imagURL = $request->image->move(public_path('uploads/site_headers'), $imageName);
+        }
         return Pdf::create([
             'name' => $request->name,
-            'image' => $request->image
+            'image' => $imageName
         ]);
     }
 
     public function addBanner(Request $request)
     {
+        $localhost = config('app.localhost');
+        if ($request->hasFile('image')) {
+            $imageName = $localhost . 'uploads/banners/' . time() . '.' . $request->image->getClientOriginalExtension();
+            $imagURL = $request->image->move(public_path('uploads/banners'), $imageName);
+        }
         return Banner::create([
             'name' => $request->name,
-            'image' => $request->image
+            'image' => $imageName
         ]);
     }
 
     public function addLocator(Request $request)
     {
+        $localhost = config('app.localhost');
+        if ($request->hasFile('image')) {
+            $imageName = $localhost . 'uploads/locators/' . time() . '.' . $request->image->getClientOriginalExtension();
+            $imagURL = $request->image->move(public_path('uploads/locators'), $imageName);
+        }
         return Locator::create([
             'name' => $request->name,
-            'image' => $request->image,
+            'image' => $imageName,
             'map' => $request->map
         ]);
     }
 
     public function addChannel(Request $request)
     {
+        $localhost = config('app.localhost');
+        if ($request->hasFile('image')) {
+            $imageName = $localhost . 'uploads/channels/' . time() . '.' . $request->image->getClientOriginalExtension();
+            $imagURL = $request->image->move(public_path('uploads/channels'), $imageName);
+        }
         return Channel::create([
             'name' => $request->name,
             'link' => $request->link,
-            'image' => $request->image
+            'image' => $imageName
         ]);
     }
     
@@ -121,24 +157,85 @@ class ApiController extends Controller
     //Update
     public function updateProduct(Request $request)
     {
+        //Delete current image
+        $localhost = config('app.localhost');
+        $link = $request->img;
+        $image = explode($localhost, $link);
+        $image = $image[1];
+        unlink($image);
+        
+        //Upload new image
+        if ($request->hasFile('image')) {
+            $imageName = $localhost . 'uploads/products/' . time() . '.' . $request->image->getClientOriginalExtension();
+            $imagURL = $request->image->move(public_path('uploads/products'), $imageName);
+        }
+        //Update product in Mysql
         $product = Product::findOrFail($request->id);
-        $product->update($request->all());
+        $product->update([
+            'name' => $request->name,
+            'cat_id' => $request->cat_id,
+            'description' => $request->description,
+            'nutrition' => $request->nutrition,
+            'price' => $request->price,
+            'image' => $imageName
+        ]);
 
         return $product;
     }
 
     public function updatePdf(Request $request)
     {
+        
+        //Delete current image
+        $localhost = config('app.localhost');
+        $link = $request->img;
+        $image = explode($localhost, $link);
+        $image = $image[1];
+        unlink($image);
+        
+        // Upload new image
+        if ($request->hasFile('image')) {
+            $imageName = $localhost . 'uploads/site_headers/' . time() . '.' . $request->image->getClientOriginalExtension();
+            $imagURL = $request->image->move(public_path('uploads/site_headers'), $imageName);
+        }
+        // Update product in Mysql
         $pdf = Pdf::findOrFail($request->id);
-        $pdf->update($request->all());
+        $pdf->update([
+            'name' => $request->name,
+            'image' => $request->img
+        ]);
 
         return $pdf;
     }
 
     public function updateBasics(Request $request)
     {
+        //Delete current logo
+        $localhost = config('app.localhost');
+        $link = $request->logo;
+        $image = explode($localhost, $link);
+        $image = $image[1];
+        unlink($image);
+
+        //Upload new logo
+        if ($request->hasFile('image')) {
+            $imageName = $localhost . 'uploads/site_headers/' . time() . '.' . $request->image->getClientOriginalExtension();
+            $imagURL = $request->image->move(public_path('uploads/site_headers'), $imageName);
+        }
+
+        //Update basics in Mysql
         $basics = Basics::findOrFail($request->id);
-        $basics->update($request->all());
+        $basics->update([
+            'logo' => $imageName,
+            'site_header' => $request->site_header,
+            'categories' => $request->categories,
+            'channels' => $request->channels,
+            'locators' => $request->locators,
+            'facebook' => $request->facebook,
+            'twitter' => $request->twitter,
+            'instagram' => $request->instagram,
+            'youtube' => $request->youtube
+        ]);
 
         return $basics;
     }
@@ -155,6 +252,12 @@ class ApiController extends Controller
     //Delete
     public function deleteProduct(Request $request)
     {
+        $localhost = config('app.localhost');
+        $link = $request->image;
+        $image = explode($localhost, $link);
+        $image = $image[1];
+        unlink($image);
+        
         Product::find($request->id)->delete();
         return 204;
     }
@@ -167,6 +270,12 @@ class ApiController extends Controller
 
     public function deleteCategory(Request $request)
     {
+        $localhost = config('app.localhost');
+        $link = $request->image;
+        $image = explode($localhost, $link);
+        $image = $image[1];
+        unlink($image);
+
         Category::find($request->id)->delete();
         return 204;
     }
@@ -179,12 +288,24 @@ class ApiController extends Controller
 
     public function deleteBanner(Request $request)
     {
+        $localhost = config('app.localhost');
+        $link = $request->image;
+        $image = explode($localhost, $link);
+        $image = $image[1];
+        unlink($image);
+
         Banner::find($request->id)->delete();
         return 204;
     }
 
     public function deleteChannel(Request $request)
     {
+        $localhost = config('app.localhost');
+        $link = $request->image;
+        $image = explode($localhost, $link);
+        $image = $image[1];
+        unlink($image);
+
         Channel::find($request->id)->delete();
         return 204;
     }

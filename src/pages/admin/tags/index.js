@@ -118,14 +118,15 @@ class Tags extends React.Component {
 
     deleteTag(tagId) {
         const id = queryString.parse(this.props.location.search).id
-        AppService.postMethode("delete-tag", {
-            id: tagId
-        })
+        const data = new FormData();
+        data.append('id', tagId);
+
+        AppService.axiosPost("tag/delete", data)
             .then(res => {
-                AppService.getTagsById(id)
+                AppService.getMethode("products/get/" + id)
                     .then(response => {
                         this.setState({
-                            tags: response,
+                            product: response[0],
                             successMessage: false,
                             message: false,
                             tag: ''
@@ -201,7 +202,7 @@ class Tags extends React.Component {
                                 <div className="flex flex-wrap border-b">
                                     <div className="w-1/4 flex justify-center text-center">
                                         <div className="pb-1">
-                                            <img src={"./../" + image} />
+                                            <img src={image} />
                                             <p className="text-sm font-bold">{name}</p>
                                             <div className="flex flex-wrap justify-center">
                                                 {

@@ -39,6 +39,7 @@ class Products extends React.Component {
 
         const data = new FormData()
         data.append('id', product.id)
+        data.append('image', product.image)
 
         AppService.axiosPost("product/delete", data)
             .then(response => {

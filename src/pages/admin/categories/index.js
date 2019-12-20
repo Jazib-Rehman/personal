@@ -86,6 +86,7 @@ class Categories extends Component {
 
         const data = new FormData()
         data.append('id', product.id)
+        data.append('image', product.image)
 
         AppService.axiosPost("category/delete", data)
             .then(response => {
@@ -177,7 +178,7 @@ class Categories extends Component {
                                             <div key={i} className="w-1/5">
                                                 <div className="p-2">
                                                     <div className="relative rounded overflow-hidden">
-                                                        <img src={"./../" + item.image} className="m-auto w-32 h-32 object-cover rounded-lg" />
+                                                        <img src={item.image} className="m-auto w-32 h-32 object-cover rounded-lg" />
                                                         <div className="mb-3 absolute bottom-0 w-full h-full flex items-center justify-center">
                                                             <div className="bg-trans rounded text-white p-1">
                                                                 {item.name}

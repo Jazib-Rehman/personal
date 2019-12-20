@@ -76,7 +76,6 @@ class Basics extends Component {
                 message: true
             })
         } else {
-
             const data = new FormData()
             data.append('image', this.state.selectedFile)
             data.append('site_header', this.state.basics.site_header)
@@ -88,6 +87,7 @@ class Basics extends Component {
             data.append('instagram', this.state.basics.instagram)
             data.append('youtube', this.state.basics.youtube)
 
+            console.log(data)
             AppService.axiosPost("basics/add", data)
                 .then(response => {
                     AppService.getMethode('basics/get')
