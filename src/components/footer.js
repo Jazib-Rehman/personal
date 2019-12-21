@@ -15,7 +15,7 @@ class Footer extends React.Component {
         AppService.get('basics/get')
             .then(response => {
                 this.setState({
-                    basics: response
+                    basics: response ? response : []
                 })
             })
             .catch(err => console.error(err));

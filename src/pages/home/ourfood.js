@@ -17,12 +17,12 @@ class OurFood extends React.Component {
     componentDidMount() {
         AppService.get('categories/get')
             .then(response => {
-                this.setState({ categories: response })
+                this.setState({ categories: response ? response : [] })
             })
             .catch(err => console.error(err));
         AppService.get('pdf/get')
             .then(response => {
-                this.setState({ pdf: response })
+                this.setState({ pdf: response ? response : [] })
             })
             .catch(err => console.error(err));
     }

@@ -22,7 +22,7 @@ class Contact extends React.Component {
     componentDidMount() {
         AppService.getMethode('basics/get')
             .then(response => {
-                this.setState({ basics: response })
+                this.setState({ basics: response ? response : [] })
             })
             .catch(err => console.error(err));
     }

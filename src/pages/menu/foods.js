@@ -18,12 +18,12 @@ class Foods extends React.Component {
     componentWillMount() {
         AppService.get('all/get')
             .then(response => {
-                this.setState({ categories: response })
+                this.setState({ categories: response ? response : [] })
             })
             .catch(err => console.error(err));
         AppService.get('unsign-products/get')
             .then(response => {
-                this.setState({ unsigned: response })
+                this.setState({ unsigned: response ? response : [] })
             })
             .catch(err => console.error(err));
     }

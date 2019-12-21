@@ -19,7 +19,7 @@ class Header extends React.Component {
 		AppService.get('basics/get')
 			.then(response => {
 				this.setState({
-					basics: response
+					basics: response ? response : []
 				})
 			})
 			.catch(err => console.error(err));
@@ -50,6 +50,10 @@ class Header extends React.Component {
 		this.setState({
 			showMenu: !menu
 		})
+	}
+
+	get basics(){
+		return this.state.basics ? this.state.basics : [];
 	}
 
 	hiddenMenu() {
@@ -94,14 +98,14 @@ class Header extends React.Component {
 					<div className="w-1/3 px-2">
 						<span className="px-2 border-r text-xs">عربي</span>
 						{
-							this.state.basics.map((item, i) => {
+							this.basics.map((item, i) => {
 								return <span className="px-2 text-xs" key={i}>{item.site_header}</span>
 							})
 						}
 					</div>
 					<div className="w-1/3 flex justify-center">
 						{
-							this.state.basics.map((item, i) => {
+							this.basics.map((item, i) => {
 								return <a href="/" key={i}>
 									<img src={item.logo} alt="logo" className="h-20" />
 								</a>

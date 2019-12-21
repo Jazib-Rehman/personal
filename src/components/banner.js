@@ -14,7 +14,7 @@ class Banner extends React.Component {
     componentDidMount() {
         AppService.getMethode('banners/get')
             .then(response => {
-                this.setState({ banners: response })
+                this.setState({ banners: response ? response :[] })
             })
             .catch(err => console.error(err));
     }
