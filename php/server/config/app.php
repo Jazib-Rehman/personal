@@ -2,7 +2,7 @@
 
 return [
 
-    'localhost' => env('LOCALHOST', 'http://localhost:8000/'),
+    'localhost' => env('LOCALHOST', 'http://server.sstation.ae/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
