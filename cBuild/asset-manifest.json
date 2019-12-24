@@ -1,23 +1,16 @@
 {
-  "files": {
-    "main.css": "/static/css/main.d1b05096.chunk.css",
-    "main.js": "/static/js/main.1649de4d.chunk.js",
-    "main.js.map": "/static/js/main.1649de4d.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.3127cda7.js",
-    "runtime-main.js.map": "/static/js/runtime-main.3127cda7.js.map",
-    "static/js/2.3eed503d.chunk.js": "/static/js/2.3eed503d.chunk.js",
-    "static/js/2.3eed503d.chunk.js.map": "/static/js/2.3eed503d.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.006e98f42b9b0de4d7bc85559e13de3a.js": "/precache-manifest.006e98f42b9b0de4d7bc85559e13de3a.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.d1b05096.chunk.css.map": "/static/css/main.d1b05096.chunk.css.map",
-    "static/js/2.3eed503d.chunk.js.LICENSE": "/static/js/2.3eed503d.chunk.js.LICENSE",
-    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg"
-  },
-  "entrypoints": [
-    "static/js/runtime-main.3127cda7.js",
-    "static/js/2.3eed503d.chunk.js",
-    "static/css/main.d1b05096.chunk.css",
-    "static/js/main.1649de4d.chunk.js"
-  ]
+  "main.css": "/static/css/main.7216f766.chunk.css",
+  "main.js": "/static/js/main.b6590665.chunk.js",
+  "main.js.map": "/static/js/main.b6590665.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+  "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+  "static/css/2.ffd33725.chunk.css": "/static/css/2.ffd33725.chunk.css",
+  "static/js/2.33b29e46.chunk.js": "/static/js/2.33b29e46.chunk.js",
+  "static/js/2.33b29e46.chunk.js.map": "/static/js/2.33b29e46.chunk.js.map",
+  "index.html": "/index.html",
+  "precache-manifest.f0342a7ec6568873ac788fd010e1561e.js": "/precache-manifest.f0342a7ec6568873ac788fd010e1561e.js",
+  "service-worker.js": "/service-worker.js",
+  "static/css/2.ffd33725.chunk.css.map": "/static/css/2.ffd33725.chunk.css.map",
+  "static/css/main.7216f766.chunk.css.map": "/static/css/main.7216f766.chunk.css.map",
+  "static/media/style.css": "/static/media/grid.44908e53.png"
 }

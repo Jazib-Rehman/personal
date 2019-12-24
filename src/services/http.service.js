@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export class HttpService {
-    baseURL = 'http://localhost:8000/api/';
+    baseURL = 'http://server.sstation.ae/api/';
     get(url) {
         return fetch(this.baseURL + url)
             .then((resp) => resp.json())
