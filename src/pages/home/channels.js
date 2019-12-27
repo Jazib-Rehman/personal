@@ -19,7 +19,7 @@ class Channels extends React.Component {
     componentDidMount() {
         AppService.get('channels/get')
             .then(response => {
-                this.setState({ categories: response ? response :[] })
+                this.setState({ categories: response ? response : [] })
             })
             .catch(err => console.error(err));
         AppService.get('basics/get')
