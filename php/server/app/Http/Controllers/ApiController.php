@@ -202,7 +202,7 @@ class ApiController extends Controller
         $pdf = Pdf::findOrFail($request->id);
         $pdf->update([
             'name' => $request->name,
-            'image' => $request->img
+            'image' => $imageName
         ]);
 
         return $pdf;

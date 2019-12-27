@@ -111,7 +111,7 @@ class Locator extends Component {
         if (this.state.message === true) {
             return (
                 <div className="bg-red-500 py-2 px-4 text-white">
-                    Either Name or Image is missing!
+                    You are missing something!
                 </div>
             )
         }
@@ -121,7 +121,7 @@ class Locator extends Component {
         if (this.state.successMessage === true) {
             return (
                 <div className="bg-green-500 py-2 px-4 text-white">
-                    Category successfully added!
+                    Locator successfully added!
                 </div>
             )
         }
@@ -131,7 +131,7 @@ class Locator extends Component {
         if (this.state.deleteMessage === true) {
             return (
                 <div className="bg-red-500 py-2 px-4 text-white">
-                    Category successfully deleted!
+                    Locator successfully deleted!
                 </div>
             )
         }
