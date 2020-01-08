@@ -1,13 +1,11 @@
-
-
 @import url("https://fonts.googleapis.com/css?family=Barriecito|Lalezar&display=swap");
 @font-face {
   font-family: "font";
   src: url("./assets/fonts/Blackout-Midnight.ttf");
 }
 
-body{
-  font-family: 'Overpass', sans-serif;
+body {
+  font-family: "Overpass", sans-serif;
   font-weight: 300;
 }
 
@@ -28,6 +26,9 @@ body{
 .font-sec {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+.font-xs {
+  font-size: 2px;
+}
 
 /* RESET CLASSES */
 button:active,
@@ -37,7 +38,6 @@ button {
   border: none;
   box-shadow: none;
 }
-
 
 /* UTILITY CLASSES */
 .bg-prim {
@@ -99,16 +99,16 @@ button {
   transition: all 1s;
 }
 
-.btn:hover{
+.btn:hover {
   background: var(--prim);
-  color: #FC5C42;
+  color: #fc5c42;
 }
 
 .btn:active,
 .btn:focus {
   border: 1px var(--sec) solid;
   background: var(--sec);
-  color: #FC5C42;
+  color: #fc5c42;
 }
 
 .btn-gray {
@@ -181,11 +181,11 @@ footer i {
 }
 
 .bg-orange {
-  background: #F58A3A;
+  background: #f58a3a;
 }
 
 .text-orange {
-  color: #F58A3A;
+  color: #f58a3a;
 }
 
 .horizontal {
@@ -206,12 +206,12 @@ footer i {
 }
 
 .horizontal::-webkit-scrollbar-thumb {
-  background-color: rgba(252, 92, 66, 0.5); 
+  background-color: rgba(252, 92, 66, 0.5);
   outline: none;
   border-radius: 10px;
 }
 
-.bg-grid{
+.bg-grid {
   position: relative;
   background: white;
 }
@@ -219,52 +219,49 @@ footer i {
 .bg-grid::after {
   background: url(assets/grid.png) repeat;
   opacity: 0.2;
-  content:'';
+  content: "";
   height: 100%;
   width: 100%;
   position: absolute;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   z-index: 12;
 }
 
-.bages{
-  opacity:0.4;
+.bages {
+  opacity: 0.4;
 }
 
-
-.r-1{
+.r-1 {
   transform: rotate(2deg);
 }
 
-.r-2{
+.r-2 {
   transform: rotate(-4deg);
 }
 
-
-.top-100{
-  top:150px;
+.top-100 {
+  top: 150px;
 }
 
-.grid-3{
+.grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4px;
 }
 
-.bg-dark-trans{
+.bg-dark-trans {
   background: rgba(0, 0, 0, 0.1);
 }
 
-.trans-1{
+.trans-1 {
   transition: all 0.5s ease-in-out;
 }
 
-
-.zoom-in{
+.zoom-in {
   transition: all 1s ease-in-out;
 }
-.zoom-in:hover{
+.zoom-in:hover {
   transform: scale(1.1);
 }
 
@@ -280,7 +277,6 @@ footer i {
   padding: 11px;
 }
 
-
 .adminBanner {
   height: 400px;
 }
@@ -288,11 +284,11 @@ footer i {
 .map {
   height: 300px;
 }
- 
-@media screen and (min-width: 1024px){
-    .map {
-        height: 500px;
-    }
+
+@media screen and (min-width: 1024px) {
+  .map {
+    height: 500px;
+  }
 }
 
 #gmap_canvas {
@@ -304,36 +300,35 @@ footer i {
   height: 10rem;
 }
 
-
-@media (min-width: 576px) { 
+@media (min-width: 576px) {
   .meal {
     width: 14rem;
     height: 14rem;
-  } 
+  }
 }
 
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
   .meal {
     width: 9rem;
     height: 9rem;
   }
 }
 
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
   .meal {
     width: 11rem;
     height: 11rem;
   }
 }
 
-@media (min-width: 1200px) { 
+@media (min-width: 1200px) {
   .meal {
     width: 10rem;
     height: 10rem;
   }
 }
 
-@media (min-width: 1366px) { 
+@media (min-width: 1366px) {
   .meal {
     width: 16rem;
     height: 16rem;
@@ -344,31 +339,31 @@ footer i {
   height: 20rem;
 }
 
-@media (min-width: 576px) { 
+@media (min-width: 576px) {
   .banner {
     height: 20rem;
-  } 
+  }
 }
 
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
   .banner {
     height: 42rem;
   }
 }
 
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
   .banner {
     height: 42rem;
   }
 }
 
-@media (min-width: 1200px) { 
+@media (min-width: 1200px) {
   .banner {
     height: 42rem;
   }
 }
 
-@media (min-width: 1366px) { 
+@media (min-width: 1366px) {
   .banner {
     height: 50rem;
   }
@@ -379,35 +374,35 @@ footer i {
   height: 15rem;
 }
 
-@media (min-width: 576px) { 
+@media (min-width: 576px) {
   .locatorImage {
     width: 100%;
     height: 22rem;
-  } 
+  }
 }
 
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
   .locatorImage {
-  width: 100%;
+    width: 100%;
     height: 15rem;
   }
 }
 
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
   .locatorImage {
-  width: 100%;
+    width: 100%;
     height: 16rem;
   }
 }
 
-@media (min-width: 1200px) { 
+@media (min-width: 1200px) {
   .locatorImage {
-  width: 100%;
+    width: 100%;
     height: 16rem;
   }
 }
 
-@media (min-width: 1366px) { 
+@media (min-width: 1366px) {
   .locatorImage {
     width: 100%;
     height: 27rem;
@@ -415,34 +410,34 @@ footer i {
 }
 
 .channels {
-    height: 12rem;
+  height: 12rem;
 }
 
-@media (min-width: 576px) { 
+@media (min-width: 576px) {
   .channels {
     height: 17rem;
-  } 
+  }
 }
 
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
   .channels {
     height: 8rem;
   }
 }
 
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
   .channels {
     height: 11rem;
   }
 }
 
-@media (min-width: 1200px) { 
+@media (min-width: 1200px) {
   .channels {
     height: 13rem;
   }
 }
 
-@media (min-width: 1366px) { 
+@media (min-width: 1366px) {
   .channels {
     height: 20rem;
   }
