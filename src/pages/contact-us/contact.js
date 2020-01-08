@@ -118,9 +118,9 @@ class Contact extends React.Component {
           </div>
         </div>
         <div className="relative constactUsSection md:py-20 bg-dark-trans z-40">
-          <div className="rounded-lg mx-40 bg-white-trans py-10">
+          <div className="rounded-lg lg:mx-40 bg-white-trans py-10">
             <div className="">
-              <p className="text-2xl font-bold uppercase text-orange-600">
+              <p className="text-lg md:text-2xl font-bold uppercase text-orange-600">
                 Get in touch with us
               </p>
             </div>
@@ -159,58 +159,58 @@ class Contact extends React.Component {
                 <div className="text-left py-5 px-16">
                   <div className="flex">
                     <div className="mx-1 w-full">
-                      <p className="text-sm text-gray-700 font-semibold">
+                      <p className="font-xs md:text-sm text-gray-700 font-semibold">
                         First name:
                       </p>
                       <input
                         type="text"
                         onChange={this.handleChange.bind(this, "f_name")}
                         name="f_name"
-                        className="p-2 bg-white w-full md:w-full lg:w-full  md:text-xs rounded border border-red-300 outline-none"
+                        className="p-2 bg-white font-xs w-full md:w-full lg:w-full  md:text-xs rounded border border-red-300 outline-none"
                         placeholder="First Name"
                       />
                     </div>
                     <div className="mx-1 w-full">
-                      <p className="text-sm text-gray-700 font-semibold">
+                      <p className="font-xs md:text-sm text-gray-700 font-semibold">
                         Last name:
                       </p>
                       <input
                         type="text"
                         onChange={this.handleChange.bind(this, "l_name")}
                         name="l_name"
-                        className="p-2 bg-white w-full md:w-full lg:w-full md:text-xs rounded border border-red-300 outline-none"
+                        className="p-2 bg-white font-xs w-full md:w-full lg:w-full md:text-xs rounded border border-red-300 outline-none"
                         placeholder="Last Name"
                       />
                     </div>
                   </div>
                   <div className="mx-1 mt-4">
-                    <p className="text-sm text-gray-700 font-semibold">
+                    <p className="font-xs md:text-sm text-gray-700 font-semibold">
                       E-mail:
                     </p>
                     <input
                       type="text"
                       onChange={this.handleChange.bind(this, "email")}
                       name="email"
-                      className="p-2 bg-white w-full md:w-full lg:w-full md:text-xs rounded border border-red-300 outline-none"
+                      className="p-2 bg-white w-full font-xs md:w-full lg:w-full md:text-xs rounded border border-red-300 outline-none"
                       placeholder="example@example.com"
                     />
                   </div>
                   <div className="mx-1 mt-4">
-                    <p className="text-sm text-gray-700 font-semibold">
+                    <p className="font-xs md:text-sm  text-gray-700 font-semibold">
                       Message:
                     </p>
                     <textarea
                       type="text"
                       onChange={this.handleChange.bind(this, "message")}
                       name="message"
-                      className="p-2 bg-white w-full md:w-full lg:w-full md:text-xs rounded border border-red-300 outline-none"
+                      className="p-2 bg-white w-full font-xs md:w-full lg:w-full md:text-xs rounded border border-red-300 outline-none"
                       placeholder="Your message!"
                     ></textarea>
                   </div>
                   <div className="mx-1 mt-4 text-right">
                     <button
                       onClick={this.handleClick}
-                      className="btn rounded md:text-xs md:w-40 text-prim bg-orange-600 text-white font-bold outline-none"
+                      className="btn rounded font-xs md:text-xs md:w-40 text-prim bg-orange-600 text-white font-bold outline-none"
                     >
                       SEND MESSAGE
                     </button>
@@ -220,7 +220,9 @@ class Contact extends React.Component {
             </div>
             <div className="px-16">
               <div className="border-t-2 border-orange-400"></div>
-              <p className="mt-4 text-lg">Find us on social networks</p>
+              <p className="mt-4 text-xs md:text-lg ">
+                Find us on social networks
+              </p>
               <div className="mt-3">
                 {this.state.basics.map((item, i) => {
                   return (
