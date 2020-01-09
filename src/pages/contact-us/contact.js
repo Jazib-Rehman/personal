@@ -117,10 +117,10 @@ class Contact extends React.Component {
             </div>
           </div>
         </div>
-        <div className="relative constactUsSection md:py-20 bg-dark-trans z-40">
-          <div className="rounded-lg lg:mx-40 bg-white-trans py-10">
-            <div className="">
-              <p className="text-lg md:text-2xl font-bold uppercase text-orange-600">
+        <div className="relative -mb-64 md:py-4  bg-dark-trans z-40">
+          <div className="-mt-1 screen rounded-lg lg:mx-48 my-64 bg-white-trans py-16">
+            <div className="-mt-8">
+              <p className="text-lg md:text-xl font-bold uppercase text-orange-600">
                 Get in touch with us
               </p>
             </div>
@@ -128,9 +128,9 @@ class Contact extends React.Component {
             {this.success()}
             <div className="flex">
               <div className="mt-4 w-1/2 hidden md:block">
-                <div className="text-left hidden md:flex py-5 px-16 flex">
+                <div className="text-left hidden md:flex py-2 px-16 flex">
                   <div className="">
-                    <p className="text-xl">Site management Shawarmer</p>
+                    <p className="text-lg">Site management Shawarmer</p>
                     <p className="text-sm text-gray-700">
                       Sulaymaniyah, Olaya Road Riyadh 12211, Saudi Arabia
                     </p>
@@ -139,9 +139,9 @@ class Contact extends React.Component {
                     <MapPin size="24" />
                   </div>
                 </div>
-                <div className="text-left hidden md:flex py-5 px-16 mt-10 flex">
+                <div className="text-left hidden md:flex py-2 px-16 mt-10 flex">
                   <div>
-                    <p className="text-xl">To contact us</p>
+                    <p className="text-lg">To contact us</p>
                     <p className="text-sm text-gray-700">
                       Shawarmer Office: (011) 462-8841 , Sunday - Thursday, 8 AM
                       - 5 PM
@@ -156,7 +156,7 @@ class Contact extends React.Component {
                 </div>
               </div>
               <div className="mt-4 w-full md:w-1/2">
-                <div className="text-left py-5 px-16">
+                <div className="text-left py-2 px-16">
                   <div className="flex">
                     <div className="mx-1 w-full">
                       <p className="font-xs md:text-sm text-gray-700 font-semibold">
@@ -220,38 +220,38 @@ class Contact extends React.Component {
             </div>
             <div className="px-16">
               <div className="border-t-2 border-orange-400"></div>
-              <p className="mt-4 text-xs md:text-lg ">
+              <p className="mt-2 text-xs md:text-sm ">
                 Find us on social networks
               </p>
-              <div className="mt-3">
+              <div className="py-2">
                 {this.state.basics.map((item, i) => {
                   return (
                     <div className="flex justify-center">
                       <a
                         href={item.twitter}
                         target="_blank"
-                        className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1"
+                        className="text-gray-400 rounded-full h-8 w-8 flex items-center justify-center bg-gray-700 text-white mx-1"
                       >
                         <Twitter size="18" />
                       </a>
                       <a
                         href={item.facebook}
                         target="_blank"
-                        className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1"
+                        className="text-gray-400 rounded-full h-8 w-8 flex items-center justify-center bg-gray-700 text-white mx-1"
                       >
                         <Facebook size="18" />
                       </a>
                       <a
                         href={item.instagram}
                         target="_blank"
-                        className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1"
+                        className="text-gray-400 rounded-full h-8 w-8 flex items-center justify-center bg-gray-700 text-white mx-1"
                       >
                         <Instagram size="18" />
                       </a>
                       <a
                         href={item.youtube}
                         target="_blank"
-                        className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-gray-700 text-white mx-1"
+                        className="text-gray-400 rounded-full h-8 w-8 flex items-center justify-center bg-gray-700 text-white mx-1"
                       >
                         <Youtube size="18" />
                       </a>

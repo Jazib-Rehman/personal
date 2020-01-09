@@ -104,7 +104,7 @@ class Header extends React.Component {
   render() {
     return (
       <div>
-        <header className="header hidden md:flex bg-trans font-prim text-white text-sm flex items-center fixed w-full py-2 cursor-pointer items-center z-60">
+        <header className="header hidden md:flex bg-black font-prim text-white text-sm flex items-center fixed w-full py-2 cursor-pointer items-center z-60">
           <div className="w-1/3 md:w-1/2 px-2">
             <span className="px-2 border-r text-xs">عربي</span>
             {this.basics.map((item, i) => {

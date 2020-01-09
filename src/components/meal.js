@@ -10,7 +10,7 @@ class Meal extends React.Component {
 
   render() {
     return (
-      <div className="w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/4 mt-4">
+      <div className="w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/4 mt-4 md:p-1">
         <div className="cursor-pointer">
           <img
             className="m-auto meal object-cover rounded-lg zoom-in"
