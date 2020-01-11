@@ -81,7 +81,7 @@ class OurFood extends React.Component {
             </div>
           </div>
         </div>
-        <section className="relative text-center py-12 z-40">
+        <section className="relative bg-dark-trans text-center py-12 z-40">
           <h1 className="flex items-center justify-center font-prim text-dark">
             <span className="text-lg md:text-lg px-4 text-prim">OUR</span>
             <span className="text-2xl md:text-3xl border-l-2 border-orange-400 px-4 text-prim">
@@ -111,7 +111,7 @@ class OurFood extends React.Component {
               );
             })}
           </div>
-          <div className="w-full  md:px-24">
+          <div className="w-full md:px-24">
             <div className="slider horizontal mt-4 z-40 m-auto items-center">
               {this.categories()}
             </div>

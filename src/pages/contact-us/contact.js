@@ -117,8 +117,8 @@ class Contact extends React.Component {
             </div>
           </div>
         </div>
-        <div className="relative -mb-64 md:py-4  bg-dark-trans z-40">
-          <div className="-mt-1 screen rounded-lg lg:mx-48 my-64 bg-white-trans py-16">
+        <div className="relative -mb-64 md:py-4 bg-dark-trans z-40">
+          <div className=" screen rounded-lg lg:mx-48 my-10  bg-white-trans py-16 ">
             <div className="-mt-8">
               <p className="text-lg md:text-xl font-bold uppercase text-orange-600">
                 Get in touch with us

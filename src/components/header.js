@@ -104,7 +104,7 @@ class Header extends React.Component {
   render() {
     return (
       <div>
-        <header className="header hidden md:flex bg-black font-prim text-white text-sm flex items-center fixed w-full py-2 cursor-pointer items-center z-60">
+        <header className="header absulote z-60 hidden md:flex bg-black font-prim text-white text-sm flex items-center fixed w-full py-2 cursor-pointer items-center">
           <div className="w-1/3 md:w-1/2 px-2">
             <span className="px-2 border-r text-xs">عربي</span>
             {this.basics.map((item, i) => {
@@ -115,7 +115,7 @@ class Header extends React.Component {
               );
             })}
           </div>
-          <div className="w-1/4 md:w-1/3 flex justify-center">
+          <div className="w-1/4 md:w-1/3  flex justify-center">
             {this.basics.map((item, i) => {
               return (
                 <a href="/" key={i}>
@@ -124,7 +124,7 @@ class Header extends React.Component {
               );
             })}
           </div>
-          <div className="menu w-1/3 md:w-1/2 flex justify-end">
+          <div className="menu w-1/3  md:w-1/2 flex justify-end">
             <Link to="/">
               <p className="text-xs md:pl-6 md:px-2 lg:px-3 hover:text-white hover:no-underline">
                 HOME

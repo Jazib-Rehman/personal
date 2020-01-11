@@ -43,17 +43,10 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <footer className="bg-black flex flex-wrap p-12 text-red-600 relative z-40">
+      <footer className="bg-black absolute flex flex-wrap p-12 text-red-600 relative z-40">
         <div className="loc w-full text-center sm:text-left md:w-2/6 font-hairline text-sm p-4">
-          <img
-            src="static/assets/logo-2.png"
-            alt="logo"
-            className="w-64"
-          />
-          <p className="mx-2 justify-start flex">
-            {" "}
-            {this.state.about.address}
-          </p>
+          <img src="static/assets/logo-2.png" alt="logo" className="w-64" />
+          <p className="mx-2 justify-start flex"> {this.state.about.address}</p>
 
           <div className="mx-2">
             <div className="mx-auto mt-2 justify-start flex items-center">
@@ -95,7 +88,9 @@ class Footer extends React.Component {
           {/* <p>Carear</p> */}
         </div>
         <div className="w-full sm:text-left sm:w-1/3 md:w-1/5 links text-sm p-4">
-          <h1 className="sm:w-full font-hairline text-red-700 text-lg mb-2 sm:ml-10 lg:w-2/3">Follow Us</h1>
+          <h1 className="sm:w-full font-hairline text-red-700 text-lg mb-2 sm:ml-10 lg:w-2/3">
+            Follow Us
+          </h1>
           {this.state.basics.map((item, i) => {
             return (
               <div className="w-full sm:ml-10 lg:ml-10" key={i}>
@@ -156,8 +151,14 @@ class Footer extends React.Component {
             Download Our App
           </h1>
 
-          <img className=" mt-4 border rounded sm:w-48 h-4 lg:w-32 h-6" src="static/assets/ios.png"></img>
-          <img className=" mt-2 border rounded sm:w-48 h-4 lg:w-32 h-6" src="static/assets/android.png"></img>
+          <img
+            className=" mt-4 border rounded sm:w-48 h-4 lg:w-32 h-6"
+            src="static/assets/ios.png"
+          ></img>
+          <img
+            className=" mt-2 border rounded sm:w-48 h-4 lg:w-32 h-6"
+            src="static/assets/android.png"
+          ></img>
         </div>
       </footer>
     );

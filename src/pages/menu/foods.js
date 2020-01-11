@@ -53,7 +53,7 @@ class Foods extends React.Component {
 
   render() {
     return (
-      <section className="relative text-center py-12 w-lg m-auto z-40">
+      <section className="relative text-center py-12 -mb-32 z-40 bg-dark-trans">
         <h1 className="flex items-center justify-center font-prim text-dark">
           <span className="text-lg px-2 text-prim">OUR</span>
           <span className="text-3xl border-l-2 border-orange-400 px-2 text-prim">
@@ -67,9 +67,12 @@ class Foods extends React.Component {
 
         <div className="flex flex-wrap w-full font-sec justify-center cursor-pointer py-4">
           {this.state.categories.map((menu, i) => (
-            <div key={i} className="w-full sm:w-64 mx-1 text-lg">
+            <div
+              key={i}
+              className="w-full sm:w-64 mx-1 hover:text-white focus:bg-orange-600 text-lg"
+            >
               <a
-                className="inline-block btn text-prim mx-1 my-1 w-full sm:w-64 bg-white rounded-none"
+                className="inline-block btn mx-1 my-1 w-full sm:w-64 bg-dark-trans rounded-none"
                 onClick={this.handleScroll.bind(this, menu.id)}
               >
                 {menu.name}
@@ -77,7 +80,7 @@ class Foods extends React.Component {
             </div>
           ))}
         </div>
-        <div className="flex flex-wrap  mt-8 w-full  m-auto w-full md:w-2/3">
+        <div className="flex flex-wrap mt-8 m-auto w-full md:w-2/3">
           {this.unasigned.map((item, j) => (
             <Meal meal={item} key={j} />
           ))}
