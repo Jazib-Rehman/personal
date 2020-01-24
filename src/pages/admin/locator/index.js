@@ -3,7 +3,7 @@ import AdminLayout from './../AdminLayout'
 import LeftNavbar from './../components/LeftNavbar'
 import Header from './../components/Header'
 import AppService from './../../../services/app.service'
-import { Trash2 } from 'react-feather'
+import { Trash2, CloudLightning } from 'react-feather'
 import queryString from 'query-string'
 
 class Locator extends Component {
@@ -56,11 +56,11 @@ class Locator extends Component {
                 deleteMessage: false,
             })
         } else {
-
+            const mapAddress = this.state.map.split('https://');
             const data = new FormData()
             data.append('image', this.state.selectedFile)
             data.append('name', this.state.name)
-            data.append('map', this.state.map)
+            data.append('map', mapAddress[1])
 
             AppService.axiosPost("locator/add", data)
                 .then(response => {
@@ -84,7 +84,6 @@ class Locator extends Component {
             selectedFile: event.target.files[0],
             loaded: 0
         })
-        console.log(event.target.files[0])
     }
 
     onTrashClick = product => {

@@ -75,7 +75,7 @@ class Findus extends React.Component {
                   <iframe
                     className="w-full"
                     id="gmap_canvas"
-                    src={item.map}
+                    src={"https://" + item.map}
                     frameBorder="0"
                     scrolling="no"
                     marginHeight="0"

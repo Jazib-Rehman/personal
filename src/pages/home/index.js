@@ -19,9 +19,11 @@ class Home extends React.Component {
     return (
       <Layout >
         <Banner />
-        <OurFood />
-        <Channels />
-        <Store />
+        <div className="parallax2">
+          <OurFood />
+          <Channels />
+          <Store />
+        </div>
         <ImageBlock />
         <Footer />
       </Layout>

@@ -20,7 +20,7 @@ class Store extends React.Component {
 
   render() {
     return (
-      <section className="text-center bg-dark-trans py-12 -mb-32 px-16 text-black relative z-30">
+      <section className="text-center py-12 -mb-32 px-16 text-black relative z-30 parallax2">
         <h1 className="flex items-center justify-center font-prim">
           <span className="text-lg px-4 text-prim">STORE</span>
           <span className="text-3xl border-orange-400 text-prim border-l-2 px-4">
