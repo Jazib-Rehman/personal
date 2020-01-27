@@ -52,28 +52,28 @@ class Channels extends React.Component {
                 <a
                   href={item.twitter}
                   target="_blank"
-                  className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-orange text-white mx-1"
+                  className="hover:bg-gray-700 tans-all text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-orange text-white mx-1"
                 >
                   <Twitter size="18" />
                 </a>
                 <a
                   href={item.facebook}
                   target="_blank"
-                  className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-orange text-white mx-1"
+                  className="hover:bg-gray-700 tans-all text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-orange text-white mx-1"
                 >
                   <Facebook size="18" />
                 </a>
                 <a
                   href={item.instagram}
                   target="_blank"
-                  className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-orange text-white mx-1"
+                  className="hover:bg-gray-700 tans-all text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-orange text-white mx-1"
                 >
                   <Instagram size="18" />
                 </a>
                 <a
                   href={item.youtube}
                   target="_blank"
-                  className="text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-orange text-white mx-1"
+                  className="hover:bg-gray-700 tans-all text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-orange text-white mx-1"
                 >
                   <Youtube size="18" />
                 </a>

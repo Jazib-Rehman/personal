@@ -37,8 +37,8 @@ class Store extends React.Component {
           {this.state.locators.map((item, i) => (
             <div className="w-full overflow-hidden md:w-1/4 p-2 mt-6" key={i}>
               <div className="locatorImage">
-                <div className="bg-orange py-1 text-white">
-                  <p className="text-2xl font-light">{item.name}</p>
+                <div className="bg-orange py-1 px-3 text-white">
+                  <p className="text-2xl font-light truncate">{item.name}</p>
                 </div>
                 <img
                   src={item.image}

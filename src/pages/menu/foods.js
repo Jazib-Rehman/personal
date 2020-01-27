@@ -67,20 +67,22 @@ class Foods extends React.Component {
 				<p className="mt-4 text-gray-500 font-light text-sm">
 					Here you will find our full menu</p>
 
-				<div className="flex flex-wrap w-full font-sec justify-center cursor-pointer py-4">
-					{this.state.categories.map((menu, i) => (
-						<div
-							key={i}
-							className="w-full sm:w-64 mx-1 hover:text-white focus:bg-orange-600 text-lg"
-						>
-							<a
-								className="inline-block btn mx-1 my-1 w-full sm:w-64 bg-dark-trans rounded-none"
-								onClick={this.handleScroll.bind(this, menu.id)}
+				<div className="flex justify-center">
+					<div className="flex flex-wrap w-full md:w-2/3 font-sec justify-center cursor-pointer py-4">
+						{this.state.categories.map((menu, i) => (
+							<div
+								key={i}
+								className="hover:text-white focus:bg-orange-600 text-lg"
 							>
-								{menu.name}
-							</a>
-						</div>
-					))}
+								<a
+									className="inline-block btn bg-dark-trans rounded-none"
+									onClick={this.handleScroll.bind(this, menu.id)}
+								>
+									{menu.name}
+								</a>
+							</div>
+						))}
+					</div>
 				</div>
 				<div className="flex flex-wrap mt-8 m-auto w-full md:w-2/3">
 					{this.unasigned.map((item, j) => (
@@ -94,6 +96,9 @@ class Foods extends React.Component {
 						</div>
 					);
 				})}
+
+				<div className="parallax3">
+				</div>
 			</section>
 		);
 	}

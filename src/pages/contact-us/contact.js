@@ -88,37 +88,8 @@ class Contact extends React.Component {
   render() {
     return (
       <section class="relative text-center py-24 z-40">
-        <div className="fixed top-100 left-0 w-screen overflow-hidden z-10 bages">
-          <div className="flex w-full px-24 ">
-            <div className="r-1">
-              <img
-                src="/static/assets/b10.png"
-                className="w-48 mt-8 inline-block"
-                alt="badge"
-              />
-              <img
-                src="/static/assets/b4.png"
-                className="w-48 mt-8 inline-block"
-                alt="badge"
-              />
-            </div>
-            <div className="flex-grow">.</div>
-            <div className="r-2">
-              <img
-                src="/static/assets/b12.png"
-                className="w-64 mt-8 inline-block"
-                alt="badge"
-              />
-              <img
-                src="/static/assets/b6.png"
-                className="w-48 mt-8 inline-block"
-                alt="badge"
-              />
-            </div>
-          </div>
-        </div>
-        <div className="relative -mb-64 md:py-4 bg-dark-trans z-40">
-          <div className=" screen rounded-lg lg:mx-48 my-10  bg-white-trans py-16 ">
+        <div className="relative -mb-64 md:py-4 bg-dark-trans z-40 parallax2 flex justify-center">
+          <div className=" screen rounded-lg lg:mx-48 my-10 w-full md:w-7/12 bg-white-trans py-16">
             <div className="-mt-8">
               <p className="text-lg md:text-xl font-bold uppercase text-orange-600">
                 Get in touch with us
@@ -230,28 +201,28 @@ class Contact extends React.Component {
                       <a
                         href={item.twitter}
                         target="_blank"
-                        className="text-gray-400 rounded-full h-8 w-8 flex items-center justify-center bg-gray-700 text-white mx-1"
+                        className="hover:bg-gray-900 tans-all text-gray-400 rounded-full h-8 w-8 flex items-center justify-center bg-gray-700 text-white mx-1"
                       >
                         <Twitter size="18" />
                       </a>
                       <a
                         href={item.facebook}
                         target="_blank"
-                        className="text-gray-400 rounded-full h-8 w-8 flex items-center justify-center bg-gray-700 text-white mx-1"
+                        className="hover:bg-gray-900 tans-all text-gray-400 rounded-full h-8 w-8 flex items-center justify-center bg-gray-700 text-white mx-1"
                       >
                         <Facebook size="18" />
                       </a>
                       <a
                         href={item.instagram}
                         target="_blank"
-                        className="text-gray-400 rounded-full h-8 w-8 flex items-center justify-center bg-gray-700 text-white mx-1"
+                        className="hover:bg-gray-900 tans-all text-gray-400 rounded-full h-8 w-8 flex items-center justify-center bg-gray-700 text-white mx-1"
                       >
                         <Instagram size="18" />
                       </a>
                       <a
                         href={item.youtube}
                         target="_blank"
-                        className="text-gray-400 rounded-full h-8 w-8 flex items-center justify-center bg-gray-700 text-white mx-1"
+                        className="hover:bg-gray-900 tans-all text-gray-400 rounded-full h-8 w-8 flex items-center justify-center bg-gray-700 text-white mx-1"
                       >
                         <Youtube size="18" />
                       </a>

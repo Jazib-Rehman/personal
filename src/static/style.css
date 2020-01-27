@@ -516,6 +516,28 @@ footer i {
   background-size: cover;
 }
 
-.parallax2 img{
-  margin-top: 20px;
+.parallax3 {
+  /* The image used */
+  background-image: url("assets/o.jpg");
+
+  /* Set a specific height */
+  min-height: 300px;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax4 {
+  /* The image used */
+  background-image: url("assets/o.jpg");
+
+  /* Set a specific height */
+  min-height: 300px;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

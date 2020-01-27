@@ -2,13 +2,16 @@ import AppService from "./../../services/app.service";
 
 import React from "react";
 import Meal from "../../components/meal";
+import { Link } from "react-router-dom";
 
 class OurFood extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			categories: [],
-			pdf: []
+			pdf: [],
+			categoriesPreview: [],
+			itemIndex: 0
 		};
 	}
 
@@ -23,6 +26,13 @@ class OurFood extends React.Component {
 				this.setState({ pdf: response ? response : [] });
 			})
 			.catch(err => console.error(err));
+
+		this.timeout = setInterval(() => {
+			let currentIdx = this.state.itemIndex;
+			this.setState({ itemIndex: currentIdx + 4 });
+			console.log(this.state.categories.length)
+		}, 3500);
+
 	}
 
 	categories() {
@@ -30,16 +40,18 @@ class OurFood extends React.Component {
 			return this.state.categories.map((item, i) => {
 				return (
 					<div className="w-56 h-full md:w-56 p-2 mt-6" key={i}>
-						<div>
-							<div className="bg-orange py-1 text-white">
-								<p className="text-sm md:text-lg font-light">{item.name}</p>
+						<Link to={"/menu"}>
+							<div>
+								<div className="bg-orange py-1 text-white no-underline">
+									<p className="text-sm md:text-lg font-light">{item.name}</p>
+								</div>
+								<img
+									src={item.image}
+									alt="dummy"
+									className="m-auto w-56 h-56 md:w-56 object-cover"
+								/>
 							</div>
-							<img
-								src={item.image}
-								alt="dummy"
-								className="m-auto w-56 h-56 md:w-56 object-cover"
-							/>
-						</div>
+						</Link>
 					</div>
 				);
 				// <Meal meal={item} key={i} />
@@ -73,13 +85,14 @@ class OurFood extends React.Component {
 							<a
 								className="btn bg-white text-xs md:text-lg text-orange rounded-none"
 								href={item.image}
+								key={i}
 							>
 								DOWNLOAD PDF</a>
 						);
 					})}
 				</div>
 				<div className="w-full md:px-24">
-					<div className="slider horizontal mt-4 z-40 m-auto items-center">
+					<div className="slider horizontal mt-4 z-40 w-full md:w-5/6 m-auto items-center">
 						{this.categories()}
 					</div>
 				</div>
