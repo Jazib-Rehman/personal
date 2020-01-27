@@ -72,35 +72,35 @@ class Header extends React.Component {
         <div className="flex justify-center text-center trans-1">
           <ul className="navMenu mt-3">
             <li>
-              <Link to="/">
+              <Link to="/" style={{ textDecoration: 'none' }}>
                 <p className="text-xs px-3 hover:text-white hover:no-underline">
                   HOME
                 </p>
               </Link>
             </li>
             <li>
-              <Link to="/menu">
+              <Link to="/menu" style={{ textDecoration: 'none' }}>
                 <p className="text-xs px-3 hover:text-white hover:no-underline">
                   OUR FOOD
                 </p>
               </Link>
             </li>
             <li>
-              <Link to="/find-us">
+              <Link to="/find-us" style={{ textDecoration: 'none' }}>
                 <p className="text-xs px-3 hover:text-white hover:no-underline">
                   FIND US
                 </p>
               </Link>
             </li>
             <li>
-              <Link to="/contact-us">
+              <Link to="/contact-us" style={{ textDecoration: 'none' }}>
                 <p className="text-xs px-3 hover:text-white hover:no-underline">
                   CONTACT US
                 </p>
               </Link>
             </li>
             <li>
-              <Link to="/about-us">
+              <Link to="/about-us" style={{ textDecoration: 'none' }}>
                 <p className="text-xs px-3 hover:text-white hover:no-underline">
                   About Us
                 </p>
@@ -137,23 +137,23 @@ class Header extends React.Component {
             })}
           </div>
           <div className="menu w-1/3  md:w-1/2 flex justify-end">
-            <Link to="/">
-              <p className="text-xs md:pl-6 md:px-2 lg:px-3 hover:text-white hover:no-underline">
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <p className="text-xs md:pl-6 md:px-2 lg:px-3 hover:text-white">
                 HOME
               </p>
             </Link>
-            <Link to="/menu">
-              <p className="text-xs md:px-2 lg:px-3 hover:text-white hover:no-underline">
+            <Link to="/menu" style={{ textDecoration: 'none' }}>
+              <p className="text-xs md:px-2 lg:px-3 hover:text-white">
                 OUR FOOD
               </p>
             </Link>
-            <Link to="/find-us">
-              <p className="text-xs md:px-2 lg:px-3 hover:text-white hover:no-underline">
+            <Link to="/find-us" style={{ textDecoration: 'none' }}>
+              <p className="text-xs md:px-2 lg:px-3 hover:text-white">
                 FIND US
               </p>
             </Link>
-            <Link to="/contact-us">
-              <p className="text-xs md:px-2 lg:px-3 hover:text-white hover:no-underline">
+            <Link to="/contact-us" style={{ textDecoration: 'none' }}>
+              <p className="text-xs md:px-2 lg:px-3 hover:text-white">
                 CONTACT US
               </p>
             </Link>

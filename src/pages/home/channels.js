@@ -86,13 +86,13 @@ class Channels extends React.Component {
             <a
               href={item.link}
               target="_blank"
-              className="flex justify-center channels w-1/2 md:w-1/3 p-1"
+              className="flex justify-center channels w-1/2 md:w-1/3 p-1 overflow-hidden"
               key={i}
             >
               <img
                 src={item.image}
                 alt="dummy"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover zoom-in"
               />
             </a>
           ))}

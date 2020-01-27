@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "34aebb149beaae53130f",
-    "url": "/static/css/main.6ae3a50e.chunk.css"
+    "revision": "309655d4f663ca0928b4",
+    "url": "/static/css/main.d0c0ec80.chunk.css"
   },
   {
-    "revision": "34aebb149beaae53130f",
-    "url": "/static/js/main.af55130c.chunk.js"
+    "revision": "309655d4f663ca0928b4",
+    "url": "/static/js/main.da1343c4.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
@@ -20,14 +20,6 @@ self.__precacheManifest = [
     "url": "/static/js/2.d53667c2.chunk.js"
   },
   {
-    "revision": "afd996e0ab17dd0bd08d34bfbd96be41",
-    "url": "/static/media/Capture2.afd996e0.PNG"
-  },
-  {
-    "revision": "b89e9bfa2da98b7f456b72b94426fb05",
-    "url": "/static/media/Blackout-Midnight.b89e9bfa.ttf"
-  },
-  {
     "revision": "44908e5397461015cd15271193add5b2",
     "url": "/static/media/grid.44908e53.png"
   },
@@ -40,6 +32,14 @@ self.__precacheManifest = [
     "url": "/static/media/new.305912f6.jpg"
   },
   {
+    "revision": "afd996e0ab17dd0bd08d34bfbd96be41",
+    "url": "/static/media/Capture2.afd996e0.PNG"
+  },
+  {
+    "revision": "b89e9bfa2da98b7f456b72b94426fb05",
+    "url": "/static/media/Blackout-Midnight.b89e9bfa.ttf"
+  },
+  {
     "revision": "6d6d5aca04585f872cb3edbe3f710f53",
     "url": "/static/media/as.6d6d5aca.png"
   },
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/static/media/bg.3acca8d4.png"
   },
   {
-    "revision": "a2b1144e50b0f1d01c43128afdecf8bb",
+    "revision": "7bfc3e1d1cf942c80119b492bd679b7d",
     "url": "/index.html"
   }
 ];

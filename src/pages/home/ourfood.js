@@ -62,9 +62,9 @@ class OurFood extends React.Component {
 			return this.state.categories.map((item, i) => {
 				return (
 					<div className="w-56 h-full md:w-56 p-2 mt-6 trans-1" key={i}>
-						<Link to={"/menu"}>
-							<div>
-								<div className="bg-orange py-1 text-white no-underline trans-all catCard">
+						<Link to={"/menu"} style={{ textDecoration: 'none' }}>
+							<div className="catCard">
+								<div className="bg-orange py-1 text-white no-underline trans-all">
 									<p className="text-sm md:text-lg font-light">{item.name}</p>
 								</div>
 								<img
