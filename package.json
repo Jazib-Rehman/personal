@@ -24,6 +24,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^2.1.8",
     "react-scroll-to-component": "^1.0.2",
+    "react-scroll-up-button": "^1.6.4",
     "react-shuffle": "^2.1.0",
     "react-translate-component": "^0.15.1",
     "reactjs-popup": "^1.5.0",
