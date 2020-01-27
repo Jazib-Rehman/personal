@@ -20,7 +20,9 @@ class Meal extends React.Component {
               src={this.props.meal.image}
               alt="Shawarma"
             />
-            <h2 className="text-dark text-md p-2">{this.props.meal.name}</h2>
+            <p className="text-dark text-md mt-2 font-semibold">{this.props.meal.name}</p>
+            <p className="text-dark text-md">{this.props.meal.description}</p>
+            <p className="text-dark text-sm font-bold">{this.props.meal.price}</p>
             <div className="flex justify-center pb-4">
               {this.props.meal.tags.map((tag, i) => (
                 <div className="truncate inline-block px-2 rounded-full bg-orange-400 text-white text-xs mr-1">
@@ -55,7 +57,13 @@ class Meal extends React.Component {
                   <p className="text-xs font-semibold">PRICE</p>
                   <p className="text-dark text-md px-2">{this.props.meal.price}</p>
                 </div>
-
+                <div className="flex flex-wrap pb-4 pt-4">
+                  {this.props.meal.tags.map((tag, i) => (
+                    <div className="truncate inline-block px-2 rounded-full bg-orange-400 text-white text-xs mr-1">
+                      {tag.name}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
