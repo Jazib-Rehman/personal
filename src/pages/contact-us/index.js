@@ -7,7 +7,8 @@ import ImageBlock from './../../components/imageblock'
 const ContactUs = () => (
   <Layout >
     <Contact />
-    <ImageBlock />
+    <div className="parallax5"></div>
+    {/* <ImageBlock /> */}
     <Footer />
   </Layout>
 )

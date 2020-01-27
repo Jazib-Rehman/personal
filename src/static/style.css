@@ -508,7 +508,7 @@ footer i {
   background-image: url("assets/Capture2.PNG");
 
   /* Set a specific height */
-  min-height: 300px;
+  min-height: 400px;
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
@@ -521,7 +521,7 @@ footer i {
   background-image: url("assets/o.jpg");
 
   /* Set a specific height */
-  min-height: 300px;
+  min-height: 400px;
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
@@ -531,13 +531,30 @@ footer i {
 
 .parallax4 {
   /* The image used */
-  background-image: url("assets/o.jpg");
+  background-image: url("assets/as.png");
 
   /* Set a specific height */
-  min-height: 300px;
+  min-height: 400px;
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.parallax5 {
+  /* The image used */
+  background-image: url("assets/new.jpg");
+
+  /* Set a specific height */
+  min-height: 400px;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.trans {
+  background: rgba(0, 0, 0, 0.3);
 }

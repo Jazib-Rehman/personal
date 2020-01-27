@@ -7,7 +7,7 @@ import ImageBlock from './../../components/imageblock'
 const FindUs = () => (
   <Layout >
     <Findus />
-    <ImageBlock />
+    <div className="parallax4"></div>
     <Footer />
   </Layout>
 )
