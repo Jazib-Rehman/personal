@@ -35,8 +35,8 @@ class Store extends React.Component {
         </div>
         <div className="flex flex-wrap md:w-11/12 p-4 md:p-0 m-auto">
           {this.state.locators.map((item, i) => (
-            <div className="w-full overflow-hidden md:w-1/4 p-2 mt-6" key={i}>
-              <div className="locatorImage">
+            <div className="w-full overflow-hidden md:w-1/4 p-2 py-4 mt-6" key={i}>
+              <div className="locatorImage catCard">
                 <div className="bg-orange py-1 px-3 text-white">
                   <p className="text-2xl font-light truncate">{item.name}</p>
                 </div>
