@@ -29,20 +29,42 @@ class OurFood extends React.Component {
 
 		this.timeout = setInterval(() => {
 			let currentIdx = this.state.itemIndex;
-			this.setState({ itemIndex: currentIdx + 4 });
-			console.log(this.state.categories.length)
+			if (currentIdx > this.state.categories.length) {
+				this.setState({ itemIndex: 0 });
+			} else {
+				this.setState({ itemIndex: currentIdx + 4 });
+			}
+			console.log(this.state.itemIndex)
 		}, 3500);
 
 	}
 
+	shuffle(arra1) {
+		var ctr = arra1.length, temp, index;
+
+		// While there are elements in the array
+		while (ctr > 0) {
+			// Pick a random index
+			index = Math.floor(Math.random() * ctr);
+			// Decrease ctr by 1
+			ctr--;
+			// And swap the last element with it
+			temp = arra1[ctr];
+			arra1[ctr] = arra1[index];
+			arra1[index] = temp;
+		}
+		return arra1;
+	}
+
 	categories() {
+		this.shuffle(this.state.categories)
 		if (this.state.categories !== []) {
 			return this.state.categories.map((item, i) => {
 				return (
-					<div className="w-56 h-full md:w-56 p-2 mt-6" key={i}>
+					<div className="w-56 h-full md:w-56 p-2 mt-6 trans-1" key={i}>
 						<Link to={"/menu"}>
 							<div>
-								<div className="bg-orange py-1 text-white no-underline">
+								<div className="bg-orange py-1 text-white no-underline trans-all catCard">
 									<p className="text-sm md:text-lg font-light">{item.name}</p>
 								</div>
 								<img
@@ -54,7 +76,6 @@ class OurFood extends React.Component {
 						</Link>
 					</div>
 				);
-				// <Meal meal={item} key={i} />
 			});
 		} else {
 			return <p className="text-2xl font-thin">Nothing Found!</p>;
@@ -73,7 +94,6 @@ class OurFood extends React.Component {
 				</h1>
 				<p className="mt-4 text-gray-500 font-light text-sm">
 					Here you will find our full menu</p>
-
 				<div className="my-4">
 					<a
 						className="btn bg-orange text-xs  md:text-lg text-white rounded-none"
@@ -92,7 +112,7 @@ class OurFood extends React.Component {
 					})}
 				</div>
 				<div className="w-full md:px-24">
-					<div className="slider horizontal mt-4 z-40 w-full md:w-5/6 m-auto items-center">
+					<div className="flex horizontal mt-4 z-40 w-full md:w-5/6 m-auto items-center">
 						{this.categories()}
 					</div>
 				</div>

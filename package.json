@@ -29,6 +29,7 @@
     "react-translate-component": "^0.15.1",
     "reactjs-popup": "^1.5.0",
     "scroll-into-view": "^1.12.3",
+    "shuffle-array": "^1.0.1",
     "tailwindcss": "^1.1.3"
   },
   "scripts": {
