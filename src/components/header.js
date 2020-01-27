@@ -10,8 +10,17 @@ class Header extends React.Component {
     super(props);
     this.state = {
       basics: [],
-      showMenu: false
+      showMenu: false,
+      color: 'rgba(0, 0, 0, 0.7)'
     };
+  }
+
+  listenScrollEvent = e => {
+    if (window.scrollY > 500) {
+      this.setState({ color: '#fd8b35' })
+    } else {
+      this.setState({ color: 'rgba(0, 0, 0, 0.7)' })
+    }
   }
 
   componentDidMount() {
@@ -22,6 +31,8 @@ class Header extends React.Component {
         });
       })
       .catch(err => console.error(err));
+
+    window.addEventListener('scroll', this.listenScrollEvent)
   }
 
   componentWillMount() {
@@ -104,7 +115,8 @@ class Header extends React.Component {
   render() {
     return (
       <div>
-        <header className="header absulote z-60 hidden md:flex bg-black font-prim text-white text-sm flex items-center fixed w-full py-2 cursor-pointer items-center">
+        <header style={{ background: this.state.color }}
+          className="header trans-1 absulote z-60 hidden md:flex font-prim text-white text-sm flex items-center fixed w-full py-2 bg-trans">
           <div className="w-1/3 md:w-1/2 px-2">
             <span className="px-2 border-r text-xs">عربي</span>
             {this.basics.map((item, i) => {

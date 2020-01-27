@@ -65,7 +65,7 @@ button {
 }
 
 .bg-trans {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .bg-dark {
@@ -558,3 +558,6 @@ footer i {
 .trans {
   background: rgba(0, 0, 0, 0.3);
 }
+
+
+
