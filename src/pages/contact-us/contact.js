@@ -100,17 +100,20 @@ class Contact extends React.Component {
             <div className="flex">
               <div className="mt-4 w-1/2 hidden md:block">
                 <div className="text-left hidden md:flex py-2 px-16 flex">
+                  <div className="text-blue-500 px-6 flex justify-center mt-4">
+                    <MapPin size="24" />
+                  </div>
                   <div className="">
                     <p className="text-lg">Site management Shawarmer</p>
                     <p className="text-sm text-gray-700">
                       Sulaymaniyah, Olaya Road Riyadh 12211, Saudi Arabia
                     </p>
                   </div>
-                  <div className="text-blue-500 px-6 flex justify-center mt-4">
-                    <MapPin size="24" />
-                  </div>
                 </div>
                 <div className="text-left hidden md:flex py-2 px-16 mt-10 flex">
+                  <div className="text-red-400 px-6 flex justify-center mt-4">
+                    <CreditCard size="24" />
+                  </div>
                   <div>
                     <p className="text-lg">To contact us</p>
                     <p className="text-sm text-gray-700">
@@ -120,9 +123,6 @@ class Contact extends React.Component {
                     <p className="text-xs text-gray-700 mt-6">
                       Uniform Number: 920008080
                     </p>
-                  </div>
-                  <div className="text-red-400 px-6 flex justify-center mt-4">
-                    <CreditCard size="24" />
                   </div>
                 </div>
               </div>
