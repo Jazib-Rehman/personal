@@ -63,32 +63,32 @@ class Footer extends React.Component {
             </div>
           </div>
         </div>
-        <div className="w-full text-sec font-normal sm:text-left sm:w-1/3 md:w-1/6 md links text-sm p-2 mt-3">
-          <h1 className="font-hairline text-lg mb-2 sm:w-full">
+        <div className="w-full text-sec font-semibold sm:text-left sm:w-1/3 md:w-1/6 links p-2 mt-3">
+          <h1 className="font-hairline text-lg mb-2 sm:w-full font-normal">
             Quick Links
           </h1>
           <p>
-            <a href="/" className="hover:text-white hover:no-underline">
+            <a href="/" className="hover:text-white hover:no-underline font-normal">
               Home
             </a>
           </p>
           <p>
-            <a href="/about-us" className="hover:text-white hover:no-underline">
+            <a href="/about-us" className="hover:text-white hover:no-underline font-normal">
               About us
             </a>
           </p>
           <p>
             <a
               href="/contact-us"
-              className="hover:text-white hover:no-underline"
+              className="hover:text-white hover:no-underline font-normal"
             >
               Contact Us
             </a>
           </p>
           {/* <p>Carear</p> */}
         </div>
-        <div className="w-full text-sec font-normal sm:text-left sm:w-1/3 md:w-1/5 links text-sm p-4">
-          <h1 className="sm:w-full font-hairline text-lg mb-2 sm:ml-10 lg:w-2/3">
+        <div className="w-full text-sec font-semibold sm:text-left sm:w-1/3 md:w-1/5 links text-sm p-4">
+          <h1 className="sm:w-full font-hairline text-lg mb-2 sm:ml-10 lg:w-2/3 font-normal">
             Follow Us
           </h1>
           {this.state.basics.map((item, i) => {
@@ -101,7 +101,7 @@ class Footer extends React.Component {
                   <a
                     href={item.twitter}
                     target="_blank"
-                    className="hover:text-white mx-1 hover:no-underline"
+                    className="hover:text-white mx-1 hover:no-underline font-normal"
                   >
                     Twitter
                   </a>
@@ -113,7 +113,7 @@ class Footer extends React.Component {
                   <a
                     href={item.instagram}
                     target="_blank"
-                    className="hover:text-white mx-1 hover:no-underline"
+                    className="hover:text-white mx-1 hover:no-underline font-normal"
                   >
                     Instagram
                   </a>
@@ -125,7 +125,7 @@ class Footer extends React.Component {
                   <a
                     href={item.facebook}
                     target="_blank"
-                    className="hover:text-white mx-1 hover:no-underline"
+                    className="hover:text-white mx-1 hover:no-underline font-normal"
                   >
                     Facebook
                   </a>
@@ -137,7 +137,7 @@ class Footer extends React.Component {
                   <a
                     href={item.youtube}
                     target="_blank"
-                    className="hover:text-white mx-1 hover:no-underline"
+                    className="hover:text-white mx-1 hover:no-underline font-normal"
                   >
                     Youtube
                   </a>
@@ -146,8 +146,8 @@ class Footer extends React.Component {
             );
           })}
         </div>
-        <div className="w-full text-sec font-normal sm:text-left sm:w-1/3 md:w-1/6 links text-sm mt-4 sm:ml-20">
-          <h1 className="w-full font-hairline text-lg mb-2 ">
+        <div className="w-full text-sec font-semibold sm:text-left sm:w-1/3 md:w-1/6 links text-sm mt-4 sm:ml-20">
+          <h1 className="w-full font-hairline text-lg mb-2 font-normal">
             Download Our App
           </h1>
 
