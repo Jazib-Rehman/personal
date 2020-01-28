@@ -89,7 +89,7 @@ class Contact extends React.Component {
     return (
       <section class="relative text-center py-24 z-40">
         <div className="relative -mb-64 md:py-4 bg-dark-trans z-40 parallax2 flex justify-center">
-          <div className=" screen rounded-lg lg:mx-48 my-10 w-full md:w-7/12 bg-white-trans py-16">
+          <div className=" screen rounded-lg lg:mx-48 my-10 w-full md:w-7/12 bg-white-trans py-16 shadow shadow-xl">
             <div className="-mt-8">
               <p className="text-lg md:text-xl font-bold uppercase text-orange-600">
                 Get in touch with us
