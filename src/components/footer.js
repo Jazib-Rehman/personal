@@ -46,7 +46,7 @@ class Footer extends React.Component {
       <footer className="bg-black absolute flex flex-wrap p-12 relative z-40">
         <div className="loc w-full text-center sm:text-left md:w-2/6 font-hairline text-sm p-4">
           <img src="static/assets/logo-2.png" alt="logo" className="w-64" />
-          <p className="mx-2 justify-start flex text-sec"> {this.state.about.address}</p>
+          <p className="mx-2 justify-start flex text-sec font-normal"> {this.state.about.address}</p>
 
           <div className="mx-2 text-sec font-normal">
             <div className="mx-auto mt-2 justify-start flex items-center">
@@ -64,7 +64,7 @@ class Footer extends React.Component {
           </div>
         </div>
         <div className="w-full text-sec font-semibold sm:text-left sm:w-1/3 md:w-1/6 links p-2 mt-3">
-          <h1 className="font-hairline text-lg mb-2 sm:w-full font-normal">
+          <h1 className="font-hairline text-prim text-lg mb-2 sm:w-full font-normal">
             Quick Links
           </h1>
           <p>
@@ -88,7 +88,7 @@ class Footer extends React.Component {
           {/* <p>Carear</p> */}
         </div>
         <div className="w-full text-sec font-semibold sm:text-left sm:w-1/3 md:w-1/5 links text-sm p-4">
-          <h1 className="sm:w-full font-hairline text-lg mb-2 sm:ml-10 lg:w-2/3 font-normal">
+          <h1 className="sm:w-full text-prim font-hairline text-lg mb-2 sm:ml-10 lg:w-2/3 font-normal">
             Follow Us
           </h1>
           {this.state.basics.map((item, i) => {
@@ -147,7 +147,7 @@ class Footer extends React.Component {
           })}
         </div>
         <div className="w-full text-sec font-semibold sm:text-left sm:w-1/3 md:w-1/6 links text-sm mt-4 sm:ml-20">
-          <h1 className="w-full font-hairline text-lg mb-2 font-normal">
+          <h1 className="w-full text-prim font-hairline text-lg mb-2 font-normal">
             Download Our App
           </h1>
 
