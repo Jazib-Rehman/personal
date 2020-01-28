@@ -43,12 +43,12 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <footer className="bg-black absolute flex flex-wrap p-12 text-red-600 relative z-40">
+      <footer className="bg-black absolute flex flex-wrap p-12 relative z-40">
         <div className="loc w-full text-center sm:text-left md:w-2/6 font-hairline text-sm p-4">
           <img src="static/assets/logo-2.png" alt="logo" className="w-64" />
-          <p className="mx-2 justify-start flex"> {this.state.about.address}</p>
+          <p className="mx-2 justify-start flex text-sec"> {this.state.about.address}</p>
 
-          <div className="mx-2">
+          <div className="mx-2 text-sec font-normal">
             <div className="mx-auto mt-2 justify-start flex items-center">
               <Phone size="14" className="mx-1 mt-1" />
               <p>{this.state.about.phone}</p>
@@ -63,8 +63,8 @@ class Footer extends React.Component {
             </div>
           </div>
         </div>
-        <div className="w-full sm:text-left sm:w-1/3 md:w-1/6 md links text-sm p-2 mt-3">
-          <h1 className="font-hairline text-red-700 text-lg mb-2 sm:w-full">
+        <div className="w-full text-sec font-normal sm:text-left sm:w-1/3 md:w-1/6 md links text-sm p-2 mt-3">
+          <h1 className="font-hairline text-lg mb-2 sm:w-full">
             Quick Links
           </h1>
           <p>
@@ -87,8 +87,8 @@ class Footer extends React.Component {
           </p>
           {/* <p>Carear</p> */}
         </div>
-        <div className="w-full sm:text-left sm:w-1/3 md:w-1/5 links text-sm p-4">
-          <h1 className="sm:w-full font-hairline text-red-700 text-lg mb-2 sm:ml-10 lg:w-2/3">
+        <div className="w-full text-sec font-normal sm:text-left sm:w-1/3 md:w-1/5 links text-sm p-4">
+          <h1 className="sm:w-full font-hairline text-lg mb-2 sm:ml-10 lg:w-2/3">
             Follow Us
           </h1>
           {this.state.basics.map((item, i) => {
@@ -146,17 +146,17 @@ class Footer extends React.Component {
             );
           })}
         </div>
-        <div className="w-full  sm:text-left sm:w-1/3 md:w-1/6 links text-sm mt-4 sm:ml-20">
-          <h1 className="w-full font-hairline text-red-700 text-lg mb-2 ">
+        <div className="w-full text-sec font-normal sm:text-left sm:w-1/3 md:w-1/6 links text-sm mt-4 sm:ml-20">
+          <h1 className="w-full font-hairline text-lg mb-2 ">
             Download Our App
           </h1>
 
           <img
-            className=" mt-4 border rounded sm:w-48 h-4 lg:w-32 h-6"
+            className=" mt-4 border rounded w-24"
             src="static/assets/ios.png"
           ></img>
           <img
-            className=" mt-2 border rounded sm:w-48 h-4 lg:w-32 h-6"
+            className=" mt-2 border rounded w-24"
             src="static/assets/android.png"
           ></img>
         </div>
