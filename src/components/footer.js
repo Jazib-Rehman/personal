@@ -90,8 +90,8 @@ class Footer extends React.Component {
               </p>
               {/* <p>Carear</p> */}
             </div>
-            <div className="pt-5 w-full text-center md:text-left text-sec font-semibold sm:text-left sm:w-1/3 md:w-1/6 links text-sm">
-              <h1 className="mt-2 sm:w-full text-prim font-hairline text-lg mb-6 lg:w-2/3 font-normal">
+            <div className="pt-5 w-full text-sec font-semibold sm:text-left sm:w-1/3 md:w-1/6 links text-sm">
+              <h1 className="flex items-center justify-center md:justify-start mt-2 sm:w-full text-prim font-hairline text-lg mb-6 lg:w-2/3 font-normal">
                 Follow Us
           </h1>
               {this.state.basics.map((item, i) => {
