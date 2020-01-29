@@ -53,7 +53,7 @@ class Foods extends React.Component {
 
 	render() {
 		return (
-			<section className="relative text-center py-12 -mb-32 z-20 bg-none parallax2">
+			<section className="relative text-center py-12 -mb-32 bg-none parallax2">
 
 
 
@@ -96,9 +96,6 @@ class Foods extends React.Component {
 						</div>
 					);
 				})}
-
-				<div className="parallax3">
-				</div>
 			</section>
 		);
 	}

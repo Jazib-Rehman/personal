@@ -62,7 +62,7 @@ class OurFood extends React.Component {
 			return this.state.categories.map((item, i) => {
 				if (i < 4) {
 					return (
-						<div className="px-2" key={i}>
+						<div className="p-2" key={i}>
 							<Link to={"/menu"} style={{ textDecoration: 'none' }}>
 								<div className="catCard">
 									<div className="bg-orange py-1 text-white no-underline trans-all">
@@ -71,7 +71,7 @@ class OurFood extends React.Component {
 									<img
 										src={item.image}
 										alt="dummy"
-										className="m-auto w-56 h-56 object-cover"
+										className="m-auto w-full h-full md:w-56 md:h-56 object-cover"
 									/>
 								</div>
 							</Link>
@@ -115,7 +115,7 @@ class OurFood extends React.Component {
 						})}
 					</div>
 					<div className="w-full">
-						<div className="flex justify-center mt-4 z-40 w-full m-auto items-center">
+						<div className="md:flex justify-center mt-4 z-40 w-full m-auto items-center">
 							{this.categories()}
 						</div>
 					</div>
