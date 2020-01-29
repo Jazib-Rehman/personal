@@ -60,22 +60,24 @@ class OurFood extends React.Component {
 		this.shuffle(this.state.categories)
 		if (this.state.categories !== []) {
 			return this.state.categories.map((item, i) => {
-				return (
-					<div className="w-1/4 h-full p-2 mt-6 trans-1" key={i}>
-						<Link to={"/menu"} style={{ textDecoration: 'none' }}>
-							<div className="catCard h-56 w-56">
-								<div className="bg-orange py-1 text-white no-underline trans-all">
-									<p className="text-lg font-light">{item.name}</p>
+				if (i < 4) {
+					return (
+						<div className="px-2" key={i}>
+							<Link to={"/menu"} style={{ textDecoration: 'none' }}>
+								<div className="catCard">
+									<div className="bg-orange py-1 text-white no-underline trans-all">
+										<p className="text-sm md:text-lg font-light">{item.name}</p>
+									</div>
+									<img
+										src={item.image}
+										alt="dummy"
+										className="m-auto w-56 h-56 object-cover"
+									/>
 								</div>
-								<img
-									src={item.image}
-									alt="dummy"
-									className="m-auto w-full h-full object-cover"
-								/>
-							</div>
-						</Link>
-					</div>
-				);
+							</Link>
+						</div>
+					);
+				}
 			});
 		} else {
 			return <p className="text-2xl font-thin">Nothing Found!</p>;
@@ -84,8 +86,8 @@ class OurFood extends React.Component {
 
 	render() {
 		return (
-			<section className="relative text-center py-12 z-40 flex justify-center">
-				<div className="w-2/3">
+			<section className="m-auto relative w-full text-center py-12 z-40 flex justify-center">
+				<div className="w-full">
 					<h1 className="flex items-center justify-center font-prim text-dark">
 						<span className="text-lg md:text-lg px-4 text-prim">OUR</span>
 						<span className="text-2xl md:text-3xl border-l-2 border-orange-400 px-4 text-prim">
@@ -113,7 +115,7 @@ class OurFood extends React.Component {
 						})}
 					</div>
 					<div className="w-full">
-						<div className="flex horizontal mt-4 z-40 w-full m-auto items-center">
+						<div className="flex justify-center mt-4 z-40 w-full m-auto items-center">
 							{this.categories()}
 						</div>
 					</div>
