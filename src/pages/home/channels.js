@@ -32,7 +32,7 @@ class Channels extends React.Component {
 
   render() {
     return (
-      <section className=" section-shawrma text-center py-12 text-black relative z-30">
+      <section className="section-shawrma text-center py-12 text-black relative z-30">
         <h1 className="flex items-center justify-center font-prim">
           <span className="text-sm md:text-lg text-prim px-4">SHAWARMER</span>
           <span className="text-2xl md:text-3xl border-orange-400 text-prim border-l-2 px-4">
