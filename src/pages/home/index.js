@@ -20,10 +20,12 @@ class Home extends React.Component {
     return (
       <Layout className="trans-all" >
         <Banner />
-        <div className="parallax2">
-          <OurFood />
-          <Channels />
-          <Store />
+        <div className="flex justify-center parallax2 ">
+          <div className="w-2/3 m-auto">
+            <OurFood />
+            <Channels />
+            <Store />
+          </div>
         </div>
         <ImageBlock />
         <ScrollUpButton

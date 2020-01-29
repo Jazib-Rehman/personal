@@ -32,70 +32,75 @@ class Channels extends React.Component {
 
   render() {
     return (
-      <section className=" section-shawrma text-center py-12 text-black relative z-30">
-        <h1 className="flex items-center justify-center font-prim">
-          <span className="text-sm md:text-lg text-prim px-4">SHAWARMER</span>
-          <span className="text-2xl md:text-3xl border-orange-400 text-prim border-l-2 px-4">
-            {" "}
-            CHANNELS{" "}
-          </span>
-        </h1>
-        <div className="">
-          <p className="mt-4 text-gray-500 font-light text-sm">
-            You can also find us on social media platforms
+      <section className="m-auto flex justify-center section-shawrma text-center py-12 text-black relative z-30">
+        <div className="w-2/3">
+
+          <h1 className="flex items-center justify-center font-prim">
+            <span className="text-sm md:text-lg text-prim px-4">SHAWARMER</span>
+            <span className="text-2xl md:text-3xl border-orange-400 text-prim border-l-2 px-4">
+              {" "}
+              CHANNELS{" "}
+            </span>
+          </h1>
+          <div className="">
+            <p className="mt-4 text-gray-500 font-light text-sm">
+              You can also find us on social media platforms
           </p>
-        </div>
-        <div className="mt-4">
-          {this.state.basics.map((item, i) => {
-            return (
-              <div key={i} className="flex justify-center">
+          </div>
+          <div className="mt-4">
+            {this.state.basics.map((item, i) => {
+              return (
+                <div key={i} className="flex justify-center">
+                  <a
+                    href={item.twitter}
+                    target="_blank"
+                    className="hover:bg-gray-700 tans-all text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-orange text-white mx-1"
+                  >
+                    <Twitter size="18" />
+                  </a>
+                  <a
+                    href={item.facebook}
+                    target="_blank"
+                    className="hover:bg-gray-700 tans-all text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-orange text-white mx-1"
+                  >
+                    <Facebook size="18" />
+                  </a>
+                  <a
+                    href={item.instagram}
+                    target="_blank"
+                    className="hover:bg-gray-700 tans-all text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-orange text-white mx-1"
+                  >
+                    <Instagram size="18" />
+                  </a>
+                  <a
+                    href={item.youtube}
+                    target="_blank"
+                    className="hover:bg-gray-700 tans-all text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-orange text-white mx-1"
+                  >
+                    <Youtube size="18" />
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+          <div className="flex flex-wrap justify-center md:w-full m-auto pt-5">
+            {this.state.categories.map((item, i) => (
+              <div className="p-1">
                 <a
-                  href={item.twitter}
+                  href={item.link}
                   target="_blank"
-                  className="hover:bg-gray-700 tans-all text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-orange text-white mx-1"
+                  className="flex justify-center channels w-40 h-40 overflow-hidden"
+                  key={i}
                 >
-                  <Twitter size="18" />
-                </a>
-                <a
-                  href={item.facebook}
-                  target="_blank"
-                  className="hover:bg-gray-700 tans-all text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-orange text-white mx-1"
-                >
-                  <Facebook size="18" />
-                </a>
-                <a
-                  href={item.instagram}
-                  target="_blank"
-                  className="hover:bg-gray-700 tans-all text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-orange text-white mx-1"
-                >
-                  <Instagram size="18" />
-                </a>
-                <a
-                  href={item.youtube}
-                  target="_blank"
-                  className="hover:bg-gray-700 tans-all text-gray-400 rounded-full h-10 w-10 flex items-center justify-center bg-orange text-white mx-1"
-                >
-                  <Youtube size="18" />
+                  <img
+                    src={item.image}
+                    alt="dummy"
+                    className="m-auto w-full h-full object-cover zoom-in"
+                  />
                 </a>
               </div>
-            );
-          })}
-        </div>
-        <div className="flex flex-wrap md:w-1/2 md:p-0 m-auto px-2 pt-5">
-          {this.state.categories.map((item, i) => (
-            <a
-              href={item.link}
-              target="_blank"
-              className="flex justify-center channels w-1/2 md:w-1/3 p-1 overflow-hidden"
-              key={i}
-            >
-              <img
-                src={item.image}
-                alt="dummy"
-                className="w-full h-full object-cover zoom-in"
-              />
-            </a>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
     );
