@@ -35,71 +35,72 @@ class Store extends React.Component {
               Find our stores across the kingdom
           </p>
           </div>
-          <div className="pb-5 flex justify-center m-auto">
+          <div className="pb-5 md:flex justify-center m-auto">
             {this.state.locators.map((item, i) => (
-              <div className="px-2 mt-3 cursor-pointer" key={i}>
+              <div className="p-2 cursor-pointer" key={i}>
                 <Link to="/find-us" style={{ textDecoration: 'none' }}>
-                  <div className="locatorImage catCard">
+                  <div className="catCard">
                     <div className="bg-orange py-1 text-white no-underline trans-all">
-                      <p className=" truncate">{item.name}</p>
+                      <p className="truncate">{item.name}</p>
                     </div>
                     <img
                       src={item.image}
                       alt="dummy"
-                      className="m-auto w-56 h-56 object-cover"
+                      className="m-auto w-full h-full md:w-56 md:h-56 object-cover"
                     />
                   </div>
                 </Link>
               </div>
             ))}
             {this.state.locators.map((item, i) => (
-              <div className="px-2 mt-3 cursor-pointer" key={i}>
+              <div className="p-2 cursor-pointer" key={i}>
                 <Link to="/find-us" style={{ textDecoration: 'none' }}>
-                  <div className="locatorImage catCard">
+                  <div className="catCard">
                     <div className="bg-orange py-1 text-white no-underline trans-all">
-                      <p className=" truncate">{item.name}</p>
+                      <p className="truncate">{item.name}</p>
                     </div>
                     <img
                       src={item.image}
                       alt="dummy"
-                      className="m-auto w-56 h-56 object-cover"
+                      className="m-auto w-full h-full md:w-56 md:h-56 object-cover"
                     />
                   </div>
                 </Link>
               </div>
             ))}
             {this.state.locators.map((item, i) => (
-              <div className="px-2 mt-3 cursor-pointer" key={i}>
+              <div className="p-2 cursor-pointer" key={i}>
                 <Link to="/find-us" style={{ textDecoration: 'none' }}>
-                  <div className="locatorImage catCard">
+                  <div className="catCard">
                     <div className="bg-orange py-1 text-white no-underline trans-all">
-                      <p className=" truncate">{item.name}</p>
+                      <p className="truncate">{item.name}</p>
                     </div>
                     <img
                       src={item.image}
                       alt="dummy"
-                      className="m-auto w-56 h-56 object-cover"
+                      className="m-auto w-full h-full md:w-56 md:h-56 object-cover"
                     />
                   </div>
                 </Link>
               </div>
             ))}
             {this.state.locators.map((item, i) => (
-              <div className="px-2 mt-3 cursor-pointer" key={i}>
+              <div className="p-2 cursor-pointer" key={i}>
                 <Link to="/find-us" style={{ textDecoration: 'none' }}>
-                  <div className="locatorImage catCard">
+                  <div className="catCard">
                     <div className="bg-orange py-1 text-white no-underline trans-all">
-                      <p className=" truncate">{item.name}</p>
+                      <p className="truncate">{item.name}</p>
                     </div>
                     <img
                       src={item.image}
                       alt="dummy"
-                      className="m-auto w-56 h-56 object-cover"
+                      className="m-auto w-full h-full md:w-56 md:h-56 object-cover"
                     />
                   </div>
                 </Link>
               </div>
             ))}
+
           </div>
         </div>
       </section>

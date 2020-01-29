@@ -13,6 +13,8 @@ const Menu = () => (
 		<Foods />
 		<ScrollUpButton
 			ContainerClassName="p-2 rounded-full" />
+		<div className="parallax3">
+		</div>
 		<Footer />
 	</Layout>
 )
