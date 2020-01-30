@@ -16,6 +16,11 @@ class CreateBasicsTable extends Migration
         Schema::create('basics', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('logo');
+            $table->text('steckers');
+            $table->text('homeImage');
+            $table->text('findUsImage');
+            $table->text('contactUsImage');
+            $table->text('ourFoodImage');
             $table->text('site_header');
             $table->text('categories');
             $table->text('channels');

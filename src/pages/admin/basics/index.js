@@ -27,7 +27,12 @@ class Basics extends Component {
                 youtube: '',
             },
             isEmpty: false,
-            selectedFile: null
+            selectedFile: null,
+            steckers: null,
+            homeImage: null,
+            ourFoodImage: null,
+            findUsImage: null,
+            contactUsImage: null,
         }
     }
 
@@ -117,7 +122,12 @@ class Basics extends Component {
             this.state.basics.facebook === '' ||
             this.state.basics.instagram === '' ||
             this.state.basics.youtube === '' ||
-            this.state.selectedFile === null
+            this.state.selectedFile === null ||
+            this.state.steckers === null ||
+            this.state.homeImage === null ||
+            this.state.findUsImage === null ||
+            this.state.contactUsImage === null ||
+            this.state.ourFoodImage === null
         ) {
             this.setState({
                 message: true
@@ -128,6 +138,11 @@ class Basics extends Component {
             const { id, site_header, categories, logo, channels, locators, twitter, facebook, instagram, youtube } = this.state.basics;
             data.append('id', id)
             data.append('image', this.state.selectedFile)
+            data.append('steckers', this.state.steckers)
+            data.append('homeImage', this.state.homeImage)
+            data.append('findUsImage', this.state.findUsImage)
+            data.append('contactUsImage', this.state.contactUsImage)
+            data.append('ourFoodImage', this.state.ourFoodImage)
             data.append('logo', logo)
             data.append('site_header', site_header)
             data.append('categories', categories)
@@ -163,7 +178,41 @@ class Basics extends Component {
             selectedFile: event.target.files[0],
             loaded: 0
         })
-        console.log(event.target.files[0])
+    }
+
+    homeImage = event => {
+        this.setState({
+            homeImage: event.target.files[0],
+            loaded: 0
+        })
+    }
+
+    steckers = event => {
+        this.setState({
+            steckers: event.target.files[0],
+            loaded: 0
+        })
+    }
+
+    ourFoodImage = event => {
+        this.setState({
+            ourFoodImage: event.target.files[0],
+            loaded: 0
+        })
+    }
+
+    findUsImage = event => {
+        this.setState({
+            findUsImage: event.target.files[0],
+            loaded: 0
+        })
+    }
+
+    contactUsImage = event => {
+        this.setState({
+            contactUsImage: event.target.files[0],
+            loaded: 0
+        })
     }
 
     onTrashClick = product => {
@@ -255,10 +304,6 @@ class Basics extends Component {
                                         </div>
                                     </div>
                                     <div className="w-1/2">
-                                        <p className="text-xs font-semibold">Logo:</p>
-                                        <input className="mt-2" type="file" name="image" onChange={this.selectedFile} />
-                                    </div>
-                                    <div className="w-1/2">
                                         <div className="w-full p-1">
                                             {this.LabelInput({
                                                 label: 'Categories (Section Title):',
@@ -327,6 +372,35 @@ class Basics extends Component {
                                                 placeholder: 'Youtube (link)!'
                                             })}
                                         </div>
+                                    </div>
+                                    <div className="w-1/2 p-1">
+                                        <p className="text-xs font-semibold">Logo:</p>
+                                        <input className="mt-2" type="file" name="image" onChange={this.selectedFile} />
+                                    </div>
+                                    <div className="w-1/2 p-1">
+                                        <p className="text-xs font-semibold">Stickers:</p>
+                                        <input className="mt-2" type="file" name="stickers" onChange={this.steckers} />
+                                    </div>
+                                    <div className="w-full border-t border-b my-4 py-2 text-center">
+                                        <p className="font-semibold text-gray-700">
+                                            Background Images
+                                        </p>
+                                    </div>
+                                    <div className="w-1/2 p-1">
+                                        <p className="text-xs font-semibold">Home:</p>
+                                        <input className="mt-2" type="file" name="homeImage" onChange={this.homeImage} />
+                                    </div>
+                                    <div className="w-1/2 p-1">
+                                        <p className="text-xs font-semibold">Our Food:</p>
+                                        <input className="mt-2" type="file" name="ourFoodImage" onChange={this.ourFoodImage} />
+                                    </div>
+                                    <div className="w-1/2 p-1">
+                                        <p className="text-xs font-semibold">Find Us:</p>
+                                        <input className="mt-2" type="file" name="findUsImage" onChange={this.findUsImage} />
+                                    </div>
+                                    <div className="w-1/2 p-1">
+                                        <p className="text-xs font-semibold">Contact Us:</p>
+                                        <input className="mt-2" type="file" name="contactUsImage" onChange={this.contactUsImage} />
                                     </div>
                                     <div className="w-full flex justify-end p-1 mt-4">
                                         {this.button()}
