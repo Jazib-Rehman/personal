@@ -75,7 +75,12 @@ class Basics extends Component {
             this.state.basics.facebook === '' ||
             this.state.basics.instagram === '' ||
             this.state.basics.youtube === '' ||
-            this.state.selectedFile === null
+            this.state.selectedFile === null ||
+            this.state.steckers === null ||
+            this.state.homeImage === null ||
+            this.state.findUsImage === null ||
+            this.state.contactUsImage === null ||
+            this.state.ourFoodImage === null
         ) {
             this.setState({
                 message: true
@@ -83,6 +88,11 @@ class Basics extends Component {
         } else {
             const data = new FormData()
             data.append('image', this.state.selectedFile)
+            data.append('steckers', this.state.steckers)
+            data.append('homeImage', this.state.homeImage)
+            data.append('findUsImage', this.state.findUsImage)
+            data.append('contactUsImage', this.state.contactUsImage)
+            data.append('ourFoodImage', this.state.ourFoodImage)
             data.append('site_header', this.state.basics.site_header)
             data.append('categories', this.state.basics.categories)
             data.append('channels', this.state.basics.channels)
@@ -213,15 +223,6 @@ class Basics extends Component {
             contactUsImage: event.target.files[0],
             loaded: 0
         })
-    }
-
-    onTrashClick = product => {
-        AppService.axiosPost("delete-banner", product, {
-        })
-            .then(response => {
-                window.location.reload();
-            })
-            .catch(err => console.error(err));
     }
 
     error() {

@@ -40,27 +40,27 @@ class ApiController extends Controller
     {
         $localhost = config('app.localhost');
         if ($request->hasFile('image')) {
-            $imageName = $localhost . 'uploads/site_headers/' . time() . '.' . $request->image->getClientOriginalExtension();
+            $imageName = $localhost . 'uploads/site_headers/' . time() . '.logo.' . $request->image->getClientOriginalExtension();
             $imagURL = $request->image->move(public_path('uploads/site_headers'), $imageName);
         }
         if ($request->hasFile('steckers')) {
-            $steckersName = $localhost . 'uploads/site_headers/' . time() . '.' . $request->steckers->getClientOriginalExtension();
+            $steckersName = $localhost . 'uploads/site_headers/' . time() . '.stickers.' . $request->steckers->getClientOriginalExtension();
             $imagURL = $request->steckers->move(public_path('uploads/site_headers'), $steckersName);
         }
         if ($request->hasFile('homeImage')) {
-            $homeImageName = $localhost . 'uploads/site_headers/' . time() . '.' . $request->homeImage->getClientOriginalExtension();
+            $homeImageName = $localhost . 'uploads/site_headers/' . time() . '.home.' . $request->homeImage->getClientOriginalExtension();
             $imagURL = $request->homeImage->move(public_path('uploads/site_headers'), $homeImageName);
         }
         if ($request->hasFile('findUsImage')) {
-            $findUsImageName = $localhost . 'uploads/site_headers/' . time() . '.' . $request->findUsImage->getClientOriginalExtension();
+            $findUsImageName = $localhost . 'uploads/site_headers/' . time() . '.findus.' . $request->findUsImage->getClientOriginalExtension();
             $imagURL = $request->findUsImage->move(public_path('uploads/site_headers'), $findUsImageName);
         }
         if ($request->hasFile('contactUsImage')) {
-            $contactUsImageName = $localhost . 'uploads/site_headers/' . time() . '.' . $request->contactUsImage->getClientOriginalExtension();
+            $contactUsImageName = $localhost . 'uploads/site_headers/' . time() . '.contactus.' . $request->contactUsImage->getClientOriginalExtension();
             $imagURL = $request->contactUsImage->move(public_path('uploads/site_headers'), $contactUsImageName);
         }
         if ($request->hasFile('ourFoodImage')) {
-            $ourFoodImageName = $localhost . 'uploads/site_headers/' . time() . '.' . $request->ourFoodImage->getClientOriginalExtension();
+            $ourFoodImageName = $localhost . 'uploads/site_headers/' . time() . '.ourfood.' . $request->ourFoodImage->getClientOriginalExtension();
             $imagURL = $request->ourFoodImage->move(public_path('uploads/site_headers'), $ourFoodImageName);
         }
 
