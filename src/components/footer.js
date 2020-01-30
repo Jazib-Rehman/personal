@@ -47,7 +47,7 @@ class Footer extends React.Component {
         <div className="absolute p-12 relative w-9/12">
           <div className="flex flex-wrap border-b border-gray-600 pb-4">
 
-            <div className="loc w-full text-center sm:text-left md:w-2/6 font-hairline text-sm p-4">
+            <div className="flex-grow loc w-full text-center sm:text-left md:w-2/6 font-hairline text-sm p-4">
               <img src="static/assets/logo-2.png" alt="logo" className="w-64" />
               <p className="mx-2 text-left text-sec font-normal"> {this.state.about.address}</p>
 
@@ -66,7 +66,7 @@ class Footer extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="pt-5 w-full text-sec font-semibold sm:text-left sm:w-1/3 md:w-1/6 links text-sm">
+            <div className="flex-grow pt-5 w-full text-sec font-semibold sm:text-left sm:w-1/3 md:w-1/6 links text-sm">
               <h1 className="flex items-center justify-center md:justify-start mt-2 font-hairline text-prim text-lg mb-6 sm:w-full font-normal">
                 Quick Links
           </h1>
@@ -90,7 +90,7 @@ class Footer extends React.Component {
               </p>
               {/* <p>Carear</p> */}
             </div>
-            <div className="pt-5 w-full text-sec font-semibold sm:text-left sm:w-1/3 md:w-1/6 links text-sm">
+            <div className="flex-grow pt-5 w-full text-sec font-semibold sm:text-left sm:w-1/3 md:w-1/6 links text-sm">
               <h1 className="flex items-center justify-center md:justify-start mt-2 sm:w-full text-prim font-hairline text-lg mb-6 lg:w-2/3 font-normal">
                 Follow Us
           </h1>

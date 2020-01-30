@@ -566,3 +566,37 @@ footer i {
   -webkit-transform: scale(1.5); /* Safari 3-8 */
   transform: scale(1.5); 
 }
+
+.w-channels {
+  width: 50rem;
+}
+
+/* @media (min-width: 576px) {
+  .w-channels {
+    width: 20rem;
+  }
+} */
+
+ @media (min-width: 768px) {
+  .channels {
+    height: 50rem;
+  }
+}
+
+/* @media (min-width: 992px) {
+  .channels {
+    height: 50rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .channels {
+    height: 50rem;
+  }
+}
+
+@media (min-width: 1366px) {
+  .channels {
+    height: 50rem;
+  }
+} */

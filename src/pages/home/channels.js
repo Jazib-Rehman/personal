@@ -33,7 +33,7 @@ class Channels extends React.Component {
   render() {
     return (
       <section className="m-auto flex justify-center section-shawrma text-center py-12 text-black relative z-30">
-        <div className="w-2/3">
+        <div className="w-channels">
 
           <h1 className="flex items-center justify-center font-prim">
             <span className="text-sm md:text-lg text-prim px-4">SHAWARMER</span>
@@ -83,19 +83,19 @@ class Channels extends React.Component {
               );
             })}
           </div>
-          <div className="flex flex-wrap justify-center md:w-full m-auto pt-5">
+          <div className="flex flex-wrap justify-center m-auto pt-5">
             {this.state.categories.map((item, i) => (
               <div className="p-1">
                 <a
                   href={item.link}
                   target="_blank"
-                  className="flex justify-center channels w-40 h-40 overflow-hidden"
+                  className="overflow-hidden"
                   key={i}
                 >
                   <img
                     src={item.image}
                     alt="dummy"
-                    className="m-auto w-full h-full object-cover zoom-in"
+                    className="m-auto w-full h-full md:w-56 md:h-56 object-cover"
                   />
                 </a>
               </div>
