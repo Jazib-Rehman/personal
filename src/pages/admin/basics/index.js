@@ -18,6 +18,11 @@ class Basics extends Component {
                 site_header: '',
                 id: '',
                 logo: '',
+                steckers: '',
+                homeImage: '',
+                ourFoodImage: '',
+                findUsImage: '',
+                contactUsImage: '',
                 categories: '',
                 channels: '',
                 locators: '',
@@ -145,7 +150,7 @@ class Basics extends Component {
         } else {
 
             const data = new FormData()
-            const { id, site_header, categories, logo, channels, locators, twitter, facebook, instagram, youtube } = this.state.basics;
+            const { id, site_header, categories, logo, steckers, homeImage, findUsImage, contactUsImage, ourFoodImage, channels, locators, twitter, facebook, instagram, youtube } = this.state.basics;
             data.append('id', id)
             data.append('image', this.state.selectedFile)
             data.append('steckers', this.state.steckers)
@@ -154,6 +159,11 @@ class Basics extends Component {
             data.append('contactUsImage', this.state.contactUsImage)
             data.append('ourFoodImage', this.state.ourFoodImage)
             data.append('logo', logo)
+            data.append('steckers', steckers)
+            data.append('homeImage', homeImage)
+            data.append('findUsImage', findUsImage)
+            data.append('contactUsImage', contactUsImage)
+            data.append('ourFoodImage', ourFoodImage)
             data.append('site_header', site_header)
             data.append('categories', categories)
             data.append('channels', channels)
