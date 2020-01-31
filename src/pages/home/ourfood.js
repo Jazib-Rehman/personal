@@ -34,7 +34,6 @@ class OurFood extends React.Component {
 			} else {
 				this.setState({ itemIndex: currentIdx + 4 });
 			}
-			console.log(this.state.itemIndex)
 		}, 3500);
 
 	}

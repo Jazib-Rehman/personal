@@ -6,32 +6,52 @@ import Channels from './channels'
 import Store from './store'
 import Footer from './../../components/footer'
 import ImageBlock from './../../components/imageblock'
+import AppService from "./../../services/app.service";
 
 
 import ScrollUpButton from "react-scroll-up-button";
+import { CloudLightning } from 'react-feather'
 
 class Home extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      basics: []
+    }
+  }
+
+  componentDidMount() {
+    AppService.get("basics/get")
+      .then(response => {
+        this.setState({
+          basics: response ? response : []
+        });
+      })
+      .catch(err => console.error(err));
   }
 
   render() {
     return (
       <Layout className="trans-all" >
         <Banner />
-        <div className="flex justify-center parallax2 ">
-          <div className="w-2/3 m-auto">
-            <OurFood />
-            <Channels />
-            <Store />
+        {this.state.basics.map((item, i) => {
+          return <div key={i} style={{ backgroundImage: `url(${item.steckers})` }} className="flex justify-center parallax">
+            <div className="w-2/3 m-auto">
+              <OurFood />
+              <Channels />
+              <Store />
+            </div>
           </div>
-        </div>
-        <ImageBlock />
+        })}
+        {this.state.basics.map((item, i) => {
+          return <div key={i} style={{ backgroundImage: `url(${item.homeImage})` }} className="parallax"></div>
+        })}
+        {/* <ImageBlock /> */}
         <ScrollUpButton
           ContainerClassName="p-2 rounded-full" />
         <Footer />
-      </Layout>
+      </Layout >
     )
   }
 
