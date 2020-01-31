@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "f7e7e663a63ad44fc1e4",
+    "revision": "6652328b6b782376e40c",
     "url": "/static/css/main.bc89706a.chunk.css"
   },
   {
-    "revision": "f7e7e663a63ad44fc1e4",
-    "url": "/static/js/main.fb2e589a.chunk.js"
+    "revision": "6652328b6b782376e40c",
+    "url": "/static/js/main.1a5830bf.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/static/media/Blackout-Midnight.b89e9bfa.ttf"
   },
   {
-    "revision": "622f3251939afe32f3156d914af82bae",
+    "revision": "5df49654107f4976121c0a450db9629a",
     "url": "/index.html"
   }
 ];
