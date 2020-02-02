@@ -8,21 +8,21 @@
           "desc": "Amaizing Meal",
           "price": "4 Cal",
           "name": "Shawarma Arabia",
-          "tags":"normal, spicy"
+          "tags": "normal, spicy"
         },
         {
           "image": "",
           "desc": "Amaizing Meal",
           "price": "4 Cal",
           "name": "Shawarma Halabia",
-          "tags":"normal, spicy"
+          "tags": "normal, spicy"
         },
         {
           "image": "",
           "desc": "Amaizing Meal",
           "price": "4 Cal",
           "name": "Shawarma Sajia",
-          "tags":"normal, spicy"
+          "tags": "normal, spicy"
         }
       ]
     },
@@ -32,19 +32,19 @@
         {
           "image": "",
           "desc": "Amaizing Meal",
-          "price": "4 Cal4",
+          "price": "4 Cal",
           "name": "Station 3 Meals"
         },
         {
           "image": "",
           "desc": "Amaizing Meal",
-          "price": "4 Cal4",
+          "price": "4 Cal",
           "name": "Station 6 Meals"
         },
         {
           "image": "",
           "desc": "Amaizing Meal",
-          "price": "4 Cal4",
+          "price": "4 Cal",
           "name": "Station 10 Meals"
         }
       ]
@@ -127,28 +127,28 @@
           "desc": "Amaizing Meal",
           "price": "4 Cal",
           "name": "Falafel Arabia",
-          "tags":"( Homos - Tahina )"
+          "tags": "( Homos - Tahina )"
         },
         {
           "image": "",
           "desc": "Amaizing Meal",
           "price": "4 Cal",
           "name": "Falafel Halabia",
-          "tags":"( Homos - Tahina )"
+          "tags": "( Homos - Tahina )"
         },
         {
           "image": "",
           "desc": "Amaizing Meal",
           "price": "4 Cal",
           "name": "Falafel Platters",
-          "tags":"( Homos - Tahina )"
+          "tags": "( Homos - Tahina )"
         },
         {
           "image": "",
           "desc": "Amaizing Meal",
           "price": "4 Cal",
           "name": "Falafel Sajia",
-          "tags":"( Homos - Tahina )"
+          "tags": "( Homos - Tahina )"
         }
       ]
     },
@@ -237,12 +237,6 @@
           "desc": "Amaizing Meal",
           "price": "4 Cal",
           "name": "Rocca Salad"
-        },
-        {
-          "image": "",
-          "desc": "Amaizing Meal",
-          "price": "4 Cal",
-          "name": "Arabic Salad"
         },
         {
           "image": "",

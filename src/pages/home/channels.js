@@ -92,11 +92,13 @@ class Channels extends React.Component {
                   className="overflow-hidden"
                   key={i}
                 >
-                  <img
-                    src={item.image}
-                    alt="dummy"
-                    className="m-auto w-full h-full md:w-56 md:h-56 object-cover"
-                  />
+                  <div className="overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt="dummy"
+                      className="m-auto w-full h-full md:w-56 md:h-56 object-cover zoom-in"
+                    />
+                  </div>
                 </a>
               </div>
             ))}
