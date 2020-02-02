@@ -85,7 +85,7 @@ class Channels extends React.Component {
           </div>
           <div className="flex flex-wrap justify-center m-auto pt-5">
             {this.state.categories.map((item, i) => (
-              <div className="p-1">
+              <div className="">
                 <a
                   href={item.link}
                   target="_blank"
@@ -96,7 +96,7 @@ class Channels extends React.Component {
                     <img
                       src={item.image}
                       alt="dummy"
-                      className="m-auto w-full h-full md:w-56 md:h-56 object-cover zoom-in"
+                      className="m-auto channelmages object-cover zoom-in"
                     />
                   </div>
                 </a>
