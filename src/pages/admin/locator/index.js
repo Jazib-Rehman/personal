@@ -57,10 +57,11 @@ class Locator extends Component {
             })
         } else {
             const mapAddress = this.state.map.split('https://');
+            const finalMap = mapAddress[1].split('embed');
             const data = new FormData()
             data.append('image', this.state.selectedFile)
             data.append('name', this.state.name)
-            data.append('map', mapAddress[1])
+            data.append('map', finalMap[0] + 'embed')
 
             AppService.axiosPost("locator/add", data)
                 .then(response => {
