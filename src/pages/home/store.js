@@ -31,7 +31,7 @@ class Store extends React.Component {
     {
       return this.state.basics.map((item, i) => {
         return (
-          <section key={i} style={{ backgroundImage: `url(${item.steckers})` }} className="z-30 parallax flex justify-center">
+          <section key={i} style={{ backgroundImage: `url(${item.steckers})` }} className="mt-10 z-30 parallax flex justify-center">
             <div className="w-full relative text-center">
               <h1 className="flex items-center justify-center font-prim">
                 <span className="text-lg px-4 text-prim">STORE</span>
@@ -45,18 +45,18 @@ class Store extends React.Component {
                   Find our stores across the kingdom
             </p>
               </div>
-              <div className="pb-5 pt-4 md:flex justify-center m-auto">
+              <div className="pb-5 pt-4 md:flex justify-center z-40 w-full m-auto items-center">
                 {this.state.locators.map((item, i) => (
-                  <div className="p-2 cursor-pointer" key={i}>
+                  <div className="py-2 px-3 cursor-pointer" key={i}>
                     <Link to="/find-us" style={{ textDecoration: 'none' }}>
                       <div className="catCard">
-                        <div className="bg-orange py-1 text-white no-underline trans-all">
-                          <p className="truncate">{item.name}</p>
+                        <div className="bg-orange py-2 text-white no-underline trans-all">
+                          <p className="text-sm md:text-lg font-normal uppercase truncate">{item.name}</p>
                         </div>
                         <img
                           src={item.image}
                           alt="dummy"
-                          className="m-auto w-full h-full md:w-56 md:h-56 object-cover"
+                          className="m-auto w-full h-full md:w-64 md:h-64 object-cover"
                         />
                       </div>
                     </Link>

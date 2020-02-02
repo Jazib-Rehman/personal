@@ -41,13 +41,9 @@ class OurFood extends React.Component {
 	shuffle(arra1) {
 		var ctr = arra1.length, temp, index;
 
-		// While there are elements in the array
 		while (ctr > 0) {
-			// Pick a random index
 			index = Math.floor(Math.random() * ctr);
-			// Decrease ctr by 1
 			ctr--;
-			// And swap the last element with it
 			temp = arra1[ctr];
 			arra1[ctr] = arra1[index];
 			arra1[index] = temp;
@@ -61,16 +57,16 @@ class OurFood extends React.Component {
 			return this.state.categories.map((item, i) => {
 				if (i < 4) {
 					return (
-						<div className="p-2" key={i}>
+						<div className="py-2 px-3" key={i}>
 							<Link to={"/menu"} style={{ textDecoration: 'none' }}>
 								<div className="catCard">
-									<div className="bg-orange py-1 text-white no-underline trans-all">
-										<p className="text-sm md:text-lg font-light">{item.name}</p>
+									<div className="bg-orange py-2 text-white no-underline trans-all">
+										<p className="text-sm md:text-lg font-normal uppercase truncate">{item.name}</p>
 									</div>
 									<img
 										src={item.image}
 										alt="dummy"
-										className="m-auto w-full h-full md:w-56 md:h-56 object-cover"
+										className="m-auto w-full h-full md:w-64 md:h-64 object-cover"
 									/>
 								</div>
 							</Link>

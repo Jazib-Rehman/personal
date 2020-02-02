@@ -151,9 +151,15 @@ footer i {
     content: "";
     display: inline-block;
     border-top: 1px solid var(--prim);
-    width: 20%;
+    width: 100%;
     margin: 10px 20px;
   }
+}
+
+.title2 {
+  border-top: 1px solid var(--prim);
+  width: 100%;
+  margin: 5px 5px;
 }
 
 .h-screen-half {
@@ -242,10 +248,10 @@ footer i {
 }
 
 .zoom-in {
-  transition: all 1s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 .zoom-in:hover {
-  transform: scale(1.1);
+  transform: scale(1.3);
 }
 
 .h-80 {
@@ -292,29 +298,29 @@ footer i {
 
 @media (min-width: 768px) {
   .meal {
-    width: 9rem;
-    height: 9rem;
+    width: 13rem;
+    height: 13rem;
   }
 }
 
 @media (min-width: 992px) {
   .meal {
-    width: 11rem;
-    height: 11rem;
+    width: 17rem;
+    height: 17rem;
   }
 }
 
 @media (min-width: 1200px) {
   .meal {
-    width: 10rem;
-    height: 10rem;
+    width: 15rem;
+    height: 15rem;
   }
 }
 
 @media (min-width: 1366px) {
   .meal {
-    width: 16rem;
-    height: 16rem;
+    width: 15rem;
+    height: 15rem;
   }
 }
 
@@ -515,35 +521,112 @@ footer i {
 }
 
 .w-channels {
-  width: 50rem;
+  width: 59rem;
 }
 
-/* @media (min-width: 576px) {
+@media (min-width: 576px) {
   .w-channels {
-    width: 20rem;
+    width: 100%;
   }
-} */
+}
 
  @media (min-width: 768px) {
-  .channels {
-    height: 50rem;
+  .w-channels {
+    width: 59rem;
   }
 }
 
-/* @media (min-width: 992px) {
-  .channels {
-    height: 50rem;
+@media (min-width: 992px) {
+  .w-channels {
+    width: 59rem;
   }
 }
 
 @media (min-width: 1200px) {
-  .channels {
-    height: 50rem;
+  .w-channels {
+    width: 59rem;
   }
 }
 
 @media (min-width: 1366px) {
-  .channels {
-    height: 50rem;
+  .w-channels {
+    width: 59rem;
   }
-} */
+}
+
+
+.w-menu {
+  width: 71rem;
+}
+
+@media (min-width: 576px) {
+  .w-menu {
+    width: 100%;
+  }
+}
+
+ @media (min-width: 768px) {
+  .w-menu {
+    width: 71rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .w-menu {
+    width: 71rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .w-menu {
+    width: 71rem;
+  }
+}
+
+@media (min-width: 1366px) {
+  .w-menu {
+    width: 71rem;
+  }
+}
+
+
+
+.channelmages {
+  width: 311px;
+  height: 311px;
+}
+
+@media (min-width: 576px) {
+  .channelmages {
+    width: 100%;
+    height: 311px;
+  }
+}
+
+ @media (min-width: 768px) {
+  .channelmages {
+    width: 311px;
+    height: 311px;
+  }
+}
+
+@media (min-width: 992px) {
+  .channelmages {
+    width: 311px;
+    height: 311px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .channelmages {
+    width: 311px;
+    height: 311px;
+  }
+}
+
+@media (min-width: 1366px) {
+  .channelmages {
+    width: 311px;
+    height: 311px;
+  }
+}
