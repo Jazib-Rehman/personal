@@ -128,69 +128,71 @@ class Basics extends Component {
     }
 
     handleUpdate = () => {
-        if (
-            this.state.basics.site_header === '' ||
-            this.state.basics.categories === '' ||
-            this.state.basics.channels === '' ||
-            this.state.basics.locators === '' ||
-            this.state.basics.twitter === '' ||
-            this.state.basics.facebook === '' ||
-            this.state.basics.instagram === '' ||
-            this.state.basics.youtube === '' ||
-            this.state.selectedFile === null ||
-            this.state.steckers === null ||
-            this.state.homeImage === null ||
-            this.state.findUsImage === null ||
-            this.state.contactUsImage === null ||
-            this.state.ourFoodImage === null
-        ) {
-            this.setState({
-                message: true
-            })
-        } else {
+        // if (
+        //     this.state.basics.site_header === '' ||
+        //     this.state.basics.categories === '' ||
+        //     this.state.basics.channels === '' ||
+        //     this.state.basics.locators === '' ||
+        //     this.state.basics.twitter === '' ||
+        //     this.state.basics.facebook === '' ||
+        //     this.state.basics.instagram === '' ||
+        //     this.state.basics.youtube === '' ||
+        //     this.state.selectedFile === null ||
+        //     this.state.steckers === null ||
+        //     this.state.homeImage === null ||
+        //     this.state.findUsImage === null ||
+        //     this.state.contactUsImage === null ||
+        //     this.state.ourFoodImage === null
+        // ) {
+        //     this.setState({
+        //         message: true
+        //     })
+        // } else {
 
-            const data = new FormData()
-            const { id, site_header, categories, logo, steckers, homeImage, findUsImage, contactUsImage, ourFoodImage, channels, locators, twitter, facebook, instagram, youtube } = this.state.basics;
-            data.append('id', id)
-            data.append('image', this.state.selectedFile)
-            data.append('steckers', this.state.steckers)
-            data.append('homeImage', this.state.homeImage)
-            data.append('findUsImage', this.state.findUsImage)
-            data.append('contactUsImage', this.state.contactUsImage)
-            data.append('ourFoodImage', this.state.ourFoodImage)
-            data.append('logo', logo)
-            data.append('steckers', steckers)
-            data.append('homeImage', homeImage)
-            data.append('findUsImage', findUsImage)
-            data.append('contactUsImage', contactUsImage)
-            data.append('ourFoodImage', ourFoodImage)
-            data.append('site_header', site_header)
-            data.append('categories', categories)
-            data.append('channels', channels)
-            data.append('locators', locators)
-            data.append('twitter', twitter)
-            data.append('facebook', facebook)
-            data.append('instagram', instagram)
-            data.append('youtube', youtube)
+        const data = new FormData()
+        const { id, site_header, categories, logo, steckers, homeImage, findUsImage, contactUsImage, ourFoodImage, channels, locators, twitter, facebook, instagram, youtube } = this.state.basics;
+        data.append('id', id)
+        data.append('image', this.state.selectedFile)
+        data.append('steckers', this.state.steckers)
+        data.append('homeImage', this.state.homeImage)
+        data.append('findUsImage', this.state.findUsImage)
+        data.append('contactUsImage', this.state.contactUsImage)
+        data.append('ourFoodImage', this.state.ourFoodImage)
 
-            AppService.axiosPost("basics/update", data, {
+        data.append('preImage', logo)
+        data.append('preSteckers', steckers)
+        data.append('preHomeImage', homeImage)
+        data.append('preFindUsImage', findUsImage)
+        data.append('preContactUsImage', contactUsImage)
+        data.append('preOurFoodImage', ourFoodImage)
+
+        data.append('site_header', site_header)
+        data.append('categories', categories)
+        data.append('channels', channels)
+        data.append('locators', locators)
+        data.append('twitter', twitter)
+        data.append('facebook', facebook)
+        data.append('instagram', instagram)
+        data.append('youtube', youtube)
+
+        AppService.axiosPost("basics/update", data, {
+        })
+            .then(response => {
+                AppService.getMethode('basics/get')
+                    .then(response => {
+                        if (response.length === 0) {
+                            this.setState({ isEmpty: true })
+                        } else {
+                            this.setState({
+                                basics: response[0],
+                                updateMessage: true
+                            })
+                        }
+                    })
+                    .catch(err => console.error(err));
             })
-                .then(response => {
-                    AppService.getMethode('basics/get')
-                        .then(response => {
-                            if (response.length === 0) {
-                                this.setState({ isEmpty: true })
-                            } else {
-                                this.setState({
-                                    basics: response[0],
-                                    updateMessage: true
-                                })
-                            }
-                        })
-                        .catch(err => console.error(err));
-                })
-                .catch(err => console.error(err));
-        }
+            .catch(err => console.error(err));
+        // }
     }
 
     selectedFile = event => {
