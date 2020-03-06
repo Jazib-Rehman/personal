@@ -31,10 +31,10 @@ class Store extends React.Component {
     {
       return this.state.basics.map((item, i) => {
         return (
-          <section key={i} style={{ backgroundImage: `url(${item.steckers})` }} className="mt-10 z-30 parallax flex justify-center">
+          <section key={i} style={{ backgroundImage: `url(${item.steckers})` }} className="flex justify-center relative text-center py-12 -mb-32 bg-none parallax">
             <div className="w-full relative text-center">
               <h1 className="flex items-center justify-center font-prim">
-                <span className="text-lg px-4 text-prim">STORE</span>
+                <span className="text-xl px-4 text-prim">STORE</span>
                 <span className="text-3xl border-orange-400 text-prim border-l-2 px-4">
                   {" "}
                   LOCATOR{" "}

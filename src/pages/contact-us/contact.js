@@ -19,6 +19,7 @@ class Contact extends React.Component {
       email: "",
       message: "",
       basics: [],
+      about: [],
       error: false,
       successMessage: false
     };
@@ -28,6 +29,13 @@ class Contact extends React.Component {
     AppService.getMethode("basics/get")
       .then(response => {
         this.setState({ basics: response ? response : [] });
+        AppService.getMethode('about/get')
+          .then(response => {
+            this.setState({
+              about: response
+            })
+          })
+          .catch(err => console.error(err));
       })
       .catch(err => console.error(err));
   }
@@ -98,33 +106,40 @@ class Contact extends React.Component {
             {this.error()}
             {this.success()}
             <div className="flex">
-              <div className="mt-4 w-1/2 hidden md:block">
-                <div className="text-left hidden md:flex py-2 px-16 flex">
-                  <div className="text-blue-500 px-6 flex justify-center mt-4">
-                    <MapPin size="24" />
+              <div className="w-1/2">
+                {this.state.about ?
+                  this.state.about.map((item, i) => {
+                    return <div className="mt-4 w-full hidden md:block">
+                      <div className="text-left hidden md:flex py-2 px-16 flex">
+                        <div className="text-blue-500 px-6 flex justify-center mt-4">
+                          <MapPin size="24" />
+                        </div>
+                        <div className="">
+                          <p className="text-lg">Site management Shawarmer</p>
+                          <p className="text-sm text-gray-700">
+                            {item.address ? item.address : "Not available"}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="text-left hidden md:flex py-2 px-16 mt-10 flex">
+                        <div className="text-red-400 px-6 flex justify-center mt-4">
+                          <CreditCard size="24" />
+                        </div>
+                        <div>
+                          <p className="text-lg">To contact us</p>
+                          <p className="text-sm text-gray-700">
+                            {item.email ? item.email : "Not available"}
+                          </p>
+                          <p className="text-xs text-gray-700 mt-2">
+                            Uniform Number: {item.phone ? item.phone : "Not available"}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  }) : <div className="flex justify-center items-center w-full h-full">
+                    <p className="text-2xl font-thin">Nothing Avilable Here!</p>
                   </div>
-                  <div className="">
-                    <p className="text-lg">Site management Shawarmer</p>
-                    <p className="text-sm text-gray-700">
-                      Sulaymaniyah, Olaya Road Riyadh 12211, Saudi Arabia
-                    </p>
-                  </div>
-                </div>
-                <div className="text-left hidden md:flex py-2 px-16 mt-10 flex">
-                  <div className="text-red-400 px-6 flex justify-center mt-4">
-                    <CreditCard size="24" />
-                  </div>
-                  <div>
-                    <p className="text-lg">To contact us</p>
-                    <p className="text-sm text-gray-700">
-                      Shawarmer Office: (011) 462-8841 , Sunday - Thursday, 8 AM
-                      - 5 PM
-                    </p>
-                    <p className="text-xs text-gray-700 mt-6">
-                      Uniform Number: 920008080
-                    </p>
-                  </div>
-                </div>
+                }
               </div>
               <div className="mt-4 w-full md:w-1/2">
                 <div className="text-left py-2 px-16">

@@ -84,7 +84,7 @@ class OurFood extends React.Component {
 			<section className="m-auto relative w-full text-center py-12 z-40 flex justify-center">
 				<div className="w-full">
 					<h1 className="flex items-center justify-center font-prim text-dark">
-						<span className="text-lg md:text-lg px-4 text-prim">OUR</span>
+						<span className="text-lg md:text-xl px-4 text-prim">OUR</span>
 						<span className="text-2xl md:text-3xl border-l-2 border-orange-400 px-4 text-prim">
 							{" "}
 							FOOD{" "}

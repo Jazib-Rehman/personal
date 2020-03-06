@@ -37,7 +37,7 @@ class Home extends React.Component {
         <Banner />
         {this.state.basics.map((item, i) => {
           return <div key={i} style={{ backgroundImage: `url(${item.steckers})` }} className="flex justify-center parallax">
-            <div className="w-11/12 m-auto">
+            <div className="w-full">
               <OurFood />
               <Channels />
               <Store />
