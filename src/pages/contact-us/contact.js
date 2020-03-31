@@ -141,6 +141,7 @@ class Contact extends React.Component {
                   </div>
                 }
               </div>
+
               <div className="mt-4 w-full md:w-1/2">
                 <div className="text-left py-2 px-16">
                   <div className="flex">
